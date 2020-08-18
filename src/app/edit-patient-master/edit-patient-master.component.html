@@ -1,0 +1,407 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<app-nav></app-nav>
+
+<div id="wrapper">       
+	<app-sidenav></app-sidenav> 	
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div  class="col-md-12 fright" >
+				<!-- style="margin-top:-200px; float:right;" -->
+        <div class="login-form">
+      <form  name="regPatientForm"   #regPatientForm="ngForm" (ngSubmit)="updatePatientMaster()"   >
+            
+          <h2 class="text-center">Patient Registration Form</h2> 
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="firstname">First Name</label>
+                <input  id="firstname" name="firstname" class="form-control" required [(ngModel)]="updform.firstname" #firstname="ngModel" placeholder="First Name" >
+                    <div *ngIf="firstname.errors && firstname.touched" class="alert alert-danger" > 
+                      <div *ngIf="firstname.errors.required">First Name is required.</div>
+                    </div>    
+    
+            </div>
+            <div class="form-group col-md-4">
+                <label for="middlename">Middle Name</label>
+                <input  id="middlename" name="middlename" class="form-control" required [(ngModel)]="updform.middlename" #middlename="ngModel" placeholder="Middle Name" >
+                    <div *ngIf="middlename.errors && middlename.touched" class="alert alert-danger" > 
+                      <div *ngIf="middlename.errors.required">Middle Name is required.</div>
+                    </div>    
+    
+            </div>
+            <div class="form-group col-md-4">
+                <label for="lastname">Last Name</label>
+                <input  id="lastname" name="lastname" class="form-control" required [(ngModel)]="updform.lastname" #lastname="ngModel" placeholder="Last Name" >
+                    <div *ngIf="lastname.errors && lastname.touched" class="alert alert-danger" > 
+                      <div *ngIf="lastname.errors.required">Last Name is required.</div>
+                    </div>    
+    
+            </div>
+                                   
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="salutation">Salutation</label>
+                <select id="salutation" name="salutation" class="form-control" required [(ngModel)]="updform.salutation" #salutation="ngModel"  >
+                  <option value="">Select Salutation</option>
+                    <option *ngFor="let sl of salutationss" [value]="sl">{{sl}}</option>
+              </select>
+                  <div *ngIf="salutation.errors && salutation.touched" class="alert alert-danger" > 
+                    <div *ngIf="salutation.errors.required">Salutation is required.</div>
+                  </div>      
+    
+            </div>
+            <div class="form-group col-md-8">
+                <label for="complains">Complains / Symptoms </label>
+
+                  <!-- <ng-multiselect-dropdown  required name="complains" id="complains" class="dropdown-btn"
+                  [placeholder]="'Select Complains / Symptoms'"
+                  [settings]="dropdownSettings"
+                  [data]="dropdownList"
+                  [(ngModel)]="updform.complains" #complains="ngModel"
+                  (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)"
+                >
+                </ng-multiselect-dropdown> -->
+                <select id="complains" name="complains" class="form-control" required [(ngModel)]="updform.complains" #complains="ngModel"  >
+                    <option value="">Select Complains / Symptoms</option>
+                      <option *ngFor="let sy of complainss" [value]="sy">{{sy}}</option>
+                </select>
+                
+                <!--   [(ngModel)]="selectedItems"-->
+                  <!-- <div *ngIf="complains.errors && complains.touched" class="alert alert-danger" > 
+                    <div *ngIf="complains.errors.required">Complainis / Symptoms is required.</div>
+                  </div>       -->
+    
+            </div>
+         
+                                   
+          </div>
+        
+          <div class="form-row">
+              <div class="form-group col-md-4">
+                  <label for="gender">Gender</label>
+                  <select id="gender" name="gender" class="form-control" required [(ngModel)]="updform.gender" #gender="ngModel"  >
+                      <option value="">Select Gender</option>
+                        <option *ngFor="let g of genders" [value]="g">{{g}}</option>
+                  </select>
+                      <div *ngIf="gender.errors && gender.touched" class="alert alert-danger" > 
+                        <div *ngIf="gender.errors.required">Gender is required.</div>
+                      </div>    
+      
+              </div>
+                  <div class="form-group col-md-4"  >
+                      <label for="martialstatus">Martial Status</label>
+                      <select id="martialstatus" name="martialstatus" class="form-control" required [(ngModel)]="updform.martialstatus" #martialstatus="ngModel"  >
+                        <option value="">Select Martial Status</option>
+                          <option *ngFor="let ms of martialstatuss" [value]="ms">{{ms}}</option>
+                    </select>                      
+                      <div *ngIf="martialstatus.invalid && (martialstatus.dirty || martialstatus.touched)" class="alert alert-danger">
+                        <div *ngIf="martialstatus.errors.required">
+                          Martial Status is required.
+                        </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group col-md-4"  >
+                        <label for="occupation">Occupation</label>
+                        <select id="occupation" name="occupation" class="form-control" required [(ngModel)]="updform.occupation" #occupation="ngModel"  >
+                          <option value="">Select Occupation</option>
+                            <option *ngFor="let occ of occupationss" [value]="occ">{{occ}}</option>
+                      </select>                      
+                        <div *ngIf="occupation.invalid && (occupation.dirty || occupation.touched)" class="alert alert-danger">
+                          <div *ngIf="occupation.errors.required">
+                            Martial Status is required.
+                          </div>
+                          </div>
+                      </div>
+           
+            </div>
+      
+          <div class="form-row">
+              <div class="form-group col-md-4">
+                   <label for="religion">Religion</label> 
+                   <select id="religion" name="religion" class="form-control" required [(ngModel)]="updform.religion" #religion="ngModel"  >
+                    <option value="">Select Religion</option>
+                      <option *ngFor="let re of religionss" [value]="re">{{re}}</option>
+                </select>
+                  <!-- <div *ngIf="religion.invalid && (religion.dirty || religion.touched)" class="alert alert-danger">
+                  <div *ngIf="religion.errors.required">
+                      Religion is required.
+                  </div>
+                  </div>          -->
+              </div>
+      
+              <div class="form-group col-md-4">
+                  <label for="dob">Date of Birth</label> 
+                 <input type="date" class="form-control" name="dob" id="dob" placeholder="Date of Birth" 
+                 required [(ngModel)]="updform.dob" #dob="ngModel"   >
+                 <!-- <div *ngIf="dob.invalid && (dob.dirty || dob.touched)" class="alert alert-danger">
+                     <div *ngIf="dob.errors.required">
+                       Date Of Birth is required.
+                     </div>
+                     </div> -->
+             </div>
+
+             <div class="form-group col-md-4">
+                <label for="age">Age</label>              
+               <input type="text" class="form-control" name="age" id="age" placeholder="Age" 
+               required [(ngModel)]="updform.age" #age="ngModel"    >
+               <!-- <div *ngIf="age.invalid && (age.dirty || age.touched)" class="alert alert-danger">
+                   <div *ngIf="age.errors.required">
+                    Age is required.
+                   </div>
+                   </div> -->
+           </div>
+      
+            </div>
+
+            <div class="form-row">
+               
+                <div class="form-group col-md-4">
+                    <label for="country">Select Country</label> 
+                    <select id="country" name="country" class="form-control" [(ngModel)]="updform.country" #country="ngModel"  (change)="onChangeCountry($event.target.value)">
+                      <option value="">Select Country</option>
+                      <option *ngFor="let country of countryInfo; let i = index" value="{{i}}">{{country.CountryName}}</option>
+                    </select> 
+                    <!-- <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" #country="ngModel" >
+                      <option value="">Select Country</option>
+                        <option *ngFor="let c of countrys" [value]="c">{{c}}</option>
+                      </select> -->
+                      <!-- <div *ngIf="country.errors && country.touched" class="alert alert-danger">
+                        <div *ngIf="country.errors.required">Country is required.</div>
+                      </div>     -->
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="state">Select State</label> 
+                    <select id="state" name="state" class="form-control" [(ngModel)]="updform.state" #state="ngModel" (change)="onChangeState($event.target.value)">
+                      <option *ngIf="stateInfo == ''" value="-1">--Select State--</option>
+                      <option *ngFor="let state of stateInfo; let j = index" value="{{j}}">{{state.StateName}}</option>
+                    </select> 
+                    <!-- <select id="state" name="state" class="form-control" required [(ngModel)]="updform.state" #state="ngModel" >
+                    <option value="">Select State</option>
+                    <option *ngFor="let s of states" [value]="s">{{s}}</option>
+                    </select> -->
+                    <!-- <div *ngIf="state.errors && state.touched" class="alert alert-danger">
+                    <div *ngIf="state.errors.required">State is required.</div>
+                    </div>     -->
+                </div>
+                
+                    <div class="form-group col-md-4"  >
+                        <label for="city">Select City</label> 
+                        <select id="city" name="city" class="form-control" required [(ngModel)]="updform.city" #city="ngModel">
+                          <option *ngIf="cityInfo == ''" value="-1">--Select CIty--</option>
+                        <option *ngFor="let city of cityInfo; let k = index" value="{{k}}">{{city}}</option>
+                      </select>  
+
+                        <!-- <select id="city" name="city" class="form-control" required [(ngModel)]="updform.city" #city="ngModel" >
+                        <option value="">Select City</option>
+                        <option *ngFor="let ct of citys" [value]="ct">{{ct}}</option>
+                        </select> -->
+                        <!-- <div *ngIf="city.errors && city.touched" class="alert alert-danger">
+                        <div *ngIf="city.errors.required">City is required.</div>
+                        </div>     -->
+                </div>
+        
+            </div>  
+      
+            <div class="form-row">
+
+                <div class="form-group col-md-4"  >
+                    <label for="referred">Select Referred By</label> 
+                <select id="referred" name="referred" class="form-control" required [(ngModel)]="updform.referred" #referred="ngModel" >
+                    <option value="">Select Referred By</option>
+                 
+                    </select>
+                    <!-- <div *ngIf="referred.errors && referred.touched" class="alert alert-danger">
+                    <div *ngIf="referred.errors.required">Referred By is required.</div>
+                    </div>     -->
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="fdoctor">Name of the Family Doctor</label> 
+                    <select id="fdoctor" name="fdoctor" class="form-control" required [(ngModel)]="updform.fdoctor" #fdoctor="ngModel" >
+                        <option value="">Select Family Doctor</option>
+                       
+                        </select>
+                   <!-- <div *ngIf="fdoctor.invalid && (fdoctor.dirty || fdoctor.touched)" class="alert alert-danger">
+                       <div *ngIf="fdoctor.errors.required">
+                        Family Doctor is required.
+                       </div>
+                       </div> -->
+               </div>
+
+               <div class="form-group col-md-4">
+                <label for="email">Email Id</label> 
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email Id" 
+                required [(ngModel)]="updform.email" #email="ngModel"    >
+               <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                   <div *ngIf="email.errors.required">
+                    Email Id is required.
+                   </div>
+                   </div> -->
+           </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-4"  >
+                    <label for="regmobileno">Registered Mobile Number</label> 
+                    <input type="text" class="form-control" name="regmobileno" id="regmobileno" placeholder="Registered Mobile Number" 
+                    required [(ngModel)]="updform.regmobileno" #regmobileno="ngModel"    >
+                    <!-- <div *ngIf="regmobileno.errors && regmobileno.touched" class="alert alert-danger">
+                    <div *ngIf="regmobileno.errors.required">Registered Mobile Number is required.</div>
+                    </div>     -->
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="kinmobileno">Phone no of the Kin </label> 
+                    <input type="text" class="form-control" name="kinmobileno" id="kinmobileno" placeholder="Phone Number of the Kin" 
+                required [(ngModel)]="updform.kinmobileno" #kinmobileno="ngModel"    >
+                   <!-- <div *ngIf="kinmobileno.invalid && (kinmobileno.dirty || kinmobileno.touched)" class="alert alert-danger">
+                       <div *ngIf="kinmobileno.errors.required">
+                        Phone Number of the Kin is required.
+                       </div>
+                       </div> -->
+               </div>
+
+               <div class="form-group col-md-4">
+                <label for="wtsno">Whats App Number</label> 
+                <input type="text" class="form-control" name="wtsno" id="wtsno" placeholder="Whats App Number" 
+                required [(ngModel)]="updform.wtsno" #wtsno="ngModel"    >
+               <!-- <div *ngIf="wtsno.invalid && (wtsno.dirty || wtsno.touched)" class="alert alert-danger">
+                   <div *ngIf="wtsno.errors.required">
+                    Whats App Number is required.
+                   </div>
+                   </div> -->
+                </div>
+
+            </div>
+
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="address">Address</label>
+                <textarea id="address" name="address"  class="form-control" placeholder="Address" 
+                required [(ngModel)]="updform.address" #address="ngModel"  ></textarea>
+                <!-- <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger">
+                    <div *ngIf="address.errors.required">
+                      Address is required.
+                    </div>
+                    </div> -->
+
+                </div>   
+                
+                <div class="form-group col-md-6">
+                  <label for="reason">Reason To Visit / Problem Of Patient</label>
+              <textarea id="reason" name="reason"  class="form-control" placeholder="Reason To Visit" 
+              required [(ngModel)]="updform.reason" #reason="ngModel"  ></textarea>
+              <!-- <div *ngIf="reason.invalid && (reason.dirty || reason.touched)" class="alert alert-danger">
+                  <div *ngIf="reason.errors.required">
+                    Reason To Visit is required.
+                  </div>
+                  </div> -->
+
+              </div>  
+
+            </div> 
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6"  >
+                    <label for="pincode">Pincode</label> 
+                    <input type="text" class="form-control" name="pincode" id="pincode" placeholder="Pin Code" 
+                    required [(ngModel)]="updform.pincode" #pincode="ngModel"    >
+                    <!-- <div *ngIf="pincode.errors && pincode.touched" class="alert alert-danger">
+                    <div *ngIf="pincode.errors.required">Pincode is required.</div>
+                    </div>     -->
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="qualification">Education Qualification </label> 
+                    <select id="qualification" name="qualification" class="form-control" required [(ngModel)]="updform.qualification"
+                     #qualification="ngModel" >
+                        <option value="">Select Education Qualification</option>
+                       
+                    </select>
+                   <!-- <div *ngIf="qualification.invalid && (qualification.dirty || qualification.touched)" class="alert alert-danger">
+                       <div *ngIf="qualification.errors.required">
+                        Education Qualifictaion is required.
+                       </div>
+                       </div> -->
+               </div>
+
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6"  >
+                    <label for="identificationmarks">Personal Identification marks</label> 
+                    <textarea id="identificationmarks" name="identificationmarks"  class="form-control" placeholder="Personal Identification marks" 
+                    required [(ngModel)]="updform.identificationmarks" #identificationmarks="ngModel"  ></textarea>
+                    <!-- <div *ngIf="identificationmarks.errors && identificationmarks.touched" class="alert alert-danger">
+                    <div *ngIf="identificationmarks.errors.required">Personal Identification marks is required.</div>
+                    </div>     -->
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="scars">Scars if any </label> 
+                    <textarea id="scars" name="scars"  class="form-control" placeholder="Scars If Any" 
+                    required [(ngModel)]="updform.scars" #scars="ngModel"  ></textarea>
+                   <!-- <div *ngIf="scars.invalid && (scars.dirty || scars.touched)" class="alert alert-danger">
+                       <div *ngIf="scars.errors.required">
+                        Scars If any is required.
+                       </div>
+                       </div> -->
+               </div>
+
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="datefirstvisit">Date of First Visit</label> 
+                   <input type="date" class="form-control" name="datefirstvisit" id="datefirstvisit" placeholder="Date of First Visit" 
+                   required [(ngModel)]="updform.datefirstvisit" #datefirstvisit="ngModel"   >
+                   <!-- <div *ngIf="datefirstvisit.invalid && (datefirstvisit.dirty || datefirstvisit.touched)" class="alert alert-danger">
+                       <div *ngIf="datefirstvisit.errors.required">
+                         Date Of First Visit is required.
+                       </div>
+                       </div> -->
+               </div>
+            </div>
+
+      
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-primary  btn-block"  >Submit Form</button>
+                </div>
+                <div class="form-group col-md-6">
+              <button type="button" class="btn btn-danger  btn-block" (click)="regPatientForm.resetForm({})">Reset Form</button>
+                </div>        
+            
+      
+              </div>
+      </form> 
+     
+      </div>
+			
+	
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+<!-- <app-footer></app-footer> -->

@@ -1,0 +1,72 @@
+<form  name="observationsForm"   #observationsForm="ngForm" (ngSubmit)="savePulmonicValueData()"  >
+    <div class="observe">
+      <div id="container">
+        <h3 class="head-title"> Type: Pulmonic Valve </h3> 
+
+        <div class="form-row"   >
+    
+        <section class="left-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Structure</label>
+                <select  class="form-control" [(ngModel)]="selectStructure" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('structure',selectStructure)">
+                    <option *ngFor="let sta of Structure" [ngValue]="sta.value">{{sta.value}}</option>
+                </select>
+           </div>
+           <div class="form-group col-md-11">
+            <label>Pulmonary Pressure </label>
+            <select  class="form-control" [(ngModel)]="selectpulmonaryPressure" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('pulmonaryPressure',selectpulmonaryPressure)">
+                <option *ngFor="let sta of pulmonaryPressure" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+           </div>
+       
+          </div>
+        </section>
+    
+    
+        <section class="right-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Function </label>
+            <select  class="form-control" [(ngModel)]="selectfunction" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('function',selectfunction)">
+                <option *ngFor="let sta of function" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+
+           </div>
+
+           <div class="form-group col-md-11">
+            <label>B Function </label>
+            <select  class="form-control" [(ngModel)]="selectbFunction" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('bFunction',selectbFunction)">
+                <option *ngFor="let sta of bFunction" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+            </div>
+      
+          </div>
+         
+    
+        </section>
+        
+        </div>
+    </div>  
+    
+    </div>
+    
+    <div class="form-row"   >
+      <div class="form-group col-md-3" ></div>
+      <div class="form-group col-md-3" >
+        <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+      </div>
+      <div class="form-group col-md-3" >
+        <button type="button" class="btn btn-danger  btn-block" >Next</button>
+      </div>
+      <div class="form-group col-md-3" ></div>
+    </div> 
+    
+    </form>
+    
+    
+    

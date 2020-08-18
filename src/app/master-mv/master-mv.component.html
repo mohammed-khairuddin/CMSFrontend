@@ -1,0 +1,67 @@
+<form  name="observationsForm"   #observationsForm="ngForm" (ngSubmit)="saveMitralValueData()"  >
+    <div class="observe">
+      <div id="container">
+        <h3 class="head-title"> Type: Mitral Valve </h3> 
+    
+        <div class="form-row"   >
+        <section class="left-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Mitral Stenosis </label>
+            <select [(ngModel)]="selectmitralStenosis"  class="form-control" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('mitralStenosis',selectmitralStenosis)">
+                <option *ngFor="let sta of mitralStenosis" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+           </div>
+           <div class="form-group col-md-11">
+            <label>Mitral Regurgitation </label>
+            <select [(ngModel)]="selectMitralRegurgitationValue" class="form-control"  name="status" placeholder="select" (ngModelChange)="onOptionsSelected('mitralRegurgitationValue',selectMitralRegurgitationValue)">
+                <option *ngFor="let sta of mitralRegurgitation" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+           </div>
+       
+          </div>
+        </section>
+    
+    
+        <section class="right-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Structure / Function </label>
+                <select [(ngModel)]="selectstructureOrFunction"  class="form-control" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('structureOrFunction',selectstructureOrFunction)">
+                    <option *ngFor="let sta of structureOrFunction" [ngValue]="sta.value">{{sta.value}}</option>
+                </select>
+
+           </div>
+      
+          </div>
+         
+    
+        </section>
+        
+        </div>
+      
+      </div>
+      
+    </div>
+
+
+    <div class="form-row"   >
+      <div class="form-group col-md-3" ></div>
+      <div class="form-group col-md-3" >
+        <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+      </div>
+      <div class="form-group col-md-3" >
+        <button type="button" class="btn btn-danger  btn-block" >Next</button>
+      </div>
+      <div class="form-group col-md-3" ></div>
+    </div> 
+    
+    
+    </form>
+    
+    
+    

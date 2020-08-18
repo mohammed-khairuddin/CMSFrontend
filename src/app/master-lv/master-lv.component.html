@@ -1,0 +1,158 @@
+<form  name="lvForm"   #lvForm="ngForm"  (ngSubmit)="saveLeftVentricleValueData()"    >
+    <div class="observe">
+      <div id="container">
+        <h3 class="head-title"> Type: Left Ventricle </h3> 
+    
+        <div class="form-row"   >
+        <section class="left-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Cavity Size </label>              
+                <select [(ngModel)]="selectedCavitySize" name="selectedCavitySize" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('cavitySize',selectedCavitySize)" class="form-control" 
+                [(ngModel)]="updform.cs" #cs="ngModel">
+                   <option>Select Cavity Size</option>
+                   <option *ngFor="let sta of selectCavitySize" [ngValue]="sta.value">{{sta.value}}</option>
+               </select>
+           </div>
+           <div class="form-group col-md-11">
+            <label>Ventricular Shape </label>            
+                <select [(ngModel)]="selectedVentricularShape" name="selectedVentricularShape" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('ventricularShape',selectedVentricularShape)" class="form-control">
+                <option>Select Ventricular Shape</option>
+                 <option *ngFor="let sta of selectVentricularShape" [ngValue]="sta.value">{{sta.value}}</option>
+                 </select>
+           </div>
+      
+           <div class="form-group col-md-11">
+            <label>Diastolic Filling </label>
+          <select [(ngModel)]="selectedDiastolicFilling" name="selectedDiastolicFilling" placeholder="select" 
+           (ngModelChange)="onOptionsSelected('diastolicFilling',selectedDiastolicFilling)" class="form-control">
+           <option>Select Diastolic Filling</option>
+            <option *ngFor="let sta of selectDiastolicFilling" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-11">
+
+            <label>	Mass(Tumor) </label>
+            <select [(ngModel)]="selectedMass" name="selectedMass" placeholder="select" 
+            (ngModelChange)="onOptionsSelected('mass',selectedMass)" class="form-control">
+            <option>Select Mass(Tumor) </option>
+             <option *ngFor="let sta of selectMass" [ngValue]="sta.value">{{sta.value}}</option>
+             </select>
+          </div>
+
+          <div class="form-group col-md-11">
+            <label>Wall Thickness </label>
+       <select [(ngModel)]="selectedWallThickness" name="selectedWallThickness" placeholder="select" 
+       (ngModelChange)="onOptionsSelected('wallThickness',selectedWallThickness)" class="form-control">
+       <option>Select Mass(Tumor) </option>
+        <option *ngFor="let sta of selectWallThickness" [ngValue]="sta.value">{{sta.value}}</option>
+        </select>
+
+            </div>
+
+            <div class="form-group col-md-11">
+                <label>Abnormal Septal Motion </label>
+                <select [(ngModel)]="selectedAbnormalSeptalMotion" name="selectedAbnormalSeptalMotion" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('abnormalSeptalMotion',selectedAbnormalSeptalMotion)" class="form-control">
+                 <option>Select Ventricular Mass</option>
+                 <option *ngFor="let sta of selectAbnormalSeptalMotion" [ngValue]="sta.value">{{sta.value}}</option>
+                 </select>
+
+                </div>
+      
+          </div>
+    
+         
+    
+        </section>
+    
+    
+        <section class="right-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Ventricular Septal Defect </label>
+                <select [(ngModel)]="selectedVentricularSeptalDefect" name="selectedVentricularSeptalDefect" placeholder="select" 
+               (ngModelChange)="onOptionsSelected('ventricularSeptalDefect',selectedVentricularSeptalDefect)" class="form-control">
+               <option>Select Ventricular Septal Defect</option>
+                <option *ngFor="let sta of selectVentricularSeptalDefect" [ngValue]="sta.value">{{sta.value}}</option>
+                </select>
+
+           </div>
+           <div class="form-group col-md-11">
+            <label>Ventricular Mass </label>
+                <select [(ngModel)]="selectedVentricularMass" name="selectedVentricularMass" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('ventricularMass',selectedVentricularMass)" class="form-control">
+                 <option>Select Ventricular Mass</option>
+                 <option *ngFor="let sta of selectVentricularMass" [ngValue]="sta.value">{{sta.value}}</option>
+                 </select>
+           </div>
+      
+           <div class="form-group col-md-11">
+            <label>Myocardial Infraction </label>
+            <select [(ngModel)]="selectedMyocardialInfraction" name="selectedMyocardialInfraction" placeholder="select" 
+          (ngModelChange)="onOptionsSelected('myocardialInfraction',selectedMyocardialInfraction)" class="form-control">
+          <option>Select Myocardial Infraction </option> 
+           <option *ngFor="let sta of selectMyocardialInfraction" [ngValue]="sta.value">{{sta.value}}</option>
+           </select>
+          </div>
+
+          <div class="form-group col-md-11">
+            <label>Systolic Function </label>
+            <select [(ngModel)]="selectedSystolicfunction" name="selectedSystolicfunction" placeholder="select" 
+            (ngModelChange)="onOptionsSelected('systolicfunction',selectedSystolicfunction)" class="form-control">
+             <option>Select Ventricular Mass</option>
+             <option *ngFor="let sta of selectSystolicfunction" [ngValue]="sta.value">{{sta.value}}</option>
+             </select>
+
+            </div>
+
+            <div class="form-group col-md-11">
+                <label>Thrombus</label>
+                <select [(ngModel)]="selectedThrombus" name="selectedThrombus" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('thrombus',selectedThrombus)" class="form-control">
+              <option>Select Myocardial Infraction </option> 
+               <option *ngFor="let sta of selectThrombus" [ngValue]="sta.value">{{sta.value}}</option>
+               </select>
+
+                </div>
+      
+          </div>
+         
+         
+    
+        </section>
+    
+      </div>
+      
+      
+        </div>
+      
+        
+      <div class="form-row"   >
+        <div class="form-group col-md-3" ></div>
+        <div class="form-group col-md-3" >
+          <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+        </div>
+        <div class="form-group col-md-3" >
+          <button type="button" class="btn btn-danger  btn-block" >Next</button>
+        </div>
+        <div class="form-group col-md-3" ></div>
+      </div>
+
+       
+    </div>
+    
+   
+
+   
+    </form>
+    
+    
+    

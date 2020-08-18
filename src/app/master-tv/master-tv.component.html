@@ -1,0 +1,68 @@
+<form  name="observationsForm"   #observationsForm="ngForm" (ngSubmit)="saveTricuspidValueData()"  >
+    <div class="observe">
+      <div id="container">
+        <h3 class="head-title"> Type: Tricuspid Valve </h3> 
+
+        <div class="form-row"   >
+    
+        <section class="left-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Structure </label>
+            <select [(ngModel)]="selectstructure"  class="form-control" name="status" placeholder="select" 
+            (ngModelChange)="onOptionsSelected('structure',selectstructure)">
+                <option *ngFor="let sta of structure" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+           </div>
+           <div class="form-group col-md-11">
+            <label>Stenosis </label>
+            <select [(ngModel)]="selectStenosis" class="form-control"  name="status" placeholder="select" 
+            (ngModelChange)="onOptionsSelected('stenosis',selectStenosis)">
+                <option *ngFor="let sta of Stenosis" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+           </div>
+       
+          </div>
+        </section>
+    
+    
+        <section class="right-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Regurgitation</label>
+                <select [(ngModel)]="selectRegurgitation"  class="form-control" name="status" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('regurgitation',selectRegurgitation)">
+                    <option *ngFor="let sta of Regurgitation" [ngValue]="sta.value">{{sta.value}}</option>
+                </select>
+
+           </div>
+      
+          </div>
+         
+    
+        </section>
+        
+        </div>
+    </div>  
+    
+    </div>
+    
+    <div class="form-row"   >
+      <div class="form-group col-md-3" ></div>
+      <div class="form-group col-md-3" >
+        <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+      </div>
+      <div class="form-group col-md-3" >
+        <button type="button" class="btn btn-danger  btn-block" >Next</button>
+      </div>
+      <div class="form-group col-md-3" ></div>
+    </div> 
+    
+    </form>
+    
+    
+    

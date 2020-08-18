@@ -1,0 +1,44 @@
+<div class="bs-example">
+
+    <header>
+      <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container">
+        <a routerLink="/login" class="navbar-brand title logo">
+              <img  src="assets/images/logo.png"  name="CG_Heart" class="img-responsive"   >    
+            {{ appTitle }}
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                  <!-- <a href="#" class="nav-item nav-link active">Home</a>   -->
+            </div>
+           
+              <ul class="navbar-nav ml-auto">
+                  <li *ngIf="!isLogin"><a routerLink="/login" class="nav-item nav-link menuli active" data-toggle="modal" data-target="#myModal" >Login</a></li>              
+                  <li *ngIf="isLogin">                                 
+                    <a   routerLink="/clinicdashboard"   *ngIf="role==='CLINIC'" class="nav-item nav-link menuli" > 
+                      Dashboard</a></li>
+                  <li> <a routerLink="/dashboard"   *ngIf="role==='ADMIN'"  class="nav-item nav-link menuli" >  Dashboard</a></li>
+                  <li> <a routerLink="/doctordashboard"   *ngIf="role==='DOCTOR'"  class="nav-item nav-link menuli" >  Dashboard</a></li>
+                  <li> <a routerLink="/registerpatient"   *ngIf="role==='CLINIC'"  class="nav-item nav-link menuli" >  Register  Patient</a></li>
+                  <li *ngIf="isLogin && role!='ADMIN' && role==='CLINIC'"><a routerLink="/profile" class="nav-item nav-link menuli" >Profile</a></li>
+                  <li *ngIf="isLogin && role!='ADMIN' && role==='DOCTOR' "><a routerLink="/doctorprofile" class="nav-item nav-link menuli" >Profile</a></li>
+                  <li *ngIf="isLogin"><a routerLink="" class="nav-item nav-link menuli" (click)="logout()">Log Out</a></li>
+                 
+                 
+                </ul>
+              
+                
+ 
+    
+
+        </div>
+      </div>
+    </nav>
+    </header>
+    
+</div> 
+

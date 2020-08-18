@@ -1,0 +1,24 @@
+
+            <div class="float-container">
+                
+                <div class="form-group">
+                    <input  id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..."  multiple/>
+                </div>
+                <div *ngIf="fileUploadProgress">
+                    Upload progress: {{ fileUploadProgress }}
+                </div> 
+                <div class="mb-3" *ngIf="uploadedFilePath">
+                    {{uploadedFilePath}}
+                </div>
+                <div style="height: 600px; width:100%;">
+                  <dicom-viewer  style="height:100%; width:100%; margin: 10px;"></dicom-viewer>
+                </div>
+                 <br/>  <br/>  
+                <div class="form-group">
+                    <button class="btn btn-primary"  (click)="upload()">Upload</button>
+                </div>
+                    
+               
+                
+             </div>
+        

@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<app-nav></app-nav>
+
+<div id="wrapper">       
+	<app-sidenav></app-sidenav> 	
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+           
+            <div  class="col-md-12 fright" >
+				
+				<table class="tablestyle">
+					<tr>
+						<td> <table class="tablestyleinn">
+							<tr>
+								<td><img  src="assets/images/logo.png"  name="Logo" class="img-responsive"   >    </td></tr>
+								<tr><td><h5> Welcome  {{ ClinicData.name }}</h5></td></tr>
+						
+							
+						</table> 
+							  
+							
+						</td>
+						<td>
+			
+							<table class="tablestyleinn">
+								<tr>
+									<td> <h5>Clinic Name </h5></td>
+									<td> <h5>: {{ ClinicData.name }} </h5></td>
+								</tr>
+								<tr>
+									<td> <h5>Phone Number </h5></td>
+									<td>: {{ ClinicData.mobNo }}</td>
+								</tr>
+								<tr>
+									<td> <h5>Address</h5> </td>
+									<td>: {{ ClinicData.address }}</td>
+								</tr>
+							</table>
+			
+						</td>
+					</tr>
+				</table>
+		   
+		<div class="card">    
+			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+			<li class="nav-item">
+			<a class="nav-link active" id="all-cases-tab" data-toggle="pill"   href="#all-cases" role="tab" aria-controls="all-cases" aria-selected="true"> Cases To Be Assigned</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" id="all-upload-tab" data-toggle="pill"   href="#all-upload" role="tab" aria-controls="all-upload" aria-selected="false">  Upload</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" id="all-dashboard-tab" data-toggle="pill" href="#all-dashboard" role="tab" aria-controls="all-dashboard" aria-selected="false">Dashboard</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="all-reports-tab" data-toggle="pill" href="#all-reports" role="tab" aria-controls="all-reports" aria-selected="false">Reports</a>
+			</li>
+
+			</ul>
+
+			<div class="tab-content" id="pills-tabContent">
+
+				<!-- <router-outlet></router-outlet> -->
+
+			<div class="tab-pane fade show active" id="all-cases" role="tabpanel" aria-labelledby="all-cases-tab">
+				<app-showallpatients></app-showallpatients>
+			</div>
+			<div class="tab-pane fade" id="all-upload" role="tabpanel" aria-labelledby="all-upload-tab" style="min-height: 300px;">
+				<app-dicomupload></app-dicomupload>
+			</div>
+
+			<div class="tab-pane fade" id="all-dashboard" role="tabpanel" aria-labelledby="all-dashboard-tab" style="min-height: 300px;">
+				<app-clnic-dashboard-tab></app-clnic-dashboard-tab> 
+			</div> 
+
+			<div class="tab-pane fade" id="all-reports" role="tabpanel" aria-labelledby="all-reports-tab" style="min-height: 300px;" >
+				Reports
+			</div> 
+
+			</div>
+
+		</div>
+
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+ <app-footer></app-footer>
+
+

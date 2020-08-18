@@ -1,0 +1,66 @@
+<form  name="observationsForm"   #observationsForm="ngForm" (ngSubmit)="savePericardiumValueData()"  >
+    <div class="observe">
+      <div id="container" >
+        <h3 class="head-title"> Type:Pericardium </h3> 
+
+        <div class="form-row"   >
+    
+        <section class="left-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Observations</label>
+            <select class="dropdown"  class="form-control"  [(ngModel)]="selectedAscites" name="selectedAscites" 
+            placeholder="select" 
+            (ngModelChange)="onOptionsSelected('ascites',selectedAscites)">
+                <option *ngFor="let sta of selectAscites" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+           </div>
+          
+       
+          </div>
+        </section>
+    
+    
+        <section class="right-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Abnormal</label>
+            <select class="dropdown" class="form-control"  [(ngModel)]="selectedAbnormal" name="selectedAbnormal" 
+            placeholder="select" 
+            (ngModelChange)="onOptionsSelected('abnormal',selectedAbnormal)">
+                <option *ngFor="let sta of selectAbnormal" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+
+           </div>
+      
+          </div>
+         
+    
+        </section>
+        
+        </div>
+      </div>
+    
+    </div>
+    
+    <div class="form-row"   >
+      <div class="form-group col-md-3" ></div>
+      <div class="form-group col-md-3" >
+        <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+      </div>
+      <div class="form-group col-md-3" >
+        <button type="button" class="btn btn-danger  btn-block" >Next</button>
+      </div>
+      <div class="form-group col-md-3" ></div>
+    </div> 
+    
+    
+    
+    </form>
+    
+    
+    

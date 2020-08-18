@@ -1,0 +1,224 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<app-nav></app-nav>
+
+<div id="wrapper">       
+	<app-sidenav></app-sidenav> 	
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div  class="col-md-12 fright" id="print-section">			
+        <div class="login-form">
+      <form  name="observationsForm"   #observationsForm="ngForm"    >
+            
+          <h2 class="text-center">WORKSHEET OF THE PATIENT</h2> 
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <div> 
+                <label>Name of The Patient :</label>
+                {{ patientDataObject['patientname'] }}
+              </div>
+            </div>
+
+            <div class="form-group col-md-4">
+              <div> 
+                <label>Gender :</label>
+                {{ patientDataObject['gender'] }}
+              </div>
+            </div>
+
+            <div class="form-group col-md-4">
+              <div> 
+                <label>Date Of Birth :</label>
+                {{ patientDataObject['dob'] }}
+              </div>
+            </div>
+
+          </div>    
+          
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div> 
+                <label>Reffered By :</label>
+                
+              </div>
+            </div>
+
+            <div class="form-group col-md-6">
+              <div> 
+                <label>Clinic Observations :</label>
+               
+              </div>
+            </div>
+
+          </div>    
+
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <div> 
+                <label>BMI :</label>
+                {{ patientDataObject['bmi'] }}
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
+              <div> 
+                <label>BSA :</label>
+                {{ patientDataObject['bsa'] }}
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
+              <div> 
+                <label>Height :</label>
+                {{ patientDataObject['height'] }} cms
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
+              <div> 
+                <label>Weight :</label>
+                {{ patientDataObject['weight'] }} kgs
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
+              <div> 
+                <label>BP :</label>
+               {{ patientDataObject['bpsystolic'] }}  mmHg /
+               {{ patientDataObject['bpdiastolic'] }}  mmHg 
+              </div>
+            </div>
+
+          </div>    
+
+          <hr/>
+
+          <div class="card">    
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+              <li class="nav-item">
+                <a class="nav-link active" id="all-md-tab" data-toggle="pill"   href="#all-md" role="tab" aria-controls="all-md" aria-selected="true"> LV Motion Diagram</a>
+                </li>  
+            <li class="nav-item">
+            <a class="nav-link" id="all-lv-tab" data-toggle="pill"  queryParamsHandling="preserve" (click)="getAddPage('leftVentricalObservation')"  href="#all-lv" role="tab" aria-controls="all-lv" aria-selected="true"> LV</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="all-rv-tab" data-toggle="pill"  queryParamsHandling="preserve" (click)="getAddPage('rightVentricleObservation')"  href="#all-rv" role="tab" aria-controls="all-rv" aria-selected="false">  RV</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="all-la-tab" data-toggle="pill" queryParamsHandling="preserve" (click)="getAddPage('leftAtriumObservation')" href="#all-la" role="tab" aria-controls="all-la" aria-selected="false">LA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="all-ra-tab" data-toggle="pill"  queryParamsHandling="preserve" (click)="getAddPage('rightAtriumObservation')" href="#all-ra" role="tab" aria-controls="all-ra" aria-selected="false">RA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="all-mv-tab" data-toggle="pill"  queryParamsHandling="preserve" (click)="getAddPage('mitralValveObservation')"  href="#all-mv" role="tab" aria-controls="all-mv" aria-selected="false">MV</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="all-tv-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('tricuspidValveObservation')" href="#all-tv" role="tab"  aria-controls="all-tv" aria-selected="false">TV</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="all-pa-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('pulmonaryArteryObservation')" href="#all-pa" role="tab" aria-controls="all-pa" aria-selected="false">PA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="all-pv-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('pulmonicValveObservation')" href="#all-pv" role="tab" aria-controls="all-pv" aria-selected="false">PV</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="all-aorta-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('aortaObservation')" href="#all-aorta" role="tab" aria-controls="all-aorta" aria-selected="false">Aorta</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="all-pericardium-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('pericardiumObservation')" href="#all-pericardium" role="tab" aria-controls="all-pericardium" aria-selected="false">Pericardium</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="all-reports-tab" data-toggle="pill"  href="#all-reports" role="tab" aria-controls="all-reports" aria-selected="false">Reports</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="all-reportimage-tab" data-toggle="pill"  href="#all-reportimage" role="tab" aria-controls="all-reportimage" aria-selected="false">Reports Images</a>
+            </li>
+<!-- 
+            <li class="nav-item">
+              <a class="nav-link" id="all-preview-tab" data-toggle="pill"  href="#all-preview" role="tab" aria-controls="all-preview" aria-selected="false">preview</a>
+            </li> -->
+      
+            </ul>
+      
+            <div class="tab-content" id="pills-tabContent">
+      
+              <!-- <router-outlet></router-outlet> -->
+
+              <div class="tab-pane fade show active" id="all-md" role="tabpanel" aria-labelledby="all-md-tab" style="min-height: 300px;">
+               Lv Motion Diagram
+               </div>  
+      
+            <div class="tab-pane fade" id="all-lv" role="tabpanel" aria-labelledby="all-lv-tab" style="min-height: 300px;">
+            <app-master-lv></app-master-lv>           
+            </div>
+            <div class="tab-pane fade" id="all-rv" role="tabpanel" aria-labelledby="all-rv-tab" style="min-height: 300px;">
+              <app-master-rv></app-master-rv>
+            </div>
+      
+            <div class="tab-pane fade" id="all-la" role="tabpanel" aria-labelledby="all-la-tab" style="min-height: 300px;">
+              <app-master-la></app-master-la>
+            </div> 
+      
+            <div class="tab-pane fade" id="all-ra" role="tabpanel" aria-labelledby="all-ra-tab" style="min-height: 300px;" >
+              <app-master-ra></app-master-ra>
+            </div> 
+
+            <div class="tab-pane fade" id="all-mv" role="tabpanel" aria-labelledby="all-mv-tab" style="min-height: 300px;" >
+              <app-master-mv></app-master-mv>
+            </div> 
+            <div class="tab-pane fade" id="all-tv" role="tabpanel" aria-labelledby="all-tv-tab" style="min-height: 300px;" >
+              <app-master-tv></app-master-tv>
+            </div> 
+            <div class="tab-pane fade" id="all-pa" role="tabpanel" aria-labelledby="all-pa-tab" style="min-height: 300px;" >
+              <app-master-pa></app-master-pa>
+            </div> 
+            <div class="tab-pane fade" id="all-pv" role="tabpanel" aria-labelledby="all-pv-tab" style="min-height: 300px;" >
+              <app-master-pv></app-master-pv>
+            </div>
+            <div class="tab-pane fade" id="all-aorta" role="tabpanel" aria-labelledby="all-aorta-tab" style="min-height: 300px;" >
+              <app-master-aorta></app-master-aorta>
+            </div>
+            <div class="tab-pane fade" id="all-pericardium" role="tabpanel" aria-labelledby="all-pericardium-tab" style="min-height: 300px;" >
+              <app-master-pc></app-master-pc>
+            </div>
+
+            <!-- <div class="tab-pane fade" id="all-preview" role="tabpanel" aria-labelledby="all-preview-tab" style="min-height: 300px;" >
+              <app-preview-observations></app-preview-observations>
+            </div> -->
+
+            <div class="tab-pane fade " id="all-reports" role="tabpanel" aria-labelledby="all-reports-tab" style="min-height: 300px;">
+              Reports
+            </div> 
+            
+            <div class="tab-pane fade " id="all-reportimage" role="tabpanel" aria-labelledby="all-reportimage-tab" style="min-height: 300px;">
+              Reports Images
+            </div> 
+
+      
+            </div>
+      
+          </div>
+        
+          <!-- <div class="form-group col-md-3 printbutt" >
+            <button type="button" class="btn btn-danger  btn-block" (click)="print()" >Print</button>
+          </div> -->
+
+      </form> 
+     
+      </div>
+			
+	
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->

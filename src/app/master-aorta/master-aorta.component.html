@@ -1,0 +1,102 @@
+<form  name="observationsForm"   #observationsForm="ngForm"  (ngSubmit)="saveAortaValueData()"    >
+    <div class="observe">
+      <div id="container">
+        <h3 class="head-title"> Type: Aorta </h3> 
+
+        <div class="form-row"   >
+    
+        <section class="left-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+                <label>Abnormality</label>
+            <select [(ngModel)]="selectedAbnormality" name="selectedAbnormality" placeholder="select" 
+            (ngModelChange)="onOptionsSelected('abnormality',selectedAbnormality)" class="form-control" >
+               <option>Select Abnormality</option>
+               <option *ngFor="let sta of selectAbnormality" [ngValue]="sta.value">{{sta.value}}</option>
+           </select>
+           </div>
+           <div class="form-group col-md-11">
+            <label>Aneurysm </label>
+            <select class="dropdown"  class="form-control"  [(ngModel)]="selectedAneurysm" name="selectedAneurysm" placeholder="select" 
+            (ngModelChange)="onOptionsSelected('aneurysm',selectedAneurysm)">
+                <option *ngFor="let sta of selectAneurysm" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+           </div>
+      
+           <div class="form-group col-md-11">
+            <label>Plaque </label>
+            <select class="dropdown"  class="form-control" [(ngModel)]="selectedPlaque" name="selectedPlaque" placeholder="select" 
+            (ngModelChange)="onOptionsSelected('plaque',selectedPlaque)">
+                <option *ngFor="let sta of selectPlaque" [ngValue]="sta.value">{{sta.value}}</option>
+            </select>
+          </div>
+
+       
+      
+          </div>
+    
+         
+    
+        </section>
+    
+    
+        <section class="right-column">
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+
+                <label>Graft</label>
+                <select class="dropdown"  class="form-control"  [(ngModel)]="selectedGraft" name="selectedGraft" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('graft',selectedGraft)">
+                    <option *ngFor="let sta of selectGraft" [ngValue]="sta.value">{{sta.value}}</option>
+                </select>
+              </div>
+    
+              <div class="form-group col-md-11">
+                <label>Dissection </label>
+                <select class="dropdown"  class="form-control" [(ngModel)]="selectedDissection" name="selectedDissection" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('dissection',selectedDissection)">
+                    <option *ngFor="let sta of selectDissection" [ngValue]="sta.value">{{sta.value}}</option>
+                </select>
+    
+                </div>
+    
+                <div class="form-group col-md-11">
+                    <label>Coarctation</label>
+                            <select class="dropdown"   class="form-control" [(ngModel)]="selectedCoarctation" name="selectedCoarctation" placeholder="select" 
+                            (ngModelChange)="onOptionsSelected('coarctation',selectedCoarctation)">
+                                <option *ngFor="let sta of selectCoarctation" [ngValue]="sta.value">{{sta.value}}</option>
+                            </select>
+    
+                    </div>
+      
+          </div>
+    
+         
+    
+        </section>
+    
+    </div>
+         
+        </div>
+          
+    </div>
+    
+    <div class="form-row"   >
+      <div class="form-group col-md-3" ></div>
+      <div class="form-group col-md-3" >
+        <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+      </div>
+      <div class="form-group col-md-3" >
+        <button type="button" class="btn btn-danger  btn-block" >Next</button>
+      </div>
+      <div class="form-group col-md-3" ></div>
+    </div> 
+    
+    </form>
+    
+    
+    

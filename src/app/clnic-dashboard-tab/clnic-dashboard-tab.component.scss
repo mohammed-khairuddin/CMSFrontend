@@ -1,0 +1,124 @@
+// #page-content-wrapper {
+//     //position: absolute;
+//     padding: 15px;
+//     //width: 100%;
+//     width:100%;
+//     float: right;
+//  }
+#page-content-wrapper {
+  //position: absolute;
+  padding: 15px;
+  //width: 100%;
+  width:100%;
+  overflow-x: hidden;
+  margin-top:-200px;
+}
+ .fright{
+  float:right;
+ }
+
+ #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0px;
+ }
+.bgcolor{
+    background-color: #F0F0F0;
+    padding: 15px;
+    font-weight: bold;
+}
+.multirow{
+    padding-top: 20px;
+    padding-bottom: 20px;;
+} 
+// .fulltableview{
+//     width:90%;
+//     overflow-x:scroll;
+// }
+.searchsty{
+    padding-left:0px;
+    padding-right: 5px;
+}
+.looprows{
+    padding: 15px;
+    border-bottom: 1px solid #ced4da;
+}
+.reqbg1 p{
+    background-color: pink;
+    padding: 15px;
+    border-radius: 30%;
+    width: 80%;
+}
+.reqbg2 p{
+    background-color: green;
+    padding: 15px;
+    border-radius: 30%;
+    width: 80%;
+}
+.reqbg3 p{
+    background-color: palegoldenrod;
+    padding: 15px;
+    border-radius: 30%;
+    width: 80%;
+}
+
+///////////////////////////////////////////
+
+.tablestyle{
+  width:85%;
+  //margin: 0 auto;
+  //border:1px solid #eee;
+  margin-left: 12%;
+}
+.tablestyleinn td{
+  padding: 10px;
+}
+
+//////////////////////////////////////
+
+
+/*-------------------------------*/
+/*      TABS        */
+/*-------------------------------*/
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #17a2b8;
+
+}
+a {
+  color: #17a2b8;
+  text-decoration: none;
+  background-color: transparent;
+}
+.nav-pills { border-bottom: 1px solid #DDD; }
+.nav-pills > li {
+  width: 15%;
+  text-align: center;
+}
+
+.nav-pills > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+      border-bottom-color: rgb(221, 221, 221);
+  border-bottom-color: transparent;
+}
+
+.nav-pills > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+
+
+///////////////////////////////////////
+@media only screen and (max-width: 800px) {
+    .loopindiv{
+        //font-weight: bold;
+       padding: 10px;
+       
+        
+    }
+  }

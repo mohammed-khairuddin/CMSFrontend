@@ -1,0 +1,548 @@
+<form  name="observationsForm"   #observationsForm="ngForm"  (ngSubmit)="addMasterObservations(observationsForm.value)"    >
+<div class="observe">
+  <div id="container">
+    <h3 class="head-title"> Type: Left Ventricle </h3> 
+
+    <section class="left-column">
+
+      <div class="form-group">
+        
+        <div class="form-group col-md-11">
+          <label>Cavity Size </label>
+          <select name="cavitysize" id="cavitysize" class="form-control" >
+               <option>Select Cavity Size</option>
+               <option  value="Normal"  > Normal </option>
+               <option value="Increased - Mild" >Increased - Mild  </option>
+               <option  value="Increased - Moderate" >Increased - Moderate </option>
+               <option value="Increased - Severe" >Increased - Severe </option>
+               <option   value="Decreased"  > Decreased </option>
+         </select>
+       </div>
+       <div class="form-group col-md-11">
+        <label>Ventricular Shape </label>
+        <select name="ventricularshape" id="ventricularshape" class="form-control" >
+             <option>Select Ventricular Shape</option>
+             <option  value="Normal" > Normal </option>             
+             <option  value="Concentric Hypertrophy - Mild">  Concentric Hypertrophy - Mild </option>
+             <option  value="Concentric Hypertrophy - Moderate"> Concentric Hypertrophy - Moderate </option>
+             <option  value="Concentric Hypertrophy - Severe"> Concentric Hypertrophy - Severe </option>
+             <option  value="Asymmetric Hypertrophy - Absent"> Asymmetric Hypertrophy - Absent </option>
+             <option  value="Asymmetric Hypertrophy - Present - Anterior"> Asymmetric Hypertrophy - Present - Anterior </option>
+             <option  value="Asymmetric Hypertrophy - Present - Posterior"> Asymmetric Hypertrophy - Present - Posterior </option>            
+             <option   value=" Asymmetric Hypertrophy - Present - Septal"> Asymmetric Hypertrophy - Present - Septal </option>
+             <option  value="Asymmetric Hypertrophy - Present - Lateral"> Asymmetric Hypertrophy - Present - Lateral </option>
+             <option   value="Asymmetric Hypertrophy - Present - Apical"> Asymmetric Hypertrophy - Present - Apical </option>
+             <option   value="Asymmetric Hypertrophy - Present - Basal"> Asymmetric Hypertrophy - Present - Basal </option>
+             <option  value="Eccentric Hypertrophy -  Absent"> Eccentric Hypertrophy -  Absent </option>
+             <option  value=" Eccentric Hypertrophy -  Present"> Eccentric Hypertrophy -  Present </option>
+             <option  value="Aneurysm - Absent"> Aneurysm - Absent </option>
+             <option   value="Aneurysm - Present - Anterior"> Aneurysm - Present - Anterior </option>
+             <option  value="Aneurysm - Present - Posterior">  Aneurysm - Present - Posterior </option>
+             <option  value="Aneurysm - Present -  Inferior">   Aneurysm - Present -  Inferior </option>
+             <option  value=" Aneurysm - Present -  Septal">   Aneurysm - Present -  Septal </option>
+             <option  value="Aneurysm - Present -  Latera">  Aneurysm - Present -  Lateral </option>
+             <option  value="Aneurysm - Present -  Apical">  Aneurysm - Present -  Apical </option> 
+             <option  value="Aneurysm - Present -  Other (Specify)">  Aneurysm - Present -  Other (Specify) </option>                         
+             <option   value=" Pseudoaneurysm - Absent"> Pseudoaneurysm - Absent </option>
+             <option   value=" Pseudoaneurysm - Present - Anterior"> Pseudoaneurysm - Present - Anterior </option>
+             <option  value=" Pseudoaneurysm - Present - Posterior"> Pseudoaneurysm - Present - Posterior </option>
+             <option  value=" Pseudoaneurysm - Present - Inferior">  Pseudoaneurysm - Present - Inferior </option>
+             <option  value=" Pseudoaneurysm - Present - Septal"> Pseudoaneurysm - Present - Septal </option>
+             <option  value=" Pseudoaneurysm - Present - Lateral"> Pseudoaneurysm - Present - Lateral </option>
+             <option  value=" Pseudoaneurysm - Present - Apical">  Pseudoaneurysm - Present - Apical </option> 
+             <option  value=" Pseudoaneurysm - Present - Basal">  Pseudoaneurysm - Present - Basal </option>
+
+       </select>
+       </div>
+  
+       <div class="form-group col-md-11">
+        <label>Diastolic Filling </label>
+        <select name="DiastolicFilling" id="DiastolicFilling" class="form-control" >
+             <option>Select Diastolic Filling</option>
+             <option  value="ForAge"> Normal - For Age </option>
+             <option  value="Abnormal - Pattern - ImpairedRelation"> Abnormal - Pattern - Impaired Relation </option>
+             <option  value="Abnormal - Pattern - Pseudonormal">Abnormal - Pattern - Pseudo normal </option>
+             <option  value="Abnormal - Pattern - Restrictive"> Abnormal - Pattern - Restrictive </option>    
+             <option  value="Abnormal - Elevated LV Filling Pressure - Absent">Abnormal - Elevated LV Filling Pressure - Absent </option>             
+             <option  value="Abnormal - Elevated LV Filling Pressure - Present - Elevated Mean Left Atrial Pressure (LAP)">Abnormal - Elevated LV Filling Pressure - Present - Elevated Mean Left Atrial Pressure (LAP) </option>
+             <option  value="Abnormal - Elevated LV Filling Pressure - Present -	Elevated LV En-Diastolic Pressure (LVEDP)"> Abnormal - Elevated LV Filling Pressure - Present -	Elevated LV En-Diastolic Pressure (LVEDP) </option> 
+             <option  value="Abnormal - Elevated LV Filling Pressure - Present - Both Elevated Lap And LVEDP ">Abnormal - Elevated LV Filling Pressure - Present - Both Elevated Lap And LVEDP </option> 
+       </select>
+      </div>
+  
+      </div>
+
+      <div class="form-group">
+        
+        <div class="form-group col-md-11">
+          <label>Ventricular Septal Defect </label>
+          <select name="VentricularSeptalDefect" id="VentricularSeptalDefect" class="form-control" >
+               <option>Select Ventricular Septal Defect</option>
+               <option value=" Absent">  Absent </option>
+               <option value="Present - Location - Membranous (Infracristal)" >  Present - Location - Membranous (Infracristal)  </option>
+               <option  value="Present - Location -  Infundibular (Supracristal)" >  Present - Location -  Infundibular (Supracristal) </option>
+               <option value="Present - Location - Inlet" > Present - Location -  Inlet </option>
+               <option   value="Present - Location - Muscular" >  Present - Location - 	Muscular </option>
+               <option   value=" Present - Location - Multiple -	Designate" > Present - Location - Multiple -	Designate </option>
+               <option  value="Present - Size - Small"> Present - Size - Small  </option>
+               <option  value="Present - Size - Moderate">Present - Size - Moderate </option> 
+               <option   value="Present - Size - Large"> Present - Size - Large</option>
+               <option   value="Present - Size - Dimensions"> Present - Size -  Dimensions</option>                             
+               <option  value="Present - Shunt - Left-To-Right"> Present - Shunt - Left-To-Right  </option>
+               <option  value="Present - Shunt - Right-To-Left">Present - Shunt - Right-To-Left </option> 
+               <option   value="Present - Shunt - Bidirectional">Present - Shunt -  Bidirectional</option>
+               <option   value="Present - Shunt - Qp:Qs Ratio">Present - Shunt - Qp:Qs Ratio</option>
+         </select>
+       </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="right-column">
+
+      <div class="form-group">
+        
+        <div class="form-group col-md-11">
+          <label>Ventricular Mass </label>
+        <select name="VentricularMass" id="VentricularMass" class="form-control" >
+             <option>Select Ventricular Mass</option>
+             <option  value="Normal"> Normal </option>
+             <option  value="Normal"> BorderLine </option>
+             <option  value="Increase">Increase </option>
+             <option  value="LVMass"> LVMass </option>            
+       </select>
+       </div>
+       <div class="form-group col-md-11">
+        <label>Myocardial Infraction </label>
+          <select name="MyocardialInfraction" id="MyocardialInfraction" class="form-control" >
+               <option>Select Myocardial Infraction </option> 
+               <option  value=" Anterior - Small"> Anterior - Small  </option>
+               <option value="  Anterior - Small-To-Moderate">  Anterior - Small-To-Moderate </option>
+               <option  value=" Anterior - Moderate">  Anterior - Moderate </option>
+               <option  value=" Anterior - Moderate-To-Large">  Anterior - Moderate-To-Large </option>
+               <option   value=" Anterior - Large">  Anterior - Large</option>
+               <option  value="Posterior - Small">Posterior - Small  </option>
+               <option value=" Posterior - Small-To-Moderate"> Posterior -  Small-To-Moderate </option>
+               <option  value="Posterior - Moderate">  Posterior - Moderate </option>
+               <option  value="Posterior - Moderate-To-Large"> Posterior - Moderate-To-Large </option>
+               <option   value="Posterior - Large"> Posterior - Large</option>
+               <option  value="Inferior - Small">Inferior - Small  </option>
+               <option value=" Inferior - Small-To-Moderate">  Inferior - Small-To-Moderate </option>
+               <option  value="Inferior - Moderate">  Inferior - Moderate </option>
+               <option  value="Inferior - Moderate-To-Large"> Inferior - Moderate-To-Large </option>
+               <option   value="Inferior - Large"> Inferior - Large</option>
+               <option  value="Small"> Small  </option>
+               <option value=" Small-To-Moderate">  Small-To-Moderate </option>
+               <option  value="Moderate">  Moderate </option>
+               <option  value="Moderate-To-Large"> Moderate-To-Large </option>
+               <option   value="Large"> Large</option>
+               <option  value="Anteroseptal - Small"> Anteroseptal - Small  </option>
+               <option value=" Anteroseptal - Small-To-Moderate">  Anteroseptal - Small-To-Moderate </option>
+               <option  value="Anteroseptal - Moderate"> Anteroseptal - Moderate </option>
+               <option  value="Anteroseptal - Moderate-To-Large"> Anteroseptal - Moderate-To-Large </option>
+               <option   value="Anteroseptal - Large"> Anteroseptal - Large</option>
+
+               <option  value="Apical - Small">Apical - Small  </option>
+               <option value=" Apical - Small-To-Moderate"> Apical -  Small-To-Moderate </option>
+               <option  value="Apical - Moderate">  Apical - Moderate </option>
+               <option  value="Apical - Moderate-To-Large"> Apical - Moderate-To-Large </option>
+               <option   value="Apical - Large"> Apical - Large</option>
+               
+               <option  value="Antero-Apical - Small"> Antero-Apical - Small  </option>
+               <option value=" Antero-Apical - Small-To-Moderate">  Antero-Apical - Small-To-Moderate </option>
+               <option  value="Antero-Apical - Moderate">  Antero-Apical - Moderate </option>
+               <option  value="Antero-Apical - Moderate-To-Large"> Antero-Apical - Moderate-To-Large </option>
+               <option   value="Antero-Apical - Large"> Antero-Apical - Large</option>
+               
+               <option  value="Postero-Lateral - Small"> Postero-Lateral - Small  </option>
+               <option value=" Postero-Lateral - Small-To-Moderate">  Postero-Lateral - Small-To-Moderate </option>
+               <option  value="Postero-Lateral - Moderate">  Postero-Lateral - Moderate </option>
+               <option  value="Postero-Lateral - Moderate-To-Large"> Postero-Lateral - Moderate-To-Large </option>
+               <option   value="Postero-Lateral - Large"> Postero-Lateral - Large</option>
+               
+               <option  value="Other (Specify) - Small"> Other (Specify) - Small  </option>
+               <option value=" Other (Specify) - Small-To-Moderate">  Other (Specify) - Small-To-Moderate </option>
+               <option  value="Other (Specify) - Moderate">  Other (Specify) - Moderate </option>
+               <option  value="Other (Specify) - Moderate-To-Large"> Other (Specify) - Moderate-To-Large </option>
+               <option   value="Other (Specify) - Large"> Other (Specify) - Large</option>
+
+         </select>
+       </div>
+  
+       <div class="form-group col-md-11">
+        <label>	Mass(Tumor) </label>
+        <select name="mass" id="mass" class="form-control" >
+             <option>Select 	Mass(Tumor) </option>
+             <option  value="Absent"> Absent </option>
+               <option  value="Present - Size - Small"> Present - Size - Small  </option>
+               <option  value="Present - Size - Moderate">  Present - Size - Moderate </option> 
+               <option   value="Present - Size - Large"> Present - Size - Large</option>
+                              
+               <option value="Present - Location - Apical"  > Present - Location - Apical </option>
+               <option value="Present - Location - Basal"  >  Present - Location - Basal </option>               
+               <option value="Present - Location - Septal"  >  Present - Location - Septal </option>
+               <option value="Present - Location - Lateral"  >  Present - Location - Lateral </option>
+               <option  value="Present - Location - Intramyocardial"> Present - Location - Intramyocardial </option>
+               <option  value="Present - Location - Intracavitary">Present - Location - Intracavitary </option>
+               
+               <option value="Present - Shape - Flat"  > Present - Shape - Flat (Mural) </option>
+               <option value="Present - Shape - Protruding"  > 	Present - Shape - Protruding </option>
+               <option value="Present - Shape - Pedunculated"  >  Present - Shape - Pedunculated </option>
+               <option value="Present - Shape - Papillary"  >  Present - Shape - Papillary </option>
+               <option value="Present - Shape - Spherical"  >  Present - Shape - Spherical </option>
+               <option value="Present - Shape - Regular"  >	Present - Shape - Regular </option>
+               <option value="Present - Shape - Irregular"  >  Present - Shape - Irregular </option>
+               <option value="Present - Shape - Multilobular"  >  Present - Shape - Multilobular </option>
+               <option value="Present - Shape - Frondlike"  > 	Present - Shape - Frondlike </option>
+               <option value="Present - Shape - Infiltrating"  > 	Present - Shape - Infiltrating </option>  
+                              
+               <option value="Present - Texture - Solid"  >Present - Texture - Solid </option>
+               <option value="Present - Texture - Layered"  >  Present - Texture - Layered </option>
+               <option value="Present - Texture - Hypoechoic Interior"  >	Present - Texture -	Hypoechoic Interior (Cystic) </option>
+               <option value="Present - Texture - Hyperechoic"  > Present - Texture -	Hyperechoic </option>
+               <option value="Present - Texture - Calcified"  >  Present - Texture - Calcified </option>
+                 
+               <option value="Present - Mobility - Mobile"  > Present - Mobility - Mobile </option>
+               <option value="Present - Mobility - Fixed"  > 	Present - Mobility - Fixed (Sessile) </option>
+               
+               <option value="Present - Dimensions"  > 	Present - Dimensions </option>
+       </select>
+      </div>
+  
+      </div>
+
+      <div class="form-group">
+        
+        <div class="form-group col-md-11">
+          <br/>
+       </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="center-column">
+
+      <div class="form-group">
+        
+        <div class="form-group col-md-11">
+          <label>Wall Thickness </label>
+          <select name="wallthickness" id="wallthickness" class="form-control" >
+               <option>Select WallThickness </option>
+               <option value="Normal"> Normal </option>               
+               <option  value="Increased - Mild"> Increased - Mild </option>
+               <option value="Increased - Moderate"> Increased - Increased - Moderate </option>
+               <option  value="Increased - Severe">  Increased - Severe </option>
+               <option  value="Decreased">Decreased </option>
+               <option   value="RelativeWallThickness"> Relative Wall Thickness </option>
+         </select>
+       </div>
+       <div class="form-group col-md-11">
+           <label>Systolic Function </label>
+          <select name="systolicfunction" id="systolicfunction" class="form-control" >
+               <option>Select Systolic Function</option>
+               <option  value="Global"> Global </option>
+
+               <option value="Ejection Fraction - Normal" >Ejection Fraction - Normal </option>
+               <option  value="Ejection Fraction - Borderline">  Ejection Fraction - Borderline </option>
+               <option value="Ejection Fraction - LowNormal"  >  Ejection Fraction - Low Normal </option>               
+               
+               <option value="Ejection Fraction - Decreased - Mild"  > Ejection Fraction - Decreased - Mild </option>
+               <option value="Ejection Fraction - Decreased - Mild-To-Moderate"  > Ejection Fraction - Decreased - Mild-To-Moderate </option>  
+               <option value="Ejection Fraction - Decreased - Moderate"  >  Ejection Fraction - Decreased - Moderate </option>
+               <option value="Ejection Fraction - Decreased - Mild-To-Severe"  >  Ejection Fraction - Decreased - Mild-To-Severe </option> 
+               <option value="Ejection Fraction - Decreased - Severe"  > Ejection Fraction - Decreased - Severe </option>
+
+               <option  value="Ejection Fraction - Increased"  > 	Ejection Fraction - Increased (Hyperdynamic) </option>
+               
+               <option value="Fractional Shortening (Basal) - Normal"  >  Fractional Shortening (Basal) - Normal </option>
+               <option value="Fractional Shortening (Basal) - Decreased"  >  Fractional Shortening (Basal) - Decreased </option>
+               <option value="Fractional Shortening (Basal) - Increased"  >  Fractional Shortening (Basal) - Increased </option>
+            
+               <option value="Fractional Area Change - Normal"  >  Fractional Area Change - Normal </option>
+               <option value="Fractional Area Change - Decreased"  > Fractional Area Change - Decreased </option>
+               <option value="Fractional Area Change - Increased"  >  Fractional Area Change - Increased </option>
+              
+               <option value="Dilated (Congestive) - Mild"  >  Dilated (Congestive) - Mild </option>
+               <option value="Dilated (Congestive) - Mild-To-Moderate"  >  Dilated (Congestive) - Mild-To-Moderate </option>  
+               <option value="Dilated (Congestive) - Moderate"  >  Dilated (Congestive) - Moderate </option>
+               <option value="Dilated (Congestive) - Mild-To-Severe"  > Dilated (Congestive) -  Mild-To-Severe </option> 
+               <option value="Dilated (Congestive) - Severe"  >  Dilated (Congestive) - Severe </option>
+               
+                <option value="Regional - Normal"  >  Regional - Normal </option>
+                <option value="Regional - NotSeen"  >  Regional - Not Seen </option>
+                <option value="Regional - Dyskinetic"  >  Regional - Dyskinetic </option>
+                <option value="Regional - Hypokinetic"  >  Regional - Hypokinetic </option>
+                <option value="Regional - Scar/Thinning"  >  Regional - Scar/Thinning </option>
+                <option value="Regional - Akineticase Model"  >  Regional - Akineticase Model </option>
+         </select>
+       </div>
+  
+       <div class="form-group col-md-11">
+        <label>Thrombus</label>
+        <select name="Thrombus" id="Thrombus" class="form-control" >
+             <option>Select Thrombus</option>
+             <option  value="Absent"> Absent </option>
+             <option value="Present - Size - Small" >Present - Size - Small  </option>
+             <option  value="Present - Size - Moderate">Present - Size - Moderate </option>
+             <option value="Present - Size - Large">  Present - Size - Large </option>
+             
+             <option value="Location - Apical"  >Location - Apical </option>
+             <option value="Location - Basal"  > Location - Basal </option>
+             <option value="Location - Lateral"  > Location - Lateral </option>
+             <option value="Location - Septal"  > Location - Septal </option>
+             
+             <option value="Shape - Flat"  > Shape - Flat (Mural) </option>
+             <option value="Shape - Protruding"  > Shape - Protruding </option>
+             <option value="Shape - Pedunculated"  >  Shape - Pedunculated </option>
+             <option value="Shape - Spherical"  > Shape - Spherical </option>
+             <option value="Shape - Regular"  > Shape - Regular </option>
+             <option value="Shape - Irregular"  > Shape - Irregular </option>
+             <option value="Shape - Multilobular"  > Shape - Multilobular </option>
+             <option value="Shape - Other"  >  Shape - Other (Specify) </option>
+             
+             <option value="Texture - Solid"  > Texture - Solid </option>
+             <option value="Texture - Layered"  >  Texture - Layered </option>
+             <option value="Texture - Hypoechoic Interior"  > Texture - Hypoechoic Interior (Cystic) </option>
+             <option value="Texture - Hyperechoic"  > Texture - Hyperechoic </option>
+             <option value="Texture - Calcified"  > Texture - Calcified </option>
+             
+             <option value="Mobility - Mobile"  > Mobility - Mobile </option>
+             <option value="Mobility - Fixed"  > 	Mobility - Fixed (Sessile) </option>
+             
+             <option value="Dimensions"  > Dimensions </option>
+
+             </select>
+      </div>
+  
+      </div>
+
+      <div class="form-group">
+        
+        <div class="form-group col-md-11">
+          <label>Abnormal Septal Motion </label>
+          <select name="AbnormalSeptalMotion " id="AbnormalSeptalMotion" class="form-control" >
+               <option>Select Abnormal Septal Motion </option>
+               <option  value=""> 
+                Abnormal (Paradoxical) Motion Consistent With Right Ventricular Volume Overload and / Or Elevated RV End-Diastolic Pressure. 
+              </option>            
+               <option value="" >   
+                Abnormal (Paradoxical) Motion Consistent With Post-Operative Status
+               </option>
+               <option  value="" >  
+                Abnormal (Paradoxical) Motion Consistent With Left Bundle Branch Block
+              </option>
+               <option value="">  
+                Abnormal (Paradoxical) Motion Consistent With Rv Pacemaker 
+              </option>
+               <option   value="" > 
+                Abnormal (Paradoxical) Motion Due To Pre-Excitation
+              </option>
+              <option   value="" > 
+                Flattened In Diastole (D Shaped Left Ventricle) Consistent With Right Ventricular Volume Overload
+              </option>
+              <option   value="" > 
+                Flattened In Systole Consistent With Right Ventricular Pressure Overload
+              </option>
+              <option   value="" > 
+              	Flattened In Systole And Diastole Consistent With Right Ventricular Pressure And Volume Overload
+              </option>
+              <option   value="" > 
+                	Septal Bounce Consistent With Constructive Physiology
+              </option>
+              <option   value="" > 
+                	Excessive Respiratory Change – Consider Tamponade, Ventilation Related Etc.
+              </option>
+              <option   value="" > Other (Specify) </option>
+
+         </select>
+       </div>
+
+      </div>
+
+    </section>
+
+   
+    </div>
+    <!--------------------------------------------------->
+  
+    <div id="container">
+      <h3 class="head-title"> Type: Left Atrium </h3> 
+  
+      <section class="left-column">
+  
+        <div class="form-group">
+          
+          <div class="form-group col-md-11">
+            <label> Size </label>
+            <select name="size" id="size" class="form-control" >
+                 <option>Select Size</option>
+                 <option  value="Normal"  > Normal </option>
+                 <option  value="Abnormal - Size - Normal"  > Abnormal - Size - Normal </option>
+                 <option value="Abnormal - Size - Dilated" > Abnormal - Size - Dilated  </option>
+                 <option  value="Abnormal - Size - Mildly Dilated" > Abnormal - Size - Mildly Dilated </option>
+                 <option value="Abnormal - Size - Moderately Dilated" > Abnormal - Size - Moderately Dilated </option>
+                 <option value="Abnormal - Size - Severely Dilated" > Abnormal - Size - Severely Dilated </option>
+                 <option  value="Abnormal - Size - Elongated"  > Abnormal - Size - Elongated </option>
+                 <option  value="Abnormal - Size - Volume (Or Dimensions)"  > Abnormal - Size - Volume (Or Dimensions) </option>
+           </select>
+         </div>
+         <div class="form-group col-md-11">
+          
+         </div>
+    
+         <div class="form-group col-md-11">
+         
+        </div>
+    
+        </div>
+  
+      
+  
+      </section>
+  
+  
+      <section class="right-column">
+  
+        <div class="form-group">
+          
+          <div class="form-group col-md-11">
+            <label> Mass </label>
+            <select name="mass" id="mass" class="form-control" >
+                 <option>Select Mass</option>
+                 <option  value="Absent"  > Absent </option>
+                 <option  value="Present - Size - Normal"  > Present - Size - Small </option>
+                 <option value="Present - Size - Moderate" > Present - Size - Moderate  </option>
+                 <option value="Present - Size - Large" > Present - Size - Large  </option> 
+
+                 <option  value="Location - LA Cavity" > Location - LA Cavity  </option>
+                 <option value="Location - LA Appendage" > Location - LA Appendage  </option>
+                 <option  value="Location - Fossa Ovalis/Atrial Septum"  > Location - Fossa Ovalis/Atrial Septum </option>
+
+
+                 <option  value="Attachment Site - Fossa Ovalis/Atrial Septum"  > Attachment Site - Fossa Ovalis/Atrial Septum </option> 
+                 <option value="Attachment Site - Left Atrial Body"> Attachment Site - Left Atrial Body</option>
+                 <option value="Attachment Site - Mitral Valve">Attachment Site - Mitral Valve</option>
+                 <option value="Attachment Site - Other (Specify)">Attachment Site - Other (Specify)</option>
+
+                 <option value="Shape - Flat (Mural)">Shape - Flat (Mural)</option>
+                 <option value="Shape - Protruding">Shape - Protruding</option>
+                 <option value="Shape -  Pedunculated">Shape -  Pedunculated</option>
+                 <option value="Shape - Papillary">Shape - Papillary</option>
+                 <option value="Shape - Spherical">Shape - Spherical</option>
+                 <option value="Shape - Regular">Shape - Regular</option>
+                 <option value="Shape - Irregular">Shape - Irregular</option>
+                 <option value="Shape - Multilobular">Shape - Multilobular</option>
+                 <option value="Shape - Other (Specify)">Shape - Other (Specify)</option>
+
+                 <option value="Texture - Solid">Texture - Solid</option>
+                 <option value="Texture - Layered">Texture - Layered</option>
+                 <option value="Texture - Hypoechoic Interior (Cystic)">Texture - Hypoechoic Interior (Cystic)</option>
+                 <option value="Texture - Echogenic">Texture - Echogenic</option>
+                 <option value="Texture - Calcified">Texture - Calcified</option>
+
+                 <option value="Mobility - Mobile">Mobility - Mobile</option>
+                 <option value="Mobility - Fixed (Sessile)">Mobility - Fixed (Sessile)</option>
+                 
+                 <option value="Dimensions">Dimensions</option>
+
+                 <option value="Type - Suggestive Of Myxoma">Type - Suggestive Of Myxoma</option>
+                 <option value="Type - Suggestive Of Papilloma">Type - Suggestive Of Papilloma</option>
+                 <option value="Type - Suggestive Of Fibroelastoma">Type - Suggestive Of Fibroelastoma</option>
+                 <option value="Type - Suggestive Of Other Mass (Specify)">Type - Suggestive Of Other Mass (Specify)</option>
+
+                 
+            </select>
+         </div>
+         <div class="form-group col-md-11">
+          
+         </div>
+    
+         <div class="form-group col-md-11">
+         
+        </div>
+    
+        </div>
+  
+        <div class="form-group">
+          
+          <div class="form-group col-md-11">
+            <br/>
+         </div>
+  
+        </div>
+  
+      </section>
+  
+  
+      <section class="center-column">
+  
+        <div class="form-group">
+          
+          <div class="form-group col-md-11">
+            <label> Thrombus </label>
+            <select name="thrombus" id="thrombus" class="form-control" >
+                 <option>Select Thrombus</option>
+                 <option  value="Absent"  > Absent </option>
+                 <option  value="Present - Size - Normal"  > Present - Size - Small </option>
+                 <option value="Present - Size - Moderate" > Present - Size - Moderate  </option>
+                 <option value="Present - Size - Large" > Present - Size - Large  </option> 
+
+                 <option  value="Location - LA Cavity - Superior" > Location - LA Cavity - Superior </option>
+                 <option value="Location - LA Cavity - Inferior" > Location - LA Cavity - Inferior </option>
+                 <option value="Location - LA Cavity - Lateral" > Location - LA Cavity - Lateral </option>
+                 <option  value="Location - LA Cavity - Atrial Septum"  > Location - LA Cavity - Atrial Septum </option>
+                 <option  value="Location - LA Appendage"  > Location - LA Appendage </option> 
+
+                 <option  value="Shape - Flat (Mural)"  > Shape - Flat (Mural) </option>
+                 <option value="Shape - Protruding">Shape - Protruding</option>
+                 <option value="Shape - Pedunculated">Shape - Pedunculated</option>
+                 <option value="Shape - Papillary">Shape - Papillary</option>
+                 <option value="Shape - Spherical">Shape - Spherical</option>
+                 <option value="Shape - Regular">Shape - Regular</option>
+                 <option value="Shape - Irregular">Shape - Irregular</option>
+                 <option value="Shape - Multilobular">Shape - Multilobular</option>
+                 <option value="Shape - Other (Specify)">Shape - Other (Specify)</option>
+
+
+                 <option value="Texture - Solid">Texture - Solid</option>
+                 <option value="Texture - Layered">Texture - Layered</option>
+                 <option value="Texture - Hypoechoic Interior (Cystic)">Texture - Hypoechoic Interior (Cystic)</option>
+                 <option value="Texture - Echogenic">Texture - Echogenic</option>
+                 <option value="Texture - Calcified">Texture - Calcified</option>
+
+                 <option value="Mobility - Mobile">Mobility - Mobile</option>
+                 <option value="Mobility - Fixed (Sessile)">Mobility - Fixed (Sessile)</option>
+                 
+                 <option value="Dimensions">Dimensions</option>
+
+           </select>
+         </div>
+         <div class="form-group col-md-11">
+             
+            
+         </div>
+    
+         <div class="form-group col-md-11">
+          
+        </div>
+    
+        </div>
+  
+  
+      </section>
+  
+     
+      </div>
+
+
+</div>
+
+
+
+</form>
+
+

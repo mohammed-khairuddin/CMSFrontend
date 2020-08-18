@@ -1,0 +1,122 @@
+<form  name="observationsForm"   #observationsForm="ngForm"  (ngSubmit)="saveLeftAtriumValueData()"    >
+      <div class="observe">
+        <div id="container">
+          <h3 class="head-title"> Type: Left Atrium </h3> 
+          <div class="form-group">
+          <section class="left-column">
+      
+            <div class="form-group">
+              
+              <div class="form-group col-md-11">
+                  <label> Size </label>              
+                  <select [(ngModel)]="selectedSize" name="selectedSize" placeholder="select" 
+                  (ngModelChange)="onOptionsSelected('size',selectedSize)" class="form-control" >
+                     <option>Select Size</option>
+                     <option *ngFor="let sta of selectSize" [ngValue]="sta.value">{{sta.value}}</option>
+                 </select>
+             </div>
+             <div class="form-group col-md-11">
+              <label>Thrombus</label>            
+                  <select [(ngModel)]="selectedThrombus" name="selectedThrombus" placeholder="select" 
+                  (ngModelChange)="onOptionsSelected('thrombus',selectedThrombus)" class="form-control">
+                  <option>Select Thrombus</option>
+                   <option *ngFor="let sta of selectThrombus" [ngValue]="sta.value">{{sta.value}}</option>
+                   </select>
+             </div>
+            <div class="form-group col-md-11">
+              <label>Spontaneous Echo Contrast</label>
+            <select [(ngModel)]="selectedSpontaneousEchoContrast" name="selectedSpontaneousEchoContrast" placeholder="select" 
+             (ngModelChange)="onOptionsSelected('spontaneousEchoContrast',selectedSpontaneousEchoContrast)" class="form-control">
+             <option>Select Spontaneous Echo Contrast</option>
+              <option *ngFor="let sta of SelectSpontaneousEchoContrast" [ngValue]="sta.value">{{sta.value}}</option>
+              </select>
+            </div>
+  
+              <div class="form-group col-md-11">
+  
+              <label>	Patent Foramen Ovale </label>
+              <select [(ngModel)]="selectedPatentForamenOvale" name="selectedPatentForamenOvale" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('patentForamenOvale',selectedPatentForamenOvale)" class="form-control">
+              <option>Select Patent Foramen Ovale </option>
+               <option *ngFor="let sta of selectPatentForamenOvale" [ngValue]="sta.value">{{sta.value}}</option>
+               </select>
+            </div>
+  
+            </div>
+      
+           
+      
+          </section>
+      
+      
+          <section class="right-column">
+      
+            <div class="form-group">
+              
+              <div class="form-group col-md-11">
+                  <label>Mass </label>
+                  <select [(ngModel)]="selectedMass" name="selectedMass" placeholder="select" 
+                 (ngModelChange)="onOptionsSelected('mass',selectedMass)" class="form-control">
+                 <option>Select Mass</option>
+                  <option *ngFor="let sta of selectMass" [ngValue]="sta.value">{{sta.value}}</option>
+                  </select>
+  
+             </div>
+             <div class="form-group col-md-11">
+              <label>Catheter </label>
+                  <select [(ngModel)]="selectedCatheter" name="selectedCatheter" placeholder="select" 
+                  (ngModelChange)="onOptionsSelected('catheter',selectedCatheter)" class="form-control">
+                   <option>Select Catheter</option>
+                   <option *ngFor="let sta of selectCatheter" [ngValue]="sta.value">{{sta.value}}</option>
+                   </select>
+             </div>       
+             <div class="form-group col-md-11">
+              <label>Atrial Septal Defect </label>
+              <select [(ngModel)]="selectedAtrialSeptalDefect" name="selectedAtrialSeptalDefect" placeholder="select" 
+            (ngModelChange)="onOptionsSelected('atrialSeptalDefect',selectedAtrialSeptalDefect)" class="form-control">
+            <option>Select Atrial Septal Defect </option> 
+             <option *ngFor="let sta of selectAtrialSeptalDefect" [ngValue]="sta.value">{{sta.value}}</option>
+             </select>
+            </div>
+  
+            <div class="form-group col-md-11">
+              <label>Other </label>
+              <select [(ngModel)]="selectedOther" name="selectedOther" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('other',selectedOther)" class="form-control">
+               <option>Select Other</option>
+               <option *ngFor="let sta of selectOther" [ngValue]="sta.value">{{sta.value}}</option>
+               </select>
+  
+              </div>          
+        
+            </div>
+      
+           
+      
+          </section>
+      
+      
+        </div>
+      
+         
+          </div>        
+         
+          <div class="form-row"   >
+            <div class="form-group col-md-3" ></div>
+            <div class="form-group col-md-3" >
+              <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+            </div>
+            <div class="form-group col-md-3" >
+              <button type="button" class="btn btn-danger  btn-block" >Next</button>
+            </div>
+            <div class="form-group col-md-3" ></div>
+          </div>
+
+      </div>
+      
+      
+      
+      </form>
+      
+      
+      

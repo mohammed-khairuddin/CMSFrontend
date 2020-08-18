@@ -1,0 +1,99 @@
+<app-nav></app-nav>
+<div class="login-form">
+    <form name="assignmentForm"  #assignmentForm="ngForm" (ngSubmit)="assignment(assignmentForm.value)">
+        <h3 class="text-center">Add New Assignment</h3> 
+       
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Username</label>
+              <!-- <input  type="text"  class="form-control" id="name" name="name" placeholder="Name"  [(ngModel)]="name"   > -->
+              <input  id="name" name="name" class="form-control" required [(ngModel)]="assform.name" #name="ngModel" placeholder="Name" >
+              <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                <div *ngIf="name.errors.required">
+                  Name is required.
+                </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Email Id</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email Id"  required
+                [(ngModel)]="assform.email" #email="ngModel"   >
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                      Email is required.
+                    </div>
+                    </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Mobile Number</label>
+                <input type="text" class="form-control" name="mobNo" id="mobNo" placeholder="Mobile Number"   
+                required [(ngModel)]="assform.mobNo" #mobNo='ngModel'  >
+
+                <div *ngIf="mobNo.invalid && (mobNo.dirty || mobNo.touched)" class="alert alert-danger">
+                    <div *ngIf="mobNo.errors.required">
+                      Mobile Number is required.
+                    </div>
+                    </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Status</label>
+                <select class="custom-select" id="status" name="status"  required [(ngModel)]="assform.status" #status="ngModel" >
+                   <option value="">Select Status</option>
+                    <option *ngFor="let s of statuss" [value]="s">{{s}}</option>
+                </select>
+                <div *ngIf="status.errors && status.touched" class="alert alert-danger">
+                    <div *ngIf="status.errors.required">Status is required.</div>
+                  </div>  
+               
+             </div> 
+          </div>
+           
+            <div class="form-group">
+                <label>Doctor</label>
+            <select class="custom-select" id="docId" name="docId"  required [(ngModel)]="assform.docId" #docId="ngModel"  >
+                <option selected="" >Select Doctors</option>
+            <option [value]="doc.id"  *ngFor="let doc of AllClinicDoctorList" > 
+                 {{ doc.name | titlecase}}  
+             </option>
+            </select>
+            <div *ngIf="docId.errors && docId.touched" class="alert alert-danger">
+                <div *ngIf="docId.errors.required">Doctor is required.</div>
+              </div>  
+        </div>  
+
+          <div class="form-group">
+            <textarea id="reason" name="reason" cols="25" rows="5" class="form-control" placeholder="Reason to Visit" 
+             [(ngModel)]="assform.reason"  required #reason="ngModel"  ></textarea>
+             <div *ngIf="reason.invalid && (reason.dirty || reason.touched)" class="alert alert-danger">
+                <div *ngIf="reason.errors.required">
+                  Reason is required.
+                </div>
+                </div>
+        </div> 
+ 
+        <!-- <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block" (click)="assignment()"  >Create Assignment</button>
+            </div> -->
+            <div class="form-row">
+              
+            <div class="form-group col-md-6">
+              <button type="submit" class="btn btn-primary  btn-block"  >Create Assignment</button>
+              </div>
+              <div class="form-group col-md-6">
+            <button type="button" class="btn btn-danger  btn-block" (click)="assignmentForm.resetForm({})">Reset</button>
+              </div>        
+          
+
+            </div>
+      
+
+    </form>
+    
+</div>
+
+<app-footer></app-footer>

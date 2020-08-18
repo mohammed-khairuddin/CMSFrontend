@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<app-nav></app-nav>
+
+<div id="wrapper">       
+	<app-sidenav></app-sidenav> 	
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div  class="col-md-11 fright" >
+				<!-- style="margin-top:-200px; float:right;" -->
+				<h2>Welcome Admin</h2>
+		   
+		<div class="card">    
+			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+			<li class="nav-item">
+			<a class="nav-link active" id="all-clinics-tab" data-toggle="pill"   href="#all-clinics" role="tab" aria-controls="all-clinics" aria-selected="true"> All Clinics</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" id="all-doctors-tab" data-toggle="pill"   href="#all-doctors" role="tab" aria-controls="all-doctors" aria-selected="false">  All Doctors</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" id="all-masters-tab" data-toggle="pill" href="#all-masters" role="tab" aria-controls="all-masters" aria-selected="false">Masters</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="all-forceclosures-tab" data-toggle="pill" href="#all-forceclosures" role="tab" aria-controls="all-forceclosures" aria-selected="false">Force Closures</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="all-transfers-tab" data-toggle="pill" href="#all-transfers" role="tab" aria-controls="all-transfers" aria-selected="false">Transfers</a>
+			</li>
+
+			</ul>
+
+			<div class="tab-content" id="pills-tabContent">
+
+				<!-- <router-outlet></router-outlet> -->
+
+			<div class="tab-pane fade show active" id="all-clinics" role="tabpanel" aria-labelledby="all-clinics-tab">
+				<app-showallclinics></app-showallclinics>
+			</div>
+			<div class="tab-pane fade" id="all-doctors" role="tabpanel" aria-labelledby="all-doctors-tab">
+				<app-showalldoctors></app-showalldoctors>
+			</div>
+
+			<div class="tab-pane fade" id="all-masters" role="tabpanel" aria-labelledby="all-masters-tab" style="min-height: 250px;">
+				Masters
+			</div> 
+
+			<div class="tab-pane fade" id="all-forceclosures" role="tabpanel" aria-labelledby="all-forceclosures-tab" style="min-height: 250px;" >
+				Force Closures
+			</div> 
+
+			<div class="tab-pane fade" id="all-transfers" role="tabpanel" aria-labelledby="all-transfers-tab" style="min-height: 250px;" >
+				Transfers
+			</div> 
+
+			</div>
+
+		</div>
+
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+ <!-- <app-footer></app-footer> -->

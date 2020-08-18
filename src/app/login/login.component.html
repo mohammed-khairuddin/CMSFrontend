@@ -1,0 +1,140 @@
+<app-nav></app-nav>
+<div class="bg">
+    <div class="container-fluid" >
+       
+       <div class="row inndiv">
+
+        
+        <div class="col-sm-2"  >
+        </div>
+
+
+    <div class="col-sm-6"   >
+
+        <div class="row" >
+            <div class="col-sm-6"  >
+                <img  src="assets/images/echo_gif3.gif"  name="echo_gif3" class="img-responsive"   >
+            </div>
+            <div class="col-sm-6" >
+                <img  src="assets/images/echo_gif2.gif"  name="echo_gif"  class="img-responsive"  >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6" >
+                <img  src="assets/images/echo_gif3.gif"  name="echo_gif3" class="img-responsive"   >
+            </div>
+            <div class="col-sm-6" >
+                <img  src="assets/images/echo_gif2.gif"  name="echo_gif2"  class="img-responsive"  >
+            </div>
+          </div>
+
+    </div>
+
+    <div class="col-sm-4"   >
+
+        <div class="side-form">
+           
+                   
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                <br/>
+               
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                scrambled it to make a type specimen book
+            
+           
+        </div>
+
+    </div>
+
+         
+                 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog autocenter">
+    
+      <!-- Modal content-->
+      <div class="modal-content bodymodal">
+        <div class="modal-header">
+          <h4 class="modal-title"> Login  </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          
+            <div class="login-form">
+                <form name="loginForm"  #loginForm="ngForm" (ngSubmit) = "login(loginForm.value)" >
+                       
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                       
+                 <!-- <input type="text" name="username" id="username"  class="form-control" placeholder="Username"   autocomplete="off"  formControlName="username" />    -->
+    
+                 <input type="text"  placeholder="username" name="username" class="form-control" id="username"
+                 required [(ngModel)]="loginform.username" #username="ngModel" >
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                    <div *ngIf="username.errors.required">
+                    UserName is required.
+                    </div>
+                    </div>        
+    
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <!-- <input type="password" class="form-control" placeholder="Password"  name="password" id="password"  autocomplete="off"  formControlName="password"/> -->
+    
+                        <input type="password" placeholder="password" name="password" class="form-control" id="password" 
+                        required [(ngModel)]="loginform.password" #password="ngModel" >
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                         <div *ngIf="password.errors.required">
+                           Password is required.
+                         </div>
+                         </div>
+                        
+                    </div>
+                    <!-- <div class="form-group">
+                        <button  class="btn btn-primary btn-block" value="Login">Login</button>
+                    </div> -->
+    
+                    <div class="form-row">
+                        
+                    <div class="form-group col-md-6">
+                      <button type="submit" class="btn btn-primary  btn-block"  >Login</button>
+                      </div>
+                      <div class="form-group col-md-6">
+                    <button type="button" class="btn btn-danger  btn-block" (click)="loginForm.resetForm({})">Reset</button>
+                      </div>        
+                  
+        
+                    </div>
+                    
+                    <div class="clearfix">
+                        <!-- <label class="float-left form-check-label"><input type="checkbox"> Remember me</label> -->
+                        <a href="#" class="float-right">Forgot Password?</a>
+                    </div>        
+                </form>
+               
+            </div>
+
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+      
+    </div>
+  </div>
+
+
+<!--------------------------------->
+
+
+
+       </div>
+
+
+     </div>
+         
+   </div>
+<app-footer></app-footer>

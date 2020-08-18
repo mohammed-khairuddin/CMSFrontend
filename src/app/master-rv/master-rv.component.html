@@ -1,0 +1,49 @@
+<form  name="observationsForm"   #observationsForm="ngForm"  (ngSubmit)="saveRightVentricleData()"    >
+    <div class="observe">
+      <div id="container">
+        <h3 class="head-title"> Type: Right Ventricle </h3> 
+        <div class="form-row"   >
+        <section class="left-column" >
+    
+          <div class="form-group">
+            
+            <div class="form-group col-md-11">
+
+                <label>Observation </label>              
+                <select [(ngModel)]="selectedrv" name="selectedrv" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('thrombus',selectedrv)" class="form-control" >
+                   <option>Select Observation</option>
+                   <option *ngFor="let sta of data" [ngValue]="sta.value">{{sta.value}}</option>
+               </select>
+
+           </div>
+           
+         
+          </div>
+                
+        </section>
+        <section class="right-column" >
+        </section>
+    
+      </div>
+      
+        </div>
+         
+        <div class="form-row"   >
+          <div class="form-group col-md-3" ></div>
+          <div class="form-group col-md-3" >
+            <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+          </div>
+          <div class="form-group col-md-3" >
+            <button type="button" class="btn btn-danger  btn-block" >Next</button>
+          </div>
+          <div class="form-group col-md-3" ></div>
+        </div> 
+    
+    </div>
+    
+    
+    
+    </form>
+    
+
