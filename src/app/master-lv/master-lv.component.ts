@@ -12,284 +12,550 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class MasterLvComponent implements OnInit {
   
   
-  selectCavitySize = [
-    {id:1,value:'Normal'},
-    {id:2,value:'Increased-Mild'},
-    {id:3,value:'Increased-Moderate'},
-    {id:4,value:'Increased-Severe'},
-    {id:5,value:'Decreased'},
-    {id:6,value:'N/A'},
+  cavitySize = [
+    {id:2,itemName:'Normal'},
+    {id:3,itemName:'Increased-Mild'},
+    {id:4,itemName:'Increased-Moderate'},
+    {id:5,itemName:'Increased-Severe'},
+    {id:6,itemName:'Decreased'},
   ]
 
-  selectWallThickness = [
-    {id:1,value:'Normal'},
-    {id:2,value:'Increased-Mild'},
-    {id:3,value:'Increased-Moderate'},
-    {id:4,value:'Increased-Severe'},
-    {id:5,value:'Decreased'},
-    {id:6,value:'Relative Wall Thickness'},
-    {id:7,value:'N/A'},
+  x= [1,2,3,5]
+
+  wallThickness = [
+    {id:2,itemName:'Normal'},
+    {id:3,itemName:'Increased-Mild'},
+    {id:4,itemName:'Increased-Moderate'},
+    {id:5,itemName:'Increased-Severe'},
+    {id:6,itemName:'Decreased'},
+    {id:7,itemName:'Relative Wall Thickness'},
+     ]
+
+     
+  ventricularMass = [
+    {id:2,itemName:'Normal'},
+    {id:3,itemName:'BorderLine'},
+    {id:4,itemName:'Increase'},
+    {id:5,itemName:'LVMass'},    
   ]
 
-  selectDiastolicFilling = [
-    {id:1,value:'Normal-For Age'},
-    {id:2,value:'Abnormal-Pattern-Impaired Relation'},
-    {id:3,value:'Abnormal-Pattern-Pseudo normal'},
-    {id:4,value:'Abnormal-Pattern-Restrictive'},
-    {id:5,value:'Abnormal-Elevated LV Filling Pressure-Absent'},
-    {id:6,value:'Abnormal-Elevated LV Filling Pressure-Present-Elevated Mean Left Atrial Pressure (LAP)'},
-    {id:7,value:'Abnormal-Elevated LV Filling Pressure-Present-Elevated LV En-Diastolic Pressure (LVEDP)'},
-    {id:8,value:'Abnormal-Elevated LV Filling Pressure-Present-Both Elevated Lap And LVEDP'},
-    {id:9,value:'N/A'},
-  ]
   
-  selectVentricularSeptalDefect = [
-    {id:1,value:'Absent'},
-    {id:2,value:'Present-Location-Membranous (Infracristal)'},
-    {id:3,value:'Present-Location-Infundibular (Supracristal)'},
-    {id:4,value:'Present-Location-Inlet'},
-    {id:5,value:'Present-Location-Muscular'},
-    {id:6,value:'Present-Location-Multiple -Designate'},
-    {id:7,value:'Present-Size-Small'},
-    {id:8,value:'Present-Size-Moderate'},
-    {id:9,value:'Present-Size-Large'},
-    {id:10,value:'Present-Size-Dimensions'},
-    {id:11,value:'Present-Shunt-Left-To-Right'},
-    {id:12,value:'Present-Shunt-Right-To-Left'},
-    {id:13,value:'Present-Shunt-Bidirectional'},
-    {id:14,value:'Present-Shunt-Qp:Qs Ratio'},
-    {id:15,value:'N/A'},
+  ventricularShape= [
+    {id:2,itemName:'Normal'},  
   ]
 
-  selectVentricularShape= [
-    {id:1,value:'Normal'},
-    {id:2,value:'Concentric Hypertrophy-Mild'},
-    {id:3,value:'Concentric Hypertrophy-Moderate'},
-    {id:4,value:'Concentric Hypertrophy-Severe'},
-    {id:5,value:'Asymmetric Hypertrophy-Absent'},
-    {id:6,value:'Asymmetric Hypertrophy-Present-Anterior'},
-    {id:7,value:'Asymmetric Hypertrophy-Present-Posterior '},
-    {id:8,value:'Asymmetric Hypertrophy-Present-Septal'},
-    {id:9,value:'Asymmetric Hypertrophy-Present-Lateral'},
-    {id:10,value:'Asymmetric Hypertrophy-Present-Apical'},
-    {id:11,value:'Asymmetric Hypertrophy-Present-Basal'},
-    {id:12,value:'Eccentric Hypertrophy-Absent'},
-    {id:13,value:'Eccentric Hypertrophy-Present'},
-    {id:14,value:'Aneurysm-Absent'},
-    {id:15,value:'Aneurysm-Present-Anterior'},
-    {id:16,value:'Aneurysm-Present-Posterior'},
-    {id:17,value:'Aneurysm-Present-Inferior'},
-    {id:18,value:'Aneurysm-Present-Septal'},
-    {id:19,value:'Aneurysm-Present-Lateral'},
-    {id:20,value:'Aneurysm-Present-Apical'},
-    {id:21,value:'Aneurysm-Present-Other (Specify)'},
-    {id:22,value:'Pseudoaneurysm-Absent'},
-    {id:23,value:'Pseudoaneurysm-Present-Anterior'},
-    {id:24,value:'Pseudoaneurysm-Present-Posterior'},
-    {id:25,value:'Pseudoaneurysm-Present-Inferior'},
-    {id:26,value:'Pseudoaneurysm-Present-Septal'},
-    {id:27,value:'Pseudoaneurysm-Present-Lateral'},
-    {id:28,value:'Pseudoaneurysm-Present-Apical'},
-    {id:29,value:'Pseudoaneurysm-Present-Basal'},
-    {id:30,value:'N/A'},
+  concentricHypertrophy= [
+    {id:2,itemName:'Concentric Hypertrophy-Mild'},
+    {id:3,itemName:'Concentric Hypertrophy-Moderate'},
+    {id:4,itemName:'Concentric Hypertrophy-Severe'},  
+  ]
+
+  asymmetricHypertrophy = [
+    {id:2,itemName:'Asymmetric Hypertrophy-Absent'},
+    {id:3,itemName:'Asymmetric Hypertrophy-Present-Anterior'},
+    {id:4,itemName:'Asymmetric Hypertrophy-Present-Posterior '},
+    {id:5,itemName:'Asymmetric Hypertrophy-Present-Septal'},
+    {id:6,itemName:'Asymmetric Hypertrophy-Present-Lateral'},
+    {id:7,itemName:'Asymmetric Hypertrophy-Present-Apical'},
+  ]
+  asymmetricHypertrophyPresent = [
+    {id:2,itemName:'Asymmetric Hypertrophy-Present-Anterior'},
+    {id:3,itemName:'Asymmetric Hypertrophy-Present-Posterior '},
+    {id:4,itemName:'Asymmetric Hypertrophy-Present-Septal'},
+    {id:5,itemName:'Asymmetric Hypertrophy-Present-Lateral'},
+    {id:6,itemName:'Asymmetric Hypertrophy-Present-Apical'},
+  ]
+
+  eccentricHypertrophy= [
+    {id:2,itemName:'Eccentric Hypertrophy-Absent'},
+    {id:3,itemName:'Eccentric Hypertrophy-Present'},  
+  ]
+
+  aneurysm= [
+    {id:2,itemName:'Aneurysm-Absent'},
+    {id:3,itemName:'Aneurysm-Present-Anterior'},
+    {id:4,itemName:'Aneurysm-Present-Posterior'},
+    {id:5,itemName:'Aneurysm-Present-Inferior'},
+    {id:6,itemName:'Aneurysm-Present-Septal'},
+    {id:7,itemName:'Aneurysm-Present-Lateral'},
+    {id:8,itemName:'Aneurysm-Present-Apical'},
+    {id:9,itemName:'Aneurysm-Present-Other (Specify)'}, 
+  ]
+
+  aneurysmPresent= [
+    {id:2,itemName:'Aneurysm-Present-Anterior'},
+    {id:3,itemName:'Aneurysm-Present-Posterior'},
+    {id:4,itemName:'Aneurysm-Present-Inferior'},
+    {id:5,itemName:'Aneurysm-Present-Septal'},
+    {id:6,itemName:'Aneurysm-Present-Lateral'},
+    {id:7,itemName:'Aneurysm-Present-Apical'},
+    {id:8,itemName:'Aneurysm-Present-Other (Specify)'}, 
+  ]
+
+  pseudoaneurysm= [
+    {id:2,itemName:'Pseudoaneurysm-Absent'},
+    {id:3,itemName:'Pseudoaneurysm-Present-Anterior'},
+    {id:4,itemName:'Pseudoaneurysm-Present-Posterior'},
+    {id:5,itemName:'Pseudoaneurysm-Present-Inferior'},
+    {id:6,itemName:'Pseudoaneurysm-Present-Septal'},
+    {id:7,itemName:'Pseudoaneurysm-Present-Lateral'},
+    {id:8,itemName:'Pseudoaneurysm-Present-Apical'},
+    {id:9,itemName:'Pseudoaneurysm-Present-Basal'},  
+  ]
+
+  pseudoaneurysmPresent= [
+    {id:2,itemName:'Pseudoaneurysm-Present-Anterior'},
+    {id:3,itemName:'Pseudoaneurysm-Present-Posterior'},
+    {id:4,itemName:'Pseudoaneurysm-Present-Inferior'},
+    {id:5,itemName:'Pseudoaneurysm-Present-Septal'},
+    {id:6,itemName:'Pseudoaneurysm-Present-Lateral'},
+    {id:7,itemName:'Pseudoaneurysm-Present-Apical'},
+    {id:8,itemName:'Pseudoaneurysm-Present-Basal'}, 
+  ]
+
+  systolicfunction = [
+    {id:2,itemName:'Global'},  
+  ]
+  systolicFunctionEjectionFraction =[
+    {id:2,itemName:'Global-Ejection Fraction-Normal'},
+    {id:3,itemName:'Global-Ejection Fraction-Borderline'},
+    {id:4,itemName:'Global-Ejection Fraction-Low Normal'},
+    //{id:5,itemName:'Global-Ejection Fraction-Decreased'},
+    {id:6,itemName:'Global-Ejection Fraction-Decreased-Mild'},
+    {id:7,itemName:'Global-Ejection Fraction-Decreased-Mild-To-Moderate'},
+    {id:8,itemName:'Global-Ejection Fraction-Decreased-Moderate'},
+    {id:9,itemName:'Global-Ejection Fraction-Decreased-Mild-To-Severe'},
+    {id:10,itemName:'Global-Ejection Fraction-Decreased-Severe'},
+    {id:11,itemName:'Global-Ejection Fraction-Increased (Hyperdynamic)'},
+  ]
+  systolicFunctionEjectionFractionDecreased =[
+    {id:2,itemName:'Global-Ejection Fraction-Decreased-Mild'},
+    {id:3,itemName:'Global-Ejection Fraction-Decreased-Mild-To-Moderate'},
+    {id:4,itemName:'Global-Ejection Fraction-Decreased-Moderate'},
+    {id:5,itemName:'Global-Ejection Fraction-Decreased-Mild-To-Severe'},
+    {id:6,itemName:'Global-Ejection Fraction-Decreased-Severe'},
+  ]
+  systolicFunctionFractionalShortening =[
+    {id:2,itemName:'Global-Fractional Shortening (Basal)-Normal'},
+    {id:3,itemName:'Global-Fractional Shortening (Basal)-Decreased'},
+    {id:4,itemName:'Global-Fractional Shortening (Basal)-Increased'},
+  ]
+
+  systolicFunctionFractionalAreaChanges =[
+    {id:2,itemName:'Global-Fractional Area Change-Normal'},
+    {id:3,itemName:'Global-Fractional Area Change-Decreased'},
+    {id:4,itemName:'Global-Fractional Area Change-Increased'},
+  ]
+
+  systolicFunctionDilated =[
+    {id:2,itemName:'Global-Dilated (Congestive)-Mild'},
+    {id:3,itemName:'Global-Dilated (Congestive)-Mild-To-Moderate'},
+    {id:4,itemName:'Global-Dilated (Congestive)-Moderate'},
+    {id:5,itemName:'Global-Dilated (Congestive)-Mild-To-Severe'},
+    {id:6,itemName:'Global-Dilated (Congestive)-Severe'},
+  ]
+
+  regional =[
+    {id:2,itemName:'Regional-Normal'},
+    {id:3,itemName:'Regional-Hypokinetic'},
+    {id:4,itemName:'Regional-Akineticase Model'},
+    {id:5,itemName:'Regional-Dyskinetic'},
+    {id:6,itemName:'Regional-Scar/Thinning'},
+    {id:7,itemName:'Regional-Not Seen'}, 
+  ]
+
+  abnormalSeptalMotion = [
+    {id:2,itemName:'Abnormal (Paradoxical) Motion Consistent With Right Ventricular Volume Overload and / Or Elevated RV End-Diastolic Pressure. '},
+    {id:3,itemName:'Abnormal (Paradoxical) Motion Consistent With Post-Operative Status'},
+    {id:4,itemName:'Abnormal (Paradoxical) Motion Consistent With Left Bundle Branch Block'},
+    {id:5,itemName:'Abnormal (Paradoxical) Motion Consistent With Rv Pacemaker'},
+    {id:6,itemName:'Abnormal (Paradoxical) Motion Due To Pre-Excitation'},
+    {id:7,itemName:'Flattened In Diastole (D Shaped Left Ventricle) Consistent With Right Ventricular Volume Overload'},
+    {id:8,itemName:'Flattened In Systole Consistent With Right Ventricular Pressure Overload'},
+    {id:9,itemName:'Flattened In Systole And Diastole Consistent With Right Ventricular Pressure And Volume Overload'},
+    {id:10,itemName:'Septal Bounce Consistent With Constructive Physiology'},
+    {id:11,itemName:'Excessive Respiratory Change – Consider Tamponade, Ventilation Related Etc.'},
+    {id:12,itemName:'Other (Specify)'},    
   ]
 
 
-  selectVentricularMass = [
-    {id:1,value:'Normal'},
-    {id:2,value:'BorderLine'},
-    {id:3,value:'Increase'},
-    {id:4,value:'LVMass'},
-    {id:5,value:'N/A'},
+  diastolicFilling = [
+    {id:2,itemName:'Normal-For Age'},
+    {id:3,itemName:'Abnormal-Pattern'},
+    {id:4,itemName:'Abnormal-Elevated LV Filling Pressure'},    
   ]
 
+  diastolicFillingAbnormalPattern = [
+    {id:2,itemName:'Abnormal-Pattern-Impaired Relation'},
+    {id:3,itemName:'Abnormal-Pattern-Pseudo normal'},
+    {id:4,itemName:'Abnormal-Pattern-Restrictive'},  
+  ]
+
+  diastolicFillingAbnormalLvFilling = [
+    {id:2,itemName:'Abnormal-Elevated LV Filling Pressure-Absent'},
+    {id:3,itemName:'Abnormal-Elevated LV Filling Pressure-Present-Elevated Mean Left Atrial Pressure (LAP)'},
+    {id:4,itemName:'Abnormal-Elevated LV Filling Pressure-Present-Elevated LV En-Diastolic Pressure (LVEDP)'},
+    {id:5,itemName:'Abnormal-Elevated LV Filling Pressure-Present-Both Elevated Lap And LVEDP'},    
+  ]
    
-  selectMyocardialInfraction = [
-    {id:1,value:'Anterior-Small'},
-    {id:2,value:'Anterior-Small-To-Moderate'},
-    {id:3,value:'Anterior-Moderate'},
-    {id:4,value:'Anterior-Moderate-To-Large'},
-    {id:5,value:'Anterior-Large'},
-    {id:6,value:'Posterior-Small'},
-    {id:7,value:'Posterior-Small-To-Moderate'},
-    {id:8,value:'Posterior-Moderate'},
-    {id:9,value:'Posterior-Moderate-To-Large'},
-    {id:10,value:'Posterior-Large'},
-    {id:11,value:'Inferior-Small'},
-    {id:12,value:'Inferior-Small-To-Moderate'},
-    {id:13,value:'Inferior-Moderate'},
-    {id:14,value:'Inferior-Moderate-To-Large'},
-    {id:15,value:'Inferior-Large'},
-    {id:16,value:'Lateral-Small'},
-    {id:17,value:'Lateral-Small-To-Moderate'},
-    {id:18,value:'Lateral-Moderate'},
-    {id:19,value:'Lateral-Moderate-To-Large'},
-    {id:20,value:'Lateral-Large'},
-    {id:21,value:'Anteroseptal-Small'},
-    {id:22,value:'Anteroseptal-Small-To-Moderate'},
-    {id:23,value:'Anteroseptal-Moderate'},
-    {id:24,value:'Anteroseptal-Moderate-To-Large'},
-    {id:25,value:'Anteroseptal-Large'},
-    {id:26,value:'Apical-Small'},
-    {id:27,value:'Apical-Small-To-Moderate'},
-    {id:28,value:'Apical-Moderate'},
-    {id:29,value:'Apical-Moderate-To-Large'},
-    {id:30,value:'Apical-Large'},
-    {id:31,value:'Antero-Apical-Small'},
-    {id:32,value:'Antero-Apical-Small-To-Moderate'},
-    {id:33,value:'Antero-Apical-Moderate'},
-    {id:34,value:'Antero-Apical-Moderate-To-Large'},
-    {id:35,value:'Antero-Apical-Large'},
-    {id:36,value:'Postero-Lateral-Small'},
-    {id:37,value:'Postero-Lateral-Small-To-Moderate'},
-    {id:38,value:'Postero-Lateral-Moderate'},
-    {id:39,value:'Postero-Lateral-Moderate-To-Large'},
-    {id:40,value:'Postero-Lateral-Large'},
-    {id:41,value:'Other (Specify)-Small'},
-    {id:42,value:'Other (Specify)-Small-To-Moderate'},
-    {id:43,value:'Other (Specify)-Moderate'},
-    {id:44,value:'Other (Specify)-Moderate-To-Large'},
-    {id:45,value:'Other (Specify)-Large'},
-    {id:46,value:'N/A'},
+
+  myocardialInfractionAnterior = [
+    {id:2,itemName:'Anterior-Small'},
+    {id:3,itemName:'Anterior-Small-To-Moderate'},
+    {id:4,itemName:'Anterior-Moderate'},
+    {id:5,itemName:'Anterior-Moderate-To-Large'},
+    {id:6,itemName:'Anterior-Large'},  
+  ]
+
+  myocardialInfractionPosterior = [
+    {id:2,itemName:'Posterior-Small'},
+    {id:3,itemName:'Posterior-Small-To-Moderate'},
+    {id:4,itemName:'Posterior-Moderate'},
+    {id:5,itemName:'Posterior-Moderate-To-Large'},
+    {id:6,itemName:'Posterior-Large'},
+  ]
+
+  myocardialInfractionInferior = [
+    {id:2,itemName:'Inferior-Small'},
+    {id:3,itemName:'Inferior-Small-To-Moderate'},
+    {id:4,itemName:'Inferior-Moderate'},
+    {id:5,itemName:'Inferior-Moderate-To-Large'},
+    {id:6,itemName:'Inferior-Large'},
+  ]
+
+  myocardialInfractionLateral = [
+    {id:2,itemName:'Lateral-Small'},
+    {id:3,itemName:'Lateral-Small-To-Moderate'},
+    {id:4,itemName:'Lateral-Moderate'},
+    {id:5,itemName:'Lateral-Moderate-To-Large'},
+    {id:6,itemName:'Lateral-Large'},  
+  ]
+
+  myocardialInfractionAnteroseptal = [
+    {id:2,itemName:'Anteroseptal-Small'},
+    {id:3,itemName:'Anteroseptal-Small-To-Moderate'},
+    {id:4,itemName:'Anteroseptal-Moderate'},
+    {id:5,itemName:'Anteroseptal-Moderate-To-Large'},
+    {id:6,itemName:'Anteroseptal-Large'},
+  ]
+
+  myocardialInfractionApical = [
+    {id:2,itemName:'Apical-Small'},
+    {id:3,itemName:'Apical-Small-To-Moderate'},
+    {id:4,itemName:'Apical-Moderate'},
+    {id:5,itemName:'Apical-Moderate-To-Large'},
+    {id:6,itemName:'Apical-Large'}, 
+  ]
+
+  myocardialInfractionAnteroApical = [
+    {id:2,itemName:'Antero-Apical-Small'},
+    {id:3,itemName:'Antero-Apical-Small-To-Moderate'},
+    {id:4,itemName:'Antero-Apical-Moderate'},
+    {id:5,itemName:'Antero-Apical-Moderate-To-Large'},
+    {id:6,itemName:'Antero-Apical-Large'},
+  ]
+  myocardialInfractionPosteroLateral = [
+    {id:2,itemName:'Postero-Lateral-Small'},
+    {id:3,itemName:'Postero-Lateral-Small-To-Moderate'},
+    {id:4,itemName:'Postero-Lateral-Moderate'},
+    {id:5,itemName:'Postero-Lateral-Moderate-To-Large'},
+    {id:6,itemName:'Postero-Lateral-Large'}, 
+  ]
+  myocardialInfractionOther = [     
+    {id:2,itemName:'Other (Specify)-Small'},
+    {id:3,itemName:'Other (Specify)-Small-To-Moderate'},
+    {id:4,itemName:'Other (Specify)-Moderate'},
+    {id:5,itemName:'Other (Specify)-Moderate-To-Large'},
+    {id:6,itemName:'Other (Specify)-Large'}, 
+  ]
+
+  thrombus = [
+    {id:2,itemName:'Absent'},
+    {id:3,itemName:'Present'}
+  ]
+  thrombusPresentSize = [
+    {id:2,itemName:'Present-Size-Small'},
+    {id:3,itemName:'Present-Size-Moderate'},
+    {id:4,itemName:'Present-Size-Large'},
+  ]
+  thrombusLocation = [
+    {id:5,itemName:'Present-Location-Apical'},
+    {id:6,itemName:'Present-Location-Basal'},
+    {id:7,itemName:'Present-Location-Lateral'},
+    {id:8,itemName:'Present-Location-Septal'},   
+  ]
+  thrombusShape = [   
+    {id:2,itemName:'Present-Shape-Flat (Mural)'},
+    {id:3,itemName:'Present-Shape-Protruding'},
+    {id:4,itemName:'Present-Shape-Pedunculated'},
+    {id:5,itemName:'Present-Shape-Spherical'},
+    {id:6,itemName:'Present-Shape-Regular'},
+    {id:7,itemName:'Present-Shape-Irregular'},
+    {id:8,itemName:'Present-Shape-Multilobular'},
+    {id:9,itemName:'Present-Shape-Other (Specify)'},
+  ]
+  thrombusTexture = [   
+    {id:2,itemName:'Present-Texture-Solid'},
+    {id:3,itemName:'Present-Texture-Layered'},
+    {id:4,itemName:'Present-Texture-Hypoechoic Interior (Cystic)'},
+    {id:5,itemName:'Present-Texture-Hyperechoic'},
+    {id:6,itemName:'Present-Texture-Calcified'}
+  ]
+  thrombusMobility = [
+    {id:2,itemName:'Present-Mobility-Mobile'},
+    {id:3,itemName:'Present-Mobility-Fixed (Sessile)'}
+  ]
+  thrombusDimensions = [
+    {id:2,itemName:'Present-Dimensions'},
+  ]
+  mass = [
+    {id:2,itemName:'Absent'},
+    {id:3,itemName:'Present'},       
+  ]
+
+  massPresentSize = [
+    {id:2,itemName:'Present-Size-Small'},
+    {id:3,itemName:'Present-Size-Moderate'},
+    {id:4,itemName:'Present-Size-Large'}   
+  ]
+
+  massPresentLocation = [   
+    {id:2,itemName:'Present-Location-Apical'},
+    {id:3,itemName:'Present-Location-Basal'},
+    {id:4,itemName:'Present-Location-Septal'},
+    {id:5,itemName:'Present-Location-Lateral'},
+    {id:6,itemName:'Present-Location-Intramyocardial'},
+    {id:7,itemName:'Present-Location-Intracavitary'},     
+  ]
+  massPresentShape = [   
+    {id:2,itemName:'Present-Shape-Flat (Mural'},
+    {id:3,itemName:'Present-Shape-Protruding'},
+    {id:4,itemName:'Present-Shape-Pedunculated'},
+    {id:5,itemName:'Present-Shape-Papillary'},
+    {id:6,itemName:'Present-Shape-Spherical'},
+    {id:7,itemName:'Present-Shape-Regular'},
+    {id:8,itemName:'Present-Shape-Irregular'},
+    {id:9,itemName:'Present-Shape-Multilobular'},
+    {id:10,itemName:'Present-Shape-Frondlike'},
+    {id:11,itemName:'Present-Shape-Infiltrating'}    
+  ]
+
+  massPresentTexture = [ 
+    {id:2,itemName:'Present-Texture-Solid'},
+    {id:3,itemName:'Present-Texture-Layered'},
+    {id:4,itemName:'Present-Texture-Hypoechoic Interior (Cystic)'},
+    {id:5,itemName:'Present-Texture-Hyperechoic'},
+    {id:6,itemName:'Present-Texture-Calcified'}   
+  ]
+  massPresentMobility = [   
+    {id:2,itemName:'Present-Mobility-Mobile'},
+    {id:3,itemName:'Present-Mobility-Fixed (Sessile)'},    
+  ]
+
+  massPresentDimensions = [   
+    {id:2,itemName:'Present-Dimensions'},    
+  ]
+  ventricularSeptalDefect = [
+    {id:2,itemName:'Absent'},
+    {id:3,itemName:'Present'},   
+  ]
+  ventricularSeptalDefectPresentLocation = [
+    {id:2,itemName:'Present-Location-Membranous (Infracristal)'},
+    {id:3,itemName:'Present-Location-Infundibular (Supracristal)'},
+    {id:4,itemName:'Present-Location-Inlet'},
+    {id:5,itemName:'Present-Location-Muscular'},
+    {id:6,itemName:'Present-Location-Multiple -Designate'},   
+  ]
+  ventricularSeptalDefectPresentSize = [
+    {id:2,itemName:'Present-Size-Small'},
+    {id:3,itemName:'Present-Size-Moderate'},
+    {id:4,itemName:'Present-Size-Large'},
+    {id:5,itemName:'Present-Size-Dimensions'}, 
+  ]
+
+  ventricularSeptalDefectPresentShunt = [
+    {id:2,itemName:'Present-Shunt-Left-To-Right'},
+    {id:3,itemName:'Present-Shunt-Right-To-Left'},
+    {id:4,itemName:'Present-Shunt-Bidirectional'},
+    {id:5,itemName:'Present-Shunt-Qp:Qs Ratio'},    
   ]
 
 
-  selectMass = [
-    {id:1,value:'Absent'},
-    {id:2,value:'Present-Size-Small'},
-    {id:3,value:'Present-Size-Moderate'},
-    {id:4,value:'Present-Size-Large'},
-    {id:5,value:'Present-Location-Apical'},
-    {id:6,value:'Present-Location-Basal'},
-    {id:7,value:'Present-Location-Septal'},
-    {id:8,value:'Present-Location-Lateral'},
-    {id:9,value:'Present-Location-Intramyocardial'},
-    {id:10,value:'Present-Location-Intracavitary'},
-    {id:11,value:'Present-Shape-Flat (Mural'},
-    {id:12,value:'Present-Shape-Protruding'},
-    {id:13,value:'Present-Shape-Pedunculated'},
-    {id:14,value:'Present-Shape-Papillary'},
-    {id:15,value:'Present-Shape-Spherical'},
-    {id:16,value:'Present-Shape-Regular'},
-    {id:17,value:'Present-Shape-Irregular'},
-    {id:18,value:'Present-Shape-Multilobular'},
-    {id:19,value:'Present-Shape-Frondlike'},
-    {id:20,value:'Present-Shape-Infiltrating'},
-    {id:21,value:'Present-Texture-Solid'},
-    {id:22,value:'Present-Texture-Layered'},
-    {id:23,value:'Present-Texture -	Hypoechoic Interior (Cystic)'},
-    {id:24,value:'Present-Texture -	Hyperechoic'},
-    {id:25,value:'Present-Texture-Calcified'},
-    {id:26,value:'Present-Mobility-Mobile'},
-    {id:27,value:'Present-Mobility-Fixed (Sessile)'},
-    {id:28,value:'Present-Dimensions'},
-    {id:29,value:'N/A'},
-  ]
-
-
-  selectSystolicfunction = [
-    {id:1,value:'Global'},
-    {id:2,value:'Ejection Fraction-Normal'},
-    {id:3,value:'Ejection Fraction-Borderline'},
-    {id:4,value:'Ejection Fraction-Low Normal'},
-    {id:5,value:'Ejection Fraction-Decreased-Mild'},
-    {id:6,value:'Ejection Fraction-Decreased-Mild-To-Moderate'},
-    {id:7,value:'Ejection Fraction-Decreased-Moderate'},
-    {id:8,value:'Ejection Fraction-Decreased-Mild-To-Severe'},
-    {id:9,value:'Ejection Fraction-Decreased-Severe'},
-    {id:10,value:'Ejection Fraction-Increased (Hyperdynamic)'},
-    {id:11,value:'Fractional Shortening (Basal)-Normal'},
-    {id:12,value:'Fractional Shortening (Basal)-Decreased'},
-    {id:13,value:'Fractional Shortening (Basal)-Increased'},
-    {id:14,value:'Fractional Area Change-Normal'},
-    {id:15,value:'Fractional Area Change-Decreased'},
-    {id:16,value:'Fractional Area Change-Increased'},
-    {id:17,value:'Dilated (Congestive)-Mild'},
-    {id:18,value:'Dilated (Congestive)-Mild-To-Moderate'},
-    {id:19,value:'Dilated (Congestive)-Moderate'},
-    {id:20,value:'Dilated (Congestive)-Mild-To-Severe'},
-    {id:21,value:'Dilated (Congestive)-Severe'},
-    {id:22,value:'Regional-Normal'},
-    {id:23,value:'Regional-Not Seen'},
-    {id:24,value:'Regional-Dyskinetic'},
-    {id:25,value:'Regional-Hypokinetic'},
-    {id:26,value:'Regional-Scar/Thinning'},
-    {id:27,value:'Regional-Akineticase Model'},
-    {id:28,value:'N/A'},
-  ]
-
-  selectThrombus = [
-    {id:1,value:'Absent'},
-    {id:2,value:'Present-Size-Small'},
-    {id:3,value:'Present-Size-Moderate'},
-    {id:4,value:'Present-Size-Large'},
-    {id:5,value:'Location-Apical'},
-    {id:6,value:'Location-Basal'},
-    {id:7,value:'Location-Lateral'},
-    {id:8,value:'Location-Septal'},
-    {id:9,value:'Shape-Flat (Mural)'},
-    {id:10,value:'Shape-Protruding'},
-    {id:11,value:'Shape-Pedunculated'},
-    {id:12,value:'Shape-Spherical'},
-    {id:13,value:'Shape-Regular'},
-    {id:14,value:'Shape-Irregular'},
-    {id:15,value:'Shape-Multilobular'},
-    {id:16,value:'Shape-Other (Specify)'},
-    {id:17,value:'Texture-Solid'},
-    {id:18,value:'Texture-Layered'},
-    {id:19,value:'Texture-Hypoechoic Interior (Cystic)'},
-    {id:20,value:'Texture-Hyperechoic'},
-    {id:21,value:'Texture-Calcified'},
-    {id:22,value:'Mobility-Mobile'},
-    {id:23,value:'Mobility-Fixed (Sessile)'},
-    {id:24,value:'Dimensions'},
-    {id:25,value:'N/A'},
-  ]
- 
-  selectAbnormalSeptalMotion = [
-    {id:1,value:'Abnormal (Paradoxical) Motion Consistent With Right Ventricular Volume Overload and / Or Elevated RV End-Diastolic Pressure. '},
-    {id:2,value:'Abnormal (Paradoxical) Motion Consistent With Post-Operative Status'},
-    {id:3,value:'Abnormal (Paradoxical) Motion Consistent With Left Bundle Branch Block'},
-    {id:4,value:'Abnormal (Paradoxical) Motion Consistent With Rv Pacemaker'},
-    {id:5,value:'Abnormal (Paradoxical) Motion Due To Pre-Excitation'},
-    {id:6,value:'Flattened In Diastole (D Shaped Left Ventricle) Consistent With Right Ventricular Volume Overload'},
-    {id:7,value:'Flattened In Systole Consistent With Right Ventricular Pressure Overload'},
-    {id:8,value:'Flattened In Systole And Diastole Consistent With Right Ventricular Pressure And Volume Overload'},
-    {id:9,value:'Septal Bounce Consistent With Constructive Physiology'},
-    {id:10,value:'Excessive Respiratory Change – Consider Tamponade, Ventilation Related Etc.'},
-    {id:11,value:'DiOther (Specify)mensions'},
-    {id:12,value:'N/A'},
-  ]
-
-
-
-  leftVentricleObservationObject = {};
-  selectedCavitySize;
-  selectedVentricularShape;
-  selectedDiastolicFilling;
-  selectedVentricularSeptalDefect;
-  selectedVentricularMass;
-  selectedMyocardialInfraction;
-  selectedMass;
-  selectedWallThickness;
-  selectedSystolicfunction;
-  selectedThrombus;
-  selectedAbnormalSeptalMotion;
-  
-  
-  updform = {
-    cs:'',
-    vs:'',
-    df:'',
-    vsd:'',
-    vm:'',
-    mi:'',
-    m:'',
-    wt:'',
-    sf:'',
-    t:'',
-    asm:'',
+  leftVentricleObservationObject = {
+    cavitySize: [],
+    wallThickness: [],
+    ventricularMass: [],
+    ventricularShape: [],
+    concentricHypertrophy: [],
+    asymmetricHypertrophy: [],
+    //asymmetricHypertrophyPresent: [],
+    eccentricHypertrophy: [],
+    aneurysm: [],
+    //aneurysmPresent: [],
+    pseudoaneurysm: [],
+    //pseudoaneurysmPresent: [],
+    //systolicfunction: [],
+    systolicFunctionEjectionFraction: [],
+    systolicFunctionEjectionFractionDecreased: [],
+    systolicFunctionFractionalShortening: [],
+    systolicFunctionFractionalAreaChanges: [],
+    systolicFunctionDilated: [],
+    regional: [],
+    abnormalSeptalMotion: [],
+    diastolicFilling: [],
+    diastolicFillingAbnormalPattern: [],
+    diastolicFillingAbnormalLvFilling: [],
+    myocardialInfractionAnterior: [],
+    myocardialInfractionPosterior: [],
+    myocardialInfractionInferior: [],
+    myocardialInfractionLateral: [],
+    myocardialInfractionAnteroseptal: [],
+    myocardialInfractionApical: [],
+    myocardialInfractionAnteroApical: [],
+    myocardialInfractionPosteroLateral: [],
+    myocardialInfractionOther: [],
+    thrombus: [],
+    thrombusPresentSize: [],
+    thrombusLocation: [],
+    thrombusShape: [],
+    thrombusTexture: [],
+    thrombusMobility: [],
+    thrombusDimensions: [],
+    mass: [],
+    massPresentSize: [],
+    massPresentLocation: [],
+    massPresentShape: [],
+    massPresentTexture: [],
+    massPresentMobility: [],
+    massPresentDimensions: [],
+    ventricularSeptalDefect: [],
+    ventricularSeptalDefectPresentLocation: [],
+    ventricularSeptalDefectPresentSize: [],
+    ventricularSeptalDefectPresentShunt: [],    
   }
+  
+  /////////////////////////////////////////////
+
+  selectCavitySize: [];
+selectWallThickness: [];
+//wallthicknessvalue: [];
+selectVentricularMass: [];
+//ventricularLvMassvalue: [];
+selectVentricularShape: [];
+selectConcentricHypertrophy: [];
+selectAsymmetricHypertrophy: [];
+selectEccentricHypertrophy: [];
+selectAneurysm: [];
+//VentricularShapeAneurysmvalue: [];
+selectPseudoaneurysm: [];
+selectSystolicFunctionEjectionFraction: [];
+selectsystolicFunctionFractionalShortening: [];
+selectSystolicFunctionFractionalAreaChanges: [];
+selectSystolicFunctionDilated: [];
+selectRegional: [];
+selectAbnormalSeptalMotion: [];
+//abnormalSeptalMotionOtherValue: [];
+selectMyocardialInfractionAnterior: [];
+selectMyocardialInfractionPosterior: [];
+selectMyocardialInfractionInferior: [];
+selectMyocardialInfractionLateral: [];
+selectMyocardialInfractionAnteroseptal: [];
+selectMyocardialInfractionApical: [];
+selectMyocardialInfractionAnteroApical: [];
+selectMyocardialInfractionPosteroLateral: [];
+selectMyocardialInfractionOther: [];
+//myocardialInfractionOtherValue: [];
+selectDiastolicFilling: [];
+selectDiastolicFillingAbnormalPattern: [];
+selectDiastolicFillingAbnormalLvFilling: [];
+selectThrombus: [];
+selectThrombusPresentSize: [];
+selectThrombusLocation: [];
+selectThrombusShape: [];
+thrombusShapeOthervalue: [];
+selectThrombusTexture: [];
+selectThrombusMobility: [];
+selectThrombusDimensions: [];
+//thrombusDimensionsvalue: [];
+selectMass: [];
+selectMassPresentSize: [];
+selectMassPresentLocation: [];
+selectMassPresentShape: [];
+selectMassPresentTexture: [];
+selectMassPresentMobility: [];
+selectMassPresentDimensions: [];
+//massPresentDimensionsvalue: [];
+selectVentricularSeptalDefect: [];
+selectVentricularSeptalDefectPresentLocation: [];
+selectVentricularSeptalDefectPresentSize: [];
+selectVentricularSeptalDefectPresentShunt: [];
+//ventricularSeptalDefectPresentShuntValue: [];
+  ////////////////////////////////////////////
+
+
+  settings= {};
+  
+  obtype: string;
+  data : any[] = [];
+  
+  wallthickness:string;
+  updform = {
+   selectCavitySize:'',
+    selectWallThickness:'',
+    wallthicknessvalue:'',
+    selectVentricularMass:'',
+    ventricularLvMassvalue:'',
+    selectVentricularShape:'',
+    selectConcentricHypertrophy:'',
+    selectAsymmetricHypertrophy:'',
+    selectEccentricHypertrophy:'',
+    selectAneurysm:'',
+    VentricularShapeAneurysmvalue:'',
+    selectPseudoaneurysm:'',
+    selectSystolicFunctionEjectionFraction:'',
+    selectsystolicFunctionFractionalShortening:'',
+    selectSystolicFunctionFractionalAreaChanges:'',
+    selectSystolicFunctionDilated:'',
+    selectRegional:'',
+    selectAbnormalSeptalMotion:'',
+    abnormalSeptalMotionOtherValue:'',
+    selectMyocardialInfractionAnterior:'',
+    selectMyocardialInfractionPosterior:'',
+    selectMyocardialInfractionInferior:'',
+    selectMyocardialInfractionLateral:'',
+    selectMyocardialInfractionAnteroseptal:'',
+    selectMyocardialInfractionApical:'',
+    selectMyocardialInfractionAnteroApical:'',
+    selectMyocardialInfractionPosteroLateral:'',
+    selectMyocardialInfractionOther:'',
+    myocardialInfractionOtherValue:'',
+    selectDiastolicFilling:'',
+    selectDiastolicFillingAbnormalPattern:'',
+    selectDiastolicFillingAbnormalLvFilling:'',
+    selectThrombus:'',
+    selectThrombusPresentSize:'',
+    selectThrombusLocation:'',
+    selectThrombusShape:'',
+    thrombusShapeOthervalue:'',
+    selectThrombusTexture:'',
+    selectThrombusMobility:'',
+    selectThrombusDimensions:'',
+    thrombusDimensionsvalue:'',
+    selectMass:'',
+    selectMassPresentSize:'',
+    selectMassPresentLocation:'',
+    selectMassPresentShape:'',
+    selectMassPresentTexture:'',
+    selectMassPresentMobility:'',
+    selectMassPresentDimensions:'',
+    massPresentDimensionsvalue:'',
+    selectVentricularSeptalDefect:'',
+    selectVentricularSeptalDefectPresentLocation:'',
+    selectVentricularSeptalDefectPresentSize:'',
+    selectVentricularSeptalDefectPresentShunt:'',
+    ventricularSeptalDefectPresentShuntValue:'',
+  }
+
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
 
@@ -297,43 +563,110 @@ export class MasterLvComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.loginService.observationsGetIndividual()
-    .subscribe(data => {
-      //console.log(data)
-      this.updform = data['observation']
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+   });
+
+    this.loginService.observationsGetAllByPatient().subscribe(data => {
+      console.log(data)
     }, error => console.log(error));
-    
+  
+
 
   }
 
 
   
-  onOptionsSelected = (key,value)  => {
-    this.leftVentricleObservationObject[key] = value
+  onOptionsSelected = (key,itemName)  => {
+    this.leftVentricleObservationObject[key] = itemName
   }
 
-
-
   saveLeftVentricleValueData = () => {
-    //save function
+
+     //save function
   //console.log(this.leftVentricleObservationObject)
+ 
+    this.leftVentricleObservationObject = {
+      cavitySize: this.selectCavitySize,
+      wallThickness: this.selectWallThickness,
+      ventricularMass: this.selectVentricularMass,
+      ventricularShape: this.selectVentricularShape,
+      concentricHypertrophy: this.selectConcentricHypertrophy,
+      asymmetricHypertrophy: this.selectAsymmetricHypertrophy,
+      //asymmetricHypertrophyPresent: this.selectAsymmetricHypertrophy,
+      eccentricHypertrophy: this.selectEccentricHypertrophy,
+      aneurysm: this.selectAneurysm,
+      //aneurysmPresent: this.selectAneurysm,
+      pseudoaneurysm: this.selectPseudoaneurysm,
+      //pseudoaneurysmPresent: this.selectPseudoaneurysm,
+      //systolicfunction: ,
+      systolicFunctionEjectionFraction: this.systolicFunctionEjectionFraction,
+      systolicFunctionEjectionFractionDecreased: this.systolicFunctionEjectionFractionDecreased,
+      systolicFunctionFractionalShortening: this.selectsystolicFunctionFractionalShortening,
+      systolicFunctionFractionalAreaChanges: this.selectSystolicFunctionFractionalAreaChanges,
+      systolicFunctionDilated: this.selectSystolicFunctionDilated,
+      regional: this.selectRegional,
+      abnormalSeptalMotion: this.selectAbnormalSeptalMotion,
+      diastolicFilling: this.selectDiastolicFilling,
+      diastolicFillingAbnormalPattern: this.selectDiastolicFillingAbnormalPattern,
+      diastolicFillingAbnormalLvFilling: this.selectDiastolicFillingAbnormalLvFilling,
+      myocardialInfractionAnterior: this.selectMyocardialInfractionAnterior,
+      myocardialInfractionPosterior: this.selectMyocardialInfractionPosterior,
+      myocardialInfractionInferior: this.selectMyocardialInfractionInferior,
+      myocardialInfractionLateral: this.selectMyocardialInfractionLateral,
+      myocardialInfractionAnteroseptal: this.selectMyocardialInfractionAnteroseptal,
+      myocardialInfractionApical: this.selectMyocardialInfractionApical,
+      myocardialInfractionAnteroApical: this.selectMyocardialInfractionAnteroApical,
+      myocardialInfractionPosteroLateral: this.selectMyocardialInfractionPosteroLateral,
+      myocardialInfractionOther: this.selectMyocardialInfractionOther,
+      thrombus: this.selectThrombus,
+      thrombusPresentSize: this.selectThrombusPresentSize,
+      thrombusLocation: this.selectThrombusLocation,
+      thrombusShape: this.selectThrombusShape,
+      thrombusTexture: this.selectThrombusTexture,
+      thrombusMobility: this.selectThrombusMobility,
+      thrombusDimensions: this.selectThrombusDimensions,
+      mass: this.selectMass,
+      massPresentSize: this.selectMassPresentSize,
+      massPresentLocation: this.selectMassPresentLocation,
+      massPresentShape: this.selectMassPresentShape,
+      massPresentTexture: this.selectMassPresentTexture,
+      massPresentMobility: this.selectMassPresentMobility,
+      massPresentDimensions: this.selectMassPresentDimensions,
+      ventricularSeptalDefect: this.selectVentricularSeptalDefect,
+      ventricularSeptalDefectPresentLocation: this.selectVentricularSeptalDefectPresentLocation,
+      ventricularSeptalDefectPresentSize: this.selectVentricularSeptalDefectPresentSize,
+      ventricularSeptalDefectPresentShunt: this.selectVentricularSeptalDefectPresentShunt,
+    }
 
   const objectManagementReq = {
     "value": this.leftVentricleObservationObject
    }
    console.log(objectManagementReq);
-//    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-//       console.log(res);
-//       if(res['message'] ==  'submitted successfully' ) {
-//       alert('Observation Inserted Successfully');
-//       //this.router.navigateByUrl(`/observations/`);
-//       this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
-//     } 
+   this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
+      console.log(res);
+      if(res['message'] ==  'submitted successfully' ) {
+      alert('Observation Inserted Successfully');
+      //this.router.navigateByUrl(`/observations/`);
+      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+    } 
      
-//  })
+ })
 
 
 }
 
+getAddPage  = (obtype) => {
+  console.log(obtype);
+  //console.log('=====//////////');
+  window.localStorage.setItem("obtype", obtype.toString());
+  // this.router.navigateByUrl(`/mastertable/`+type);   
+  this.actRoute.paramMap.subscribe(params => {
+    this.obtype = params.get('obtype');
+
+ });
+
+
+}
 
 }

@@ -1,72 +1,191 @@
 <form  name="observationsForm"   #observationsForm="ngForm" (ngSubmit)="savePulmonicValueData()"  >
-    <div class="observe">
-      <div id="container">
-        <h3 class="head-title"> Type: Pulmonic Valve </h3> 
-
-        <div class="form-row"   >
-    
-        <section class="left-column">
-    
-          <div class="form-group">
-            
-            <div class="form-group col-md-11">
-                <label>Structure</label>
-                <select  class="form-control" [(ngModel)]="selectStructure" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('structure',selectStructure)">
-                    <option *ngFor="let sta of Structure" [ngValue]="sta.value">{{sta.value}}</option>
-                </select>
-           </div>
-           <div class="form-group col-md-11">
-            <label>Pulmonary Pressure </label>
-            <select  class="form-control" [(ngModel)]="selectpulmonaryPressure" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('pulmonaryPressure',selectpulmonaryPressure)">
-                <option *ngFor="let sta of pulmonaryPressure" [ngValue]="sta.value">{{sta.value}}</option>
-            </select>
-           </div>
+  <div class="observe">
+    <div id="container">
+      <h3 class="head-title"> Type: Pulmonic Valve </h3> 
+      <div class="total-container">
        
-          </div>
-        </section>
-    
-    
-        <section class="right-column">
-    
-          <div class="form-group">
+        
+        <div class="form-row">
             
-            <div class="form-group col-md-11">
-                <label>Function </label>
-            <select  class="form-control" [(ngModel)]="selectfunction" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('function',selectfunction)">
-                <option *ngFor="let sta of function" [ngValue]="sta.value">{{sta.value}}</option>
-            </select>
+          <div class="form-group col-md-4">
+              <label>Structure</label>
+              <select  class="form-control" [(ngModel)]="selectStructure" name="selectStructure" placeholder="select" (ngModelChange)="onOptionsSelected(selectStructure)">
+                <option> Not Applicable(N/A)</option> 
+                <option *ngFor="let sta of structure" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+              </select>
+            </div>
+         <div class="form-group col-md-4">
+          <label>Pulmonic Regurgitation </label>
+      <select  class="form-control" [(ngModel)]="selectpulmonicregurgitation" name="selectpulmonicregurgitation" placeholder="select" (ngModelChange)="onOptionsSelected('function',selectfunction)">
+        <option> Not Applicable(N/A)</option>  
+        <option *ngFor="let sta of pulmonicRegurgitation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+      </select>
+     </div>
 
-           </div>
+     <div class="form-group col-md-4">
+      <label>Pulmonic Stenosis </label>
+      <select  class="form-control" [(ngModel)]="selectpulmonicstenosis" name="selectpulmonicstenosis" placeholder="select" (ngModelChange)="onOptionsSelected('bFunction',selectbFunction)">
+        <option> Not Applicable(N/A)</option>  
+        <option *ngFor="let sta of pulmonicStenosis" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+      </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Pulmonary Pressure </label>
+        <select  class="form-control" [(ngModel)]="selectpulmonaryPressure" name="selectpulmonaryPressure" placeholder="select" (ngModelChange)="onOptionsSelected('pulmonaryPressure',selectpulmonaryPressure)">
+          <option> Not Applicable(N/A)</option>   
+          <option *ngFor="let sta of pulmonaryPressure" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+       </div>
+       <div class="form-group col-md-4"  *ngIf="selectpulmonaryPressure === 'Pulmonic Pressure-PA Diastolic Pressure'">
+        <label>
+          Pulmonic Pressure-PA Diastolic Pressure
+        </label>
+      <input class="form-control" type="text" name="selectpulmonaryPressure"/>
+      </div>
+      <div class="form-group col-md-4" *ngIf="selectpulmonaryPressure === 'Pulmonic Pressure-Mean PA Pressure'">
+        <label>
+          Pulmonic Pressure-Mean PA Pressure
+        </label>
+      <input class="form-control" type="text" name="selectpulmonaryPressure"/>
+      </div>
+        </div>
+  
 
-           <div class="form-group col-md-11">
-            <label>B Function </label>
-            <select  class="form-control" [(ngModel)]="selectbFunction" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('bFunction',selectbFunction)">
-                <option *ngFor="let sta of bFunction" [ngValue]="sta.value">{{sta.value}}</option>
+        <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectStructure === 'Abnormal'">
+          <label class="head-title" >Structure Abnormal </label>
+        </div>
+        <div class="form-group col-md-4" *ngIf="selectStructure === 'Abnormal'">
+          <label>Structure Abnormal </label>
+          <select  class="form-control" [(ngModel)]="structureabnormal" name="structureabnormal" placeholder="select" (ngModelChange)="onOptionsSelected('bFunction',selectbFunction)">
+            <option> Not Applicable(N/A)</option>   
+            <option *ngFor="let sta of abnormal" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+          </select>
+          </div>
+          <div class="form-group col-md-4" *ngIf="structureabnormal === 'Other (Specify)'">
+            <label>Others </label>
+           <input class="form-control"type=text/>
+            </div>
+            <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectpulmonicregurgitation === 'Pulmonic Regurgitation-Present'">
+              <label class="head-title" >Pulmonic Regurgitation-Present </label>
+            </div>
+          <div class="form-group col-md-4" *ngIf="selectpulmonicregurgitation === 'Pulmonic Regurgitation-Present'">
+            <label>Pulmonic Regurgitation-Present</label>
+            <select  class="form-control" [(ngModel)]="pulmonicRegurgitationPresent" name="pulmonicRegurgitationPresent" placeholder="select" (ngModelChange)="onOptionsSelected('bFunction',selectbFunction)">
+              <option> Not Applicable(N/A)</option>    
+              <option *ngFor="let sta of regurgitationPresent" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
             </div>
-      
-          </div>
-         
+            <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectpulmonicstenosis === 'Pulmonic Stenosis-Location'">
+              <label class="head-title" >Pulmonic Stenosis-Location </label>
+            </div>
+            <div class="form-row col-md-4" *ngIf="selectpulmonicstenosis === 'Pulmonic Stenosis-Location'">
+              <label>Pulmonic Stenosis-Location</label>
+              <select  class="form-control" [(ngModel)]="selectpulmonicstenosislocation" name="selectpulmonicstenosislocation" placeholder="select" (ngModelChange)="onOptionsSelected(selectbFunction)">
+                <option> Not Applicable(N/A)</option>    
+                <option *ngFor="let sta of stenosisLocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+              </select>
+              
+              </div>
+              <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectpulmonicstenosis === 'Pulmonic Stenosis-Severity'">
+                <label class="head-title" >Pulmonic Stenosis-Severity</label>
+              </div>
+              <div class="form-group col-md-4" *ngIf="selectpulmonicstenosis === 'Pulmonic Stenosis-Severity'">
+                <label>Pulmonic Stenosis-Severity</label>
+                <select  class="form-control" [(ngModel)]="selectpulmonicstenosisseverity" name="selectpulmonicstenosisseverity" placeholder="select" (ngModelChange)="onOptionsSelected(selectbFunction)">
+                  <option> Not Applicable(N/A)</option>    
+                  <option *ngFor="let sta of stenosisSeverity" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                </select>
+                </div>
+               
+                <div class="form-row"  *ngIf="selectpulmonicstenosis === 'Pulmonic Stenosis-Location'">
+                  <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectpulmonicstenosislocation === 'Pulmonic Stenosis-Location-Branch'">
+                    <label class="head-title" >Pulmonic Stenosis-Branch </label>
+                  </div>
+                              <div class="form-group col-md-4" *ngIf="selectpulmonicstenosislocation === 'Pulmonic Stenosis-Location-Branch'">
+                  <label>Pulmonic Stenosis-Branch</label>
+                  <select  class="form-control" [(ngModel)]="stenosisbranch" name="stenosisbranch" placeholder="select" (ngModelChange)="onOptionsSelected('bFunction',selectbFunction)">
+                      <option *ngFor="let sta of branch" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                  </select>
+                       </div> 
+                       <div class="form-group col-md-4" *ngIf="selectpulmonicstenosislocation === 'Pulmonic Stenosis-Location-Branch'"> 
+                       <div   *ngIf="stenosisbranch === 'Pulmonic Stenosis-Location-Branch-Others(Specify)'">
+                        <label>Others </label>
+                       <input class="form-control" type=text name="stenosisbranchothers"/>
+                        </div>
+                      </div>
+                </div>
+                <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectpulmonicstenosis === 'Pulmonic Stenosis-Quantitative Measurements'">
+                  <label class="head-title" >Pulmonic Stenosis-Quantitative Measurements</label>
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-4" *ngIf="selectpulmonicstenosis === 'Pulmonic Stenosis-Quantitative Measurements'">
+                  <label>Pulmonic Stenosis-Quantitative Measurements</label>
+                  <select  class="form-control" [(ngModel)]="stenosisQuantitativeMeasurements1" name="stenosisQuantitativeMeasurements1" placeholder="select" (ngModelChange)="onOptionsSelected('bFunction',selectbFunction)">
+                    <option> Not Applicable(N/A)</option>    
+                    <option *ngFor="let sta of stenosisQuantitativeMeasurements" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                  </select>
+                  
+                   
+                   <!-- </div> -->
+                  </div>
+                  <div class="form-group col-md-4" *ngIf="selectpulmonicstenosis === 'Pulmonic Stenosis-Quantitative Measurements'"> 
     
-        </section>
-        
-        </div>
-    </div>  
-    
+                  <div *ngIf="stenosisQuantitativeMeasurements1 === 'Pulmonic Stenosis-Quantitative Measurements-Others Specify'">
+                    <label>Others </label>
+                   <input class="form-control " type=text name="stenosisQuantitativeMeasurements1others"/>
+                    </div>
+                  </div>
+                </div>  
+                <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectpulmonaryPressure === 'Pulmonic Pressure-PA Systolic Pressure'">
+                <label class="head-title" >Pulmonic Pressure-PA Systolic Pressure</label>
+              </div>
+    <div class="form-row">
+                <div class="form-group col-md-4"  *ngIf="selectpulmonaryPressure === 'Pulmonic Pressure-PA Systolic Pressure'">
+                  <label>Pulmonary Systolic Pressure </label>
+                  <select  class="form-control" [(ngModel)]="selectpulmonarysystoicPressure" name="selectpulmonarysystoicPressure" placeholder="select" (ngModelChange)="onOptionsSelected('pulmonaryPressure',selectpulmonaryPressure)">  
+                    <option> Not Applicable(N/A)</option>  
+                    <option *ngFor="let sta of paSystolicPressure " [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                  </select>
+                
+                 </div>
+                 
+                 <div class="form-group col-md-4"  *ngIf="selectpulmonaryPressure === 'Pulmonic Pressure-PA Systolic Pressure'">
+    <div *ngIf="selectpulmonarysystoicPressure === 'Pulmonic Pressure-Other Method(Specify)'">
+      <label>
+        Others
+      </label>
+    <input class="form-control" type="text" name="selectpulmonarysystoicPressureothers"/>
+    </div>
+    </div>
     </div>
     
+         
     <div class="form-row"   >
-      <div class="form-group col-md-3" ></div>
-      <div class="form-group col-md-3" >
+      <div class="form-group col-md-2" ></div>
+      <div class="form-group col-md-2" >
+        <button type="button" class="btn btn-warning  btn-block" onclick="$('#all-pa-tab').trigger('click')" 
+        (click)="getAddPage('pulmonaryArteryObservation')"  >Previous</button>
+      </div>
+      <div class="form-group col-md-2" >
         <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
       </div>
-      <div class="form-group col-md-3" >
-        <button type="button" class="btn btn-danger  btn-block" >Next</button>
+      <div class="form-group col-md-2" >
+        <button type="button" class="btn btn-danger  btn-block" onclick="$('#all-aorta-tab').trigger('click')" 
+        (click)="getAddPage('aortaObservation')"  >Next</button>
       </div>
-      <div class="form-group col-md-3" ></div>
+      <div class="form-group col-md-4" ></div>
     </div> 
+
+
+      </div>
     
-    </form>
-    
-    
-    
+  
+  </div>
+
+</div>
+
+
+
+</form>
+  
+

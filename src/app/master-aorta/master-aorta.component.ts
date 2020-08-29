@@ -11,136 +11,281 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class MasterAortaComponent implements OnInit {
 
-  selectAbnormality= [
-    {id:1,value:'Normal'},
-    {id:2,value:'Abnormal-Dilatation-Aortic root'},
-    {id:3,value:'Abnormal-Dilatation-Aortic root and the ascending aorta'},
-    {id:4,value:'Abnormal-Dilatation-Aortic root limited to the sinuses of Valsalva'},
-    {id:5,value:'Abnormal-Dilatation-Aortic root, ascending and descending aorta'},
-    {id:6,value:'Abnormal-Dilatation-Aortic root, sinuses of Valsalva and ascending aorta'},
-    {id:7,value:'Abnormal-Dilatation-Aortic root, ascending and transverse aorta'},
-    {id:8,value:'Abnormal-Dilatation-Aortic root, transverse, descending and ascending aorta'},
-    {id:9,value:'Abnormal-Dilatation-Sinuses of Valsalva, aortic root, ascending and transverse aorta'},
-    {id:10,value:'Abnormal-Dilatation-Ascending aorta'},
-    {id:11,value:'Abnormal-Dilatation-Ascending and descending aorta'},
-    {id:12,value:'Abnormal-Dilatation-Ascending and transverse aorta'},
-    {id:13,value:'Abnormal-Dilatation-Ascending aorta and the sinuses of Valsalva'},
-    {id:14,value:'Abnormal-Dilatation-Ascending, transverse and descending aorta'},
-    {id:15,value:'Abnormal-Dilatation-Descending aorta'},
+  aorta= [
+    {id:2,itemName:'Normal'},
+    {id:3,itemName:'Abnormal'},
   ]
-  selectAneurysm=[
-    {id:16,value:'Abnormal-Aneurysm-Location-Ascending aorta'},
-    {id:17,value:'Abnormal-Aneurysm-Location-Transverse aorta'},
-    {id:18,value:'Abnormal-Aneurysm-Location-Descending aorta'},
-    {id:19,value:'Abnormal-Aneurysm-Location-Ascending and transverse aorta'},
-    {id:20,value:'Abnormal-Aneurysm-Location-Ascending, transverse and descending aorta'},
-    {id:21,value:'Abnormal-Aneurysm-Location-Ascending and descending aorta-Transverse and descending aorta'},
-    {id:22,value:'Abnormal-Aneurysm-Location-Ascending aorta'},
+  dialation=[
+    {id:2,itemName:'Dilatation-Aortic root'},
+    {id:3,itemName:'Dilatation-Aortic root and the ascending aorta'},
+    {id:4,itemName:'Dilatation-Aortic root limited to the sinuses of Valsalva'},
+    {id:5,itemName:'Dilatation-Aortic root, ascending and descending aorta'},
+    {id:6,itemName:'Dilatation-Aortic root, sinuses of Valsalva and ascending aorta'},
+    {id:7,itemName:'Dilatation-Aortic root, ascending and transverse aorta'},
+    {id:8,itemName:'Dilatation-Aortic root, transverse, descending and ascending aorta'},
+    {id:9,itemName:'Dilatation-Sinuses of Valsalva, aortic root, ascending and transverse aorta'},
+    {id:10,itemName:'Dilatation-Ascending aorta'},
+    {id:11,itemName:'Dilatation-Ascending and descending aorta'},
+    {id:12,itemName:'Dilatation-Ascending and transverse aorta'},
+    {id:13,itemName:'Dilatation-Ascending aorta and the sinuses of Valsalva'},
+    {id:14,itemName:'Dilatation-Ascending, transverse and descending aorta'},
+    {id:15,itemName:'Dilatation-Descending aorta'},
   ]
-  selectPlaque= [
-    {id:23,value:'Abnormal-Plaque-Location-Ascending aorta'},
-    {id:24,value:'Abnormal-Plaque-Location-Transverse aorta'},
-    {id:25,value:'Abnormal-Plaque-Location-Descending aorta'},
-    {id:26,value:'Abnormal-Plaque-Location-Ascending and transverse aorta'},
-    {id:27,value:'Abnormal-Plaque-Location-Ascending and descending aorta'},
-    {id:28,value:'Abnormal-Plaque-Location-Ascending, transverse and descending aorta'},
-    {id:29,value:'Abnormal-Plaque-Location-Transverse and descending aorta'},
-
-    {id:30,value:'Abnormal-Plaque-Characteristics-Layered'},
-    {id:31,value:'Abnormal-Plaque-Characteristics-Protruding'},
-    {id:32,value:'Abnormal-Plaque-Characteristics-Layered and protruding'},
-    {id:33,value:'Abnormal-Plaque-Characteristics-Multilobular'},
-    {id:34,value:'Abnormal-Plaque-Characteristics-Echolucent center'},
-    
-    {id:35,value:'Abnormal-Plaque-Size-Small'},
-    {id:36,value:'Abnormal-Plaque-Size-Moderate'},
-    {id:37,value:'Abnormal-Plaque-Size-Moderate-Large-Dimensions'},
-
-    {id:38,value:'Abnormal-Plaque-Mobility-Mobile'},
-    {id:39,value:'Abnormal-Plaque-Mobility-Immobile'},
-  ]
-
-  selectGraft= [
-    {id:40,value:'Abnormal-Graft-Type-Prosthetic'},
-    {id:41,value:'Abnormal-Graft-Type-Homograft'},
-    {id:42,value:'Abnormal-Graft-Location-Ascending aorta'},
-    {id:43,value:'Abnormal-Graft-Location-Ascending and transverse aorta'},
-    {id:44,value:'Abnormal-Graft-Location-Descending aorta'},
-    {id:45,value:'Abnormal-Graft-Location-Transverse aorta and descending aorta'},
-    {id:46,value:'Abnormal-Graft-Location-Ascending, transverse, and descending aorta'},
- ]
-
-  selectDissection= [
-    {id:47,value:'Abnormal-Dissection-Location-Extending from the aortic root to the aortic arch'},
-    {id:48,value:'Abnormal-Dissection-Location-Extending from the aortic root to the aortic arch'},
-    {id:49,value:'Abnormal-Dissection-Location-Extending from the aortic root to the descending aorta'},
-    {id:50,value:'Abnormal-Dissection-Location-Extending from the ascending aorta to the aortic arch'},
-    {id:51,value:'Abnormal-Dissection-Location-Extending from the ascending aorta to the descending aorta'},
-    {id:52,value:'Abnormal-Dissection-Location-Extending from the aortic arch to the descending aorta'},
-    {id:53,value:'Abnormal-Dissection-Location-Limited to the descending aorta'},
-
-    {id:54,value:'Abnormal-Dissection-Entry site-Aortic root'},
-    {id:55,value:'Abnormal-Dissection-Entry site-AAortic arch'},
-    {id:56,value:'Abnormal-Dissection-Entry site-Ascending aorta '},
-    {id:57,value:'Abnormal-Dissection-Entry site-Descending aorta'},
-    
-    {id:58,value:'Abnormal-Dissection-Exit point-Ascending aorta'},
-    {id:59,value:'Abnormal-Dissection-Exit point-Aortic arch'},
-    {id:60,value:'Abnormal-Dissection-Exit point-Descending aorta-Multiple-Describe'},
-    
-    {id:61,value:'Abnormal-Dissection-False lumen-Contains thrombus'} ,
-    {id:62,value:'Abnormal-Dissection-False lumen-Compressing the superior vena cava'},
-    {id:63,value:'Abnormal-Dissection-False lumen-Compressing the true lumen'},
-    {id:64,value:'Abnormal-Dissection-False lumen-Contains thrombus and compressing the true lumen'},
-
-    {id:65,value:'Abnormal-Dissection-Intramural hematoma-Ascending root'},
-    {id:66,value:'Abnormal-Dissection-Intramural hematoma-Extending from the aortic root to the ascending aortat'},
-    {id:67,value:'Abnormal-Dissection-Intramural hematoma-Extending from the aortic root to the descending aorta'},
-    {id:68,value:'Abnormal-Dissection-Intramural hematoma-Extending from the ascending aorta to the aortic arch'},
-    {id:69,value:'Abnormal-Dissection-Intramural hematoma-Extending from the ascending aorta to the descending aorta'},
-    {id:70,value:'Abnormal-Dissection-Intramural hematoma-Extending from tire aortic arch to the descendmg aorta'},
-    {id:71,value:'Abnormal-Dissection-Intramural hematoma-"Limited to the descending aorta'},
-
-    {id:72,value:'Abnormal-Dissection-Classification-Stanford Type A (Proximal)'},
-    {id:73,value:'Abnormal-Dissection-Classification-Stanford Type B (Distal)'},
-    {id:74,value:'Abnormal-Dissection-Classification-DeBakey Type I)'},
-    {id:75,value:'Abnormal-Dissection-Classification-DeBakey Type E)'},
-    {id:76,value:'Abnormal-Dissection-Classification-DeBakey Type III'},
-    {id:77,value:'Abnormal-Dissection-Classification-Other (Specify)'},
- ]
-
-  selectCoarctation= [
-    {id:1,value:'Abnormal-Coarctation-Location-Proximal to left subclavian artery'},
-    {id:2,value:'Abnormal-Coarctation-Location-Distal to left subclavian artery'},
-
-    {id:3,value:'Abnormal-Coarctation-Minimal diameter'},
-    {id:4,value:'Abnormal-Coarctation-Peak gradient'},
   
-    {id:5,value:'Abnormal-Transposition of the great arteries'},
-    {id:6,value:'Abnormal-Corrected transposition of the great arteries'},
+  x= [1,2,3,5]
+
+  aneurysm=[
+    {id:2,itemName:'Aneurysm-Location-Ascending aorta'},
+    {id:3,itemName:'Aneurysm-Location-Transverse aorta'},
+    {id:4,itemName:'Aneurysm-Location-Descending aorta'},
+    {id:5,itemName:'Aneurysm-Location-Ascending and transverse aorta'},
+    {id:6,itemName:'Aneurysm-Location-Ascending, transverse and descending aorta'},
+    {id:7,itemName:'Aneurysm-Location-Ascending and descending aorta'},
+    {id:8,itemName:'Aneurysm-Location-Transverse and descending aorta'},
+  ]
+  plaque=[
+    {id:2,itemName:'Plaque'},
+    // {id:3,itemName:'Plaque-Characteristics'},
+    // {id:4,itemName:'Plaque-Size'},
+    // {id:5,itemName:'Plaque-Mobility'},
+  ]
+  plaqueLocation= [
+    {id:2,itemName:'Plaque-Location-Ascending aorta'},
+    {id:3,itemName:'Plaque-Location-Transverse aorta'},
+    {id:4,itemName:'Plaque-Location-Descending aorta'},
+    {id:5,itemName:'Plaque-Location-Ascending and transverse aorta'},
+    {id:6,itemName:'Plaque-Location-Ascending and descending aorta'},
+    {id:7,itemName:'Plaque-Location-Ascending, transverse and descending aorta'},
+    {id:8,itemName:'Plaque-Location-Transverse and descending aorta'},
+  ]
+  plaqueCharacteristics=[
+
+    {id:2,itemName:'Plaque-Characteristics-Layered'},
+    {id:3,itemName:'Plaque-Characteristics-Protruding'},
+    {id:4,itemName:'Plaque-Characteristics-Layered and protruding'},
+    {id:5,itemName:'Plaque-Characteristics-Multilobular'},
+    {id:6,itemName:'Plaque-Characteristics-Echolucent center'},
+  ]
+  plaqueSize=[
+    
+    {id:2,itemName:'Plaque-Size-Small'},
+    {id:3,itemName:'Plaque-Size-Moderate'},
+    {id:4,itemName:'Plaque-Size-Large'},
+    //dimensions??
+  ]
+  plaqueMobility=[
+
+    {id:2,itemName:'Plaque-Mobility-Mobile'},
+    {id:3,itemName:'Plaque-Mobility-Immobile'},
+  ]
+  graft=[
+    {id:2,itemName:'Graft'},
   ]
 
-  aortaObservation= {};
-  selectedAbnormality;
+  graftType= [
+    {id:2,itemName:'Graft-Type-Prosthetic'},
+    {id:3,itemName:'Graft-Type-Homograft'},
+  ]
+  graftLocation=[
+
+    {id:2,itemName:'Graft-Location-Ascending aorta'},
+    {id:3,itemName:'Graft-Location-Ascending and transverse aorta'},
+    {id:4,itemName:'Graft-Location-Descending aorta'},
+    {id:5,itemName:'Graft-Location-Transverse aorta and descending aorta'},
+    {id:6,itemName:'Graft-Location-Ascending, transverse, and descending aorta'},
+ ]
+
+ dissection=[
+  {id:2,itemName:'Dissection'},
+
+ ]
+
+
+  dissectionLocation= [
+    {id:2,itemName:'Dissection-Location-Extending from the aortic root to the aortic arch'},
+    {id:3,itemName:'Dissection-Location-Extending from the aortic root to the aortic arch'},
+    {id:4,itemName:'Dissection-Location-Extending from the aortic root to the descending aorta'},
+    {id:5,itemName:'Dissection-Location-Extending from the ascending aorta to the aortic arch'},
+    {id:6,itemName:'Dissection-Location-Extending from the ascending aorta to the descending aorta'},
+    {id:7,itemName:'Dissection-Location-Extending from the aortic arch to the descending aorta'},
+    {id:8,itemName:'Dissection-Location-Limited to the descending aorta'},
+  ]
+  dissectionEntrySite=[
+
+    {id:2,itemName:'Dissection-Entry site-Aortic root'},
+    {id:3,itemName:'Dissection-Entry site-Aortic arch'},
+    {id:4,itemName:'Dissection-Entry site-Ascending aorta '},
+    {id:5,itemName:'Dissection-Entry site-Descending aorta'},
+  ]
+  dissectionExitPoint=[
+    
+    {id:2,itemName:'Dissection-Exit Point-Ascending aorta'},
+    {id:3,itemName:'Dissection-Exit Point-Aortic arch'},
+    {id:4,itemName:'Dissection-Exit Point-Descending Aorta-Multiple'},
+  ]
+  dissectionFalseLumen=[
+    
+    {id:2,itemName:'Dissection-False lumen-Contains thrombus'} ,
+    {id:3,itemName:'Dissection-False lumen-Compressing the superior vena cava'},
+    {id:4,itemName:'Dissection-False lumen-Compressing the true lumen'},
+    {id:5,itemName:'Dissection-False lumen-Contains thrombus and compressing the true lumen'},
+  ]
+  dissectionIntramuralHematoma=[
+
+    {id:2,itemName:'Dissection-Intramural hematoma-Ascending root'},
+    {id:3,itemName:'Dissection-Intramural hematoma-Extending from the aortic root to the ascending aortat'},
+    {id:4,itemName:'Dissection-Intramural hematoma-Extending from the aortic root to the descending aorta'},
+    {id:5,itemName:'Dissection-Intramural hematoma-Extending from the ascending aorta to the aortic arch'},
+    {id:6,itemName:'Dissection-Intramural hematoma-Extending from the ascending aorta to the descending aorta'},
+    {id:7,itemName:'Dissection-Intramural hematoma-Extending from tire aortic arch to the descendmg aorta'},
+    {id:8,itemName:'Dissection-Intramural hematoma-"Limited to the descending aorta'},
+  ]
+  dissectionClassification=[
+
+    {id:2,itemName:'Dissection-Classification-Stanford Type A (Proximal)'},
+    {id:3,itemName:'Dissection-Classification-Stanford Type B (Distal)'},
+    {id:4,itemName:'Dissection-Classification-DeBakey Type I)'},
+    {id:5,itemName:'Dissection-Classification-DeBakey Type E)'},
+    {id:6,itemName:'Dissection-Classification-DeBakey Type III'},
+    {id:7,itemName:'Dissection-Classification-Other (Specify)'},
+ ]
+  coarctation=[
+    {id:2,itemName:'Coarctation-Location'},
+    {id:3,itemName:'Coarctation-Minimal diameter'},
+    {id:4,itemName:'Coarctation-Peak gradient'},
+  ]
+  coarctationLocation=[
+    {id:2,itemName:'Coarctation-Location-Proximal to left subclavian artery'},
+    {id:3,itemName:'Coarctation-Location-Distal to left subclavian artery'},
+  ]
+  
+  
+  
+  transposition=[
+    {id:2,itemName:'Transposition of the great arteries'},//textbox required
+  ]
+  correctedTransposition=[
+    {id:2,itemName:'Corrected transposition of the great arteries'},//textbox required
+  ]
+
+  // aortaitemNameObject= {};
+  // selectedAbnormality;
+
+  aortaitemNameObject = {
+    aorta: [],
+    dialation:[],
+    aneurysm:[],
+    plaque: [],
+    plaqueLocation:[],
+    plaqueCharacteristics:[],
+    plaqueMobility:[],
+    plaqueSize:[],
+    graft:[],
+    graftType:[],
+    graftLocation:[],
+    dissection:[],
+    dissectionLocation:[],
+    dissectionEntrySite:[],
+    dissectionExitPoint:[],
+    dissectionFalseLumen:[],
+    dissectionIntramuralHematoma:[],
+    dissectionClassification:[],
+    coarctation:[],
+    coarctationLocation:[],
+    transposition:[],
+    correctedTransposition:[],
+
+  }
+
+  selectAorta: []
+  selectDialation:[]
+  selectAneurysm:[]
+  selectPlaque:[]
+  selectPlaqueLocation:[]
+  selectPlaqueCharacteristics:[]
+  selectPlaqueMobility:[]
+  selectPlaqueSize:[]
+  selectGraft:[]
+  selectGraftType:[]
+  selectGraftLocation:[]
+  selectDissection:[]
+  selectDissectionLocation:[]
+  selectDissectionEntrySite:[]
+  selectDissectionExitPoint:[]
+  selectDissectionFalseLumen:[]
+  selectDissectionIntramuralHematoma:[]
+  selectDissectionClassification:[]
+  selectCoarctation:[]
+  selectCoarctationLocation:[]
+  selectTransposition:[]
+  selectCorrectedTransposition:[]
+  settings= {};
+
+  obtype: string;
+  data : any[] = [];
+
+  Size:string;
+  updform = {
+    
+  }
+  aortaObservationObject: any;
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
 
   }
 
   ngOnInit(): void {
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+   });
+
+    this.settings = {
+      singleSelection: false,
+      text: "Not Applicable(N/A)",
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      searchPlaceholderText: 'Select',
+      enableSearchFilter: true,
+      badgeShowLimit: 5,
+    };
+
   }
 
 
   
-  onOptionsSelected = (key,value)  => {
-    this.aortaObservation[key] = value
+  onOptionsSelected = (key,itemName)  => {
+    this.aortaObservationObject[key] = itemName
   }
 
-  saveAortaValueData = () => {
+  saveAortaitemNameData = () => {
       //save function
-    console.log(this.aortaObservation)
+      this.aortaObservationObject = {
+        aorta:this.selectAorta,
+        dialation:this.selectDialation,
+        aneurysm :this.selectAneurysm,
+        plaque:this.selectPlaque,
+        plaqueLocation:this.selectPlaqueLocation,
+        plaqueCharacteristics:this.selectPlaqueCharacteristics,
+        plaqueMobility:this.selectPlaqueMobility,
+        plaqueSize:this.selectPlaqueSize,
+        graft:this.selectGraft,
+        graftType:this.selectGraftType,
+        graftLocation:this.selectGraftLocation,
+        dissection:this.selectDissection,
+        dissectionLocation:this.selectDissectionLocation,
+        dissectionEntrySite:this.selectDissectionEntrySite,
+        dissectionExitPoint:this.selectDissectionExitPoint,
+        dissectionFalseLumen:this.selectDissectionFalseLumen,
+        dissectionClassification:this.selectDissectionClassification,
+        coarctation:this.selectCoarctation,
+        coarctationLocation:this.selectCoarctationLocation,
+        transposition:this.selectTransposition,
+        correctedTransposition:this.selectCorrectedTransposition,
+      }
+
+    //console.log(this.aortaitemNameObject)
     const objectManagementReq = {
-      "value": this.aortaObservation
+      "value": this.aortaitemNameObject
      }
      console.log(objectManagementReq);
      this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
@@ -153,6 +298,18 @@ export class MasterAortaComponent implements OnInit {
        
    })
 
+  }
+
+  getAddPage  = (obtype) => {
+    console.log(obtype);
+    //console.log('=====//////////');
+    window.localStorage.setItem("obtype", obtype.toString());
+    // this.router.navigateByUrl(`/mastertable/`+type);   
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+  
+   });
+  
   }
 
 }

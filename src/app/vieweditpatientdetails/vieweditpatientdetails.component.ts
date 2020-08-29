@@ -50,7 +50,6 @@ ews=['Good','Bad'];
     propreport:'',
     submitdate:'',
     clinicId:'',
-
     // bsa:'',
     // bmi:'',
     bp:'',
@@ -63,7 +62,9 @@ ews=['Good','Bad'];
     protocol:'',
     bmitype:'',
     ew:'',
-    echoid:''
+    echoid:'',
+    tapse:'',
+    mapse:'',
   };
 
   ClinicDoctors;
@@ -73,6 +74,7 @@ ews=['Good','Bad'];
   constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder) { }
 
   patienttForm: FormGroup;
+  
 
   ngOnInit(): void {
 
@@ -92,20 +94,14 @@ ews=['Good','Bad'];
           this.patientDataObject = data['doctor']
         }, error => console.log(error));
   
-
         this.loginService.getAllClinicDoctorList().subscribe(clinicdata => {
           //console.log('=======');
           //console.log(clinicdata)
           this.ClinicDoctors = clinicdata['user']
         }, error => console.log(error));
-    
-       
         
   }
-
-
   
- 
 calculateAge(birthday) {
   //console.log(this.patientDataObject.dob);
   //convert date again to type Date

@@ -163,7 +163,27 @@
                     </div>
         
                   
-                  </div>        
+                  </div> 
+                  
+                  
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="tapse">TAPSE</label>
+                      <input type="text" id="tapse" name="tapse" class="form-control" placeholder="Tapse" 
+                      required [(ngModel)]="patientDataObject.tapse" #mapse="ngModel">cm2       
+                  </div>
+               
+                  
+                  <div class="form-group col-md-4">
+                    <label for="mapse">MAPSE</label>
+                    <input type="text" id="mapse" name="mapse" class="form-control"   placeholder="Mapse"
+                    required [(ngModel)]="patientDataObject.mapse" #mapse="ngModel" >cm2
+                  </div>
+
+                  
+              
+        
+                  </div>          
 
 <!--                   
                   <div class="form-row">

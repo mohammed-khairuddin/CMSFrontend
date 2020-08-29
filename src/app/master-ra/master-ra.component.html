@@ -1,48 +1,241 @@
 <form  name="observationsForm"   #observationsForm="ngForm"  (ngSubmit)="saveRightAtriumData()"    >
-    <div class="observe">
-      <div id="container">
-        <h3 class="head-title"> Type: Right Atrium </h3> 
-        <div class="form-row"   >
-    
-        <section class="left-column">
-    
-          <div class="form-group">
-            
-            <div class="form-group col-md-11">
-                <label>Observation </label>
-            <select [(ngModel)]="selectedra" class="form-control" name="status" placeholder="select" (ngModelChange)="onOptionsSelected('Thrombus',selectedra)">
-                <option *ngFor="let sta of data" [ngValue]="sta.value">{{sta.value}}</option>
-                </select>
-           </div>
-           
-         
+  <div class="observe">
+    <div id="container">
+      <h3 class="head-title"> Type: Right Atrium </h3> 
+      <div class="total-container">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Right Artrium Data </label>
+        <select [(ngModel)]="selectedra" class="form-control" name="selectedra" placeholder="select" (ngModelChange)="onOptionsSelected('RightAtriumData',selectedra)">
+          <option> Not Applicable(N/A)</option>
+          <option *ngFor="let sta of data" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+            </select>
+       </div>
+        </div>
+
+
+        <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectedra === 'Abnormal'">
+          <label class="head-title" >Right Atrium Abnormal </label>
+        </div>
+        <div class="form-row"  *ngIf="selectedra === 'Abnormal' ">
+          <div class="form-group col-md-4"  >
+          <label> Right Atrium Size </label>
+          <select [(ngModel)]="selectedraabnormalsize" name="selectedraabnormalsize" id="Size" placeholder="select" 
+          (ngModelChange)="onOptionsSelected('dataabnormalsize')" class="form-control">
+          <option> Not Applicable(N/A)</option>
+          <option *ngFor="let sta of dataabnormalsize" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+          </select>
           </div>
-    
-         
-    
-        </section>
-        <section class="left-column">        
-        </section>
-    
+          <div class="form-group col-md-4"  >
+            <label> Right Atrium Thrombus </label>
+            <select [(ngModel)]="selectedraabnormalthrombus" name="Thrombus" id="Thrombus" placeholder="select" 
+            (ngModelChange)="onOptionsSelected('dataabnormalthrombus')" class="form-control">
+            <option> Not Applicable(N/A)</option>
+            <option *ngFor="let sta of dataabnormalthrombus" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+            </select>
+            </div>
+            <div class="form-group col-md-4"  >
+              <label> Right Atrium Mass </label>
+              <select [(ngModel)]="selectedraabnormalmass" name="Mass" id="Mass" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('dataabnormalmass')" class="form-control">
+              <option> Not Applicable(N/A)</option>
+              <option *ngFor="let sta of dataabnormalmass" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+              </select>
+              </div>
+              <div class="form-group col-md-4"  >
+                <label> Right Atrium Catheter/Pacemaker </label>
+                <select [(ngModel)]="selectedraabnormalcatheter" name="Catheter" id="Catheter" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('dataabnormalcatheter')" class="form-control">
+                <option> Not Applicable(N/A)</option>
+                <option *ngFor="let sta of dataabnormalcatheter" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+                </select>
+                </div>
+                <div class="form-group col-md-4"  >
+                  <label> Right Atrium Spontaneous Echo Contrast </label>
+                  <select [(ngModel)]="selectedraabnormalspontaneous" name="Spontaneous" id="Spontaneous" placeholder="select" 
+                  (ngModelChange)="onOptionsSelected('dataabnormalspontaneous')" class="form-control">
+                  <option> Not Applicable(N/A)</option>
+                  <option *ngFor="let sta of dataabnormalspontaneous" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+                  </select>
+                  </div>
+                  <div class="form-group col-md-4"  >
+                    <label> Right Atrium Pressure</label>
+                    <select [(ngModel)]="selectedraabnormalpressure" name="Pressure" id="Pressure" placeholder="select" 
+                    (ngModelChange)="onOptionsSelected('dataabnormalpressure')" class="form-control">
+                    <option> Not Applicable(N/A)</option>
+                    <option *ngFor="let sta of dataabnormalpressure" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+                    </select>
+                    </div>
+                    <div class="form-group col-md-4"  >
+                      <label> Right Atrium Others</label>
+                      <select [(ngModel)]="selectedraabnormalothers" name="Others" id="Others" placeholder="select" 
+                      (ngModelChange)="onOptionsSelected('dataabnormalothers')" class="form-control">
+                      <option> Not Applicable(N/A)</option>
+                      <option *ngFor="let sta of dataabnormalothers" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+                      </select>
+                      </div>
+                    
+          </div>
+          <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectedraabnormalthrombus === 'Thrombus-Present'">
+            <label class="head-title" >Thrombus-Present </label>
+          </div>
+          <div class="form-row"  *ngIf="selectedraabnormalthrombus === 'Thrombus-Present' "> 
+            <div class="form-group col-md-4">
+            <label>Right Artrium Thrombus Size </label>
+        <select [(ngModel)]="selectedraabnormalthrombussize" class="form-control" name="selectedraabnormalthrombussize" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalthrombuspresentsize)">
+            <option *ngFor="let sta of dataabnormalthrombuspresentsize" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+            </select>
         </div>
-      
+        <div class="form-group col-md-4">
+          <label>Right Artrium Thrombus Location </label>
+        <select [(ngModel)]="selectedraabnormalthrombuslocation" class="form-control" name="selectedraabnormalthrombuslocation" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalthrombuspresentlocation)">
+          <option *ngFor="let sta of dataabnormalthrombuspresentlocation" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+          </select>
         </div>
-      
-    
-    </div>
-    
-    <div class="form-row"   >
-      <div class="form-group col-md-3" ></div>
-      <div class="form-group col-md-3" >
-        <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+        <div class="form-group col-md-4">
+          <label>Right Artrium Thrombus Shape </label>
+        <select [(ngModel)]="selectedraabnormalthrombuspresentshape" class="form-control" name="selectedraabnormalthrombuspresentshape" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalthrombuspresentshape)">
+          <option *ngFor="let sta of dataabnormalthrombuspresentshape" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+          </select> 
+        </div>
+        <div class="form-group col-md-4" *ngIf="selectedraabnormalthrombuspresentshape === 'Abnormal-Thrombus-Present-Shape-Other (Specify)'">
+          <label>Others </label>
+         <input class="form-control"type=text/>
+          </div>
+        <div class="form-group col-md-4">
+          <label>Right Artrium Thrombus Texture </label>
+        <select [(ngModel)]="selectedraabnormalthrombustexture" class="form-control" name="selectedraabnormalthrombustexture" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalthrombuspresenttexture)">
+          <option *ngFor="let sta of dataabnormalthrombuspresenttexture" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4" *ngIf="selectedraabnormalthrombustexture === 'Abnormal-Thrombus-Present-Texture-Other (Specify)'">
+          <label>Others </label>
+         <input class="form-control"type=text/>
+          </div>
+        <div class="form-group col-md-4">
+          <label>Right Artrium Thrombus Mobility </label>
+        <select [(ngModel)]="selectedraabnormalthrombusmobility" class="form-control" name="status" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalthrombuspresentmobility)">
+          <option *ngFor="let sta of dataabnormalthrombuspresentmobility" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+          </select>
+        </div>
+        
+        <div class="form-group col-md-4" *ngIf="selectedraabnormalthrombusmobility === 'Abnormal-Thrombus-Present-Mobility-Dimensions'">
+          <label>Dimensions  </label>
+         <input class="form-control" name="Dimensions"type=text/>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+        <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectedraabnormalmass === 'Mass-Present'">
+          <label class="head-title" >Mass-Present </label>
+        </div>
+        <div class="form-row"  *ngIf="selectedraabnormalmass === 'Mass-Present' "> 
+          <div class="form-group col-md-4">
+          <label>Right Artrium Mass Size </label>
+        <select [(ngModel)]="selectedraabnormalmasssize" class="form-control" name="selectedraabnormalmasssize" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalmasspresentsize)">
+          <option *ngFor="let sta of dataabnormalmasspresentsize" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+        <label>Right Artrium Mass Location </label>
+        <select [(ngModel)]="selectedraabnormalmasslocation" class="form-control" name="selectedraabnormalmasslocation" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalmasspresentlocation)">
+        <option *ngFor="let sta of dataabnormalmasspresentlocation" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+        </div>
+        <div class="form-group col-md-4">
+        <label>Right Artrium Mass Shape </label>
+        <select [(ngModel)]="selectedraabnormalmassshape" class="form-control" name="selectedraabnormalmassshape" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalmasspresentshape)">
+        <option *ngFor="let sta of dataabnormalmasspresentshape" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+        </div>
+        <div class="form-group col-md-4" *ngIf="selectedraabnormalmassshape === 'Abnormal-Mass-Present-Shape-Others'">
+          <label>Others </label>
+         <input class="form-control"type=text name="selectedraabnormalmassshapeothers"/>
+          </div>
+        <div class="form-group col-md-4">
+        <label>Right Artrium Mass Texture </label>
+        <select [(ngModel)]="selectedraabnormalmasstexture" class="form-control" name="selectedraabnormalmasstexture" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalmasspresenttexture)">
+        <option *ngFor="let sta of dataabnormalmasspresenttexture" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+        </div>
+        <div class="form-group col-md-4">
+        <label>Right Artrium Mass Mobility </label>
+        <select [(ngModel)]="selectedraabnormalmassmobility" class="form-control" name="selectedraabnormalmassmobility" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalmasspresentmobility)">
+        <option *ngFor="let sta of dataabnormalmasspresentmobility" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Right Artrium Mass Type </label>
+          <select [(ngModel)]="selectedraabnormalmasstype" class="form-control" name="selectedraabnormalmasstype" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalmasspresenttype)">
+          <option *ngFor="let sta of dataabnormalmasspresenttype" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+          </select>
+          </div>
+          <div class="form-group col-md-4" *ngIf="selectedraabnormalmasstype === 'Abnormal-Mass-Present-Type-Suggestive Of Other Mass (Specify)'">
+            <label>Others </label>
+           <input class="form-control"type=text name="others"/>
+            </div>
+          <div class="form-group col-md-4">
+            <label>Right Artrium Mass Dimensions </label>
+           <input class="form-control"type=text name="ramassdimentions"/>
+            </div>
+        </div>
+        
+        
+        
+        <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" *ngIf="selectedraabnormalmass === 'Spontaneous Echo Contrast-Present'">
+          <label class="head-title" >Spontaneous Echo Contrast-Present</label>
+        </div>
+        <div class="form-row"  *ngIf="selectedraabnormalspontaneous === 'Spontaneous Echo Contrast-Present' "> 
+          <div class="form-group col-md-4">
+          <label> Spontaneous Echo Contrast-Degree</label>
+        <select [(ngModel)]="selectedcontrastdegree" class="form-control" name="selectedcontrastdegree" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalmasspresentsize)">
+          <option *ngFor="let sta of dataabnormalspontaneouspresentdegree" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+        <label>Spontaneous Echo Contrast-Persistence </label>
+        <select [(ngModel)]="selectedcontrastpersistence" class="form-control" name="selectedcontrastpersistence" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalmasspresentlocation)">
+        <option *ngFor="let sta of dataabnormalspontaneouspresentpersistence" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+        </div>
+        <div class="form-group col-md-4">
+        <label>Spontaneous Echo Contrast-Location </label>
+        <select [(ngModel)]="selectedcontrastlocation" class="form-control" name="selectedcontrastlocation" placeholder="select" (ngModelChange)="onOptionsSelected(selectedraabnormalmasspresentshape)">
+        <option *ngFor="let sta of dataabnormalspontaneouspresentlocation" [ngitemName]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+        </div>
+        
+        </div>
+
+        <div class="form-row"   >
+          <div class="form-group col-md-2" ></div>
+          <div class="form-group col-md-2" >
+            <button type="button" class="btn btn-warning  btn-block" onclick="$('#all-la-tab').trigger('click')" 
+            (click)="getAddPage('leftAtriumObservation')"  >Previous</button>
+          </div>
+          <div class="form-group col-md-2" >
+            <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+          </div>
+          <div class="form-group col-md-2" >
+            <button type="button" class="btn btn-danger  btn-block" onclick="$('#all-mv-tab').trigger('click')" 
+            (click)="getAddPage('mitralValveObservation')"  >Next</button>
+          </div>
+          <div class="form-group col-md-4" ></div>
+        </div> 
+
+
       </div>
-      <div class="form-group col-md-3" >
-        <button type="button" class="btn btn-danger  btn-block" >Next</button>
-      </div>
-      <div class="form-group col-md-3" ></div>
-    </div> 
     
-    
-    </form>
-    
+  
+  </div>
+
+</div>
+
+
+
+</form>
+  
 

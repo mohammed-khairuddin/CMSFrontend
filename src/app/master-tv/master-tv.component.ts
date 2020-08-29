@@ -10,125 +10,304 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./master-tv.component.scss']
 })
 export class MasterTvComponent implements OnInit {
+  structure= [
+    {id:2,itemName:'Normal'},
+    {id:3,itemName:'Abnormal'},  
+  ]
+  
+  // structureAbnormal= [
+  //   {id:2,itemName:'Structure-Abnormal-Rheumatic'},
+  //   {id:3,itemName:'Structure-Abnormal-Vegetation'},
+  //   {id:4,itemName:'Structure-Abnormal-Myxomatous (redundant)'},
+  //   {id:5,itemName:'Structure-Abnormal-Prolapse'},
+  //   {id:6,itemName:'Structure-Abnormal-Ruptured chordae/flail leaflet(s)'},
+    
+  // ]
+  rheumatic =[
+    {id:2,itemName:'Abnormal-Rheumatic'},
 
-  structure = [
-    {id:1,value:'Select Observation'},
-{id:2,value:'Normal'},    
-{id:3,value:'Abnormal-Rheumatic'},
-{id:4,value:'Abnormal-Vegetation-Anterior leaflet-Non-mobile'},
- {id:5,value:'Abnormal-Vegetation-Anterior leaflet-Mobile'},
-{id:6,value:'Abnormal-Vegetation--Anterior leaflet-Pedunculated and mobile'},
-  {id:7,value:'Abnormal-Vegetation-Anterior leaflet-Other(Specify)'},
- {id:8,value:'Abnormal-Vegetation-Anterior leaflet-Size-Small'},
- {id:9,value:'Abnormal-Vegetation-Anterior leaflet-Size-Moderate'},
- {id:10,value:'Abnormal-Vegetation-Anterior leaflet-Size-Large'},
- {id:11,value:'Abnormal-Vegetation-Anterior leaflet-Size-Dimensions'},
-{id:12,value:'Abnormal-Vegetation-Posterior leaflet-Non-mobile'},
- {id:13,value:'Abnormal-Vegetation-Posterior leaflet-Mobile'},
-{id:14,value:'Abnormal-Vegetation--Posterior leaflet-Pedunculated and mobile'},
-  {id:15,value:'Abnormal-Vegetation-Posterior leaflet-Other(Specify)'},
- {id:16,value:'Abnormal-Vegetation-Posterior leaflet-Size-Small'},
- {id:17,value:'Abnormal-Vegetation-Posterior leaflet-Size-Moderate'},
- {id:18,value:'Abnormal-Vegetation-Posterior leaflet-Size-Large'},
- {id:19,value:'Abnormal-Vegetation-Posterior leaflet-Size-Dimensions'},
-{id:20,value:'Abnormal-Vegetation-Septal leaflet-Non-mobile'},
- {id:21,value:'Abnormal-Vegetation-Septal leaflet-Mobile'},
-{id:22,value:'Abnormal-Vegetation--Septal leaflet-Pedunculated and mobile'},
-  {id:23,value:'Abnormal-Vegetation-Septal leaflet-Other(Specify)'},
- {id:24,value:'Abnormal-Vegetation-Spetal leaflet-Size-Small'},
- {id:25,value:'Abnormal-Vegetation-Spetal leaflet-Size-Moderate'},
- {id:26,value:'Abnormal-Vegetation-Septal leaflet-Size-Large'},
- {id:27,value:'Abnormal-Vegetation-Septal leaflet-Size-Dimensions'},
-{id:28,value:'Abnormal-Myxomatous (redundant)'},
-{id:29,value:'Abnormal-Prolapse-Anterior leaflet-Mild'},
-{id:30,value:'Abnormal-Prolapse-Anterior leaflet-Moderate'},
-{id:31,value:'Abnormal-Prolapse-Anterior leaflet-Severe'},
-{id:32,value:'Abnormal-Prolapse-Posterior leaflet-Mild'},
-{id:33,value:'Abnormal-Prolapse-Posterior leaflet-Moderate'},
-{id:34,value:'Abnormal-Prolapse-Posterior leaflet-Severe'},
-{id:35,value:'Abnormal-Prolapse-Septal leaflet-Mild'},
-{id:36,value:'Abnormal-Prolapse-Septal leaflet-Moderate'},
-{id:37,value:'Abnormal-Prolapse-Septal leaflet-Severe'},
-{id:38,value:'Abnormal-Prolapse-Holosystolic'},
-{id:39,value:'Abnormal-Ruptured chordae/flail leaflet(s)-Anterior leaflet-Mild'},
-{id:40,value:'Abnormal-Ruptured chordae/flail leaflet(s)-Anterior leaflet-Moderate'},
-{id:41,value:'Abnormal-Ruptured chordae/flail leaflet(s)-Anterior leaflet-Severe'},
-{id:41,value:'Abnormal-Ruptured chordae/flail leaflet(s)-Posterior leaflet-Mild'},
-{id:42,value:'Abnormal-Ruptured chordae/flail leaflet(s)-Posterior leaflet-Moderate'},
-{id:43,value:'Abnormal-Ruptured chordae/flail leaflet(s)-Posterior leaflet-Severe'},
-{id:44,value:'Abnormal-Ruptured chordae/flail leaflet(s)-Septal leaflet-Mild'},
-{id:45,value:'Abnormal-Ruptured chordae/flail leaflet(s)-Septal leaflet-Moderate'},
-{id:46,value:'Abnormal-Ruptured chordae/flail leaflet(s)-Septal leaflet-Severe'},
-{id:47,value:'Dimensions'},
-{id:48,value:'Ebstein’s anomaly'},
-{id:49,value:'Tricuspid atresia'},
   ]
-  Regurgitation=[
-{id:1,value:'Regurgitation-Absent'},
-{id:2,value:'Regurgitation-Present-Severity-Trace'},
-{id:3,value:'Regurgitation-Present-Severity-Mild'},
-{id:4,value:'Regurgitation-Present-Severity-Mild-to-moderate'},
-{id:5,value:'Regurgitation-Present-Severity-Moderate-to-severe'},
-{id:6,value:'Regurgitation-Present-Severity-Severe'},
-{id:7,value:'Regurgitation-Present-Jet direction-Toward septum'},
-{id:8,value:'Regurgitation-Present-Jet direction-Toward RA free wall'},
-{id:9,value:'Regurgitation-Present-Jet direction-Central'},
-{id:10,value:'Regurgitation-Present-Jet direction-Eccentric'},
-{id:11,value:'Regurgitation-Present-Jet direction-Impinging on wallc'},
-{id:12,value:'Regurgitation-Present-Jet direction-Extending to dome (backwall of RA)'},
-{id:13,value:'Regurgitation-Hepatic vein systolic flow-Normal'},
-{id:14,value:'Regurgitation-Hepatic vein systolic low-Blunted(decreased)'},
-{id:15,value:'Regurgitation-Hepatic vein systolic flow-Reversed'},
-  ]
-Stenosis=[
-{id:1,value:'Stenosis-Severity-None'},
-{id:2,value:'Stenosis-Severity-Mild'},
-{id:3,value:'Stenosis-Severity-Moderate'},
-{id:4,value:'Stenosis-Severity-Severe'},
-{id:5,value:'Stenosis-Quantitative Measurements-Peak tricuspid velocity (Doppler)'},
-{id:6,value:'Stenosis-Quantitative Measurements-Peak trans-fricuspid gradient (Doppler)'},
-{id:7,value:'Stenosis-Quantitative Measurements-Mean tricuspid velocity (Doppler)'},
-{id:8,value:'Stenosis-Quantitative Measurements-Mean trans-tricuspid gradient (Doppler)'},
-{id:9,value:'Stenosis-Quantitative Measurements-Tricuspid valve area'},
-{id:10,value:'Stenosis-Quantitative Measurements-Other (Specify)'}
+  // vegetation = [
+  //   {id:2,itemName:'Vegetation-Anterior leaflet'},
+  //   {id:3,itemName:'Vegetation-Posterior leaflet'},
+  //   {id:4,itemName:'Vegetation-Septal leaflet'},
+   
+
+  // ]
+  vegetationAnteriorleaflet = [
+
+    {id:2,itemName:'Anterior leaflet-Non-mobile'},
+    {id:3,itemName:'Anterior leaflet-Mobile'},
+    {id:4,itemName:'Anterior leaflet-Pedunculated and mobile'},
+    {id:5,itemName:'Anterior leaflet-Other (Specify)'},
+    {id:6,itemName:'Anterior leaflet-Size-Small'},
+    {id:7,itemName:'Anterior leaflet-Size-Moderate'},
+    {id:8,itemName:'Anterior leaflet-Size-Large'},
+    {id:9,itemName:'Anterior leaflet-Size-Dimensions'},
+
+
   ]
 
-  selectstructure;
-  selectRegurgitation;
-  selectStenosis;
-  tricuspidValveObject = {};
+  // anteriorleafletSize = [
+  //   {id:2,itemName:'Size-Small'},
+  //   {id:3,itemName:'Size-Moderate'},
+  //   {id:4,itemName:'Size-Large'},
+  //   {id:5,itemName:'Size-Dimensions'},
 
-  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
+  // ]
+  vegetationPosteriorleaflet = [
+
+    {id:2,itemName:'Posterior leaflet-Non-mobile'},
+    {id:3,itemName:'Posterior leaflet-Mobile'},
+    {id:4,itemName:'Posterior leaflet-Pedunculated and mobile'},
+    {id:5,itemName:'Posterior leaflet-Other (Specify)'},
+    {id:6,itemName:'Posterior leaflet-Size-Small'},
+    {id:7,itemName:'Posterior leaflet-Size-Moderate'},
+    {id:8,itemName:'Posterior leaflet-Size-Large'},
+    {id:9,itemName:'Posterior leaflet-Size-Dimensions'},
+  ]
+  // posteriorleafletSize = [
+  //   {id:2,itemName:'Size-Small'},
+  //   {id:3,itemName:'Size-Moderate'},
+  //   {id:4,itemName:'Size-Large'},
+  //   {id:5,itemName:'Size-Dimensions'},
+
+  // ]
+  vegetationSeptalleaflet = [
+
+    {id:2,itemName:'Septal leaflet-Non-mobile'},
+    {id:3,itemName:'Septal leaflet-Mobile'},
+    {id:4,itemName:'Septal leaflet-Pedunculated and mobile'},
+    {id:5,itemName:'Septal leaflet-Other (Specify)'},
+    {id:6,itemName:'Anterior leaflet-Size-Small'},
+    {id:7,itemName:'Septal leaflet-Size-Moderate'},
+    {id:8,itemName:'Septal leaflet-Size-Large'},
+    {id:9,itemName:'Septal leaflet-Size-Dimensions'},
+  ]
+  // septalleafletSize = [
+  //   {id:2,itemName:'Size-Small'},
+  //   {id:3,itemName:'Size-Moderate'},
+  //   {id:4,itemName:'Size-Large'},
+  //   {id:5,itemName:'Size-Dimensions'},
+  // ]
+  myxomatousredundant =[
+    {id:2,itemName:'Abnormal-Myxomatous (redundant)'},
+
+  ]
+  // prolapse= [
+  //   {id:2,itemName:'Prolapse-Anterior leaflet'},
+  //   {id:3,itemName:'Prolapse-Posterior leaflet'},
+  //   {id:4,itemName:'Prolapse-Septal leaflet'},
+  //   {id:5,itemName:'Prolapse-Holosystolic'},
+  //   {id:6,itemName:'Prolapse-Late systolic'},
+
+  // ]
+  prolapseAnteriorleaflet =[
+    {id:2,itemName:'Anterior leaflet-Mild'},
+    {id:3,itemName:'Anterior leaflet-Moderate'},
+    {id:4,itemName:'Anterior leaflet-Severe'},
+
+  ]
+  prolapsePosteriorleaflet =[
+    {id:2,itemName:'Posterior leaflet-Mild'},
+    {id:3,itemName:'Posterior leaflet-Moderate'},
+    {id:4,itemName:'Posterior leaflet-Severe'},
+
+  ]
+  prolapseSepatlleaflet =[
+    {id:2,itemName:'Septal leaflet-Mild'},
+    {id:3,itemName:'Septal leaflet-Moderate'},
+    {id:4,itemName:'Septal leaflet-Severe'},
+
+  ]
+  holosystolic =[
+    {id:2,itemName:'prolapse-Holosystolic'},
+
+  ]
+  lateSystolic =[
+    {id:2,itemName:'Prolaspe-Late Systolic'},
+
+  ]
+  // rupturedchordae = [
+  //   {id:2,itemName:'rupturedchordae-Anterior leaflet'},
+  //   {id:3,itemName:'rupturedchordae-Posterior leaflet'},
+  //   {id:4,itemName:'rupturedchordae-Septal leaflet'},
+  //   {id:5,itemName:'rupturedchordae-Dilated Annulus Dimensions'},
+  //   {id:6,itemName:'rupturedchordae-Ebstein’s anomaly'},
+  //   {id:7,itemName:'rupturedchordae-Tricuspid atresia'},
+
+  // ]
+  rupturedchordaeAnteriorleaflet =[
+    {id:2,itemName:'Anterior leaflet-Mild'},
+    {id:3,itemName:'Anterior leaflet-Moderate'},
+    {id:4,itemName:'Anterior leaflet-Severe'},
+
+  ]
+  rupturedchordaePosteriorleaflet =[
+    {id:2,itemName:'Posterior leaflet-Mild'},
+    {id:3,itemName:'Posterior leaflet-Moderate'},
+    {id:4,itemName:'Posterior leaflet-Severe'},
+
+  ]
+  rupturedchordaeSepatlleaflet =[
+    {id:2,itemName:'Septal leaflet-Mild'},
+    {id:3,itemName:'Septal leaflet-Moderate'},
+    {id:4,itemName:'Septal leaflet-Severe'},
+
+  ]
+  dilatedannulusDimensions=[
+    {id:2,itemName:'Ruptured-Dilated Annulus Dimensions'},
+
+  ]
+  ebsteinsAnomaly=[
+    {id:2,itemName:'Ruptured-Ebstein’s anomaly'},
+
+  ]
+  tricuspidAtresia=[
+    {id:2,itemName:'Ruptured-Tricuspid Atresia'},
+
+  ]
+  regurgitation= [
+    {id:2,itemName:'Absent'},
+    {id:3,itemName:'Present'},  
+  ]
+  // regurgitationPresent= [
+  //   {id:2,itemName:'regurgitation-Present-Severity'},
+  //   {id:3,itemName:'regurgitation-Present-Jet direction'},
+  //   {id:4,itemName:'regurgitation-Present-Hepatic vein systolic flow'},
+   
+  // ]
+  severity = [
+    {id:2,itemName:'Severity-Trace'},
+    {id:3,itemName:'Severity-Mild'},
+    {id:4,itemName:'Severity-Mild-to-moderate'},
+    {id:5,itemName:'Severity-Moderate-to-severe'},
+    {id:6,itemName:'Severity-Severe'},
+
+
+  ]
+  jetdirection = [
+    {id:2,itemName:'Jetdirection-Toward septum'},
+    {id:3,itemName:'Jetdirection-Toward RA free wall'},
+    {id:4,itemName:'Jetdirection-Central'},
+    {id:5,itemName:'Jetdirection-Eccentric'},
+    {id:6,itemName:'Jetdirection-Impinging on wall'},
+    {id:7,itemName:'Jetdirection-Extending to dome (back wall of RA)'},
+
+  ]
+  hepaticveinsystolicflow = [
+    {id:2,itemName:'Hepatic vein systolic flow-Trace'},
+    {id:3,itemName:'Hepatic vein systolic flow-Mild'},
+    {id:4,itemName:'Hepatic vein systolic flow-Mild-to-moderate'},
+    {id:5,itemName:'Hepatic vein systolic flow-Moderate-to-severe'},
+    {id:6,itemName:'Hepatic vein systolic flow-Severe'},
+
+
+  ]
+  stenosis =[
+    {id:2,itemName:'Absent'},
+    {id:3,itemName:'Present'},
+  ]
+  stenosisSeverity=[
+    {id:2,itemName:'Severity-None'},
+    {id:3,itemName:'Severity-Mild'},
+    {id:4,itemName:'Severity-Moderate'},
+    {id:5,itemName:'Severity-Severe'},
+  ]
+  quantitativeMeasurements =[
+    {id:2,itemName:'Quantitative Measurements-Peak tricuspid velocity (Doppler)'},
+    {id:3,itemName:'Quantitative Measurements-Peak trans-fricuspid gradient (Doppler)'},
+    {id:4,itemName:'Quantitative Measurements-Mean tricuspid velocity (Doppler)'},
+    {id:5,itemName:'Quantitative Measurements-Mean trans-tricuspid gradient (Doppler)'},
+    {id:6,itemName:'Quantitative Measurements-Other (Specify)'},
+
+  ]
+  
+  tricuspidValveObservationObject={
+    structure:[],
+    structureAbnormal:[],
+    vegetation:[],
+    rheumatic:[],
+    vegetationAnteriorleaflet:[],
+    anteriorleafletSize:[],
+    vegetationPosteriorleaflet:[],
+    posteriorleafletSize:[],
+    vegetationSeptalleaflet:[],
+    septalleafletSize:[],
+    prolapse:[],
+    prolapseAnteriorleaflet:[],
+    prolapsePosteriorleaflet:[],
+    prolapseSeptalleaflet:[],
+    rupturedchordae:[],
+    rupturedchordaeAnteriorleaflet:[],
+    rupturedchordaePosteriorleaflet:[],
+    rupturedchordaeSepatlleaflet:[],
+    regurgitation:[],
+    regurgitationPresent:[],
+    severity:[],
+    jetdirection:[],
+    hepaticveinsystolicflow:[],
+    stenosis:[],
+    stenosisSeverity:[],
+    dataabnormalothers:[],
+    quantitativeMeasurements:[],
+    dilatedannulusDimensions:[],
+    ebsteinsAnomaly:[],
+    tricuspidAtresia:[],
+    holosystolic :[],
+    lateSystolic :[],
+
+
 
   }
+  
+  updform = {
+    selectedtv:'',
+    selectedtvvegetation:'',
+    selectedtvvegetationSeptalleaflet:'',
+    selectedtvvegetationAnteriorleaflet:'',
+    selectedtvvegetationPosteriorleaflet:'',
+    selectedtvseptalleafletSize:'',
+    selectedtvposteriorleafletSize:'',
+    selectedtvanteriorleafletSize:'',
+    selectedtvprolapseSepatlleaflet:'',
+    selectedtvprolapseAnteriorleaflet:'',
+    selectedtvprolapsePosteriorleaflet:'',
+    selectedtvrupturedchordaePosteriorleaflet:'',
+    selectedtvrupturedchordaeAnteriorleaflet:'',
+    selectedtvrupturedchordaeSeptalleaflet:'',
+    selectedtvregurgitation:'',
+    selectedtvstenosis:'',
+    selectedtvregurgitationSeverity:'',
+    selectedtvregurgitationjetdirection:'',
+    selectedtvregurgitationhepaticveinsystolicflow:'',
+
+
+
+
+
+
+  }
+
+  
+  constructor() { }
 
   ngOnInit(): void {
-  }
 
+  }
 
   onOptionsSelected = (key,value)  => {
-    this.tricuspidValveObject[key] = value
-    console.log(this.tricuspidValveObject)
+    this.tricuspidValveObservationObject[key] = value
   }
 
-  saveTricuspidValueData = () => {
-    //save function
-  console.log(this.tricuspidValveObject)
+  saveTricuspidValveStructure = () => {
+      //save function
+      // this.tricuspidValveObservationObject = {
+      //   structure: this.updform.selectedtv,
+      // }
+  //   console.log(this.tricuspidValveObservationObject)
+  // console.log(this.structureAbnormal)
+  }
 
-    
-  const objectManagementReq = {
-    "value": this.tricuspidValveObject
-   }
-   console.log(objectManagementReq);
-   this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-      console.log(res);
-      if(res['message'] ==  'submitted successfully' ) {
-      alert('Observation Inserted Successfully');
-      //this.router.navigateByUrl(`/observations/`);
-      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
-    } 
-     
- })
 
-}
 }

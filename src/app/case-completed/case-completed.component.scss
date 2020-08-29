@@ -1,7 +1,5 @@
 .table{
     width:100%;
-    //width:215%;
-    overflow-x:auto;
 }
 
 #page-content-wrapper {
@@ -124,7 +122,7 @@
 .sticky-col {
     position: sticky;
     position: -webkit-sticky;    
-    //background-color: white;
+    background-color: #fff;
 }
 .first-col {
 	width: 100px;
@@ -140,9 +138,38 @@
 	left: 100px;    
 }
 
+.third-col {
+	width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+	left: 250px;    
+}
+.fourth-col {
+	width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+	left: 350px;    
+}
+.fifth-col {
+	width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+	left: 500px;    
+}
+.sixth-col {
+	width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+	left: 600px;    
+} 
+
 .wrapper {
 	position: relative;
 	overflow: auto;
    	//border: 1px solid black;
   	white-space: nowrap;
 }
+
+// table {
+//     border-collapse: 0 !important;
+// }

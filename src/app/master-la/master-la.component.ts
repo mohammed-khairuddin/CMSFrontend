@@ -11,175 +11,331 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class MasterLaComponent implements OnInit {
 
-  selectSize = [
-    {id:1,value:'Normal'},
-    {id:2,value:'Abnormal - Size - Normal'},
-    {id:3,value:'Abnormal - Size - Dilated'},
-    {id:4,value:'Abnormal - Size - Mildly Dilate'},
-    {id:5,value:'Abnormal - Size - Moderately Dilated '},
-    {id:6,value:'Abnormal - Size - Severely Dilated'},
-    {id:7,value:'Abnormal - Size - Elongated'},
-    {id:8,value:'Abnormal - Size - Volume (Or Dimensions)'},
-
-    
-    
-
+  leftAtrium = [
+    {id:2,itemName:'Normal'},
+    {id:3,itemName:'Abnormal'}
   ]
-  selectThrombus= [
+  size = [
+      {id:2,itemName:'Size-Normal'},
+      {id:3,itemName:'Size-Dilated'},
+      {id:4,itemName:'Size-Mildly Dilate'},
+      {id:5,itemName:'Size-Moderately Dilated '},
+      {id:6,itemName:'Size-Severely Dilated'},
+      {id:7,itemName:'Size-Elongated'},
+      {id:8,itemName:'Size-Volume (Or Dimensions)'}
+  ]
+  
+    thrombus= [
+      {id:2,itemName:'Absent'},
+      {id:3,itemName:'Present'},
+    ]
+    thrombuspresent=[
+      {id:2,itemName:'Present-Size'},
+      {id:3,itemName:'Present-Location'},
+      {id:4,itemName:'Present-Shape'},
+      {id:5,itemName:'Present-Texture'},
+      {id:6,itemName:'Present-Mobility'},
+      {id:7,itemName:'Present-Dimensions'},
+    ]
+    thrombuspresentsize=[
+      {id:2,itemName:'Present-Size-Small'},
+      {id:3,itemName:'Present-Size-Moderate'},
+      {id:4,itemName:'Present-Size-Large'},
+    ]
+    thrombuspresentlocation=[
+      {id:2,itemName:'Present-Location-LA Cavity-Superior'},
+      {id:3,itemName:'Present-Location-LA Cavity-Inferior'},
+      {id:4,itemName:'Present-Location-LA Cavity-Lateral'},
+      {id:5,itemName:'Present-Location-LA Cavity-Atrial Septum'},
+      {id:6,itemName:'Present-Location-LA Appendage'},
+    ]
+    thrombuspresentshape=[
+      {id:2,itemName:'Present-Shape-Flat (Mural)'},
+      {id:3,itemName:'Present-Shape-Protruding'},
+      {id:4,itemName:'Present-Shape-Pedunculated'},
+      {id:5,itemName:'Present-Shape-Papillary'},
+      {id:6,itemName:'Present-Shape-Spherical'},
+      {id:7,itemName:'Present-Shape-Regular'},
+      {id:8,itemName:'Present-Shape-Irregular'},
+      {id:9,itemName:'Present-Shape-Multilobula'},
+      {id:10,itemName:'Present-Shape-Other (Specify)'},
+    ] 
+    thrombuspresenttexture=[
+      {id:2,itemName:'Present-Texture-Solid'},
+      {id:3,itemName:'Present-Texture-Layered'},
+      {id:4,itemName:'Present-Texture-Hypoechoic Interior (Cystic)'},
+      {id:5,itemName:'Present-Texture-Echogenic'},
+      {id:6,itemName:'Present-Texture-Calcified'},
+    ]
+    thrombuspresentmobility=[
+      {id:2,itemName:'Present-Mobility-Mobile'},
+      {id:3,itemName:'Present-Mobility-Fixed (Sessile)'},
+    ]
 
-    {id:1,value:'Abnormal - Thrombus - Absent'},
-    {id:2,value:'Abnormal - Thrombus - Absent-Present-Size-Small'},
-    {id:3,value:'Abnormal - Thrombus - Absent-Present-Size-Moderate'},
-    {id:4,value:'Abnormal - Thrombus - Absent-Present-Size-Large'},
-
-
-    {id:5,value:'Abnormal - Thrombus - Absent-Present-Location-LA Cavity-Superior'},
-    {id:6,value:'Abnormal - Thrombus - Absent-Present-Location-LA Cavity-Inferior'},
-    {id:7,value:'Abnormal - Thrombus - Absent-Present-Location-LA Cavity-Lateral'},
-    {id:8,value:'Abnormal - Thrombus - Absent-Present-Location-LA Cavity-Atrial Septum'},
-
-    {id:9,value:'Abnormal - Thrombus - Absent-Present-Location-LA Appendage'},
-
-    {id:10,value:'Abnormal - Thrombus - Absent-Present-Shape-Flat (Mural)'},
-    {id:11,value:'Abnormal - Thrombus - Absent-Present-Shape-Protruding'},
-    {id:12,value:'Abnormal - Thrombus - Absent-Present-Shape-Pedunculated'},
-    {id:13,value:'Abnormal - Thrombus - Absent-Present-Shape-Papillary'},
-    {id:14,value:'Abnormal - Thrombus - Absent-Present-Shape-Spherical'},
-    {id:15,value:'Abnormal - Thrombus - Absent-Present-Shape-Regular'},
-    {id:16,value:'Abnormal - Thrombus - Absent-Present-Shape-Irregular'},
-    {id:17,value:'Abnormal - Thrombus - Absent-Present-Shape-Multilobula'},
-    {id:18,value:'Abnormal - Thrombus - Absent-Present-Shape-Other (Specify)'},
-
-
-
-    {id:19,value:'Abnormal - Thrombus - Absent-Present-Texture-Solid'},
-    {id:20,value:'Abnormal - Thrombus - Absent-Present-Texture-Layered'},
-    {id:21,value:'Abnormal - Thrombus - Absent-Present-Texture-Hypoechoic Interior (Cystic)'},
-    {id:22,value:'Abnormal - Thrombus - Absent-Present-Texture-Echogenic'},
-    {id:23,value:'Abnormal - Thrombus - Absent-Present-Texture-Calcified'},
-    
-    
-    {id:24,value:'Abnormal - Thrombus - Absent-Present-Mobility-Mobile'},
-    {id:25,value:'Abnormal - Thrombus - Absent-Present-Mobility-Fixed (Sessile)'},
-    
-    {id:26,value:'Abnormal - Thrombus - Absent-Present-Dimensions'},
+    thrombuspresentDimension=[
+      {id:2,itemName:'Present-Dimensions'},
+    ]
+  
+    mass=[
+      {id:2,itemName:'Absent'},
+      {id:3,itemName:'Present'},
+    ]
+    masspresent=[
+      {id:2,itemName:'Present-Size'},
+      {id:3,itemName:'Present-Location'},
+      {id:4,itemName:'Present-Attachment'},
+      {id:5,itemName:'Present-Shape'},
+      {id:6,itemName:'Present-Texture'},
+      {id:7,itemName:'Present-Mobility'},
+      {id:8,itemName:'Present-Dimensions'},
+      {id:9,itemName:'Present-Type'},
+    ]
+      massSize=[
+        {id:2,itemName:'Present-Size-Small'},
+       {id:3,itemName:'Present-Size-Moderate'},
+       {id:4,itemName:'Present-Size-Large'},
+      ]
+  massLocation=[
+      {id:2,itemName:'Present-Location-LA Cavity'},
+      {id:3,itemName:'Present-Location-LA Appendage'},
+      {id:4,itemName:'Present-Location-Fossa Ovalis/Atrial Septum'},
+  ]
+  massAttachment=[
+      {id:2,itemName:'Present-Attachment Site-Fossa Ovalis/Atrial Septum'},
+      {id:3,itemName:'Present-Attachment Site-Left Atrial Body'},
+      {id:4,itemName:'Present-Attachment Site-Mitral Valve'},
+      {id:5,itemName:'Present-Attachment Site-Other (Specify)'},
+  ]
+  massShape=[
+      {id:2,itemName:'Present-Shape-Flat (Mural)'},
+      {id:3,itemName:'Present-Shape-Protruding'},
+      {id:4,itemName:'Present-Shape-Pedunculated'},
+      {id:5,itemName:'Present-Shape-Papillary'},
+      {id:6,itemName:'Present-Shape-Spherical'},
+      {id:7,itemName:'Present-Shape-Regular'},
+      {id:8,itemName:'Present-Shape-Irregular'},
+      {id:9,itemName:'Present-Shape-Multilobular'},
+      {id:10,itemName:'Present-Shape-Frondlike'},
+      {id:11,itemName:'Present-Shape-Other (Specify)'},
+  ]
+  massTexture=[
+      {id:2,itemName:'Present-Texture-Solid'},
+      {id:3,itemName:'Present-Texture-Layered'},
+      {id:4,itemName:'Present-Texture-Hypoechonc Interior (Cystic)'},
+      {id:5,itemName:'Present-Texture-Echogenic'},
+      {id:6,itemName:'Present-Texture-Calcified'},
+  ]
+  massMobility=[
+      {id:2,itemName:'Present-Mobility-Mobile'},
+      {id:3,itemName:'Present-Mobility-Fixed (Sessile)'},
   ]
 
-  selectMass=[
-
-    {id:1,value:'Abnormal - Mass - Absent-Present-Size-Small'},
-    {id:2,value:'Abnormal - Mass - Absent-Present-Size-Moderate'},
-    {id:3,value:'Abnormal - Mass - Absent-Present-Size-Large'},
-
-
-    {id:4,value:'Abnormal - Mass - Absent-Present-Location-LA Cavity'},
-    {id:5,value:'Abnormal - Mass - Absent-Present-Location-LA Appendage'},
-    {id:6,value:'Abnormal - Mass - Absent-Present-Location-Fossa Ovalis/Atrial Septum'},
-
-
-    {id:7,value:'Abnormal - Mass - Absent-Present-Attachment Site-Fossa Ovalis/Atrial Septum'},
-    {id:8,value:'Abnormal - Mass - Absent-Present-Attachment Site-Left Atrial Body'},
-    {id:9,value:'Abnormal - Mass - Absent-Present-Attachment Site-Mitral Valve'},
-    {id:10,value:'Abnormal - Mass - Absent-Present-Attachment Site-Other (Specify)'},
-
-    {id:11,value:'Abnormal - Mass - Absent-Present-Shape-Flat (Mural)'},
-    {id:12,value:'Abnormal - Mass - Absent-Present-Shape-Protruding'},
-    {id:13,value:'Abnormal - Mass - Absent-Present-Shape-Pedunculated'},
-    {id:14,value:'Abnormal - Mass - Absent-Present-Shape-Papillary'},
-    {id:15,value:'Abnormal - Mass - Absent-Present-Shape-Spherical'},
-    {id:16,value:'Abnormal - Mass - Absent-Present-Shape-Regular'},
-    {id:17,value:'Abnormal - Mass - Absent-Present-Shape-Irregular'},
-    {id:18,value:'Abnormal - Mass - Absent-Present-Shape-Multilobular'},
-    {id:19,value:'Abnormal - Mass - Absent-Present-Shape-Frondlike'},
-    {id:20,value:'Abnormal - Mass - Absent-Present-Shape-Other (Specify)'},
-
-
-    {id:21,value:'Abnormal - Mass - Absent-Present-Texture-Solid'},
-    {id:22,value:'Abnormal - Mass - Absent-Present-Texture-Layered'},
-    {id:23,value:'Abnormal - Mass - Absent-Present-Texture-Hypoechonc Interior (Cystic)'},
-    {id:24,value:'Abnormal - Mass - Absent-Present-Texture-Echogenic'},
-    {id:25,value:'Abnormal - Mass - Absent-Present-Texture-Calcified'},
-   
-    {id:26,value:'Abnormal - Mass - Absent-Present-Mobility-Mobile'},
-    {id:27,value:'Abnormal - Mass - Absent-Present-Mobility-Fixed (Sessile)'},
-
-
-    {id:28,value:'Abnormal - Mass - Absent-Present-Dimensions-Type-Suggestive Of Myxoma'},
-    {id:29,value:'Abnormal - Mass - Absent-Present-Dimensions-Type-Suggestive Of Papilloma'},
-    {id:30,value:'Abnormal - Mass - Absent-Present-Dimensions-Type-Suggestive Of Fibroelastoma'},
-    {id:31,value:'Abnormal - Mass - Absent-Present-Dimensions-Type-Suggestive Of Other Mass (Specify)'},
-
-  ]
-  selectCatheter=[
-    
-    
-    {id:1,value:'Abnormal - Catheter - Absent-Present-LA Cavity'},
-    {id:2,value:'Abnormal - Catheter - Absent-Present-LA Appendage'},
-
+  massDimension=[
+    {id:2,itemName:'Present-Dimensions'},
   ]
 
-    SelectSpontaneousEchoContrast=[
-    {id:1,value:'Abnormal - Spontaneous Echo Contrast - Absent-Present-Degree-Mild'},
-    {id:2,value:'Abnormal - Spontaneous Echo Contrast - Absent-Present-Degree-Severe'},
-    
+  massType=[
+      {id:2,itemName:'Present-Type-Suggestive Of Myxoma'},
+      {id:3,itemName:'Present-Type-Suggestive Of Papilloma'},
+      {id:4,itemName:'Present-Type-Suggestive Of Fibroelastoma'},
+      {id:5,itemName:'Present-Type-Suggestive Of Other Mass (Specify)'},  
+    ]
+    catheter=[
+      {id:2,itemName:'Absent'},
+      //{id:3,itemName:'Present'},
+      {id:3,itemName:'Present-LA Cavity'},
+      {id:4,itemName:'Present-LA Appendage'},
+  
+    ]
+    catheterpresent=[
+     {id:2,itemName:'Present-LA Cavity'},
+      {id:3,itemName:'Present-LA Appendage'},
+    ]
+  
+      spontaneousEchoContrast=[
+        {id:2,itemName:'Absent'},
+        {id:3,itemName:'Present'},
+      ]
+      spontaneousechocontrastpresent=[
+      {id:2,itemName:'Present-Degree'},
+      {id:3,itemName:'Present-Location'},
+      ]
+      spontaneousechocontrastpresentdegree=[
+      {id:2,itemName:'Preent-Degree-Mild'},
+      {id:3,itemName:'Present-Degree-Severe'},
+      ]
+      spontaneousechocontrastpresentlocation=[
+      {id:2,itemName:'Present-Location-LA Cavity'},
+      {id:3,itemName:'Present-Location-LA Appendage'},
+      {id:4,itemName:'Present-Location-LA Cavity and LA Appendage'},
+      
+     ]
+  
+     AtrialSeptalDefect=[
+      {id:2,itemName:'Location'},
+      {id:3,itemName:'Size'},
+      {id:4,itemName:'Shunt'},
+     ]
+     atrialseptaldefectlocation=[
+      {id:2,itemName:'Location-Primum'},
+      {id:3,itemName:'Location-Secundum'},
+      {id:4,itemName:'Location-Sinus Venosus'},    
+     ]
+     atrialseptaldefectsize=[
+      {id:2,itemName:'Size-Small'},
+      {id:3,itemName:'Size-Moderate'},
+      {id:4,itemName:'Size-Large'},
+     ]
+     atrialseptaldefectshunt=[
+      {id:2,itemName:'Shunt-Left-To-Right'},
+      {id:3,itemName:'Shunt-Right-To-Left'},
+      {id:4,itemName:'Shunt-Bidirectional'},
+      {id:5,itemName:'Shunt-Qp:Qs Ratio'},
+     ]
+  
+     patentForamenOvale=[
+      {id:2,itemName:'Absent'},
+      //{id:3,itemName:'Present'}
+      {id:3,itemName:'Present-Left-To-Right'},
+      {id:4,itemName:'Present-Right-To-Left'},
+      {id:5,itemName:'Present-Bidirectional Shunt'},
+     ]
+     patientforamenovalepresent=[
+      {id:2,itemName:'Present-Left-To-Right'},
+      {id:3,itemName:'Present-Right-To-Left'},
+      {id:4,itemName:'Present-Bidirectional Shunt'},
+     ]
 
-    {id:3,value:'Abnormal - Spontaneous Echo Contrast - Absent-Present-Location-LA Cavity'},
-    {id:4,value:'Abnormal - Spontaneous Echo Contrast - Absent-Present-Location-LA Appendage'},
-    {id:5,value:'Abnormal - Spontaneous Echo Contrast - Absent-Present-Location-LA Cavity and LA Appendage'},
-    
-   ]
+     other=[
+      {id:2,itemName:'Other-CorTriatriatum'},
+      {id:3,itemName:'Other-Hypoplastic Left Atrium'},
+      {id:4,itemName:'Other-Appearance Consistent With Cardiac Transplantation'},
+     ]
 
-   selectAtrialSeptalDefect=[
+  leftAtriumObservationObject = {
+    leftAtrium:[],
+    size:[],
+    thrombus:[],
+    //thrombuspresent:[],
+    thrombuspresentsize:[],
+    thrombuspresentlocation:[],
+    thrombuspresentshape:[],
+    thrombuspresenttexture:[],
+    thrombuspresentmobility:[],
+    thrombuspresentDimension:[],
+    mass:[],
+    //masspresent:[],
+    massSize:[],
+    massLocation:[],
+    massAttachment:[],
+    massShape:[],
+    massTexture:[],
+    massMobility:[],
+    massDimension:[],
+    massType:[],
+    catheter:[],
+    //catheterpresent:[],
+    spontaneousEchoContrast:[],
+    //spontaneousechocontrastpresent:[],
+    spontaneousechocontrastpresentdegree:[],
+    spontaneousechocontrastpresentlocation:[],
+    //AtrialSeptalDefect:[],
+    atrialseptaldefectlocation:[],
+    atrialseptaldefectsize:[],
+    atrialseptaldefectshunt:[],
+    patentForamenOvale:[],
+    //patientforamenovalepresent:[],
+    other:[],
 
-    {id:1,value:'Abnormal - Atrial Septal Defect-Location-Primum'},
-    {id:2,value:'Abnormal - Atrial Septal Defect-Location-Secundum'},
-    {id:3,value:'Abnormal - Atrial Septal Defect-Location-Sinus Venosus'},    
-    
-    {id:4,value:'Abnormal - Atrial Septal Defect-Size-Small'},
-    {id:5,value:'Abnormal - Atrial Septal Defect-Size-Moderate'},
-    {id:6,value:'Abnormal - Atrial Septal Defect-Size-Large'},
-
-    {id:7,value:'Abnormal - Atrial Septal Defect-Shunt-Left-To-Right'},
-    {id:8,value:'Abnormal - Atrial Septal Defect-Shunt-Right-To-Left'},
-    {id:9,value:'Abnormal - Atrial Septal Defect-Shunt-Bidirectional'},
-    {id:10,value:'Abnormal - Atrial Septal Defect-Shunt-Qp:Qs Ratio'},
-   ]
-
-   selectPatentForamenOvale=[
-
-    {id:1,value:'Abnormal - Patent Foramen Ovale- Absent-Present-Left-To-Right'},
-    {id:2,value:'Abnormal - Patent Foramen Ovale- Absent-Present-Right-To-Left'},
-    {id:3,value:'Abnormal - Patent Foramen Ovale- Absent-Present-Bidirectional Shunt'},
-   ]
-
-   selectOther=[
-
-    {id:1,value:'Abnormal - Other-CorTriatriatum'},
-    {id:2,value:'Abnormal - Other-Hypoplastic Left Atrium'},
-    {id:3,value:'Abnormal - Other-Appearance Consistent With Cardiac Transplantation'},
-   ]
-
+  }
   
 
-   selectedSize;
-   selectedThrombus;
-   selectedSpontaneousEchoContrast;
-   selectedPatentForamenOvale;
-   selectedMass;
-   selectedCatheter;
-   selectedAtrialSeptalDefect;
-   selectedOther;
+  selectLeftAtrium: [];
+  selectSize: [];
+  //sizeVolumeValue
+  selectThrombus: [];
+  selectThrombuspresentsize: [];
+  selectThrombuspresentlocation: [];
+  selectThrombuspresentshape: [];
+  //thrombusShapevalue
+  selectThrombuspresenttexture: [];
+  selectThrombuspresentmobility: [];
+  selectThrombuspresentDimension: [];
+  //dimensionValue
+  selectMass: [];
+  selectMassSize: [];
+  selectMassLocation: [];
+  selectMassAttachment: [];
+  selectMassShape: [];
+  //massShapevalue
+  selectMassTexture: [];
+  selectMassMobility: [];
+  selectMassDimension: [];
+  //massDimensionValue
+  selectMassType: [];
+  //massTypeValue
+  selectCatheter: [];
+  selectSpontaneousEchoContrast: [];
+  selectSpontaneousechocontrastpresentdegree: [];
+  selectspontaneousechocontrastpresentlocation: [];
+  selectAtrialseptaldefectlocation: [];
+  selectAtrialseptaldefectsize: [];
+  selectAtrialseptaldefectshunt: [];
+  //atrialseptaldefectshuntvalue
+  selectPatentForamenOvale: [];
+  selectOther: [];
 
-  leftAtriumObservationObject={};
+
+  settings= {};
   
+  obtype: string;
+
+  updform = {
+    selectLeftAtrium:'',
+    selectSize:'',
+    //sizeVolumeValue:'',
+    selectThrombus:'',
+    selectThrombuspresentsize:'',
+    selectThrombuspresentlocation:'',
+    selectThrombuspresentshape:'',
+    //thrombusShapevalue:'',
+    selectThrombuspresenttexture:'',
+    selectThrombuspresentmobility:'',
+    selectThrombuspresentDimension:'',
+    //dimensionValue:'',
+    selectMass:'',
+    selectMassSize:'',
+    selectMassLocation:'',
+    selectMassAttachment:'',
+    selectMassShape:'',
+    //massShapevalue:'',
+    selectMassTexture:'',
+    selectMassMobility:'',
+    selectMassDimension:'',
+    //massDimensionValue:'',
+    selectMassType:'',
+    //massTypeValue:'',
+    selectCatheter:'',
+    selectSpontaneousEchoContrast:'',
+    selectSpontaneousechocontrastpresentdegree:'',
+    selectspontaneousechocontrastpresentlocation:'',
+    selectAtrialseptaldefectlocation:'',
+    selectAtrialseptaldefectsize:'',
+    selectAtrialseptaldefectshunt:'',
+    //atrialseptaldefectshuntvalue:'',
+    selectPatentForamenOvale:'',
+    selectOther:'',
+  }
+
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
 
   }
 
   ngOnInit(): void {
-
-   
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+   });
 
 
   }
@@ -192,7 +348,43 @@ export class MasterLaComponent implements OnInit {
   
   saveLeftAtriumValueData = () => {
     //save function
-  console.log(this.leftAtriumObservationObject)
+  //console.log(this.leftAtriumObservationObject)
+
+  this.leftAtriumObservationObject = {
+    leftAtrium :this.selectLeftAtrium,
+    size :this.selectSize,
+    thrombus :this.selectThrombus,
+    //thrombuspresent :this.selectThrombus,
+    thrombuspresentsize :this.selectThrombuspresentsize,
+    thrombuspresentlocation :this.selectThrombuspresentlocation,
+    thrombuspresentshape :this.selectThrombuspresentshape,
+    thrombuspresenttexture :this.selectThrombuspresenttexture,
+    thrombuspresentmobility :this.selectThrombuspresentmobility,
+    thrombuspresentDimension :this.selectThrombuspresentDimension,
+    mass :this.selectMass,
+    //masspresent :this.selectMass,
+    massSize :this.selectMassSize,
+    massLocation :this.selectMassLocation,
+    massAttachment :this.selectMassAttachment,
+    massShape :this.selectMassShape,
+    massTexture :this.selectMassTexture,
+    massMobility :this.selectMassMobility,
+    massDimension :this.selectMassDimension,
+    massType :this.selectMassType,
+    catheter :this.selectCatheter,
+    //catheterpresent :this.selectCatheter,
+    spontaneousEchoContrast :this.selectSpontaneousEchoContrast,
+    //spontaneousechocontrastpresent :this.selectSpontaneousechocontrastpresentdegree,
+    spontaneousechocontrastpresentdegree :this.selectSpontaneousechocontrastpresentdegree,
+    spontaneousechocontrastpresentlocation :this.selectspontaneousechocontrastpresentlocation,
+    //AtrialSeptalDefect :this.selectAtrialseptaldefectlocation,
+    atrialseptaldefectlocation :this.selectAtrialseptaldefectlocation,
+    atrialseptaldefectsize :this.selectAtrialseptaldefectsize,
+    atrialseptaldefectshunt :this.selectAtrialseptaldefectshunt,
+    patentForamenOvale :this.selectPatentForamenOvale,
+    //patientforamenovalepresent :this.selectPatientfor
+    other :this.selectOther,
+  }
 
   const objectManagementReq = {
     "value": this.leftAtriumObservationObject
@@ -206,8 +398,21 @@ export class MasterLaComponent implements OnInit {
       this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
     } 
      
- })
+ }) 
 
 }
+
+getAddPage  = (obtype) => {
+  console.log(obtype);
+  //console.log('=====//////////');
+  window.localStorage.setItem("obtype", obtype.toString());
+  // this.router.navigateByUrl(`/mastertable/`+type);   
+  this.actRoute.paramMap.subscribe(params => {
+    this.obtype = params.get('obtype');
+
+ });
+
+}
+
 
 }

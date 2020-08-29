@@ -12,32 +12,58 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class MasterPaComponent implements OnInit {
 
   data =  [
-    {id:1,value:'Normal'},
-    {id:2,value:'Dilated-Mildly dilated'},
-    {id:3,value:'Dilated-Moderately dilated'},
-    {id:4,value:'Dilated-Severely dilated'},
-    {id:5,value:'Pulmonary hypertension-Absent'},
-    {id:6,value:'Pulmonary hypertension-Present'},
-    {id:7,value:'Patent ductusarteriosus-Absent'},
-    {id:8,value:'Patent ductusarteriosus-Present'},
-    {id:9,value:'Suspect thromboembolism-Main pulmonary artery'},
-    {id:10,value:'Suspect thromboembolism-Right pulmonary artery'},
-    {id:11,value:'Suspect thromboembolism-Left pulmonary artery'},
-    {id:12,value:'Pulmonary branch stenosis-Right pulmonary artery'},
-    {id:13,value:'Pulmonary branch stenosis-Left pulmonary artery'},
-    {id:14,value:'Pulmonary artery hypoplasia'},
-    {id:15,value:'Estimated pulmonary artery systolic pressure'},
+    {id:2,itemName:'Normal'},
+  {id:3,itemName:'Pulmonary artery hypoplasia'},
+    {id:4,itemName:'Estimated pulmonary artery systolic pressure'},
   ]
-
-
-  selectedObsevation;
-  pulmonaryArteryObservation = {};
+ dilated=[
+   {id:2,itemName:'Dilated-Mildly dilated'},
+    {id:3,itemName:'Dilated-Moderately dilated'},
+    {id:4,itemName:'Dilated-Severely dilated'},
+  ]
+pulmonaryhypertension=[
+    {id:2,itemName:'Pulmonary hypertension-Absent'},
+    {id:3,itemName:'Pulmonary hypertension-Present'},
+]
+Patentductusarteriosus=[
+    {id:2,itemName:'Patent ductusarteriosus-Absent'},
+    {id:3,itemName:'Patent ductusarteriosus-Present'},
+]
+Suspectthromboembolism=[
+    {id:2,itemName:'Suspect thromboembolism-Main pulmonary artery'},
+    {id:3,itemName:'Suspect thromboembolism-Right pulmonary artery'},
+    {id:4,itemName:'Suspect thromboembolism-Left pulmonary artery'},
+]
+Pulmonarybranchstenosis=[
+    {id:2,itemName:'Pulmonary branch stenosis-Right pulmonary artery'},
+    {id:3,itemName:'Pulmonary branch stenosis-Left pulmonary artery'} 
+  ]
+  pulmonaryArteryObservation = {
+    data:[],
+    dilated:[],
+    pulmonaryhypertension:[],
+    Patentductusarteriosus:[],
+    Suspectthromboembolism:[],
+    Pulmonarybranchstenosis:[]
+  }
+  selectData: []
+   
+  settings= {};
+  
+  obtype: string;
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
 
   }
 
   ngOnInit(): void {
+
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+   });
+
+   
+
   }
 
   onOptionsSelected = (key,value)  => {
@@ -46,7 +72,11 @@ export class MasterPaComponent implements OnInit {
 
   savePulmonaryArteryData = () => {
       //save function
-    console.log(this.pulmonaryArteryObservation)
+    //console.log(this.pulmonaryArteryObservation)
+
+    this.pulmonaryArteryObservation = {
+      data: this.selectData
+    }
 
     const objectManagementReq = {
       "value": this.pulmonaryArteryObservation
@@ -63,4 +93,17 @@ export class MasterPaComponent implements OnInit {
    })
 
   }
+
+  getAddPage  = (obtype) => {
+    console.log(obtype);
+    //console.log('=====//////////');
+    window.localStorage.setItem("obtype", obtype.toString());
+    // this.router.navigateByUrl(`/mastertable/`+type);   
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+  
+   });
+  
+  }
+  
 }

@@ -22,6 +22,7 @@ export class NavComponent implements OnInit {
   constructor(private router:Router,private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    
   }
 
    openNav() {
@@ -39,6 +40,7 @@ export class NavComponent implements OnInit {
     this.role  = localStorage.getItem('role')
 
   }
+  
 
   getAddPage  = (type) => {
     console.log(type);

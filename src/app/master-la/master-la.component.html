@@ -2,118 +2,413 @@
       <div class="observe">
         <div id="container">
           <h3 class="head-title"> Type: Left Atrium </h3> 
-          <div class="form-group">
-          <section class="left-column">
-      
-            <div class="form-group">
-              
-              <div class="form-group col-md-11">
-                  <label> Size </label>              
-                  <select [(ngModel)]="selectedSize" name="selectedSize" placeholder="select" 
-                  (ngModelChange)="onOptionsSelected('size',selectedSize)" class="form-control" >
-                     <option>Select Size</option>
-                     <option *ngFor="let sta of selectSize" [ngValue]="sta.value">{{sta.value}}</option>
-                 </select>
-             </div>
-             <div class="form-group col-md-11">
-              <label>Thrombus</label>            
-                  <select [(ngModel)]="selectedThrombus" name="selectedThrombus" placeholder="select" 
-                  (ngModelChange)="onOptionsSelected('thrombus',selectedThrombus)" class="form-control">
-                  <option>Select Thrombus</option>
-                   <option *ngFor="let sta of selectThrombus" [ngValue]="sta.value">{{sta.value}}</option>
-                   </select>
-             </div>
-            <div class="form-group col-md-11">
-              <label>Spontaneous Echo Contrast</label>
-            <select [(ngModel)]="selectedSpontaneousEchoContrast" name="selectedSpontaneousEchoContrast" placeholder="select" 
-             (ngModelChange)="onOptionsSelected('spontaneousEchoContrast',selectedSpontaneousEchoContrast)" class="form-control">
-             <option>Select Spontaneous Echo Contrast</option>
-              <option *ngFor="let sta of SelectSpontaneousEchoContrast" [ngValue]="sta.value">{{sta.value}}</option>
-              </select>
-            </div>
-  
-              <div class="form-group col-md-11">
-  
-              <label>	Patent Foramen Ovale </label>
-              <select [(ngModel)]="selectedPatentForamenOvale" name="selectedPatentForamenOvale" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('patentForamenOvale',selectedPatentForamenOvale)" class="form-control">
-              <option>Select Patent Foramen Ovale </option>
-               <option *ngFor="let sta of selectPatentForamenOvale" [ngValue]="sta.value">{{sta.value}}</option>
-               </select>
-            </div>
-  
-            </div>
-      
-           
-      
-          </section>
-      
-      
-          <section class="right-column">
-      
-            <div class="form-group">
-              
-              <div class="form-group col-md-11">
-                  <label>Mass </label>
-                  <select [(ngModel)]="selectedMass" name="selectedMass" placeholder="select" 
-                 (ngModelChange)="onOptionsSelected('mass',selectedMass)" class="form-control">
-                 <option>Select Mass</option>
-                  <option *ngFor="let sta of selectMass" [ngValue]="sta.value">{{sta.value}}</option>
-                  </select>
-  
-             </div>
-             <div class="form-group col-md-11">
-              <label>Catheter </label>
-                  <select [(ngModel)]="selectedCatheter" name="selectedCatheter" placeholder="select" 
-                  (ngModelChange)="onOptionsSelected('catheter',selectedCatheter)" class="form-control">
-                   <option>Select Catheter</option>
-                   <option *ngFor="let sta of selectCatheter" [ngValue]="sta.value">{{sta.value}}</option>
-                   </select>
-             </div>       
-             <div class="form-group col-md-11">
-              <label>Atrial Septal Defect </label>
-              <select [(ngModel)]="selectedAtrialSeptalDefect" name="selectedAtrialSeptalDefect" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('atrialSeptalDefect',selectedAtrialSeptalDefect)" class="form-control">
-            <option>Select Atrial Septal Defect </option> 
-             <option *ngFor="let sta of selectAtrialSeptalDefect" [ngValue]="sta.value">{{sta.value}}</option>
-             </select>
-            </div>
-  
-            <div class="form-group col-md-11">
-              <label>Other </label>
-              <select [(ngModel)]="selectedOther" name="selectedOther" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('other',selectedOther)" class="form-control">
-               <option>Select Other</option>
-               <option *ngFor="let sta of selectOther" [ngValue]="sta.value">{{sta.value}}</option>
-               </select>
-  
-              </div>          
-        
-            </div>
-      
-           
-      
-          </section>
-      
-      
-        </div>
-      
          
-          </div>        
-         
-          <div class="form-row"   >
-            <div class="form-group col-md-3" ></div>
-            <div class="form-group col-md-3" >
-              <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
-            </div>
-            <div class="form-group col-md-3" >
-              <button type="button" class="btn btn-danger  btn-block" >Next</button>
-            </div>
-            <div class="form-group col-md-3" ></div>
+          <div class="total-container">
+       
+            <div class="form-row">
+     
+             <div class="form-group col-md-4">
+               <label>Left Atrium</label>               
+                 <select [(ngModel)]="updform.selectLeftAtrium" name="selectLeftAtrium" placeholder="select" 
+                 (ngModelChange)="onOptionsSelected('leftAtrium',selectLeftAtrium)" class="form-control">
+                    <option value=""> Not Applicable(N/A)</option>
+                    <option *ngFor="let sta of leftAtrium" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                </select>
+     
+              </div>
+     
+                  <div class="form-group col-md-4" *ngIf="updform.selectLeftAtrium === 'Abnormal'" >
+                   <label> Size </label>               
+                     <select [(ngModel)]="updform.selectSize" name="selectSize" placeholder="select" 
+                     (ngModelChange)="onOptionsSelected('size',selectSize)" class="form-control">
+                        <option  value=""> Not Applicable(N/A)</option>
+                        <option *ngFor="let sta of size" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                    </select>
+     
+                  </div>
+
+                  
+           <div class="form-group col-md-4" *ngIf="updform.selectSize === 'Size-Volume (Or Dimensions)'"  >
+            <label for="sizeVolumeValue"> Size-Volume (Or Dimensions) Value</label>
+            <input type="text" id="sizeVolumeValue" name="sizeVolumeValue" class="form-control"                 
+            placeholder="Size Value" [(ngModel)]="updform.sizeVolumeValue" 
+            #sizeVolumeValue="ngModel"  >
+            
           </div>
+                  <div class="form-group col-md-4" *ngIf="updform.selectLeftAtrium === 'Abnormal'"  >
+                   <label>Thrombus </label>
+                   <select [(ngModel)]="updform.selectThrombus" name="selectThrombus" placeholder="select"                  
+                   (ngModelChange)="onOptionsSelected('thrombus',selectThrombus)" class="form-control">
+                   <option value="">Not Applicable(N/A)</option>
+                    <option *ngFor="let sta of thrombus" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                    </select>
+                  </div>
+            </div>
+
+            <div class="form-row" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1% "
+            *ngIf="updform.selectThrombus === 'Present'" >
+            <div class="form-group col-md-12">
+            <label class="head-title">Thrombus : Present</label>               
+            </div>                                                    
+            </div>  
+     
+            <div class="form-row" *ngIf="updform.selectThrombus === 'Present'">
+               <div class="form-group col-md-4">
+               <label>Size</label>
+               <select [(ngModel)]="updform.selectThrombuspresentsize" name="selectThrombuspresentsize" placeholder="select" 
+               (ngModelChange)="onOptionsSelected('thrombuspresentsize',selectThrombuspresentsize)" class="form-control">
+               <option value=""> Not Applicable(N/A)</option>
+               <option *ngFor="let sta of thrombuspresentsize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+               </select>
+     
+               </div>
+               
+               <div class="form-group col-md-4">
+                <label>Location</label>
+                <select [(ngModel)]="updform.selectThrombuspresentlocation" name="selectThrombuspresentlocation" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('thrombuspresentlocation',selectThrombuspresentlocation)" class="form-control">
+                <option value=""> Not Applicable(N/A)</option>
+                <option *ngFor="let sta of thrombuspresentlocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                </select>
+      
+                </div>
+                                
+                <div class="form-group col-md-4">
+                  <label>Shape </label>
+                  <select [(ngModel)]="updform.selectThrombuspresentshape" name="selectThrombuspresentshape" placeholder="select" 
+                  (ngModelChange)="onOptionsSelected('thrombuspresentshape',selectThrombuspresentshape)" class="form-control">
+                  <option value=""> Not Applicable(N/A)</option>
+                  <option *ngFor="let sta of thrombuspresentshape" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                  </select>
+        
+                  </div>  
+
+            </div>
+            
+            <div class="form-row" *ngIf="updform.selectThrombus === 'Present'">
+
+              <div class="form-group col-md-4" *ngIf="updform.selectThrombuspresentshape === 'Present-Shape-Other (Specify)'"  >
+                <label for="thrombusShapevalue">Other (Specify) Value</label>
+                <input type="text" id="thrombusShapevalue" name="thrombusShapevalue" class="form-control"                 
+                placeholder="Other (Specify) Value" [(ngModel)]="updform.thrombusShapevalue" 
+                #thrombusShapevalue="ngModel"  >
+                
+              </div>
+
+              <div class="form-group col-md-4">
+              <label>Texture</label>
+              <select [(ngModel)]="updform.selectThrombuspresenttexture" name="selectThrombuspresenttexture" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('thrombuspresenttexture',selectThrombuspresenttexture)" class="form-control">
+              <option value=""> Not Applicable(N/A)</option>
+              <option *ngFor="let sta of thrombuspresenttexture" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+              </select>
+    
+              </div>
+              
+              <div class="form-group col-md-4">
+               <label>Mobility</label>
+               <select [(ngModel)]="updform.selectThrombuspresentmobility" name="selectThrombuspresentmobility" placeholder="select" 
+               (ngModelChange)="onOptionsSelected('thrombuspresentmobility',selectThrombuspresentmobility)" class="form-control">
+               <option value=""> Not Applicable(N/A)</option>
+               <option *ngFor="let sta of thrombuspresentmobility" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+               </select>
+     
+               </div>
+                               
+               <div class="form-group col-md-4">
+                 <label>Dimension</label>
+                 <select [(ngModel)]="updform.selectThrombuspresentDimension" name="selectThrombuspresentDimension" placeholder="select" 
+                 (ngModelChange)="onOptionsSelected('thrombuspresentDimension',selectThrombuspresentDimension)" class="form-control">
+                 <option value=""> Not Applicable(N/A)</option>
+                 <option *ngFor="let sta of thrombuspresentDimension" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+                 </select>
+       
+                 </div>  
+
+                 <div class="form-group col-md-4" *ngIf="updform.selectThrombuspresentDimension === 'Present-Dimensions'">
+                  <label>Dimension Value</label>
+                  <input type="text" id="dimensionValue" name="dimensionValue" class="form-control"                 
+                  placeholder="Other (Specify) Value" [(ngModel)]="updform.dimensionValue" 
+                  #dimensionValue="ngModel"  >
+                  </div>     
+
+           </div> 
+           
+          
+         
+         <div class="form-row" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1% "
+         *ngIf="updform.selectLeftAtrium === 'Abnormal'" >
+         <div class="form-group col-md-12">
+         <label class="head-title">Mass  </label>               
+         </div>                                                    
+         </div>
+
+         <div class="form-row" *ngIf="updform.selectLeftAtrium === 'Abnormal'" >
+          <div class="form-group col-md-4">
+          <label>Mass</label>
+          <select [(ngModel)]="updform.selectMass" name="selectMass" placeholder="select" 
+          (ngModelChange)="onOptionsSelected('mass',selectMass)" class="form-control">
+          <option value=""> Not Applicable(N/A)</option>
+          <option *ngFor="let sta of mass" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+          </select>
+
+          </div>
+          
+          <div class="form-group col-md-4" *ngIf="updform.selectMass === 'Present'">
+           <label>Size</label>
+           <select [(ngModel)]="updform.selectMassSize" name="selectMassSize" placeholder="select" 
+           (ngModelChange)="onOptionsSelected('massSize',selectMassSize)" class="form-control">
+           <option value=""> Not Applicable(N/A)</option>
+           <option *ngFor="let sta of massSize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+           </select>
+ 
+           </div>
+                           
+           <div class="form-group col-md-4" *ngIf="updform.selectMass === 'Present'">
+             <label>Location</label>
+             <select [(ngModel)]="updform.selectMassLocation" name="selectMassLocation" placeholder="select" 
+             (ngModelChange)="onOptionsSelected('massLocation',selectMassLocation)" class="form-control">
+             <option value=""> Not Applicable(N/A)</option>
+             <option *ngFor="let sta of massLocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+             </select>
+   
+             </div>  
+
+       </div> 
+
+       <div class="form-row" *ngIf="updform.selectMass === 'Present'" >
+        <div class="form-group col-md-4">
+        <label>Attachment</label>
+        <select [(ngModel)]="updform.selectMassAttachment" name="selectMassAttachment" placeholder="select" 
+        (ngModelChange)="onOptionsSelected('massAttachment',selectMassAttachment)" class="form-control">
+        <option value=""> Not Applicable(N/A)</option>
+        <option *ngFor="let sta of massAttachment" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+
+        </div>
+        
+        <div class="form-group col-md-4" >
+         <label>Shape</label>
+         <select [(ngModel)]="updform.selectMassShape" name="selectMassShape" placeholder="select" 
+         (ngModelChange)="onOptionsSelected('massShape',selectMassShape)" class="form-control">
+         <option value=""> Not Applicable(N/A)</option>
+         <option *ngFor="let sta of massShape" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+         </select>
+
+         </div>
+
+         <div class="form-group col-md-4" *ngIf="updform.selectMassShape === 'Present-Shape-Other (Specify)'"  >
+          <label for="massShapevalue">Other (Specify) Value</label>
+          <input type="text" id="massShapevalue" name="massShapevalue" class="form-control"                 
+          placeholder="Other (Specify) Value" [(ngModel)]="updform.massShapevalue" 
+          #massShapevalue="ngModel"  >
+          
+        </div>
+
+          
+         <div class="form-group col-md-4" *ngIf="updform.selectMass === 'Present'">
+           <label>Texture</label>
+           <select [(ngModel)]="updform.selectMassTexture" name="selectMassTexture" placeholder="select" 
+           (ngModelChange)="onOptionsSelected('massTexture',selectMassTexture)" class="form-control">
+           <option value=""> Not Applicable(N/A)</option>
+           <option *ngFor="let sta of massTexture" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+           </select>
+ 
+           </div>  
+
+     </div> 
+     
+     <div class="form-row" *ngIf="updform.selectMass === 'Present'" >
+      <div class="form-group col-md-4">
+      <label>Mobility</label>
+      <select [(ngModel)]="updform.selectMassMobility" name="selectMassMobility" placeholder="select" 
+      (ngModelChange)="onOptionsSelected('massMobility',selectMassMobility)" class="form-control">
+      <option value=""> Not Applicable(N/A)</option>
+      <option *ngFor="let sta of massMobility" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+      </select>
 
       </div>
       
+      <div class="form-group col-md-4" >
+       <label>Dimension</label>
+       <select [(ngModel)]="updform.selectMassDimension" name="selectMassDimension" placeholder="select" 
+       (ngModelChange)="onOptionsSelected('massDimension',selectMassDimension)" class="form-control">
+       <option value=""> Not Applicable(N/A)</option>
+       <option *ngFor="let sta of massDimension" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+       </select>
+
+       </div>
+
+       <div class="form-group col-md-4" *ngIf="updform.selectMassDimension === 'Present-Dimensions'"  >
+        <label for="massDimensionValue">Dimension Value</label>
+        <input type="text" id="massDimensionValue" name="massDimensionValue" class="form-control"                 
+        placeholder="Dimension Value" [(ngModel)]="updform.massDimensionValue" 
+        #massDimensionValue="ngModel"  >
+        
+      </div>
+                      
+       <div class="form-group col-md-4" *ngIf="updform.selectMass === 'Present'">
+         <label>Type</label>
+         <select [(ngModel)]="updform.selectMassType" name="selectMassType" placeholder="select" 
+         (ngModelChange)="onOptionsSelected('massType',selectMassType)" class="form-control">
+         <option value=""> Not Applicable(N/A)</option>
+         <option *ngFor="let sta of massType" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+         </select>
+
+         </div>  
+
+         <div class="form-group col-md-4" *ngIf="updform.selectMassType === 'Present-Type-Suggestive Of Other Mass (Specify)'"  >
+          <label for="massTypeValue"> Type Value</label>
+          <input type="text" id="massTypeValue" name="massTypeValue" class="form-control"                 
+          placeholder="Type Value" [(ngModel)]="updform.massTypeValue" 
+          #massTypeValue="ngModel"  >
+          
+        </div>
+
+   </div>
+   
+   <hr/>
+   
+   <div class="form-row" *ngIf="updform.selectLeftAtrium === 'Abnormal'" >
+        <div class="form-group col-md-4">
+        <label>Catheter</label>
+        <select [(ngModel)]="updform.selectCatheter" name="selectCatheter" placeholder="select" 
+        (ngModelChange)="onOptionsSelected('catheter',selectCatheter)" class="form-control">
+        <option value=""> Not Applicable(N/A)</option>
+        <option *ngFor="let sta of catheter" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+
+        </div>
+
+        <div class="form-group col-md-4">
+        <label>Spontaneous Echo Contrast</label>
+        <select [(ngModel)]="updform.selectSpontaneousEchoContrast" name="selectSpontaneousEchoContrast" placeholder="select" 
+        (ngModelChange)="onOptionsSelected('spontaneousEchoContrast',selectSpontaneousEchoContrast)" class="form-control">
+        <option value=""> Not Applicable(N/A)</option>
+        <option *ngFor="let sta of spontaneousEchoContrast" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+
+        </div>
+
+        <div class="form-group col-md-4"  *ngIf="updform.selectSpontaneousEchoContrast === 'Present'">
+        <label> Spontaneous Echo Contrast : Present : Degree </label>
+        <select [(ngModel)]="updform.selectSpontaneousechocontrastpresentdegree" name="selectSpontaneousechocontrastpresentdegree" placeholder="select" 
+        (ngModelChange)="onOptionsSelected('spontaneousechocontrastpresentdegree',selectSpontaneousechocontrastpresentdegree)" class="form-control">
+        <option value=""> Not Applicable(N/A)</option>
+        <option *ngFor="let sta of spontaneousechocontrastpresentdegree" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+
+        </div>
+
+        <div class="form-group col-md-4"  *ngIf="updform.selectSpontaneousEchoContrast === 'Present'">
+          <label>
+            Spontaneous Echo Contrast : Present : Location </label>
+          <select [(ngModel)]="updform.selectspontaneousechocontrastpresentlocation" name="selectspontaneousechocontrastpresentlocation" placeholder="select" 
+          (ngModelChange)="onOptionsSelected('spontaneousechocontrastpresentlocation',selectspontaneousechocontrastpresentlocation)" class="form-control">
+          <option value=""> Not Applicable(N/A)</option>
+          <option *ngFor="let sta of spontaneousechocontrastpresentlocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+          </select>
+  
+          </div>
+
+   </div>
+
+   <div class="form-row" style="text-align: center; padding-top:1%; border-top:1px solid #f0f0f0;"
+     *ngIf="updform.selectLeftAtrium === 'Abnormal'" >
+    <div class="form-group col-md-12">
+      <label class="head-title">Atrial Septal Defect</label>               
+    </div>                                                    
+  </div>
+
+   <div class="form-row" *ngIf="updform.selectLeftAtrium === 'Abnormal'" >
+    <div class="form-group col-md-4">
+    <label>Location</label>
+    <select [(ngModel)]="updform.selectAtrialseptaldefectlocation" name="selectAtrialseptaldefectlocation" placeholder="select" 
+    (ngModelChange)="onOptionsSelected('atrialseptaldefectlocation',selectAtrialseptaldefectlocation)" class="form-control">
+    <option value=""> Not Applicable(N/A)</option>
+    <option *ngFor="let sta of atrialseptaldefectlocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+    </select>
+
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>Size</label>
+      <select [(ngModel)]="updform.selectAtrialseptaldefectsize" name="selectAtrialseptaldefectsize" placeholder="select" 
+      (ngModelChange)="onOptionsSelected('atrialseptaldefectsize',selectAtrialseptaldefectsize)" class="form-control">
+      <option value=""> Not Applicable(N/A)</option>
+      <option *ngFor="let sta of atrialseptaldefectsize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+      </select>
+  
+      </div>
+
+
+      <div class="form-group col-md-4">
+        <label>Shunt</label>
+        <select [(ngModel)]="updform.selectAtrialseptaldefectshunt" name="selectAtrialseptaldefectshunt" placeholder="select" 
+        (ngModelChange)="onOptionsSelected('atrialseptaldefectshunt',selectAtrialseptaldefectshunt)" class="form-control">
+        <option value=""> Not Applicable(N/A)</option>
+        <option *ngFor="let sta of atrialseptaldefectshunt" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+        </select>
+    
+        </div>
+
+        <div class="form-group col-md-4" *ngIf="updform.selectAtrialseptaldefectshunt === 'Shunt-Qp:Qs Ratio'"  >
+          <label for="atrialseptaldefectshuntvalue">Shunt-Qp:Qs Ratio Value</label>
+          <input type="text" id="atrialseptaldefectshuntvalue" name="atrialseptaldefectshuntvalue" class="form-control"                 
+          placeholder="Shunt-Qp:Qs Ratio Value" [(ngModel)]="updform.atrialseptaldefectshuntvalue" 
+          #atrialseptaldefectshuntvalue="ngModel"  >
+          
+        </div>
+
+   </div>
+
+   <div class="form-row" *ngIf="updform.selectLeftAtrium === 'Abnormal'" 
+                    style="padding-top:1%; border-top:1px solid #f0f0f0;" >
+
+    <div class="form-group col-md-4">
+    <label>Patent Foramen Ovale</label>
+    <select [(ngModel)]="updform.selectPatentForamenOvale" name="selectPatentForamenOvale" placeholder="select" 
+    (ngModelChange)="onOptionsSelected('patentForamenOvale',selectPatentForamenOvale)" class="form-control">
+    <option value=""> Not Applicable(N/A)</option>
+    <option *ngFor="let sta of patentForamenOvale" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+    </select>
+
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>Other</label>
+      <select [(ngModel)]="updform.selectOther" name="selectOther" placeholder="select" 
+      (ngModelChange)="onOptionsSelected('other',selectOther)" class="form-control">
+      <option value=""> Not Applicable(N/A)</option>
+      <option *ngFor="let sta of other" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+      </select>
+  
+      </div>
+
+   </div>
+
+       
+          <div class="form-row"   >
+          <div class="form-group col-md-2" ></div>
+          <div class="form-group col-md-2" >
+          <button type="button" class="btn btn-warning  btn-block" onclick="$('#all-rv-tab').trigger('click')" 
+          (click)="getAddPage('rightVentricleObservation')" >Previous</button>
+          </div>
+          <div class="form-group col-md-2" >
+          <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
+          </div>
+          <div class="form-group col-md-2" >
+          <button type="button" class="btn btn-danger  btn-block" onclick="$('#all-ra-tab').trigger('click')" 
+          (click)="getAddPage('rightAtriumObservation')" >Next</button>
+          </div>
+          <div class="form-group col-md-4" ></div>
+          </div>
+      
+          </div>
+         
+          </div>        
+        
+      </div>
       
       
       </form>

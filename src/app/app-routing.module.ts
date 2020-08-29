@@ -51,8 +51,8 @@ import { MasterTvComponent } from './master-tv/master-tv.component';
 import { MasterPaComponent } from './master-pa/master-pa.component';
 import { MasterAortaComponent } from './master-aorta/master-aorta.component';
 import { MasterPcComponent } from './master-pc/master-pc.component';
-
 import { PreviewObservationsComponent } from './preview-observations/preview-observations.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   { 
@@ -207,6 +207,9 @@ const routes: Routes = [
   },
   { 
     path: 'previewobservation',component: PreviewObservationsComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'report',component: ReportComponent  , canActivate:[AuthGuard]
   },
   { 
     path: 'clinicdashboard',
