@@ -4,58 +4,60 @@
       <h3 class="head-title"> Type: Pulmonary Artery Observations </h3> 
   
       <div class="total-container">
-  
+
         <div class="form-row">
           
           <div class="form-group col-md-4">
               <label>Pulmonary Artery Observations </label>
-          <select [(ngModel)]="selectOb"  class="form-control" name="data" placeholder="select" 
-          (ngModelChange)="onOptionsSelected(selectObsevation)">
+          <select [(ngModel)]="updform.selectObservation"  class="form-control" name="selectObservation" placeholder="select" 
+          (ngModelChange)="onOptionsSelected('Observation',updform.selectObservation)">
           <option> Not Applicable(N/A)</option>  
-              <option *ngFor="let sta of data" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+              <option *ngFor="let sta of observation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
          </div>
-         <div class="form-group col-md-4" *ngIf="selectOb === 'Estimated pulmonary artery systolic pressure'">
+         <div class="form-group col-md-4" *ngIf="updform.selectObservation === 'Estimated pulmonary artery systolic pressure'">
           <label>Estimated pulmonary artery systolic pressure  </label>
-         <input class="form-control" name="Dimensions"type=text/>
+         <input class="form-control" id="Dimensions" name="Dimensions"type=text
+         placeholder="Estimated pulmonary artery systolic pressure" [(ngModel)]="updform.Dimensions"
+         #Dimensions="ngModel"/>
           </div>
-         <!-- <div class="form-group col-md-12" > --> 
+         <!-- <div class="form-group col-md-12" > -->
          <div class="form-group col-md-4"  >
-          <label>Pulmonary Artery Dilated </label>
-      <select [(ngModel)]="selectdilated"  class="form-control" name="dilated" placeholder="select" 
-      (ngModelChange)="onOptionsSelected(selectdilated)">
+          <label>Pulmonary Artery Dialated </label>
+      <select [(ngModel)]="updform.selectDilated"  class="form-control" name="selectDilated" placeholder="select" 
+      (ngModelChange)="onOptionsSelected('Dilated',updform.selectDilated)">
       <option> Not Applicable(N/A)</option>
           <option *ngFor="let sta of dilated" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
         </div>
         <div class="form-group col-md-4" >
           <label>Pulmonary Artery Suspectthromboembolism </label>
-      <select [(ngModel)]="selectSuspectthromboembolism"  class="form-control" name="Suspectthromboembolism" placeholder="select" 
-      (ngModelChange)="onOptionsSelected(selectSuspectthromboembolism)">
+      <select [(ngModel)]="updform.selectSuspectThromboembolism"  class="form-control" name="selectSuspectThromboembolism" placeholder="select" 
+      (ngModelChange)="onOptionsSelected('SuspectThromboembolism',updform.selectSuspectThromboembolism)">
       <option> Not Applicable(N/A)</option>
           <option *ngFor="let sta of Suspectthromboembolism" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
         </div>
         <div class="form-group col-md-4"  >
           <label>Pulmonary Artery Pulmonary hypertension </label>
-      <select [(ngModel)]="selecthypertension"  class="form-control" name="Pulmonaryhypertension" placeholder="select" 
-      (ngModelChange)="onOptionsSelected(hypertension)">
+      <select [(ngModel)]="updform.selectHypertension"  class="form-control" name="selectHypertension" placeholder="select" 
+      (ngModelChange)="onOptionsSelected('Hypertension',updform.selectHypertension)">
       <option> Not Applicable(N/A)</option>
           <option *ngFor="let sta of pulmonaryhypertension" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
         </div>
         <div class="form-group col-md-4"  >
           <label>Pulmonary Artery Pulmonary branch stenosis </label>
-      <select [(ngModel)]="selectstenosis"  class="form-control" name="Pulmonarybranchstenosis" placeholder="select" 
-      (ngModelChange)="onOptionsSelected(selectstenosis)">
+      <select [(ngModel)]="updform.selectStenosis"  class="form-control" name="selectStenosis" placeholder="select" 
+      (ngModelChange)="onOptionsSelected('Stenosis',updform.selectStenosis)">
       <option> Not Applicable(N/A)</option>
           <option *ngFor="let sta of Pulmonarybranchstenosis" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
         </div>
         <div class="form-group col-md-4"  >
           <label>Pulmonary Artery Patent ductusarteriosus </label>
-      <select [(ngModel)]="selectductusarteriosus"  class="form-control" name="Patentductusarteriosus " placeholder="select" 
-      (ngModelChange)="onOptionsSelected(selectductusarteriosus)">
+      <select [(ngModel)]="updform.selectDuctusarteriosus"  class="form-control" name="selectDuctusarteriosus" placeholder="select" 
+      (ngModelChange)="onOptionsSelected('Ductusarteriosus',updform.selectDuctusarteriosus)">
       <option> Not Applicable(N/A)</option>
           <option *ngFor="let sta of Patentductusarteriosus" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
@@ -67,21 +69,19 @@
         <div class="form-group col-md-2" ></div>
         <div class="form-group col-md-2" >
           <button type="button" class="btn btn-warning  btn-block" onclick="$('#all-tv-tab').trigger('click')"  
-          (click)="getAddPage('tricuspidValveObservation')" >Previous</button>
+          (click)="getAddPage('')" >Previous</button>
         </div>
         <div class="form-group col-md-2" >
           <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
         </div>
         <div class="form-group col-md-2" >
           <button type="button" class="btn btn-danger  btn-block" onclick="$('#all-pv-tab').trigger('click')"  
-          (click)="getAddPage('pulmonicValveObservation')"  >Next</button>
+          (click)="getAddPage('')"  >Next</button>
         </div>
         <div class="form-group col-md-4" ></div>
-      </div> 
-
       </div>
       
-      
+      </div>
       </div>
     
   </div>

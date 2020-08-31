@@ -12,7 +12,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class MasterTvComponent implements OnInit {
   structure= [
     {id:2,itemName:'Normal'},
-    {id:3,itemName:'Abnormal'},  
+    //{id:3,itemName:'Abnormal'},
+    {id:2,itemName:'Abnormal-Rheumatic'},  
   ]
   
   // structureAbnormal= [
@@ -223,91 +224,64 @@ export class MasterTvComponent implements OnInit {
 
   ]
   
-  tricuspidValveObservationObject={
-    structure:[],
-    structureAbnormal:[],
-    vegetation:[],
-    rheumatic:[],
-    vegetationAnteriorleaflet:[],
-    anteriorleafletSize:[],
-    vegetationPosteriorleaflet:[],
-    posteriorleafletSize:[],
-    vegetationSeptalleaflet:[],
-    septalleafletSize:[],
-    prolapse:[],
-    prolapseAnteriorleaflet:[],
-    prolapsePosteriorleaflet:[],
-    prolapseSeptalleaflet:[],
-    rupturedchordae:[],
-    rupturedchordaeAnteriorleaflet:[],
-    rupturedchordaePosteriorleaflet:[],
-    rupturedchordaeSepatlleaflet:[],
-    regurgitation:[],
-    regurgitationPresent:[],
-    severity:[],
-    jetdirection:[],
-    hepaticveinsystolicflow:[],
-    stenosis:[],
-    stenosisSeverity:[],
-    dataabnormalothers:[],
-    quantitativeMeasurements:[],
-    dilatedannulusDimensions:[],
-    ebsteinsAnomaly:[],
-    tricuspidAtresia:[],
-    holosystolic :[],
-    lateSystolic :[],
-
-
-
-  }
-  
   updform = {
-    selectedtv:'',
-    selectedtvvegetation:'',
-    selectedtvvegetationSeptalleaflet:'',
-    selectedtvvegetationAnteriorleaflet:'',
-    selectedtvvegetationPosteriorleaflet:'',
-    selectedtvseptalleafletSize:'',
-    selectedtvposteriorleafletSize:'',
-    selectedtvanteriorleafletSize:'',
-    selectedtvprolapseSepatlleaflet:'',
-    selectedtvprolapseAnteriorleaflet:'',
-    selectedtvprolapsePosteriorleaflet:'',
-    selectedtvrupturedchordaePosteriorleaflet:'',
-    selectedtvrupturedchordaeAnteriorleaflet:'',
-    selectedtvrupturedchordaeSeptalleaflet:'',
-    selectedtvregurgitation:'',
-    selectedtvstenosis:'',
-    selectedtvregurgitationSeverity:'',
-    selectedtvregurgitationjetdirection:'',
-    selectedtvregurgitationhepaticveinsystolicflow:'',
-
-
-
-
-
 
   }
 
-  
-  constructor() { }
+  settings= {};
+obtype: string;
+
+constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
+
+}
 
   ngOnInit(): void {
 
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+   });
+
   }
 
-  onOptionsSelected = (key,value)  => {
-    this.tricuspidValveObservationObject[key] = value
+  onOptionsSelected = (key,itemName)  => {
+    const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = itemName
+    console.log(this.updform)
   }
 
   saveTricuspidValveStructure = () => {
       //save function
-      // this.tricuspidValveObservationObject = {
-      //   structure: this.updform.selectedtv,
-      // }
-  //   console.log(this.tricuspidValveObservationObject)
-  // console.log(this.structureAbnormal)
+       //save function
+    console.log(this.updform)
+
+    
+  const objectManagementReq = {
+    "value": this.updform
+   }
+   console.log(objectManagementReq);
+   this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
+      console.log(res);
+      if(res['message'] ==  'submitted successfully' ) {
+      alert('Observation Inserted Successfully');
+      //this.router.navigateByUrl(`/observations/`);
+      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+    } 
+     
+ })
+
   }
 
+  getAddPage  = (obtype) => {
+    console.log(obtype);
+    //console.log('=====//////////');
+    window.localStorage.setItem("obtype", obtype.toString());
+    // this.router.navigateByUrl(`/mastertable/`+type);   
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+  
+   });
+  
+  }
 
 }

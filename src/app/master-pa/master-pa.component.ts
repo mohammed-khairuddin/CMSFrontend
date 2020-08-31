@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class MasterPaComponent implements OnInit {
 
-  data =  [
+  observation =  [
     {id:2,itemName:'Normal'},
   {id:3,itemName:'Pulmonary artery hypoplasia'},
     {id:4,itemName:'Estimated pulmonary artery systolic pressure'},
@@ -39,15 +39,17 @@ Pulmonarybranchstenosis=[
     {id:3,itemName:'Pulmonary branch stenosis-Left pulmonary artery'} 
   ]
   pulmonaryArteryObservation = {
-    data:[],
+    observation:[],
     dilated:[],
     pulmonaryhypertension:[],
     Patentductusarteriosus:[],
     Suspectthromboembolism:[],
     Pulmonarybranchstenosis:[]
   }
-  selectData: []
-   
+  selectPulmonaryArteryData:any;
+  updform={
+
+  }
   settings= {};
   
   obtype: string;
@@ -62,24 +64,35 @@ Pulmonarybranchstenosis=[
       this.obtype = params.get('obtype');
    });
 
-   
+    // this.settings = {
+    //   singleSelection: false,
+    //   text: "Not Applicable(N/A)",
+    //   selectAllText: 'Select All',
+    //   unSelectAllText: 'UnSelect All',
+    //   searchPlaceholderText: 'Select ',
+    //   enableSearchFilter: true,
+    //   badgeShowLimit: 5,
+    // };
 
   }
 
-  onOptionsSelected = (key,value)  => {
-    this.pulmonaryArteryObservation[key] = value
+  onOptionsSelected = (key,itemName)  => {
+     const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = itemName
+    console.log(this.updform)
   }
 
   savePulmonaryArteryData = () => {
       //save function
     //console.log(this.pulmonaryArteryObservation)
 
-    this.pulmonaryArteryObservation = {
-      data: this.selectData
-    }
+    // this.pulmonaryArteryObservation = {
+    //   observation: this.selectData
+    // }
 
     const objectManagementReq = {
-      "value": this.pulmonaryArteryObservation
+      "value": this.updform
      }
      console.log(objectManagementReq);
      this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{

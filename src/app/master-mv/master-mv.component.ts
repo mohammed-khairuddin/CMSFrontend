@@ -405,189 +405,13 @@ export class MasterMvComponent implements OnInit {
       {id:3,itemName:'Quantitative Measurements-Effective mitral regurgitant orifice area-By PISA color Doppler method'},
   ]
 
-mitralValueObject = {
-  
-  //mitralValve: [],
-  structureOrFunction: [],
-  //prolapse: [],
-  prolapseAnteriorLeaflet: [],
-  prolapsePosteriorLeaflet: [],
-  //flailLeaflet: [],
-  flailLeafletAnterior: [],
-  flailLeafletPosterior: [],
-  //rupturedChordae: [],
-  rupturedChordaeAnterior: [],
-  rupturedChordaePosterior: [],
-  otherChordalDisease: [],
-  //leafletElongation: [],
-  leafletElongationAnterior: [],
-  leafletElongationPosterior: [],
-  //leafletThickeningOrCalcification: [],
-  leafletThickeningAnterior: [],
-  leafletThickeningPosteriior: [],
-  leafletMobility: [],
-  leafletMobilityAbnormalAnterior: [],
-  leafletMobilityAbnormalPosterior: [],
-  annularCalicification: [],
-  subvalvulardiseaseCalicification: [],
-  subvalvulardiseaseThickCalicification: [],
-  annularAnnularDilatation: [],
-  //vegetation: [],
-  vegetationAnterior: [],
-  //vegetationAnteriorSize: [],
-  vegetationPosterior: [],
-  //vegetationPosteriorSize: [],
-  //abscess: [],
-  abscessLocation: [],
-  abscessSize: [],
-  //cleft: [],
-  cleftAnterior: [],
-  cleftPosterior: [],
-  //systolicAnteriorMotion: [],
-  systolicAnteriorLeaflet: [],
-  systolicPosteriorLeaflet: [],
-  systolicChordal: [],
-  diastolicFluttering: [],
-  prostheticValve: [],
-  prostheticValveTypeMechanical: [],
-  prostheticValveTypeBioprosthetic: [],
-  prostheticValveAbnormality: [],
-  //prostheticValveAbnormalityRegurgitation: [],
-  //mitralStenosis: [],
-  mitralStenosisSeverity: [],
-  mitralStenosisQuantitative: [],
-  mitralStenosisStatus: [],
-  //mitralRegurgitation: [],
-  mitralRegurgitationSeverity: [],
-  mitralRegurgitationJetDirection: [],
-  mitralRegurgitationDiastolicMitralRegurgitation: [],
-  mitralRegurgitationQuantitativeMeasurements: [],
-  // quantitativeMeasurementsPulmonaryVenousFlow: [],
-  // quantitativeMeasurementsMitralRegurgitantVolume: [],
-  // QuantitativeMeasurementsMitralRegurgitantFraction: [],
-  // QuantitativeMeasurementsEffectiveMitralRegurgitantOrificeArea: [],
-}
-
-selectStructureOrFunction: [];
-selectProlapseAnteriorLeaflet: [];
-//prolapseAnteriorLeafletValue
-selectProlapsePosteriorLeaflet: [];
-//prolapsePosteriorLeafletValue
-selectFlailLeafletAnterior: [];
-selectFlailLeafletPosterior: [];
-selectRupturedChordaeAnterior: [];
-selectRupturedChordaePosterior: [];
-selectOtherChordalDisease: [];
-selectLeafletElongationAnterior: [];
-selectLeafletElongationPosterior: [];
-selectLeafletThickeningAnterior: [];
-selectLeafletThickeningPosteriior: [];
-selectLeafletMobility: [];
-selectLeafletMobilityAbnormalAnterior: [];
-selectLeafletMobilityAbnormalPosterior: [];
-selectAnnularCalicification: [];
-selectSubvalvulardiseaseCalicification: [];
-selectSubvalvulardiseaseThickCalicification: [];
-selectAnnularAnnularDilatation: [];
-selectVegetationAnterior: [];
-//vegetationAnteriorOthers
-selectVegetationPosterior: [];
-//vegetationPosteriorDimensions
-//vegetationPosteriorOthers
-selectAbscessLocation: [];
-selectAbscessSize: [];
-//abscessSizeDimensions
-selectCleftAnterior: [];
-selectCleftPosterior: [];
-selectSystolicAnteriorLeaflet: [];
-selectSystolicPosteriorLeaflet: [];
-selectSystolicChordal: [];
-//dilatedAnnulusDimensions
-selectDiastolicFluttering: [];
-selectProstheticValve: [];
-selectProstheticValveTypeMechanical: [];
-//prostheticValveTypeMechanicalothers
-//prostheticValveTypeMechanicalManufacturers
-//prostheticValveTypeMechanicalSize
-selectProstheticValveTypeBioprosthetic: [];
-//prostheticValveTypeBioprostheticothers
-//prostheticValveTypeBioprostheticManufacturers
-//prostheticValveTypeBioprostheticSize
-selectProstheticValveAbnormality: [];
-//prostheticValveAbnormalityFistulaDescribe
-//prostheticValveAbnormalityFractureDescribe
-selectMitralStenosisSeverity: [];
-selectMitralStenosisQuantitative: [];
-//mitralStenosisQuantitativeOther
-selectMitralStenosisStatus: [];
-selectMitralRegurgitationSeverity: [];
-selectMitralRegurgitationJetDirection: [];
-selectMitralRegurgitationDiastolicMitralRegurgitation: [];
-selectMitralRegurgitationQuantitativeMeasurements: [];
-//mitralRegurgitationQuantitativeMeasurementsVenaWidth
 
 settings= {};
 
 obtype: string;
 
 updform = {
-  selectStructureOrFunction:'',
-  selectProlapseAnteriorLeaflet:'',
-  //prolapseAnteriorLeafletValue:'',
-  selectProlapsePosteriorLeaflet:'',
-  //prolapsePosteriorLeafletValue:'',
-  selectFlailLeafletAnterior:'',
-  selectFlailLeafletPosterior:'',
-  selectRupturedChordaeAnterior:'',
-  selectRupturedChordaePosterior:'',
-  selectOtherChordalDisease:'',
-  selectLeafletElongationAnterior:'',
-  selectLeafletElongationPosterior:'',
-  selectLeafletThickeningAnterior:'',
-  selectLeafletThickeningPosteriior:'',
-  selectLeafletMobility:'',
-  selectLeafletMobilityAbnormalAnterior:'',
-  selectLeafletMobilityAbnormalPosterior:'',
-  selectAnnularCalicification:'',
-  selectSubvalvulardiseaseCalicification:'',
-  selectSubvalvulardiseaseThickCalicification:'',
-  selectAnnularAnnularDilatation:'',
-  selectVegetationAnterior:'',
-  //vegetationAnteriorOthers:'',
-  selectVegetationPosterior:'',
-  //vegetationPosteriorDimensions:'',
-  //vegetationPosteriorOthers:'',
-  selectAbscessLocation:'',
-  selectAbscessSize:'',
-  //abscessSizeDimensions:'',
-  selectCleftAnterior:'',
-  selectCleftPosterior:'',
-  selectSystolicAnteriorLeaflet:'',
-  selectSystolicPosteriorLeaflet:'',
-  selectSystolicChordal:'',
-  //dilatedAnnulusDimensions:'',
-  selectDiastolicFluttering:'',
-  selectProstheticValve:'',
-  selectProstheticValveTypeMechanical:'',
-  //prostheticValveTypeMechanicalothers:'',
-  //prostheticValveTypeMechanicalManufacturers:'',
-  //prostheticValveTypeMechanicalSize:'',
-  selectProstheticValveTypeBioprosthetic:'',
-  //prostheticValveTypeBioprostheticothers:'',
-  //prostheticValveTypeBioprostheticManufacturers:'',
-  //prostheticValveTypeBioprostheticSize:'',
-  selectProstheticValveAbnormality:'',
-  //prostheticValveAbnormalityFistulaDescribe:'',
-  //prostheticValveAbnormalityFractureDescribe:'',
-  selectMitralStenosisSeverity:'',
-  selectMitralStenosisQuantitative:'',
-  //mitralStenosisQuantitativeOther:'',
-  selectMitralStenosisStatus:'',
-  selectMitralRegurgitationSeverity:'',
-  selectMitralRegurgitationJetDirection:'',
-  selectMitralRegurgitationDiastolicMitralRegurgitation:'',
-  selectMitralRegurgitationQuantitativeMeasurements:'',
-  //mitralRegurgitationQuantitativeMeasurementsVenaWidth:'',
+ 
 }
 
 
@@ -602,103 +426,34 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
    });
 
 
-    this.settings = {
-      singleSelection: false,
-      text: "Not Applicable(N/A)",
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      searchPlaceholderText: 'Select ',
-      enableSearchFilter: true,
-      badgeShowLimit: 5,
-    };
 
 
   }
 
   onOptionsSelected = (key,value)  => {
-    this.mitralValueObject[key] = value
-    console.log(this.mitralValueObject)
+    const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = value
+    console.log(this.updform);
   }
-
 
 
 saveMitralValueData = () => {
-  this.mitralValueObject = {
-    //mitralValve
-    structureOrFunction: this.selectStructureOrFunction,
-    //prolapse: 
-    prolapseAnteriorLeaflet: this.selectProlapseAnteriorLeaflet,
-    prolapsePosteriorLeaflet: this.selectProlapsePosteriorLeaflet,
-    //flailLeaflet:
-    flailLeafletAnterior: this.selectFlailLeafletAnterior,
-    flailLeafletPosterior: this.selectFlailLeafletPosterior,
-    //rupturedChordae: this.selectRupturedChordaeAnterior,
-    rupturedChordaeAnterior: this.selectRupturedChordaeAnterior,
-    rupturedChordaePosterior: this.selectRupturedChordaePosterior,
-    otherChordalDisease: this.selectOtherChordalDisease,
-    //leafletElongation: this.selectLeafletElongationAnterior
-    leafletElongationAnterior: this.selectLeafletElongationAnterior,
-    leafletElongationPosterior: this.selectLeafletElongationPosterior,
-    //leafletThickeningOrCalcification:
-    leafletThickeningAnterior: this.selectLeafletThickeningAnterior,
-    leafletThickeningPosteriior: this.selectLeafletThickeningPosteriior,
-    leafletMobility: this.selectLeafletMobility,
-    leafletMobilityAbnormalAnterior: this.selectLeafletMobilityAbnormalAnterior,
-    leafletMobilityAbnormalPosterior: this.selectLeafletMobilityAbnormalPosterior,
-    annularCalicification: this.selectAnnularCalicification,
-    subvalvulardiseaseCalicification: this.selectSubvalvulardiseaseCalicification,
-    subvalvulardiseaseThickCalicification: this.selectSubvalvulardiseaseThickCalicification,
-    annularAnnularDilatation: this.selectAnnularAnnularDilatation,
-    //vegetation: 
-    vegetationAnterior: this.selectVegetationAnterior,
-    //vegetationAnteriorSize: 
-    vegetationPosterior: this.selectVegetationPosterior,
-    //vegetationPosteriorSize: 
-    //abscess: 
-    abscessLocation: this.selectAbscessLocation,
-    abscessSize: this.selectAbscessSize,
-    //cleft: 
-    cleftAnterior: this.selectCleftAnterior,
-    cleftPosterior: this.selectCleftPosterior,
-    //systolicAnteriorMotion:
-    systolicAnteriorLeaflet: this.selectSystolicAnteriorLeaflet,
-    systolicPosteriorLeaflet: this.selectSystolicPosteriorLeaflet,
-    systolicChordal: this.selectSystolicChordal,
-    diastolicFluttering: this.selectDiastolicFluttering,
-    prostheticValve: this.selectProstheticValve,
-    prostheticValveTypeMechanical: this.selectProstheticValveTypeMechanical,
-    prostheticValveTypeBioprosthetic: this.selectProstheticValveTypeBioprosthetic,
-    prostheticValveAbnormality: this.selectProstheticValveAbnormality,
-    //prostheticValveAbnormalityRegurgitation: 
-    //mitralStenosis: 
-    mitralStenosisSeverity: this.selectMitralStenosisSeverity,
-    mitralStenosisQuantitative: this.selectMitralStenosisQuantitative,
-    mitralStenosisStatus: this.selectMitralStenosisStatus,
-    //mitralRegurgitation: 
-    mitralRegurgitationSeverity: this.selectMitralRegurgitationSeverity,
-    mitralRegurgitationJetDirection: this.selectMitralRegurgitationJetDirection,
-    mitralRegurgitationDiastolicMitralRegurgitation: this.selectMitralRegurgitationDiastolicMitralRegurgitation,
-    mitralRegurgitationQuantitativeMeasurements: this.selectMitralRegurgitationQuantitativeMeasurements,
-    // quantitativeMeasurementsPulmonaryVenousFlow: 
-    // quantitativeMeasurementsMitralRegurgitantVolume
-    // QuantitativeMeasurementsMitralRegurgitantFraction
-    // QuantitativeMeasurementsEffectiveMitralRegurgitantOrificeArea
-  }
   //save function
-console.log(this.mitralValueObject);
-const objectManagementReq = {
-  "value": this.mitralValueObject
- }
- console.log(objectManagementReq);
- this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-    console.log(res);
-    if(res['message'] ==  'submitted successfully' ) {
-    alert('Observation Inserted Successfully');
-    //this.router.navigateByUrl(`/observations/`);
-    this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
-  } 
-   
-})
+  console.log(this.updform);
+  const objectManagementReq = {
+    "value": this.updform
+   }
+   console.log(objectManagementReq);
+   this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
+      console.log(res);
+      if(res['message'] ==  'submitted successfully' ) {
+      alert('Observation Inserted Successfully');
+      //this.router.navigateByUrl(`/observations/`);
+      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+    } 
+     
+ }) 
 
 
 }

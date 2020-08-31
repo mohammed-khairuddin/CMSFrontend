@@ -171,54 +171,6 @@ export class MasterAortaComponent implements OnInit {
   // aortaitemNameObject= {};
   // selectedAbnormality;
 
-  aortaitemNameObject = {
-    aorta: [],
-    dialation:[],
-    aneurysm:[],
-    plaque: [],
-    plaqueLocation:[],
-    plaqueCharacteristics:[],
-    plaqueMobility:[],
-    plaqueSize:[],
-    graft:[],
-    graftType:[],
-    graftLocation:[],
-    dissection:[],
-    dissectionLocation:[],
-    dissectionEntrySite:[],
-    dissectionExitPoint:[],
-    dissectionFalseLumen:[],
-    dissectionIntramuralHematoma:[],
-    dissectionClassification:[],
-    coarctation:[],
-    coarctationLocation:[],
-    transposition:[],
-    correctedTransposition:[],
-
-  }
-
-  selectAorta: []
-  selectDialation:[]
-  selectAneurysm:[]
-  selectPlaque:[]
-  selectPlaqueLocation:[]
-  selectPlaqueCharacteristics:[]
-  selectPlaqueMobility:[]
-  selectPlaqueSize:[]
-  selectGraft:[]
-  selectGraftType:[]
-  selectGraftLocation:[]
-  selectDissection:[]
-  selectDissectionLocation:[]
-  selectDissectionEntrySite:[]
-  selectDissectionExitPoint:[]
-  selectDissectionFalseLumen:[]
-  selectDissectionIntramuralHematoma:[]
-  selectDissectionClassification:[]
-  selectCoarctation:[]
-  selectCoarctationLocation:[]
-  selectTransposition:[]
-  selectCorrectedTransposition:[]
   settings= {};
 
   obtype: string;
@@ -235,57 +187,36 @@ export class MasterAortaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.actRoute.paramMap.subscribe(params => {
-      this.obtype = params.get('obtype');
-   });
 
-    this.settings = {
-      singleSelection: false,
-      text: "Not Applicable(N/A)",
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      searchPlaceholderText: 'Select',
-      enableSearchFilter: true,
-      badgeShowLimit: 5,
-    };
-
-  }
-
-
+    this.loginService.observationsGetAllByPatient().subscribe(data => {
+      console.log(data);
+      //console.log('*-*-*-*-*-*-');
+      // const x = {
+      //   'selectAorta':'Abnormal',
+      //   'selectDialation': 'Dilatation-Ascending aorta'
+      // }
+      // this.updform =x;
+    }, error => console.log(error));
   
-  onOptionsSelected = (key,itemName)  => {
-    this.aortaObservationObject[key] = itemName
+
+
   }
+
+  onOptionsSelected = (key,itemName)  => {
+    const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = itemName
+    console.log(this.updform)
+  }
+
+
 
   saveAortaitemNameData = () => {
-      //save function
-      this.aortaObservationObject = {
-        aorta:this.selectAorta,
-        dialation:this.selectDialation,
-        aneurysm :this.selectAneurysm,
-        plaque:this.selectPlaque,
-        plaqueLocation:this.selectPlaqueLocation,
-        plaqueCharacteristics:this.selectPlaqueCharacteristics,
-        plaqueMobility:this.selectPlaqueMobility,
-        plaqueSize:this.selectPlaqueSize,
-        graft:this.selectGraft,
-        graftType:this.selectGraftType,
-        graftLocation:this.selectGraftLocation,
-        dissection:this.selectDissection,
-        dissectionLocation:this.selectDissectionLocation,
-        dissectionEntrySite:this.selectDissectionEntrySite,
-        dissectionExitPoint:this.selectDissectionExitPoint,
-        dissectionFalseLumen:this.selectDissectionFalseLumen,
-        dissectionClassification:this.selectDissectionClassification,
-        coarctation:this.selectCoarctation,
-        coarctationLocation:this.selectCoarctationLocation,
-        transposition:this.selectTransposition,
-        correctedTransposition:this.selectCorrectedTransposition,
-      }
+    console.log(this.updform)
 
     //console.log(this.aortaitemNameObject)
     const objectManagementReq = {
-      "value": this.aortaitemNameObject
+      "value": this.updform
      }
      console.log(objectManagementReq);
      this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{

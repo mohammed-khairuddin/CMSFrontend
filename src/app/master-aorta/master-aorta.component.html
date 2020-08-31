@@ -4,28 +4,28 @@
       <h3 class="head-title"> TYPE : AORTA </h3> 
       <div class="total-container">
         <div class="form-row">
-          <div class="form-group col-md-4">
-            <label>Aorta </label>               
-            <select [(ngModel)]="updform.selectAorta" name="selectAorta" id="selectAorta" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('Aorta',selectAorta)" class="form-control">
-            <option> Not Applicable(N/A)</option>
-            <option *ngFor="let sta of aorta" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+          <!-- <div class="form-group col-md-4">
+            <label>Aorta </label>            
+            <select [(ngModel)]="updform.selectAorta" [ngModelOptions]="{standalone: true}"
+            (ngModelChange)="onOptionsSelected('Aorta',updform.selectAorta)" class="form-control" 
+            [value]="updform.selectAorta">
+            <option [ngValue]="sta.itemName"  *ngFor="let sta of aorta">{{sta.itemName}}</option>
             </select>
-          </div>
+          </div> -->
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4" >
             <label> Dialation </label>               
-            <select [(ngModel)]="updform.selectDialation" name="selectDialation" id="selectDialation" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('Dialation',selectDialation)" class="form-control">
+            <select [(ngModel)]="updform.selectDialation" name="selectDialation" id="selectDialation"   
+            (ngModelChange)="onOptionsSelected('Dialation',updform.selectDialation)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of dialation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Aneurysm </label>               
-            <select [(ngModel)]="updform.selectAneurysm" name="selectAneurysm" id="selectAneurysm" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('Aneurysm',selectAneurysm)" class="form-control">
+            <select [(ngModel)]="updform.selectAneurysm" name="selectAneurysm" id="selectAneurysm"   
+            (ngModelChange)="onOptionsSelected('Aneurysm',updform.selectAneurysm)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of aneurysm" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="form-row" style="text-align: center; padding-top:1%; border-top:1px solid #f0f0f0;"
-           *ngIf="updform.selectAorta === 'Abnormal'" >
+             >
           <div class="form-group col-md-12">
           <label class="head-title">TYPE : PLAQUE</label>               
           </div>                                                    
@@ -51,53 +51,53 @@
         <div class="form-row">
 
            
-          <!-- <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <!-- <div class="form-group col-md-4"  >
             <label> Plaque </label>               
-            <select [(ngModel)]="updform.selectPlaque" name="selectPlaque" id="selectPlaque" placeholder="select" 
+            <select [(ngModel)]="updform.selectPlaque" name="selectPlaque" id="selectPlaque"   
             (ngModelChange)="onOptionsSelected('Plaque',selectPlaque)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of plaque" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div> -->
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Plaque : Location </label>               
-            <select [(ngModel)]="updform.selectPlaqueLocation" name="selectPlaqueLocation" id="selectPlaqueLocation" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('plaqueLocation',selectPlaqueLocation)" class="form-control">
+            <select [(ngModel)]="updform.selectPlaquelocation" name="selectPlaquelocation" id="selectPlaquelocation"   
+            (ngModelChange)="onOptionsSelected('Plaquelocation',updform.selectPlaquelocation)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of plaqueLocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Plaque : Characteristics </label>               
-            <select [(ngModel)]="updform.selectPlaqueCharacteristics" name="selectPlaqueCharacteristics" id="selectPlaqueCharacteristics" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('plaqueCharacteristics',selectPlaqueCharacteristics)" class="form-control">
+            <select [(ngModel)]="updform.selectPlaquecharacteristics" name="selectPlaquecharacteristics" id="selectPlaquecharacteristics"   
+            (ngModelChange)="onOptionsSelected('Plaquecharacteristics',updform.selectPlaquecharacteristics)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of plaqueCharacteristics" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Plaque : Size </label>               
-            <select [(ngModel)]="updform.selectPlaqueSize" name="selectPlaqueSize" id="selectPlaqueSize" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('plaqueSize',selectPlaqueSize)" class="form-control">
+            <select [(ngModel)]="updform.selectPlaquesize" name="selectPlaquesize" id="selectPlaquesize"   
+            (ngModelChange)="onOptionsSelected('Plaquesize',updform.selectPlaquesize)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of plaqueSize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectPlaqueSize=== 'Plaque-Size-Large'"  >
+          <div class="form-group col-md-4" *ngIf="updform.selectPlaquesize=== 'Plaque-Size-Large'"  >
             <label for="PlaqueSizeLarge">Dimensions</label>
             <input type="text" id="PlaqueSizeLarge" name="PlaqueSizeLarge" class="form-control"                 
             placeholder="Dimensions" [(ngModel)]="updform.PlaqueSizeLarge" 
             #PlaqueSizeLarge="ngModel"  >
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Plaque : Mobility </label>               
-            <select [(ngModel)]="updform.selectPlaqueMobility" name="selectPlaqueMobility" id="selectPlaqueMobility" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('plaqueMobility',selectPlaqueMobility)" class="form-control">
+            <select [(ngModel)]="updform.selectPlaquemobility" name="selectPlaquemobility" id="selectPlaquemobility"   
+            (ngModelChange)="onOptionsSelected('PlaqueMobility',updform.selectPlaquemobility)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of plaqueMobility" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -106,35 +106,35 @@
         </div>
 
         <div class="form-row" style="text-align: center; padding-top:1%; border-top:1px solid #f0f0f0;"
-           *ngIf="updform.selectAorta === 'Abnormal'" >
+             >
           <div class="form-group col-md-12">
           <label class="head-title">TYPE : GRAFT</label>               
           </div>                                                    
         </div>
         <!-- <h3 class="head-title">TYPE : GRAFT</h3> -->
         <div class="form-row">
-          <!-- <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <!-- <div class="form-group col-md-4"  >
             <label> Graft </label>               
-            <select [(ngModel)]="updform.selectGraft" name="selectGraft" id="selectGraft" placeholder="select" 
+            <select [(ngModel)]="updform.selectGraft" name="selectGraft" id="selectGraft"   
             (ngModelChange)="onOptionsSelected('Graft',selectGraft)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of graft" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div> -->
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Graft : Type </label>               
-            <select [(ngModel)]="updform.selectGraftType" name="selectGraftType" id="selectGraftType" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('GraftType',selectGraftType)" class="form-control">
+            <select [(ngModel)]="updform.selectGrafttype" name="selectGrafttype" id="selectGrafttype"   
+            (ngModelChange)="onOptionsSelected('Grafttype',updform.selectGrafttype)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of graftType" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Graft : Location </label>               
-            <select [(ngModel)]="updform.selectGraftLocation" name="selectGraftLocation" id="selectGraftLocation" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('GraftLocation',selectGraftLocation)" class="form-control">
+            <select [(ngModel)]="updform.selectGraftLocation" name="selectGraftLocation" id="selectGraftLocation"   
+            (ngModelChange)="onOptionsSelected('GraftLocation',updform.selectGraftLocation)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of graftLocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -142,7 +142,7 @@
         </div>
 
         <div class="form-row" style="text-align: center; padding-top:1%; border-top:1px solid #f0f0f0;"
-           *ngIf="updform.selectAorta === 'Abnormal'" >
+             >
           <div class="form-group col-md-12">
           <label class="head-title">TYPE : DISSECTION</label>               
           </div>                                                    
@@ -151,37 +151,37 @@
         <!-- <h3 class="head-title">TYPE : DISSECTION</h3> -->
         <div class="form-row">
 
-          <!-- <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <!-- <div class="form-group col-md-4"  >
             <label> Dissection </label>               
-            <select [(ngModel)]="updform.selectDissection" name="selectDissection" id="selectDissection" placeholder="select" 
+            <select [(ngModel)]="updform.selectDissection" name="selectDissection" id="selectDissection"   
             (ngModelChange)="onOptionsSelected('Dissection',selectDissection)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of dissection" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div> -->
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Dissection : Location </label>               
-            <select [(ngModel)]="updform.selectDissectionLocation" name="selectDissectionLocation" id="selectDissectionLocation" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('DissectionLocation',selectDissectionLocation)" class="form-control">
+            <select [(ngModel)]="updform.selectDissectionLocation" name="selectDissectionLocation" id="selectDissectionLocation"   
+            (ngModelChange)="onOptionsSelected('DissectionLocation',updform.selectDissectionLocation)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of dissectionLocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Dissection : Entry site </label>               
-            <select [(ngModel)]="updform.selectDissectionEntrySite" name="selectDissectionEntrySite" id="selectDissectionEntrySite" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('DissectionEntrySite',selectDissectionEntrySite)" class="form-control">
+            <select [(ngModel)]="updform.selectDissectionEntrySite" name="selectDissectionEntrySite" id="selectDissectionEntrySite"   
+            (ngModelChange)="onOptionsSelected('DissectionEntrySite',updform.selectDissectionEntrySite)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of dissectionEntrySite" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Dissection : Exit Point </label>               
-            <select [(ngModel)]="updform.selectDissectionExitPoint" name="selectDissectionExitPoint" id="selectDissectionExitPoint" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('DissectionExitPoint',selectDissectionExitPoint)" class="form-control">
+            <select [(ngModel)]="updform.selectDissectionExitPoint" name="selectDissectionExitPoint" id="selectDissectionExitPoint"   
+            (ngModelChange)="onOptionsSelected('DissectionExitPoint',updform.selectDissectionExitPoint)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of dissectionExitPoint" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -194,28 +194,28 @@
             #DissectionExitPointDescendingAortaMultiple="ngModel"  >
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Dissection : False Lumen</label>               
-            <select [(ngModel)]="updform.selectDissectionFalseLumen" name="selectDissectionFalseLumen" id="selectDissectionFalseLumen" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('DissectionFalseLumen',selectDissectionFalseLumen)" class="form-control">
+            <select [(ngModel)]="updform.selectDissectionFalseLumen" name="selectDissectionFalseLumen" id="selectDissectionFalseLumen"   
+            (ngModelChange)="onOptionsSelected('DissectionFalseLumen',updform.selectDissectionFalseLumen)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of dissectionFalseLumen" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Dissection : Intramural Hematoma</label>               
-            <select [(ngModel)]="updform.selectDissectionIntramuralHematoma" name="selectDissectionIntramuralHematoma" id="selectDissectionIntramuralHematoma" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('DissectionIntramuralHematoma',selectDissectionIntramuralHematoma)" class="form-control">
+            <select [(ngModel)]="updform.selectDissectionIntramuralHematoma" name="selectDissectionIntramuralHematoma" id="selectDissectionIntramuralHematoma"   
+            (ngModelChange)="onOptionsSelected('DissectionIntramuralHematoma',updform.selectDissectionIntramuralHematoma)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of dissectionIntramuralHematoma" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Dissection : Classification</label>               
-            <select [(ngModel)]="updform.selectDissectionClassification" name="selectDissectionClassification" id="selectDissectionClassification" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('DissectionClassification',selectDissectionClassification)" class="form-control">
+            <select [(ngModel)]="updform.selectDissectionClassification" name="selectDissectionClassification" id="selectDissectionClassification"   
+            (ngModelChange)="onOptionsSelected('DissectionClassification',updform.selectDissectionClassification)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of dissectionClassification" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -231,7 +231,7 @@
         </div>
 
         <div class="form-row" style="text-align: center; padding-top:1%; border-top:1px solid #f0f0f0;"
-           *ngIf="updform.selectAorta === 'Abnormal'" >
+             >
           <div class="form-group col-md-12">
           <label class="head-title">TYPE : COARCTATION</label>               
           </div>                                                    
@@ -241,10 +241,10 @@
         <!-- <h3 class="head-title">TYPE : COARCTATION</h3> -->
         <div class="form-row">
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Coartation </label>               
-            <select [(ngModel)]="updform.selectCoarctation" name="selectCoarctation" id="selectCoarctation" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('Coarctation',selectCoarctation)" class="form-control">
+            <select [(ngModel)]="updform.selectCoarctation" name="selectCoarctation" id="selectCoarctation"   
+            (ngModelChange)="onOptionsSelected('Coarctation',updform.selectCoarctation)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of coarctation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -266,8 +266,8 @@
 
           <div class="form-group col-md-4" *ngIf="updform.selectCoarctation === 'Coarctation-Location'">
             <label> Coarctation : Location</label>               
-            <select [(ngModel)]="updform.selectCoarctationLocation" name="selectCoarctationLocation" id="selectCoarctationLocation" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('CoarctationLocation',selectCoarctationLocation)" class="form-control">
+            <select [(ngModel)]="updform.selectCoarctationLocation" name="selectCoarctationLocation" id="selectCoarctationLocation"   
+            (ngModelChange)="onOptionsSelected('CoarctationLocation',updform.selectCoarctationLocation)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of coarctationLocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -279,10 +279,10 @@
 
           
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Transposition </label>               
-            <select [(ngModel)]="updform.selectTransposition" name="selectTransposition" id="selectTransposition" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('Transposition',selectTransposition)" class="form-control">
+            <select [(ngModel)]="updform.selectTransposition" name="selectTransposition" id="selectTransposition"   
+            (ngModelChange)="onOptionsSelected('Transposition',updform.selectTransposition)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of transposition" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -296,26 +296,19 @@
 
         
 
-          <div class="form-group col-md-4" *ngIf="updform.selectAorta === 'Abnormal'">
+          <div class="form-group col-md-4"  >
             <label> Corrected Transposition </label>               
-            <select [(ngModel)]="updform.selectCorrectedTransposition" name="selectCorrectedTransposition" id="selectCorrectedTransposition" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('correctedTransposition',selectCorrectedTransposition)" class="form-control">
+            <select [(ngModel)]="updform.selectCorrectedTransposition" name="selectCorrectedTransposition" id="selectCorrectedTransposition"   
+            (ngModelChange)="onOptionsSelected('CorrectedTransposition',updform.selectCorrectedTransposition)" class="form-control">
             <option> Not Applicable(N/A)</option>
             <option *ngFor="let sta of correctedTransposition" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
-          </div>
-
-          
-
-          
+          </div>          
 
         </div>
         
       </div>
 
-      
-       
-  
         
 
       <div class="form-row"   >

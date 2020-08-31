@@ -212,120 +212,12 @@ export class MasterLaComponent implements OnInit {
       {id:4,itemName:'Other-Appearance Consistent With Cardiac Transplantation'},
      ]
 
-  leftAtriumObservationObject = {
-    leftAtrium:[],
-    size:[],
-    thrombus:[],
-    //thrombuspresent:[],
-    thrombuspresentsize:[],
-    thrombuspresentlocation:[],
-    thrombuspresentshape:[],
-    thrombuspresenttexture:[],
-    thrombuspresentmobility:[],
-    thrombuspresentDimension:[],
-    mass:[],
-    //masspresent:[],
-    massSize:[],
-    massLocation:[],
-    massAttachment:[],
-    massShape:[],
-    massTexture:[],
-    massMobility:[],
-    massDimension:[],
-    massType:[],
-    catheter:[],
-    //catheterpresent:[],
-    spontaneousEchoContrast:[],
-    //spontaneousechocontrastpresent:[],
-    spontaneousechocontrastpresentdegree:[],
-    spontaneousechocontrastpresentlocation:[],
-    //AtrialSeptalDefect:[],
-    atrialseptaldefectlocation:[],
-    atrialseptaldefectsize:[],
-    atrialseptaldefectshunt:[],
-    patentForamenOvale:[],
-    //patientforamenovalepresent:[],
-    other:[],
-
-  }
   
-
-  selectLeftAtrium: [];
-  selectSize: [];
-  //sizeVolumeValue
-  selectThrombus: [];
-  selectThrombuspresentsize: [];
-  selectThrombuspresentlocation: [];
-  selectThrombuspresentshape: [];
-  //thrombusShapevalue
-  selectThrombuspresenttexture: [];
-  selectThrombuspresentmobility: [];
-  selectThrombuspresentDimension: [];
-  //dimensionValue
-  selectMass: [];
-  selectMassSize: [];
-  selectMassLocation: [];
-  selectMassAttachment: [];
-  selectMassShape: [];
-  //massShapevalue
-  selectMassTexture: [];
-  selectMassMobility: [];
-  selectMassDimension: [];
-  //massDimensionValue
-  selectMassType: [];
-  //massTypeValue
-  selectCatheter: [];
-  selectSpontaneousEchoContrast: [];
-  selectSpontaneousechocontrastpresentdegree: [];
-  selectspontaneousechocontrastpresentlocation: [];
-  selectAtrialseptaldefectlocation: [];
-  selectAtrialseptaldefectsize: [];
-  selectAtrialseptaldefectshunt: [];
-  //atrialseptaldefectshuntvalue
-  selectPatentForamenOvale: [];
-  selectOther: [];
-
 
   settings= {};
   
   obtype: string;
-
-  updform = {
-    selectLeftAtrium:'',
-    selectSize:'',
-    //sizeVolumeValue:'',
-    selectThrombus:'',
-    selectThrombuspresentsize:'',
-    selectThrombuspresentlocation:'',
-    selectThrombuspresentshape:'',
-    //thrombusShapevalue:'',
-    selectThrombuspresenttexture:'',
-    selectThrombuspresentmobility:'',
-    selectThrombuspresentDimension:'',
-    //dimensionValue:'',
-    selectMass:'',
-    selectMassSize:'',
-    selectMassLocation:'',
-    selectMassAttachment:'',
-    selectMassShape:'',
-    //massShapevalue:'',
-    selectMassTexture:'',
-    selectMassMobility:'',
-    selectMassDimension:'',
-    //massDimensionValue:'',
-    selectMassType:'',
-    //massTypeValue:'',
-    selectCatheter:'',
-    selectSpontaneousEchoContrast:'',
-    selectSpontaneousechocontrastpresentdegree:'',
-    selectspontaneousechocontrastpresentlocation:'',
-    selectAtrialseptaldefectlocation:'',
-    selectAtrialseptaldefectsize:'',
-    selectAtrialseptaldefectshunt:'',
-    //atrialseptaldefectshuntvalue:'',
-    selectPatentForamenOvale:'',
-    selectOther:'',
-  }
+updform ={}
 
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
@@ -342,52 +234,18 @@ export class MasterLaComponent implements OnInit {
 
   
   onOptionsSelected = (key,value)  => {
-    this.leftAtriumObservationObject[key] = value
+    const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = value
+    console.log(this.updform);
   }
 
   
   saveLeftAtriumValueData = () => {
     //save function
-  //console.log(this.leftAtriumObservationObject)
-
-  this.leftAtriumObservationObject = {
-    leftAtrium :this.selectLeftAtrium,
-    size :this.selectSize,
-    thrombus :this.selectThrombus,
-    //thrombuspresent :this.selectThrombus,
-    thrombuspresentsize :this.selectThrombuspresentsize,
-    thrombuspresentlocation :this.selectThrombuspresentlocation,
-    thrombuspresentshape :this.selectThrombuspresentshape,
-    thrombuspresenttexture :this.selectThrombuspresenttexture,
-    thrombuspresentmobility :this.selectThrombuspresentmobility,
-    thrombuspresentDimension :this.selectThrombuspresentDimension,
-    mass :this.selectMass,
-    //masspresent :this.selectMass,
-    massSize :this.selectMassSize,
-    massLocation :this.selectMassLocation,
-    massAttachment :this.selectMassAttachment,
-    massShape :this.selectMassShape,
-    massTexture :this.selectMassTexture,
-    massMobility :this.selectMassMobility,
-    massDimension :this.selectMassDimension,
-    massType :this.selectMassType,
-    catheter :this.selectCatheter,
-    //catheterpresent :this.selectCatheter,
-    spontaneousEchoContrast :this.selectSpontaneousEchoContrast,
-    //spontaneousechocontrastpresent :this.selectSpontaneousechocontrastpresentdegree,
-    spontaneousechocontrastpresentdegree :this.selectSpontaneousechocontrastpresentdegree,
-    spontaneousechocontrastpresentlocation :this.selectspontaneousechocontrastpresentlocation,
-    //AtrialSeptalDefect :this.selectAtrialseptaldefectlocation,
-    atrialseptaldefectlocation :this.selectAtrialseptaldefectlocation,
-    atrialseptaldefectsize :this.selectAtrialseptaldefectsize,
-    atrialseptaldefectshunt :this.selectAtrialseptaldefectshunt,
-    patentForamenOvale :this.selectPatentForamenOvale,
-    //patientforamenovalepresent :this.selectPatientfor
-    other :this.selectOther,
-  }
-
+    console.log(this.updform);
   const objectManagementReq = {
-    "value": this.leftAtriumObservationObject
+    "value": this.updform
    }
    console.log(objectManagementReq);
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{

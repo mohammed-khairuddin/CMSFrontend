@@ -136,47 +136,6 @@ export class MasterPcComponent implements OnInit {
   ]
 
   
-
-  PericardiumObservationDataObject = {
-    pericardium: [],
-    ascites:[],
-    size:[],
-    location:[],
-    content:[],
-    thickeningCalcification:[],
-    mass:[],
-    pleuralEffusion:[],
-    tamponade:[],
-    constriction:[],
-    effusoConstructive:[],
-    septalBounce:[],
-    inversion:[],
-    excessiveRespiratoryVariation:[],
-    leftVentricularDiastole:[],
-    fatPad:[],
-
-
-
-    
-  }
-  selectPericardium:[]
-  selectAscites:[]
-  selectSize:[]
-  selectLocation:[]
-  selectContent:[]
-  selectThickeningCalcification:[]
-  selectMass:[]
-  selectPleuralEffusion:[]
-  selectTamponade:[]
-  selectConstriction:[]
-  selectEffusoConstructive:[]
-  selectSeptalBounce:[]
-  selectInversion:[]
-  selectExcessiveRespiratoryVariation:[]
-  selectLeftVentricularDiastole:[]
-  selectFatPad:[]
-  
-  
   settings= {};
   
   obtype: string;
@@ -184,8 +143,7 @@ export class MasterPcComponent implements OnInit {
 
   Size:string;
   updform = {
-    
-
+ 
   }
   
 
@@ -230,68 +188,32 @@ export class MasterPcComponent implements OnInit {
     };
 
   }
-  getData(): void {
-    let tmp = [];
-    this.http.get<any>('https://jsonplaceholder.typicode.com/users').subscribe(data => {
-      for(let i=0; i < data.length; i++) {
-        tmp.push({ item_id: i, item_text: data[i].name });
-      }
-      this.size = tmp;
-    });
-  }
-
   
-  onOptionsSelected = (key,value)  => {
-    this.PericardiumObservationDataObject[key] = value
+  onOptionsSelected = (key,itemName)  => {
+    const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = itemName
+    console.log(this.updform)
   }
 
   savePericardiumValueData = () => {
       //save function
-    //console.log(this.PericardiumValueDataObject)
-    this.PericardiumObservationDataObject = {
-      pericardium:this.selectPericardium,
-      ascites: this.selectAscites,
-      size:this.selectSize,
-      location:this.selectLocation,
-      content:this.selectContent,
-      thickeningCalcification:this.selectThickeningCalcification,
-      mass:this.selectMass,
-      pleuralEffusion:this.selectPleuralEffusion,
-      
-      
-      tamponade:this.selectTamponade,
-      constriction:this.selectConstriction,
-      effusoConstructive:this.selectEffusoConstructive,
-      septalBounce:this.selectSeptalBounce,
-      inversion:this.selectInversion,
-      
-      excessiveRespiratoryVariation:this.selectExcessiveRespiratoryVariation,
-      leftVentricularDiastole:this.selectLeftVentricularDiastole,
-      fatPad:this.selectFatPad,
-
-
-      
-      
-
-    }
+      console.log(this.updform)
 
     
-
-  
-    
-  const objectManagementReq = {
-    "value": this.PericardiumObservationDataObject
-   }
-    console.log(objectManagementReq);
-    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-      console.log(res);
-      if(res['message'] ==  'submitted successfully' ) {
-      alert('Observation Inserted Successfully');
-      //this.router.navigateByUrl(`/observations/`);
-      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
-    } 
-       
-  })
+      const objectManagementReq = {
+        "value": this.updform
+       }
+       console.log(objectManagementReq);
+       this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
+          console.log(res);
+          if(res['message'] ==  'submitted successfully' ) {
+          alert('Observation Inserted Successfully');
+          //this.router.navigateByUrl(`/observations/`);
+          this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+        } 
+         
+     })
 
 }
 

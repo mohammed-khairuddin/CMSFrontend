@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginserviceService } from '../loginservice.service';
+import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-master-ra',
@@ -162,51 +166,57 @@ export class MasterRaComponent implements OnInit {
     {id:4,itemName:'Abnormal-Other-Prominent Chiari Network'}, 
   ]
 
-rightAtriumObservationObject={
-  data:[],
-  dataabnormal:[],
-  dataabnormalsize:[],
-  dataabnormalthrombus:[],
-  dataabnormalmass:[],
-  dataabnormalcatheter:[],
-  dataabnormalspontaneous:[],
-  dataabnormalpressure:[],
-  dataabnormalothers:[],
-  dataabnormalmasspresent:[],
-  dataabnormalmasspresentdimensions:[],
-  dataabnormalmasspresentlocation:[],
-  dataabnormalmasspresentmobility:[],
-  dataabnormalmasspresentshape:[],
-  dataabnormalmasspresentsize:[],
-  dataabnormalmasspresenttexture:[],
-  dataabnormalmasspresenttype:[],
-  dataabnormalthrombuspresent:[],
-  dataabnormalthrombuspresentshape:[],
-  dataabnormalthrombuspresentsize:[],
-  dataabnormalthrombuspresentmobility:[],
-  dataabnormalthrombuspresenttexture:[],
-  dataabnormalthrombuspresentlocation:[],
-  dataabnormalspontaneouspresent:[],
-  dataabnormalspontaneouspresentdegree:[],
-  dataabnormalspontaneouspresentpersistence:[],
-  dataabnormalspontaneouspresentlocation:[]
+
+rightArtrium:any;
+updform={
+
 }
-
-
-  constructor() { }
+settings= {};
+obtype: string;
+  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+   });
 
   }
 
   onOptionsSelected = (key,itemName)  => {
-    this.rightAtriumObservationObject[key] = itemName
+    const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = itemName
+    console.log(this.updform)
   }
 
   saveRightAtriumData = () => {
       //save function
-    console.log(this.rightAtriumObservationObject)
-  console.log(this.dataabnormalspontaneous)
-  }
+  console.log(this.updform)
+  const objectManagementReq = {
+    "value": this.updform
+   }
+   console.log(objectManagementReq);
+   this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
+      console.log(res);
+      if(res['message'] ==  'submitted successfully' ) {
+      alert('Observation Inserted Successfully');
+      //this.router.navigateByUrl(`/observations/`);
+      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+    } 
+     
+ }
+ )
 
+  }
+  getAddPage  = (obtype) => {
+    console.log(obtype);
+    //console.log('=====//////////');
+    window.localStorage.setItem("obtype", obtype.toString());
+    // this.router.navigateByUrl(`/mastertable/`+type);   
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+  
+   });
+  
+  }
 }

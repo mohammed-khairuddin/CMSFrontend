@@ -380,117 +380,7 @@ export class MasterLvComponent implements OnInit {
     {id:5,itemName:'Present-Shunt-Qp:Qs Ratio'},    
   ]
 
-
-  leftVentricleObservationObject = {
-    cavitySize: [],
-    wallThickness: [],
-    ventricularMass: [],
-    ventricularShape: [],
-    concentricHypertrophy: [],
-    asymmetricHypertrophy: [],
-    //asymmetricHypertrophyPresent: [],
-    eccentricHypertrophy: [],
-    aneurysm: [],
-    //aneurysmPresent: [],
-    pseudoaneurysm: [],
-    //pseudoaneurysmPresent: [],
-    //systolicfunction: [],
-    systolicFunctionEjectionFraction: [],
-    systolicFunctionEjectionFractionDecreased: [],
-    systolicFunctionFractionalShortening: [],
-    systolicFunctionFractionalAreaChanges: [],
-    systolicFunctionDilated: [],
-    regional: [],
-    abnormalSeptalMotion: [],
-    diastolicFilling: [],
-    diastolicFillingAbnormalPattern: [],
-    diastolicFillingAbnormalLvFilling: [],
-    myocardialInfractionAnterior: [],
-    myocardialInfractionPosterior: [],
-    myocardialInfractionInferior: [],
-    myocardialInfractionLateral: [],
-    myocardialInfractionAnteroseptal: [],
-    myocardialInfractionApical: [],
-    myocardialInfractionAnteroApical: [],
-    myocardialInfractionPosteroLateral: [],
-    myocardialInfractionOther: [],
-    thrombus: [],
-    thrombusPresentSize: [],
-    thrombusLocation: [],
-    thrombusShape: [],
-    thrombusTexture: [],
-    thrombusMobility: [],
-    thrombusDimensions: [],
-    mass: [],
-    massPresentSize: [],
-    massPresentLocation: [],
-    massPresentShape: [],
-    massPresentTexture: [],
-    massPresentMobility: [],
-    massPresentDimensions: [],
-    ventricularSeptalDefect: [],
-    ventricularSeptalDefectPresentLocation: [],
-    ventricularSeptalDefectPresentSize: [],
-    ventricularSeptalDefectPresentShunt: [],    
-  }
-  
   /////////////////////////////////////////////
-
-  selectCavitySize: [];
-selectWallThickness: [];
-//wallthicknessvalue: [];
-selectVentricularMass: [];
-//ventricularLvMassvalue: [];
-selectVentricularShape: [];
-selectConcentricHypertrophy: [];
-selectAsymmetricHypertrophy: [];
-selectEccentricHypertrophy: [];
-selectAneurysm: [];
-//VentricularShapeAneurysmvalue: [];
-selectPseudoaneurysm: [];
-selectSystolicFunctionEjectionFraction: [];
-selectsystolicFunctionFractionalShortening: [];
-selectSystolicFunctionFractionalAreaChanges: [];
-selectSystolicFunctionDilated: [];
-selectRegional: [];
-selectAbnormalSeptalMotion: [];
-//abnormalSeptalMotionOtherValue: [];
-selectMyocardialInfractionAnterior: [];
-selectMyocardialInfractionPosterior: [];
-selectMyocardialInfractionInferior: [];
-selectMyocardialInfractionLateral: [];
-selectMyocardialInfractionAnteroseptal: [];
-selectMyocardialInfractionApical: [];
-selectMyocardialInfractionAnteroApical: [];
-selectMyocardialInfractionPosteroLateral: [];
-selectMyocardialInfractionOther: [];
-//myocardialInfractionOtherValue: [];
-selectDiastolicFilling: [];
-selectDiastolicFillingAbnormalPattern: [];
-selectDiastolicFillingAbnormalLvFilling: [];
-selectThrombus: [];
-selectThrombusPresentSize: [];
-selectThrombusLocation: [];
-selectThrombusShape: [];
-thrombusShapeOthervalue: [];
-selectThrombusTexture: [];
-selectThrombusMobility: [];
-selectThrombusDimensions: [];
-//thrombusDimensionsvalue: [];
-selectMass: [];
-selectMassPresentSize: [];
-selectMassPresentLocation: [];
-selectMassPresentShape: [];
-selectMassPresentTexture: [];
-selectMassPresentMobility: [];
-selectMassPresentDimensions: [];
-//massPresentDimensionsvalue: [];
-selectVentricularSeptalDefect: [];
-selectVentricularSeptalDefectPresentLocation: [];
-selectVentricularSeptalDefectPresentSize: [];
-selectVentricularSeptalDefectPresentShunt: [];
-//ventricularSeptalDefectPresentShuntValue: [];
-  ////////////////////////////////////////////
 
 
   settings= {};
@@ -499,63 +389,10 @@ selectVentricularSeptalDefectPresentShunt: [];
   data : any[] = [];
   
   wallthickness:string;
+ 
   updform = {
-   selectCavitySize:'',
-    selectWallThickness:'',
-    wallthicknessvalue:'',
-    selectVentricularMass:'',
-    ventricularLvMassvalue:'',
-    selectVentricularShape:'',
-    selectConcentricHypertrophy:'',
-    selectAsymmetricHypertrophy:'',
-    selectEccentricHypertrophy:'',
-    selectAneurysm:'',
-    VentricularShapeAneurysmvalue:'',
-    selectPseudoaneurysm:'',
-    selectSystolicFunctionEjectionFraction:'',
-    selectsystolicFunctionFractionalShortening:'',
-    selectSystolicFunctionFractionalAreaChanges:'',
-    selectSystolicFunctionDilated:'',
-    selectRegional:'',
-    selectAbnormalSeptalMotion:'',
-    abnormalSeptalMotionOtherValue:'',
-    selectMyocardialInfractionAnterior:'',
-    selectMyocardialInfractionPosterior:'',
-    selectMyocardialInfractionInferior:'',
-    selectMyocardialInfractionLateral:'',
-    selectMyocardialInfractionAnteroseptal:'',
-    selectMyocardialInfractionApical:'',
-    selectMyocardialInfractionAnteroApical:'',
-    selectMyocardialInfractionPosteroLateral:'',
-    selectMyocardialInfractionOther:'',
-    myocardialInfractionOtherValue:'',
-    selectDiastolicFilling:'',
-    selectDiastolicFillingAbnormalPattern:'',
-    selectDiastolicFillingAbnormalLvFilling:'',
-    selectThrombus:'',
-    selectThrombusPresentSize:'',
-    selectThrombusLocation:'',
-    selectThrombusShape:'',
-    thrombusShapeOthervalue:'',
-    selectThrombusTexture:'',
-    selectThrombusMobility:'',
-    selectThrombusDimensions:'',
-    thrombusDimensionsvalue:'',
-    selectMass:'',
-    selectMassPresentSize:'',
-    selectMassPresentLocation:'',
-    selectMassPresentShape:'',
-    selectMassPresentTexture:'',
-    selectMassPresentMobility:'',
-    selectMassPresentDimensions:'',
-    massPresentDimensionsvalue:'',
-    selectVentricularSeptalDefect:'',
-    selectVentricularSeptalDefectPresentLocation:'',
-    selectVentricularSeptalDefectPresentSize:'',
-    selectVentricularSeptalDefectPresentShunt:'',
-    ventricularSeptalDefectPresentShuntValue:'',
-  }
 
+  }
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
 
@@ -567,80 +404,36 @@ selectVentricularSeptalDefectPresentShunt: [];
       this.obtype = params.get('obtype');
    });
 
+  
     this.loginService.observationsGetAllByPatient().subscribe(data => {
-      console.log(data)
+      console.log(data);
+      console.log('*-*-*-*-*-*-');
+      //this.updform=user.user[0].value['value'];
+      // const x = {
+      //   'selectAorta':'Abnormal',
+      //   'selectDialation': 'Dilatation-Ascending aorta'
+      // }
+      // this.updform =x;
     }, error => console.log(error));
-  
-
 
   }
 
-
-  
   onOptionsSelected = (key,itemName)  => {
-    this.leftVentricleObservationObject[key] = itemName
+    const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = itemName
+    console.log(this.updform)
   }
+
 
   saveLeftVentricleValueData = () => {
-
+   
      //save function
-  //console.log(this.leftVentricleObservationObject)
- 
-    this.leftVentricleObservationObject = {
-      cavitySize: this.selectCavitySize,
-      wallThickness: this.selectWallThickness,
-      ventricularMass: this.selectVentricularMass,
-      ventricularShape: this.selectVentricularShape,
-      concentricHypertrophy: this.selectConcentricHypertrophy,
-      asymmetricHypertrophy: this.selectAsymmetricHypertrophy,
-      //asymmetricHypertrophyPresent: this.selectAsymmetricHypertrophy,
-      eccentricHypertrophy: this.selectEccentricHypertrophy,
-      aneurysm: this.selectAneurysm,
-      //aneurysmPresent: this.selectAneurysm,
-      pseudoaneurysm: this.selectPseudoaneurysm,
-      //pseudoaneurysmPresent: this.selectPseudoaneurysm,
-      //systolicfunction: ,
-      systolicFunctionEjectionFraction: this.systolicFunctionEjectionFraction,
-      systolicFunctionEjectionFractionDecreased: this.systolicFunctionEjectionFractionDecreased,
-      systolicFunctionFractionalShortening: this.selectsystolicFunctionFractionalShortening,
-      systolicFunctionFractionalAreaChanges: this.selectSystolicFunctionFractionalAreaChanges,
-      systolicFunctionDilated: this.selectSystolicFunctionDilated,
-      regional: this.selectRegional,
-      abnormalSeptalMotion: this.selectAbnormalSeptalMotion,
-      diastolicFilling: this.selectDiastolicFilling,
-      diastolicFillingAbnormalPattern: this.selectDiastolicFillingAbnormalPattern,
-      diastolicFillingAbnormalLvFilling: this.selectDiastolicFillingAbnormalLvFilling,
-      myocardialInfractionAnterior: this.selectMyocardialInfractionAnterior,
-      myocardialInfractionPosterior: this.selectMyocardialInfractionPosterior,
-      myocardialInfractionInferior: this.selectMyocardialInfractionInferior,
-      myocardialInfractionLateral: this.selectMyocardialInfractionLateral,
-      myocardialInfractionAnteroseptal: this.selectMyocardialInfractionAnteroseptal,
-      myocardialInfractionApical: this.selectMyocardialInfractionApical,
-      myocardialInfractionAnteroApical: this.selectMyocardialInfractionAnteroApical,
-      myocardialInfractionPosteroLateral: this.selectMyocardialInfractionPosteroLateral,
-      myocardialInfractionOther: this.selectMyocardialInfractionOther,
-      thrombus: this.selectThrombus,
-      thrombusPresentSize: this.selectThrombusPresentSize,
-      thrombusLocation: this.selectThrombusLocation,
-      thrombusShape: this.selectThrombusShape,
-      thrombusTexture: this.selectThrombusTexture,
-      thrombusMobility: this.selectThrombusMobility,
-      thrombusDimensions: this.selectThrombusDimensions,
-      mass: this.selectMass,
-      massPresentSize: this.selectMassPresentSize,
-      massPresentLocation: this.selectMassPresentLocation,
-      massPresentShape: this.selectMassPresentShape,
-      massPresentTexture: this.selectMassPresentTexture,
-      massPresentMobility: this.selectMassPresentMobility,
-      massPresentDimensions: this.selectMassPresentDimensions,
-      ventricularSeptalDefect: this.selectVentricularSeptalDefect,
-      ventricularSeptalDefectPresentLocation: this.selectVentricularSeptalDefectPresentLocation,
-      ventricularSeptalDefectPresentSize: this.selectVentricularSeptalDefectPresentSize,
-      ventricularSeptalDefectPresentShunt: this.selectVentricularSeptalDefectPresentShunt,
-    }
+  console.log(this.updform);
+
 
   const objectManagementReq = {
-    "value": this.leftVentricleObservationObject
+    "value": this.updform
    }
    console.log(objectManagementReq);
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{

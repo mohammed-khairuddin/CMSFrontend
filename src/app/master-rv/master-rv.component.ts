@@ -75,43 +75,12 @@ miscellaneous=[
   {id:4,itemName:'Miscellaneous-Consistent With Right Ventricular Infraction'},
 ]
 
-rightVentricleData ={
-  rightVentricle: [],
-  cavitySize: [],
-  wallThickness: [],
-  globalSystolicFunction: [],
-  segmentWallAnalysis: [],
-  segmentWallAnalysisFreeWall: [],
-  segmentWallAnalysisSeptum: [],
-  segmentWallAnalysisApex: [],
-  miscellaneous: [],
-};
 
-selectRightVentricle: [];
-selectCavitySize: [];
-selectWallThickness: [];
-selectGlobalSystolicFunction: [];
-selectSegmentWallAnalysis: [];
-selectSegmentWallAnalysisFreeWall: [];
-selectSegmentWallAnalysisSeptum: [];
-//segmentWallAnalysisSeptumOtherValue
-selectSegmentWallAnalysisApex: [];
-selectMiscellaneous: [];
+rightVentricleData: any;
 
 updform = {
-  selectRightVentricle:'',
-  selectCavitySize:'',
-  selectWallThickness:'',
-  selectGlobalSystolicFunction:'',
-  selectSegmentWallAnalysis:'',
-  selectSegmentWallAnalysisFreeWall:'',
-  selectSegmentWallAnalysisSeptum:'',
-  //segmentWallAnalysisSeptumOtherValue
-  selectSegmentWallAnalysisApex:'',
-  selectMiscellaneous:'',
+
 }
-
-
 
 settings= {};
 obtype: string;
@@ -126,32 +95,24 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
       this.obtype = params.get('obtype');
    });
 
-  
-
   }
 
-  onOptionsSelected = (key,value)  => {
-    this.rightVentricleData[key] = value
+
+  onOptionsSelected = (key,itemName)  => {
+    const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = itemName
+    console.log(this.updform)
   }
+
 
   saveRightVentricleData = () => {
       //save function
-    //console.log(this.rightVentricleData)
+    console.log(this.updform)
 
-    this.rightVentricleData = {
-      rightVentricle: this.selectRightVentricle,
-      cavitySize: this.selectCavitySize,
-      wallThickness:this.selectWallThickness,
-      globalSystolicFunction:this.selectGlobalSystolicFunction,
-      segmentWallAnalysis:this.selectSegmentWallAnalysis,
-      segmentWallAnalysisFreeWall:this.selectSegmentWallAnalysisFreeWall,
-      segmentWallAnalysisSeptum:this.selectSegmentWallAnalysisSeptum,
-      segmentWallAnalysisApex:this.selectSegmentWallAnalysisApex,
-      miscellaneous:this.selectMiscellaneous
-    } 
     
   const objectManagementReq = {
-    "value": this.rightVentricleData
+    "value": this.updform
    }
    console.log(objectManagementReq);
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginserviceService} from '../loginservice.service';
+import {Router, ActivatedRoute } from '@angular/router';
+import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
 
 @Component({
   selector: 'app-master-pv',
@@ -74,38 +79,63 @@ export class MasterPvComponent implements OnInit {
     {id:3,itemName:'Pulmonic Pressure-Other Method(Specify)'},//text-box
 
   ]  
-  pulmonicValueObject = {
-    structure:[],
-    abnormal:[],
-    pulmonicRegurgitation:[],
-    regurgitationPresent:[],
-    pulmonicStenosis:[],
-    stenosisLocation:[],
-    branch:[],
-    stenosisSeverity:[],
-    stenosisQuantitativeMeasurements:[],
-    pulmonaryPressure:[],
-    paSystolicPressure:[],
-  }
-// selectpulmonaryPressure;
-// selectbFunction;
-// selectfunction;
-// selectStructure;
+ 
+  updform = {
 
-  constructor() { }
+  }
+
+  settings= {};
+  obtype: string;
+
+  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
+
+  }
 
   ngOnInit(): void {
 
+    
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+   });
+
+
   }
 
-  onOptionsSelected = (key,value)  => {
-    this.pulmonicValueObject[key] = value
-    console.log(this.pulmonicValueObject)
+  onOptionsSelected = (key,itemName)  => {
+    const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
+    const selectedKey = `select${key}`
+    this.updform[selectedKey] = itemName
+    console.log(this.updform)
   }
 
   savePulmonicValueData = () => {
     //save function
-  console.log(this.pulmonicValueObject)
+    console.log(this.updform)    
+    const objectManagementReq = {
+      "value": this.updform
+     }
+     console.log(objectManagementReq);
+     this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
+        console.log(res);
+        if(res['message'] ==  'submitted successfully' ) {
+        alert('Observation Inserted Successfully');
+        //this.router.navigateByUrl(`/observations/`);
+        this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+      } 
+       
+   })
+
+}
+
+getAddPage  = (obtype) => {
+  console.log(obtype);
+  //console.log('=====//////////');
+  window.localStorage.setItem("obtype", obtype.toString());
+  // this.router.navigateByUrl(`/mastertable/`+type);   
+  this.actRoute.paramMap.subscribe(params => {
+    this.obtype = params.get('obtype');
+
+ });
 
 }
 
