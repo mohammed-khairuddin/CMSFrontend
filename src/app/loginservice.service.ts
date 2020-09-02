@@ -142,7 +142,6 @@ getAllClinicPatientsListDateType= (date,status)=>{
 
 updatePatientDoc= (updatePatientDocObject)=>{
   const id = localStorage.getItem('pid')
-  console.log(updatePatientDocObject)
   return this.http.put(`${this.ngrokUrl}/update/patient/${id}`,updatePatientDocObject,this.httpOptions)
 }
 
@@ -274,8 +273,12 @@ observationsGetAllByPatient= () => {
   return this.http.get(`${this.ngrokUrl}/findall/observations/${pmid}`,this.httpOptions)
 }
 
+observationsGetAllByPatientIdType= () => {
+  const pmid = localStorage.getItem('pmid');  
+  const obtype = localStorage.getItem('obtype')
+  return this.http.get(`${this.ngrokUrl}/findOne/observation/${pmid}/${obtype}`,this.httpOptions)
+}
 
-//app.get('/api/findall/observations/:patientId',controller.findAllObservations);
 
 
 }

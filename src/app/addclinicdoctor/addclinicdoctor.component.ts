@@ -43,6 +43,8 @@ export class AddclinicdoctorComponent implements OnInit {
   degreedoctor:string;
   timingsdays:string;
   timingshours :string;
+  logoImage;
+  profileImage;
 
   AllClinicList: Object;  
   clinic: Object;
@@ -89,7 +91,9 @@ export class AddclinicdoctorComponent implements OnInit {
   degreedoctor:'',
   timingsdays:'',
   timingshours:'',
-  googlemaplocation:''
+  googlemaplocation:'',
+  logoImage:'',
+  profileImage:''
   };
 
   ///////////////////////////////////
@@ -157,6 +161,9 @@ export class AddclinicdoctorComponent implements OnInit {
       timingsdays:['', Validators.required],
       timingshours:['', Validators.required],
       googlemaplocation:['',Validators.required],
+      file: ['', Validators.required],
+      fileSource:['', Validators.required],
+      fileSource1:['', Validators.required],
     });
 
     this.loginService.getAllClinicList().subscribe(clinic =>{
@@ -254,6 +261,10 @@ onPhotoChange(event) {
     data.password != '' && data.mobNo != '' )
       {
 
+        const formData = new FormData();
+        //console.log(this.addClinicDoctorForm.get('fileSource').value);
+        formData.append('file', this.addClinicDoctorForm.get('fileSource').value);
+
         const clinicManagementReq = {
           "role": data.role,
           "name": data.name,
@@ -285,11 +296,20 @@ onPhotoChange(event) {
           "degreedoctor":data.degreedoctor,
           "timingsdays":data.timingsdays,
           "timingshours":data.timingshours,
-          "googlemaplocation":data.googlemaplocation
+          "googlemaplocation":data.googlemaplocation,
+          //"formData":formData
         }
         
         console.log(clinicManagementReq);
   
+        
+        
+        
+        // this.http.post('http://localhost:8080/api/profile-upload', formData)
+        //   .subscribe(res => {
+        //     console.log(res);
+        //     alert('Uploaded Successfully.');
+        //   })
 
           this.loginService.registration(clinicManagementReq).subscribe(res =>{
             console.log(res);

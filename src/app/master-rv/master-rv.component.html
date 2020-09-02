@@ -34,20 +34,19 @@
                <option *ngFor="let sta of wallThickness" [ngValue]="sta.itemName">{{sta.itemName}}</option>
                </select>
              </div>
+
+             <div class="form-group col-md-4">
+              <label>Global Systolic Function</label>
+              <select [(ngModel)]="updform.selectGlobalSystolicFunction" name="selectGlobalSystolicFunction" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('GlobalSystolicFunction',updform.selectGlobalSystolicFunction)" class="form-control">
+              <option value=""> Not Applicable(N/A)</option>
+              <option *ngFor="let sta of globalSystolicFunction" [ngValue]="sta.itemName">{{sta.itemName}}</option>
+              </select>
+    
+              </div>  
+
        </div>
-
-       <div class="form-row"  >
-          <div class="form-group col-md-4">
-          <label>Global Systolic Function</label>
-          <select [(ngModel)]="updform.selectGlobalSystolicFunction" name="selectGlobalSystolicFunction" placeholder="select" 
-          (ngModelChange)="onOptionsSelected('GlobalSystolicFunction',updform.selectGlobalSystolicFunction)" class="form-control">
-          <option value=""> Not Applicable(N/A)</option>
-          <option *ngFor="let sta of globalSystolicFunction" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-          </select>
-
-          </div>   
-       </div>
-
+    
        <div class="form-row" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1% "
                  >
          <div class="form-group col-md-12">

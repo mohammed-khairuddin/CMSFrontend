@@ -64,6 +64,13 @@ Pulmonarybranchstenosis=[
       this.obtype = params.get('obtype');
    });
 
+   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+    //console.log(observation);
+    const x = observation.observation.value;
+    //console.log(x);
+    this.updform =x;
+  }, error => console.log(error));
+
     // this.settings = {
     //   singleSelection: false,
     //   text: "Not Applicable(N/A)",

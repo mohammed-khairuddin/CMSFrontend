@@ -295,6 +295,36 @@
        
       </div>   
 
+      <div class="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="logo">Clinic/Doctor Logo &nbsp; &nbsp;</label>
+          <input name="logoImage"
+              id="logo" 
+              type="file" 
+              (change)="onLogoChange($event)">
+         
+      </div>
+    
+        <div class="form-group col-md-6"  *ngIf="addform.role === 'CLINIC'">
+            <label for="file">Hospital/Clinic Photo &nbsp; &nbsp;</label>
+            <input  id="file" name="profileImage" type="file"   (change)="onFileChange($event)">
+           
+        </div>
+      </div>
+
+      <!-- <div class="form-row" *ngIf="addform.role === 'DOCTOR'"  >
+    
+        <div class="form-group col-md-12">
+            <label for="file">Doctor Photo &nbsp; &nbsp;</label>
+            <input  id="doctorphoto" type="file"  (change)="onPhotoChange($event)">
+           
+        </div>
+
+       
+              
+      </div> -->
+
       
       <div class="form-row">
         <div class="form-group col-md-6">

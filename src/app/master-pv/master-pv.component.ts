@@ -77,7 +77,6 @@ export class MasterPvComponent implements OnInit {
   paSystolicPressure=[
     {id:2,itemName:'Pulmonic Pressure-PA Systolic Pressure-From Tricuspid Regurgitation Jet'},
     {id:3,itemName:'Pulmonic Pressure-Other Method(Specify)'},//text-box
-
   ]  
  
   updform = {
@@ -98,6 +97,12 @@ export class MasterPvComponent implements OnInit {
       this.obtype = params.get('obtype');
    });
 
+   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+    //console.log(observation);
+    const x = observation.observation.value;
+    //console.log(x);
+    this.updform =x;
+  }, error => console.log(error));
 
   }
 

@@ -155,26 +155,11 @@ export class MasterPcComponent implements OnInit {
       this.obtype = params.get('obtype');
    });
 
-   this.loginService.observationsGetAllByPatient().subscribe(data => {
-    console.log(data)
-    //this.updform = data.user[0];
-    //console.log(data.user.length);
-    //let tmp = [];
-    // for(let i=0; i < data.user.length; i++) {
-    //   let gettype = data.user[i].type;
-    //   console.log(gettype);
-    //   let tt = data.user[i].value;
-    //   console.log(tt);
-    //   // for(let j=0; j < tt[i]; j++) {
-    //   //   tmp.push({ id: j, itemName: tt });
-    //   // }
-      
-    //   tmp.push({ id: i, itemName: tt });
-    // }
-    //this.selectWallThickness = tmp;
-    //console.log('--------');
-    //console.log(this.selectWallThickness);
-    
+   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+    //console.log(observation);
+    const x = observation.observation.value;
+    //console.log(x);
+    this.updform =x;
   }, error => console.log(error));
 
     this.settings = {

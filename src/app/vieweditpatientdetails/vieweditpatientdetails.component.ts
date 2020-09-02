@@ -167,27 +167,30 @@ calculateBsa(bsa){
 
   const ht = this.patientDataObject.height;
   const wt = this.patientDataObject.weight;
-  console.log(ht);
-  console.log(wt);
+  //console.log(ht);
+  //console.log(wt);
   this.patientDataObject['bsa'] =  Math.pow(ht , wt/ 3600).toFixed(3);
   this.patientDataObject['bmi'] = (wt / Math.pow(ht,2)).toFixed(3); 
   //console.log(this.patientDataObject['bsa']);
   //console.log(this.patientDataObject['bmi']);
-
 }
 
   updatePatient = ():any => {
     console.log(this.patientDataObject);
-    this.loginService.updatePatientDoc(this.patientDataObject).subscribe(updateAssignment =>{
+    this.loginService.updatePatientDoc(this.patientDataObject).subscribe(res =>{
      //this.router.navigateByUrl('/dashboard');
      //this.router.navigateByUrl('/viewdoctorpatients');
-     window.location.reload();
-     alert('Patient Details Updated Successfully');
-     
+     console.log(res);
+     if(res['message'] ===  'patient updated successfully' ) {
+      window.location.reload();
+      alert('Patient Details Updated Successfully');
+
+     }         
     })
    
  }
 
+ 
  goToSendDetails = (patientDataObject):any=>{
 
   //alert(patientDataObject.sendreport);

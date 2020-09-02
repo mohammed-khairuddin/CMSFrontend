@@ -188,15 +188,17 @@ export class MasterAortaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.loginService.observationsGetAllByPatient().subscribe(data => {
-      console.log(data);
-      //console.log('*-*-*-*-*-*-');
-      // const x = {
-      //   'selectAorta':'Abnormal',
-      //   'selectDialation': 'Dilatation-Ascending aorta'
-      // }
-      // this.updform =x;
-    }, error => console.log(error));
+    this.actRoute.paramMap.subscribe(params => {
+      this.obtype = params.get('obtype');
+   });
+
+   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+    //console.log(observation);
+    const x = observation.observation.value;
+    //console.log(x);
+    this.updform =x;
+  }, error => console.log(error));
+
   
 
 

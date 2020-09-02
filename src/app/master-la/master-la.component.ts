@@ -218,7 +218,7 @@ export class MasterLaComponent implements OnInit {
   
   obtype: string;
 updform ={}
-
+observation :Object;
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
 
@@ -228,6 +228,13 @@ updform ={}
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
    });
+
+   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+    //console.log(observation);
+    const x = observation.observation.value;
+    //console.log(x);
+    this.updform =x;
+  }, error => console.log(error));
 
 
   }

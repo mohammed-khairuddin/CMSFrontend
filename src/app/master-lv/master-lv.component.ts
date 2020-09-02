@@ -3,6 +3,7 @@ import {LoginserviceService} from '../loginservice.service';
 import {Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {defaultValue} from '../helperFunction'
 
 @Component({
   selector: 'app-master-lv',
@@ -10,7 +11,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./master-lv.component.scss']
 })
 export class MasterLvComponent implements OnInit {
-  
+  defaultDropdownValue =  defaultValue()
   
   cavitySize = [
     {id:2,itemName:'Normal'},
@@ -405,16 +406,22 @@ export class MasterLvComponent implements OnInit {
    });
 
   
-    this.loginService.observationsGetAllByPatient().subscribe(data => {
-      console.log(data);
-      console.log('*-*-*-*-*-*-');
-      //this.updform=user.user[0].value['value'];
-      // const x = {
-      //   'selectAorta':'Abnormal',
-      //   'selectDialation': 'Dilatation-Ascending aorta'
-      // }
-      // this.updform =x;
-    }, error => console.log(error));
+   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+    //console.log(observation);
+    const x = observation.observation.value;
+    //console.log(x);
+    this.updform =x;
+  }, error => console.log(error));
+
+  this.settings = {
+    singleSelection: false,
+    text: "{{defaultDropdownValue}}",
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    searchPlaceholderText: 'Select',
+    enableSearchFilter: true,
+    badgeShowLimit: 5,
+  };
 
   }
 
@@ -429,13 +436,13 @@ export class MasterLvComponent implements OnInit {
   saveLeftVentricleValueData = () => {
    
      //save function
-  console.log(this.updform);
+  //console.log(this.updform);
 
 
   const objectManagementReq = {
     "value": this.updform
    }
-   console.log(objectManagementReq);
+   //console.log(objectManagementReq);
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
       console.log(res);
       if(res['message'] ==  'submitted successfully' ) {
