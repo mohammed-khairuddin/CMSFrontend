@@ -29,8 +29,7 @@
                   <thead>
                     
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Key</th>
+                      <th scope="col">#</th>                     
                       <th scope="col">Value</th>
                       <th scope="col">Edit</th>
                       <!-- <th scope="col">Delete</th> -->
@@ -43,8 +42,8 @@
 
                     <tr *ngFor="let alllist of AllMastersList |filter:filter | paginate: { itemsPerPage: 5, currentPage: p };index as i " >
                       <td>{{i+1}}</td>
-                      <td> {{alllist.key}} </td>
-                      <td> {{alllist.value}} </td>
+
+                      <td> {{alllist.itemName}} </td>
                       
                       <td>
                             <button type="button" class="btn btn-primary btn-sm" (click)="goToEditMaster(alllist,type)"  >Edit</button>  

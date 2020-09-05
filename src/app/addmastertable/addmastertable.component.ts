@@ -41,28 +41,22 @@ export class AddmastertableComponent implements OnInit {
    });
 
    this.addMasterForm = this.formBuilder.group({
-
-    key: ['', Validators.required],
-    value: ['', Validators.required]
+    itemName: ['', Validators.required]
   });
 
   }
   
   addMaster = (data):any => {
-    
-    if(data.key === '' || data.key === null  ){
-      alert('Please Enter Valid Key');
-     }
 
-     if(data.value === '' || data.value === null  ){
+
+     if(data.itemName === '' || data.item === null) {
       alert('Please Enter Valid Value');
      }
 
      const masterManagementReq = {
-      "key": data.key,
-      "value": data.value,
+      "itemName": data.itemName,
      }
-     console.log(masterManagementReq);
+
 
      this.loginService.masterInsertion(masterManagementReq,this.type).subscribe(res =>{
       console.log(res);

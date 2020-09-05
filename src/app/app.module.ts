@@ -16,11 +16,9 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { AssignmentComponent } from './assignment/assignment.component';
 import { HttpClientModule }  from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
-import { EditAssignmentComponent } from './edit-assignment/edit-assignment.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
@@ -83,10 +81,8 @@ const x = [
     NavComponent,
     LoginComponent,
     RegistrationComponent,
-    AssignmentComponent,
     DashboardComponent,
     FooterComponent,
-    EditAssignmentComponent,
     ProfileComponent,
     SidenavComponent,
     PatientFormComponent,

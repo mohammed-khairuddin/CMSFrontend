@@ -4,11 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { AssignmentComponent } from './assignment/assignment.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import {AuthGuard} from './auth.guard';
-import { EditAssignmentComponent } from './edit-assignment/edit-assignment.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
 import { AddclinicdoctorComponent } from './addclinicdoctor/addclinicdoctor.component';
 import { ShowallclinicsComponent } from './showallclinics/showallclinics.component';
@@ -68,13 +66,6 @@ const routes: Routes = [
   },
   { 
     path: 'home',component: HomeComponent 
-  },
-  { path: 'assignment', 
-    component: AssignmentComponent , canActivate:[AuthGuard]
-  },
-  { 
-    path: 'editassignment/:id', 
-    component: EditAssignmentComponent , canActivate:[AuthGuard]
   },
   { 
     path: 'dashboard',component: DashboardComponent , canActivate:[AuthGuard]

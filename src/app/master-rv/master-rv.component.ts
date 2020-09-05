@@ -103,8 +103,6 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
   }, error => console.log(error));
 
   }
-
-
   onOptionsSelected = (key,itemName)  => {
     const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
     const selectedKey = `select${key}`

@@ -34,22 +34,6 @@ export class EditmastertableComponent implements OnInit {
 addMasterForm: FormGroup;
   ngOnInit(): void {    
 
-   // console.log(this.type);
-   
-  //   this.actRoute.paramMap.subscribe(params => {
-  //     this.type = params.get('type');
-  //     console.log('++++');
-  //     console.log(this.type);
-  //  });
-
-   
-   this.addMasterForm = this.formBuilder.group({
-
-    key: ['', Validators.required],
-    value: ['', Validators.required]
-  });
-
-
   this.loginService.getMasterDetail(this.type).subscribe(master =>{
     this.updateform = master['master']
    console.log(this.updateform)

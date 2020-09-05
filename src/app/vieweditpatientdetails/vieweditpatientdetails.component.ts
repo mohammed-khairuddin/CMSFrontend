@@ -163,6 +163,8 @@ calculateAge(birthday) {
   var age = years + ' years ' + months + ' months ' + days + ' days';
   return age;
 }
+
+
 calculateBsa(bsa){
 
   const ht = this.patientDataObject.height;
@@ -190,7 +192,6 @@ calculateBsa(bsa){
    
  }
 
- 
  goToSendDetails = (patientDataObject):any=>{
 
   //alert(patientDataObject.sendreport);
