@@ -167,7 +167,7 @@
                 <div class="form-group col-md-4">
                     <label for="country">Select Country</label> 
                     <select id="country" name="country" class="form-control" [(ngModel)]="updform.country" #country="ngModel"  (change)="onChangeCountry($event.target.value)">
-                      <option value="">Select Country</option>
+                      <!-- <option value="">Select Country</option> -->
                       <option *ngFor="let country of countryInfo; let i = index" value="{{i}}">{{country.CountryName}}</option>
                     </select> 
                     <!-- <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" #country="ngModel" >
@@ -182,7 +182,7 @@
                 <div class="form-group col-md-4">
                     <label for="state">Select State</label> 
                     <select id="state" name="state" class="form-control" [(ngModel)]="updform.state" #state="ngModel" (change)="onChangeState($event.target.value)">
-                      <option *ngIf="stateInfo == ''" value="-1">--Select State--</option>
+                      <!-- <option *ngIf="stateInfo == ''" value="-1">--Select State--</option> -->
                       <option *ngFor="let state of stateInfo; let j = index" value="{{j}}">{{state.StateName}}</option>
                     </select> 
                     <!-- <select id="state" name="state" class="form-control" required [(ngModel)]="updform.state" #state="ngModel" >
@@ -197,7 +197,7 @@
                     <div class="form-group col-md-4"  >
                         <label for="city">Select City</label> 
                         <select id="city" name="city" class="form-control" required [(ngModel)]="updform.city" #city="ngModel">
-                          <option *ngIf="cityInfo == ''" value="-1">--Select CIty--</option>
+                          <!-- <option *ngIf="cityInfo === ''" value="-1">--Select City--</option> -->
                         <option *ngFor="let city of cityInfo; let k = index" value="{{k}}">{{city}}</option>
                       </select>  
 

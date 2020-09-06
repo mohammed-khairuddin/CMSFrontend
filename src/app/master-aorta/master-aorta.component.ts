@@ -177,7 +177,7 @@ export class MasterAortaComponent implements OnInit {
   data : any[] = [];
 
   Size:string;
-  updform = {
+  updform : any  = {
     
   }
   aortaObservationObject: any;
@@ -192,7 +192,7 @@ export class MasterAortaComponent implements OnInit {
       this.obtype = params.get('obtype');
    });
 
-   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
     //console.log(observation);
     const x = observation.observation.value;
     //console.log(x);

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
 import {Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
-import { format } from 'path';
-import { EmptyError } from 'rxjs';
+// import { format } from 'path';
+// import { EmptyError } from 'rxjs';
 
 @Component({
   selector: 'app-report',
@@ -21,6 +21,7 @@ export class ReportComponent implements OnInit {
   patientDataObject;
   observationsObject;
   AllMastersList;
+  clinicDataObject;
 
   itemList = [];
   itemList1 = [];
@@ -53,12 +54,16 @@ export class ReportComponent implements OnInit {
   }];
 
   updform = {
-
+    anteriorwall :'',
+    posteriorwall:'',
+    inferiorwall:'',
+    lateralwall:'',
   }
 
   doctorAdvice= []
   conclusion = []
   selectedItems4=[]
+  regionalWallMotion = [];
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private actRoute: ActivatedRoute) { 
   }
@@ -68,8 +73,15 @@ export class ReportComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.loginService.getPatientData(localStorage.getItem("pmid")).subscribe(data => {     
-      this.patientDataObject = data['doctor']
+    this.loginService.getPatientData(localStorage.getItem("pmid")).subscribe(data => {   
+      console.log(data);  
+      this.patientDataObject = data['doctor'];
+
+      this.loginService.getClinicData(this.patientDataObject.clinicId).subscribe(data => { 
+        this.clinicDataObject = data['doctor']
+        //console.log(this.clinicDataObject);
+      })
+
     }, error => console.log(error));
 
   
@@ -86,6 +98,16 @@ export class ReportComponent implements OnInit {
 				  return ({...observation,masterValues:masterdata,comments:[]})
         })
     })
+
+
+    this.regionalWallMotion = [
+      { "id": 1, "itemName": "Normal" },
+      { "id": 2, "itemName": "Akinetic" },
+      { "id": 3, "itemName": "Hypokinetic" },
+      { "id": 4, "itemName": "Dyskinetic" },
+      { "id": 5, "itemName": "Aneurysm" },
+      { "id": 6, "itemName": "Not seen" }
+  ];
 
 
   this.settings = {
@@ -136,7 +158,7 @@ logValue() {
 
 //////////////////////////////////
 
-addImpressionComment(k: number) {
+addImpressionComment() {
   this.impressioncomments.push({
     id: this.impressioncomments.length + 1,
     //id: k + 1,
@@ -150,7 +172,7 @@ removeImpressionComment(i: number) {
 
 /////////////////////////////////
 
-addConclusionComment(k: number) {
+addConclusionComment() {
   this.conclusioncomments.push({
     id: this.conclusioncomments.length + 1,
     //id: k + 1,
@@ -164,7 +186,7 @@ removeConclusionComment(i: number) {
 
 /////////////////////////////////
 
-addDocAdviceComment(k: number) {
+addDocAdviceComment() {
   this.docadvicecomments.push({
     id: this.docadvicecomments.length + 1,
     //id: k + 1,
@@ -196,23 +218,5 @@ console.log(getReport)
 }
 
 
-//   print(): void {
-//     let printContents, popupWin;
-//     printContents = document.getElementById('print-section').innerHTML;
-//     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
-//     popupWin.document.open();
-//     popupWin.document.write(`
-//       <html>
-//         <head>
-//           <title>Report</title>
-//           <style>
-//           //........Customized style.......
-//           </style>
-//         </head>
-//     <body onload="window.print();window.close()">${printContents}</body>
-//       </html>`
-//     );
-//     popupWin.document.close();
-// }
 
 }

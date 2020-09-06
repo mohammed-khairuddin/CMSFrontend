@@ -2,8 +2,9 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
 import {Router} from '@angular/router';
 import { pid } from 'process';
-//import { AnyRecordWithTtl } from 'dns';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
+//import { filter } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-case-completed',
@@ -72,6 +73,7 @@ export class CaseCompletedComponent implements OnInit {
 
   }
 
+  
 
 
 }

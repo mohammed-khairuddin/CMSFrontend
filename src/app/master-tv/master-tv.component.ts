@@ -224,7 +224,7 @@ export class MasterTvComponent implements OnInit {
 
   ]
   
-  updform = {
+  updform : any = {
 
   }
 
@@ -241,7 +241,7 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
       this.obtype = params.get('obtype');
    });
 
-   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
     //console.log(observation);
     const x = observation.observation.value;
     //console.log(x);
@@ -257,7 +257,7 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
     console.log(this.updform)
   }
 
-  saveTricuspidValveStructure = () => {
+  saveTricuspidValveData = () => {
       //save function
        //save function
     console.log(this.updform)

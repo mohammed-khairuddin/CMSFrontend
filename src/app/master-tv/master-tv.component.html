@@ -113,31 +113,30 @@
           #septalleafletSizeDimension="ngModel">
           </div>
           <!---Vegetation-->
-          <div class="form-group col-md-4"  *ngIf="updform.selectvegetationAnteriorleaflet === 'Anterior leaflet-Size' ">
+          <!-- <div class="form-group col-md-4"  *ngIf="updform.selectvegetationAnteriorleaflet === 'Anterior leaflet-Size' ">
           <label> Anterior Leaflet Size</label>
           <select [(ngModel)]="updform.selectanteriorleafletSize" name="selectanteriorleafletSize" id="selectanteriorleafletSize" placeholder="select" 
           (ngModelChange)="onOptionsSelected('anteriorleafletSize',updform.selectanteriorleafletSize)" class="form-control">
           <option> Not Applicable(N/A)</option>
           <option *ngFor="let sta of anteriorleafletSize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
-          </div>
+          </div> -->
 
 
 
           <!---Vegetation-->
-          <div class="form-group col-md-4"  *ngIf="updform.selectedtvvegetationPosteriorleaflet === 'Posterior leaflet-Size' ">
+          <!-- <div class="form-group col-md-4"  *ngIf="updform.selectedtvvegetationPosteriorleaflet === 'Posterior leaflet-Size' ">
           <label> Posterior Leaflet Size</label>
           <select [(ngModel)]="updform.selectposteriorleafletSize" name="selectposteriorleafletSize" id="selectposteriorleafletSize" placeholder="select" 
           (ngModelChange)="onOptionsSelected('posteriorleafletSize',updform.selectposteriorleafletSize)" class="form-control">
           <option> Not Applicable(N/A)</option>
           <option *ngFor="let sta of posteriorleafletSize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
-          </div>
-
+          </div> -->
 
 
           <!---Vegetation-->
-          <div class="form-group col-md-4"  *ngIf="updform.selectvegetationSeptalleaflet === 'Septal leaflet-Size' ">
+          <!-- <div class="form-group col-md-4"  *ngIf="updform.selectvegetationSeptalleaflet === 'Septal leaflet-Size' ">
 
           <label> Septal Leaflet Size</label>
           <select [(ngModel)]="updform.selectseptalleafletSize" name="selectseptalleafletSize" id="selectseptalleafletSize" placeholder="select" 
@@ -145,7 +144,7 @@
           <option> Not Applicable(N/A)</option>
           <option *ngFor="let sta of septalleafletSize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
-          </div>
+          </div> -->
           </div>
           </div>
 
@@ -302,7 +301,7 @@
           <div class="form-group col-md-4"  >
           <label> Regurgitation Hepatic vein systolicflow </label>
           <select [(ngModel)]="updform.selecthepaticveinsystolicflow" name="selecthepaticveinsystolicflow" id="selecthepaticveinsystolicflow" placeholder="select" 
-          (ngModelChange)="onOptionsSelected('hepaticveinsystolicflow'.updform.selecthepaticveinsystolicflow)" class="form-control">
+          (ngModelChange)="onOptionsSelected('hepaticveinsystolicflow',updform.selecthepaticveinsystolicflow)" class="form-control">
           <option> Not Applicable(N/A)</option>
           <option *ngFor="let sta of hepaticveinsystolicflow" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>

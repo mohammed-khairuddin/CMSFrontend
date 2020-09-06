@@ -38,7 +38,6 @@ import { DoctorprofileComponent } from './doctorprofile/doctorprofile.component'
 import { ObservationsComponent } from './observations/observations.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CaseCompletedComponent } from './case-completed/case-completed.component';
-import { MasterObservationsComponent } from './master-observations/master-observations.component';
 import { MasterLvComponent } from './master-lv/master-lv.component';
 import { MasterLaComponent } from './master-la/master-la.component';
 import { MasterRvComponent } from './master-rv/master-rv.component';
@@ -159,9 +158,6 @@ const routes: Routes = [
   },
   { 
     path: 'casescompleted',component: CaseCompletedComponent  , canActivate:[AuthGuard]
-  },
-  { 
-    path: 'masterobservations',component: MasterObservationsComponent  , canActivate:[AuthGuard]
   },
   { 
     path: 'masterlv',component: MasterLvComponent  , canActivate:[AuthGuard]

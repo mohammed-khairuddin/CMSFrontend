@@ -4,12 +4,7 @@ import {Router} from '@angular/router';
 import { pid } from 'process';
 //import { AnyRecordWithTtl } from 'dns';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
-import { DICOMViewerComponent } from 'ng-dicomviewer';
 
-
-declare const cornerstone;
-declare const cornerstoneWADOImageLoader;
-declare const dicomParser;
 
 @Component({
   selector: 'app-showallpatients',
@@ -22,20 +17,6 @@ export class ShowallpatientsComponent implements OnInit {
   itemsPerPage :number;
   currentPage :number;
   totalItems :number;
-
-  uploadedFiles:any;
-  seletedFile: String = "Choose file...";
-  previewAvailbleList:any = [];
-  fileUploadProgress: string = null;
-  uploadedFilePath: string = null;
-
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-    })
-  }
 
   AllClinicPatientsList: any = [];  
   AllClinicDoctorList: any;
@@ -56,24 +37,9 @@ export class ShowallpatientsComponent implements OnInit {
   // };
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient) { }
 
-  @ViewChild(DICOMViewerComponent, { static: true }) viewPort: DICOMViewerComponent;
+ 
 
   ngOnInit(): void {
-
-
-    
-    cornerstoneWADOImageLoader.external.cornerstone = cornerstone; // inicializa WADO Image loader
-    cornerstoneWADOImageLoader.external.dicomParser = dicomParser
-
-    cornerstoneWADOImageLoader.webWorkerManager.initialize({
-        webWorkerPath: './assets/cornerstone/webworkers/cornerstoneWADOImageLoaderWebWorker.js',
-        taskConfiguration: {
-            'decodeTask': {
-                codecsPath: '../codecs/cornerstoneWADOImageLoaderCodecs.js'
-            }
-        }
-    });
-    // cornerstoneTools.init();
 
     
     this.loginService.getAllClinicPatientsListClinicStatus(this.status).subscribe(user =>{

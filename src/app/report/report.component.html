@@ -6,6 +6,8 @@
      
             <h5 class="text-center">REPORT</h5>
 
+          <div class="patientdetails"> 
+
             <div class="form-row">
               <div class="form-group col-md-8">
                 <div> 
@@ -112,6 +114,12 @@
             </div>
 
             <div class="form-row">
+              <div class="form-group col-md-6">
+                <div> 
+                    <label>Clinic Name :</label>
+                    {{ clinicDataObject['name'] }}
+                </div>
+            </div>
                 <div class="form-group col-md-6">
                     <div> 
                         <label>Clinic Observations :</label>
@@ -119,8 +127,11 @@
                     </div>
                 </div>
             </div>
-            <!-- <patientDetails form completes></patientDetails> -->
-        
+            
+        </div>
+
+        <!-- <patientDetails form completes></patientDetails> -->
+
             <hr/>
 
             <div class="total-container-report">
@@ -206,7 +217,7 @@
                         <div class="form-row" >
                           <div class="form-group col-md-12"   >
                             <label>Comment</label>                                   
-                            <textarea id="comment" name="comment_{{comment.id}}"  class="form-control" placeholder="Comment" 
+                            <textarea id="comment" name="comment_{{comment}}"  class="form-control" placeholder="Comment" 
                             required [(ngModel)]="observationComment.comment" #comment="ngModel"  ></textarea>
                          
 
@@ -238,13 +249,8 @@
                       ANTERIOR WALL 
                     </div>
                     <div class="form-group col-md-3">
-                      <select  class="form-control"  name="anteriorwall" id="anteriorwall"  >  
-                        <option  [ngValue]="Normal">Normal</option>
-                        <option  [ngValue]="Akinetic">Akinetic</option>
-                        <option  [ngValue]="Hypokinetic">Hypokinetic</option>
-                        <option  [ngValue]="Dyskinetic">Dyskinetic</option>
-                        <option  [ngValue]="Aneurysm">Aneurysm</option>
-                        <option  [ngValue]="Notseen">Not seen</option>
+                      <select  class="form-control"  name="anteriorwall" [(ngModel)]="updform.anteriorwall" #anteriorwall="ngModel"  >  
+                        <option *ngFor="let wallmotions of regionalWallMotion"  [ngValue]="wallmotions.itemName">{{wallmotions.itemName}}</option>
                       </select>
                     </div>
 
@@ -252,13 +258,8 @@
                       POSTERIOR WALL 
                     </div>
                     <div class="form-group col-md-3">
-                      <select  class="form-control"  name="posteriorwall" id="posteriorwall" >  
-                        <option  [ngValue]="Normal">Normal</option>
-                        <option  [ngValue]="Akinetic">Akinetic</option>
-                        <option  [ngValue]="Hypokinetic">Hypokinetic</option>
-                        <option  [ngValue]="Dyskinetic">Dyskinetic</option>
-                        <option  [ngValue]="Aneurysm">Aneurysm</option>
-                        <option  [ngValue]="Notseen">Not seen</option>
+                      <select  class="form-control"  name="posteriorwall" id="posteriorwall" [(ngModel)]="updform.posteriorwall" #posteriorwall="ngModel" >  
+                        <option *ngFor="let wallmotions of regionalWallMotion"  [ngValue]="wallmotions.itemName">{{wallmotions.itemName}}</option>
                       </select>
                     </div>
 
@@ -270,13 +271,8 @@
                       INFERIOR WALL 
                     </div>
                     <div class="form-group col-md-3">
-                      <select  class="form-control"  name="inferiorwall" id="inferiorwall" >  
-                        <option  [ngValue]="Normal">Normal</option>
-                        <option  [ngValue]="Akinetic">Akinetic</option>
-                        <option  [ngValue]="Hypokinetic">Hypokinetic</option>
-                        <option  [ngValue]="Dyskinetic">Dyskinetic</option>
-                        <option  [ngValue]="Aneurysm">Aneurysm</option>
-                        <option  [ngValue]="Notseen">Not seen</option>
+                      <select  class="form-control"  name="inferiorwall" id="inferiorwall" [(ngModel)]="updform.inferiorwall" #inferiorwall="ngModel" >  
+                        <option *ngFor="let wallmotions of regionalWallMotion"  [ngValue]="wallmotions.itemName">{{wallmotions.itemName}}</option>
                       </select>
                     </div>
 
@@ -284,13 +280,8 @@
                       LATERAL WALL 
                     </div>
                     <div class="form-group col-md-3">
-                      <select  class="form-control"  name="lateralwall" id="lateralwall" >  
-                        <option  [ngValue]="Normal">Normal</option>
-                        <option  [ngValue]="Akinetic">Akinetic</option>
-                        <option  [ngValue]="Hypokinetic">Hypokinetic</option>
-                        <option  [ngValue]="Dyskinetic">Dyskinetic</option>
-                        <option  [ngValue]="Aneurysm">Aneurysm</option>
-                        <option  [ngValue]="Notseen">Not seen</option>
+                      <select  class="form-control"  name="lateralwall" id="lateralwall" [(ngModel)]="updform.lateralwall" #lateralwall="ngModel" >  
+                        <option *ngFor="let wallmotions of regionalWallMotion"  [ngValue]="wallmotions.itemName">{{wallmotions.itemName}}</option>
                       </select>
                     </div>
 
@@ -330,7 +321,7 @@
                       <angular2-multiselect [data]="itemList1" 
                           [(ngModel)]="selectedItems1" [settings]="settings" 
                           name="sysstrainmastervalue" id="sysstrainmastervalue"  
-                          (onSelect)="onItemSelect($event)"
+                          (onSelect)="onItemSelect($event,'systolic')"
                           (onDeSelect)="OnItemDeSelect($event)" 
                           (onSelectAll)="onSelectAll($event)" 
                           (onDeSelectAll)="onDeSelectAll($event)"
@@ -345,7 +336,7 @@
 
                   </div>
 
-                  <!--------------->
+                  <!-------- IMPRESSIONS ------->
                   <div class="impressions-class">
                     <div class="block-heading-observation">
                       <h5>IMPRESSIONS</h5>
@@ -358,7 +349,7 @@
                       <angular2-multiselect [data]="itemList1" 
                           [(ngModel)]="selectedItems2" [settings]="settings" 
                           name="impressionsmastervalue" id="impressionsmastervalue"  
-                          (onSelect)="onItemSelect($event)"
+                          (onSelect)="onItemSelect($event,'impressions')"
                           (onDeSelect)="OnItemDeSelect($event)" 
                           (onSelectAll)="onSelectAll($event)" 
                           (onDeSelectAll)="onDeSelectAll($event)"
@@ -398,9 +389,9 @@
                         </div>
                       
 
-                        <div class="text-right">
+                        <!-- <div class="text-right">
                           <input type="submit" class="btn btn-success" value="Submit"/>
-                        </div>
+                        </div> -->
                         
                      </div>
                     
@@ -411,7 +402,7 @@
                    <!--------------->
 
 
-                    <!--------------->
+                    <!------- CONCLUSIONS -------->
                   <div class="impressions-class">
                     <div class="block-heading-observation">
                       <h5>CONCLUSIONS</h5> 
@@ -424,7 +415,7 @@
                       <angular2-multiselect [data]="conclusion" 
                           [(ngModel)]="selectedItems3" [settings]="settings" 
                           name="conclusionsmastervalue" id="conclusionsmastervalue"  
-                          (onSelect)="onItemSelect($event)"
+                          (onSelect)="onItemSelect($event,'conclusion')"
                           (onDeSelect)="OnItemDeSelect($event)" 
                           (onSelectAll)="onSelectAll($event)" 
                           (onDeSelectAll)="onDeSelectAll($event)"
@@ -476,7 +467,7 @@
                   </div>
                    <!--------------->
 
-                  <!--------------->
+                  <!------- DOCTORS ADVICE -------->
                   <div class="impressions-class">
                     <div class="block-heading-observation">
                       <h5>DOCTORS ADVICE</h5> 
@@ -489,7 +480,7 @@
                       <angular2-multiselect [data]="doctorAdvice" 
                           [(ngModel)]="selectedItems4" [settings]="settings" 
                           name="doctoradvicemastervalue" id="doctoradvicemastervalue"  
-                          (onSelect)="onItemSelect($event)"
+                          (onSelect)="onItemSelect($event,'docadvice')" 
                           (onDeSelect)="OnItemDeSelect($event)" 
                           (onSelectAll)="onSelectAll($event)" 
                           (onDeSelectAll)="onDeSelectAll($event)"
@@ -552,14 +543,19 @@
                         </p>
                       </div>
 
-                      <div class="form-group col-md-4">
-                        <div class="text-right">
+                      <div class="form-group col-md-4 text-right">
+                        <div class="form-row">
+                          <div class=" form-group col-md-3"></div>
+                          <div class=" form-group col-md-2"></div>
+                        <div class=" form-group col-md-4">
                           <input type="submit" class="btn btn-warning"  value="Preview Report"/>
                         </div>
 
-                        <div class="text-right">
+                        <div class="form-group col-md-3">
                           <input type="submit" class="btn btn-success" value="Submit"/>
                         </div>
+
+                      </div>
 
                       </div>
                     </div>

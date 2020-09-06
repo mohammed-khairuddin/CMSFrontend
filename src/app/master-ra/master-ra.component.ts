@@ -168,7 +168,7 @@ export class MasterRaComponent implements OnInit {
 
 
 rightArtrium:any;
-updform={
+updform : any  ={
 
 }
 settings= {};
@@ -181,7 +181,7 @@ obtype: string;
       this.obtype = params.get('obtype');
    });
 
-   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
     //console.log(observation);
     const x = observation.observation.value;
     //console.log(x);

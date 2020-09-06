@@ -21,6 +21,7 @@ export class PreviewRegKinComponent implements OnInit {
   searchString;
   tempList;
   TotalList;
+  p: number = 1; 
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient) { }
 

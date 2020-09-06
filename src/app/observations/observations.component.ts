@@ -36,7 +36,7 @@ export class ObservationsComponent implements OnInit {
    });
 
    this.loginService.getPatientData(localStorage.getItem("pmid")).subscribe(data => {
-    console.log(data)
+    //console.log(data)
     this.patientDataObject = data['doctor']
   }, error => console.log(error));
 

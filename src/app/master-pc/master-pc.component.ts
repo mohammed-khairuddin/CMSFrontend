@@ -66,23 +66,7 @@ export class MasterPcComponent implements OnInit {
     {id:4,itemName:'Pleural Effusion-Present-Left'},
     {id:5,itemName:'Pleural Effusion-Present-Right and Left'},
   ]
-  // pleuralEffusionPresent=[
-  //   {id:2,itemName:'Pleural Effusion-Present-Right'},
-  //   {id:3,itemName:'Pleural Effusion-Present-Left'},
-  //   {id:4,itemName:'Pleural Effusion-Present-Right and Left'},
-  // ]
-  // heamodynamicCompromise=[
-  //   {id:2,itemName:'Heamodynamic Compromise'},
-  //   // {id:2,itemName:'Heamodynamic Compromise-Tamponade'},
-  //   // {id:3,itemName:'Heamodynamic Compromise-Constriction'},
-  //   // {id:4,itemName:'Heamodynamic Compromise-Effuso Constructive'},
-  //   // {id:5,itemName:'Heamodynamic Compromise-Septal Bounce'},
-  //   // {id:6,itemName:'Heamodynamic Compromise-Inversion'},
-  //   // {id:7,itemName:'Heamodynamic Compromise-Excessive Respiratory Variation'},
-  //   // {id:8,itemName:'Heamodynamic Compromise-Doppler Flow Velocities'},
-  //   // {id:9,itemName:'Heamodynamic Compromise-Left ventricular diastol'},
-  //   // {id:10,itemName:'Heamodynamic Compromise-Fat Pad'},
-  // ]
+ 
   tamponade=[
     {id:2,itemName:'Heamodynamic Compromise-Tamponade-Absent'},
     {id:3,itemName:'Heamodynamic Compromise-Tamponade-Present'},
@@ -117,13 +101,7 @@ export class MasterPcComponent implements OnInit {
     {id:7,itemName:'Heamodynamic Compromise-Excessive Respiratory Variation-Present-Doppler Flow Velocities-Pulmonic'},
     {id:8,itemName:'Heamodynamic Compromise-Excessive Respiratory Variation-Present-Doppler Flow Velocities-Hepatic'},
   ]
-  // dopplerFlowVelocities=[
-  //   {id:2,itemName:'Heamodynamic Compromise-Doppler Flow Velocities-Mitral'},
-  //   {id:3,itemName:'Heamodynamic Compromise-Doppler Flow Velocities-Tricuspid'},
-  //   {id:4,itemName:'Heamodynamic Compromise-Doppler Flow Velocities-Aortic'},
-  //   {id:5,itemName:'Heamodynamic Compromise-Doppler Flow Velocities-Pulmonic'},
-  //   {id:6,itemName:'Heamodynamic Compromise-Doppler Flow Velocities-Hepatic'},
-  // ]
+ 
 
   leftVentricularDiastole=[
     {id:2,itemName:'Heamodynamic Compromise-Left ventricular diastole-Absent'},
@@ -142,9 +120,10 @@ export class MasterPcComponent implements OnInit {
   data : any[] = [];
 
   Size:string;
-  updform = {
+  updform : any = {
  
   }
+  observation : any[] = [];
   
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
@@ -154,8 +133,8 @@ export class MasterPcComponent implements OnInit {
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
    });
-
-   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+ 
+   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
     //console.log(observation);
     const x = observation.observation.value;
     //console.log(x);

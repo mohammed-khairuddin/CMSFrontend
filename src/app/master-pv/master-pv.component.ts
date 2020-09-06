@@ -79,7 +79,7 @@ export class MasterPvComponent implements OnInit {
     {id:3,itemName:'Pulmonic Pressure-Other Method(Specify)'},//text-box
   ]  
  
-  updform = {
+  updform : any = {
 
   }
 
@@ -97,7 +97,7 @@ export class MasterPvComponent implements OnInit {
       this.obtype = params.get('obtype');
    });
 
-   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
     //console.log(observation);
     const x = observation.observation.value;
     //console.log(x);

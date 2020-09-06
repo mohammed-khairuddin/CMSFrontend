@@ -23,8 +23,7 @@ export class EditmastertableComponent implements OnInit {
   AllMasterList
 
   updateform = {
-    key: '',
-    value:'',
+    itemName:'',
   }
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 

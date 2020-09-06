@@ -15,25 +15,27 @@ export class VieweditpatientdetailsComponent implements OnInit {
   role  = localStorage.getItem('role')
   name  = localStorage.getItem('name')
 
-age;
-bsa :number;
-bmi : number;
-height:number;
-weight:number;
+// age;
+// bsa :number;
+// bmi : number;
+// height:number;
+// weight:number;
+// ht:any;
+// wt:any;
 
 ///////////////////////////////////
 statuss=['Open','Closed'];   
 requirements = ['Very Urgent', 'With in a Day','Routine'];
 protocols = ['Transthoracic', 'Ultra Sound'];
 ews=['Good','Bad'];
-  patientDataObject = {
+  patientDataObject : any = {
     requirement: '',
     reportbase:'',
     patientname:'',
     gender:'',
     age:'',
-    // height:'',
-    // weight:'',
+    height:'',
+    weight:'',
     dob:'',
     caseId:'',
     window:'',
@@ -50,8 +52,8 @@ ews=['Good','Bad'];
     propreport:'',
     submitdate:'',
     clinicId:'',
-    // bsa:'',
-    // bmi:'',
+    bsa:'',
+    bmi:'',
     bp:'',
     bpsystolic:'',
     bpdiastolic:'',
@@ -90,20 +92,18 @@ ews=['Good','Bad'];
     });
 
     this.loginService.getPatientData(localStorage.getItem("pid")).subscribe(data => {
-          //console.log(data)
+         
           this.patientDataObject = data['doctor']
         }, error => console.log(error));
   
-        this.loginService.getAllClinicDoctorList().subscribe(clinicdata => {
-          //console.log('=======');
-          //console.log(clinicdata)
+        this.loginService.getAllClinicDoctorList().subscribe(clinicdata => {          
           this.ClinicDoctors = clinicdata['user']
         }, error => console.log(error));
         
   }
   
 calculateAge(birthday) {
-  //console.log(this.patientDataObject.dob);
+ 
   //convert date again to type Date
   const bdate = new Date(this.patientDataObject.dob);
   console.log(bdate);
@@ -164,15 +164,14 @@ calculateAge(birthday) {
   return age;
 }
 
-
 calculateBsa(bsa){
 
   const ht = this.patientDataObject.height;
   const wt = this.patientDataObject.weight;
   //console.log(ht);
   //console.log(wt);
-  this.patientDataObject['bsa'] =  Math.pow(ht , wt/ 3600).toFixed(3);
-  this.patientDataObject['bmi'] = (wt / Math.pow(ht,2)).toFixed(3); 
+  this.patientDataObject['bsa'] =  Math.pow(this.patientDataObject.height , wt/ 3600).toFixed(3);
+  this.patientDataObject['bmi'] = (wt / Math.pow(this.patientDataObject.height,2)).toFixed(3); 
   //console.log(this.patientDataObject['bsa']);
   //console.log(this.patientDataObject['bmi']);
 }
@@ -180,8 +179,6 @@ calculateBsa(bsa){
   updatePatient = ():any => {
     console.log(this.patientDataObject);
     this.loginService.updatePatientDoc(this.patientDataObject).subscribe(res =>{
-     //this.router.navigateByUrl('/dashboard');
-     //this.router.navigateByUrl('/viewdoctorpatients');
      console.log(res);
      if(res['message'] ===  'patient updated successfully' ) {
       window.location.reload();
@@ -194,7 +191,6 @@ calculateBsa(bsa){
 
  goToSendDetails = (patientDataObject):any=>{
 
-  //alert(patientDataObject.sendreport);
   if(patientDataObject.sendreport === '' || patientDataObject.sendreport === undefined ){
     alert('Please Select One of them to sent the Report');
     return false;

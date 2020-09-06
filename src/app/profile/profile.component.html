@@ -323,9 +323,7 @@
                 required [(ngModel)]="profileform.otherdetails" #otherdetails="ngModel"  ></textarea>
                
               </div>
-                
-          
-        
+                                
           </div> 
         
         
@@ -339,8 +337,8 @@
         
                 <div class="form-group col-md-6">
                   <label for="ambulance">Ambulance Service Available  </label>  <br/>         
-                  <input name="ambulance"  [(ngModel)]="ambulance" type="radio" [value]="true" [checked]="ambulance"/> Yes
-                  <input name="ambulance"[(ngModel)]="ambulance" type="radio" [value]="false" [checked]="!ambulance"/> No
+                  <input name="ambulance"  [(ngModel)]="profileform.ambulance"  type="radio" [value]="true" /> Yes
+                  <input name="ambulance"[(ngModel)]="profileform.ambulance"   type="radio" [value]="false" /> No
         
                 </div>
         

@@ -16,6 +16,12 @@ export class ShowalldoctorsComponent implements OnInit {
   id  = localStorage.getItem('id')
   role  = localStorage.getItem('role')
   name  = localStorage.getItem('name')
+  p: number = 1; 
+
+
+  searchString;
+  tempList;
+  TotalList;
 
   constructor(private loginService: LoginserviceService,private router:Router) { }
 
@@ -45,5 +51,23 @@ export class ShowalldoctorsComponent implements OnInit {
      })
 
   }
+
+  getResultData = () => {
+    if(this.searchString != '' && this.searchString != null && this.searchString != undefined)  {
+   this.AllDoctorList=  this.TotalList.filter(data => 
+         data.mobileno.toString().includes(this.searchString.toString())
+    )
+   
+   }
+   else {
+  
+    this.loginService.getAllDoctorsList().subscribe(clinic =>{
+      this.AllDoctorList = clinic['clinic']
+     //console.log(this.AllDoctorList)
+    })
+    
+   }
+  
+   }
 
 }

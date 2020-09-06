@@ -10,18 +10,13 @@ import {Router} from '@angular/router';
 })
 export class ViewpatientdetailsComponent implements OnInit {
 
-age;
-bsa :number;
-bmi : number;
-height:number;
-weight:number;
 
 ///////////////////////////////////
    
 requirements = ['Very Urgent', 'With in a Day','Routine'];
 protocols = ['Transthoracic', 'Ultra Sound'];
 ews=['Good','Bad'];
-  patientDataObject = {
+  patientDataObject : any= {
     requirement: '',
     reportbase:'',
     patientname:'',

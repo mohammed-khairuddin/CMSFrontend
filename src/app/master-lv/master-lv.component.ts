@@ -391,7 +391,7 @@ export class MasterLvComponent implements OnInit {
   
   wallthickness:string;
  
-  updform = {
+  updform : any  = {
 
   }
 
@@ -406,7 +406,7 @@ export class MasterLvComponent implements OnInit {
    });
 
   
-   this.loginService.observationsGetAllByPatientIdType().subscribe(observation => {
+   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
     //console.log(observation);
     const x = observation.observation.value;
     //console.log(x);

@@ -15,6 +15,10 @@ export class ShowallclinicsComponent implements OnInit {
   id  = localStorage.getItem('id')
   role  = localStorage.getItem('role')
   name  = localStorage.getItem('name')
+  p: number = 1; 
+  searchString;
+  tempList;
+  TotalList;
 
   constructor(private loginService: LoginserviceService,private router:Router) { }
 

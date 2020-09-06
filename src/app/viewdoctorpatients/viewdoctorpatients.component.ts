@@ -12,6 +12,7 @@ export class ViewdoctorpatientsComponent implements OnInit {
   AllDoctorPatientsList: any;  
   AllClinicDoctorList:any;
   ClinicData;
+  p: number = 1; 
 
   isLogin = localStorage.getItem('token')  ? true : false;
   id  = localStorage.getItem('id')
