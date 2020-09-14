@@ -50,14 +50,14 @@ complaintsForm = (data):any => {
   
   console.log(symptomManagementReq);
 
-    this.loginService.registration(symptomManagementReq).subscribe(res =>{
-      console.log(res);
-      //if(res['message'] ==  'Successfully created' || res['message'] == 'File uploaded successfully!' ) {
-        if(res['status'] ==  '200' ) {
-        alert('Added Successfully');
-        this.router.navigate(['/dashboard']);
-      } 
-   })
+  //   this.loginService.registration(symptomManagementReq).subscribe(res =>{
+  //     console.log(res);
+  //     //if(res['message'] ==  'Successfully created' || res['message'] == 'File uploaded successfully!' ) {
+  //       if(res['status'] ==  '200' ) {
+  //       alert('Added Successfully');
+  //       this.router.navigate(['/dashboard']);
+  //     } 
+  //  })
  
 
 

@@ -1,24 +1,14 @@
 
-            <div class="float-container">
-                
-                <div class="form-group">
-                    <input  id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..."  multiple/>
-                </div>
-                <div *ngIf="fileUploadProgress">
-                    Upload progress: {{ fileUploadProgress }}
-                </div> 
-                <div class="mb-3" *ngIf="uploadedFilePath">
-                    {{uploadedFilePath}}
-                </div>
-                <div style="height: 600px; width:100%;">
-                  <dicom-viewer  style="height:100%; width:100%; margin: 10px;"></dicom-viewer>
-                </div>
-                 <br/>  <br/>  
-                <div class="form-group">
-                    <button class="btn btn-primary"  (click)="upload()">Upload</button>
-                </div>
-                    
-               
-                
-             </div>
-        
+<h5> Dicom Viewer </h5>
+
+<div style="height:100%; width: 100%;">
+    <div class="choose_file">
+      Choose Your DICOM Files
+      <input class="hide_file" type="file" multiple accept="application/dicom" id="imagens" title="selecione arquivos de imagens"
+      (change)="loadDICOMImages($event.target.files)">
+    </div>
+
+  <div style="display: flex;height: calc(100% - 90px); width:100%;">
+    <dicom-viewer [enableViewerTools]="true" [enablePlayTools]="true" [maxImagesToLoad]="20" style="height:100%; width:100%; margin: 10px;"></dicom-viewer>
+  </div>
+</div> 

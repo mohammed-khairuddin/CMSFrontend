@@ -1,15 +1,10 @@
-import { Component, OnInit,ViewChild  } from '@angular/core';
-import {LoginserviceService} from '../loginservice.service';
-import {Router} from '@angular/router';
-import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
-import { DICOMViewerComponent } from 'ng-dicomviewer';
-import { map } from 'rxjs/operators';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DICOMViewerComponent } from '../../../node_modules/ng-dicomviewer';
+//import * as cornerstone from '../../../node_modules/cornerstone-core/dist/cornerstone.js';
 
 declare const cornerstone;
 declare const cornerstoneWADOImageLoader;
-declare const dicomParser;
-
+//declare const cornerstoneTools;
 
 @Component({
   selector: 'app-dicomviewer',
@@ -18,37 +13,13 @@ declare const dicomParser;
 })
 export class DicomviewerComponent implements OnInit {
 
-
-  isLogin = localStorage.getItem('token')  ? true : false;
-  id  = localStorage.getItem('id')
-  role  = localStorage.getItem('role')
-  name  = localStorage.getItem('name')
-
-  uploadedFiles:any;
-  seletedFile: String = "Choose file...";
-  previewAvailbleList:any = [];
-  fileUploadProgress: string = null;
-  uploadedFilePath: string = null;
-
-  filesToUpload: Array<File> = [];
-
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-    })
-  }
-
-  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient) { }
-
   @ViewChild(DICOMViewerComponent, { static: true }) viewPort: DICOMViewerComponent;
 
-  ngOnInit(): void {
-
+  ngOnInit() {
+    
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone; // inicializa WADO Image loader
-    cornerstoneWADOImageLoader.external.dicomParser = dicomParser
 
+    // configura codecs e web workers
     cornerstoneWADOImageLoader.webWorkerManager.initialize({
         webWorkerPath: './assets/cornerstone/webworkers/cornerstoneWADOImageLoaderWebWorker.js',
         taskConfiguration: {
@@ -57,65 +28,15 @@ export class DicomviewerComponent implements OnInit {
             }
         }
     });
-    // cornerstoneTools.init();
-
 
   }
 
-
-  
-  fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
-    //this.product.photo = fileInput.target.files[0]['name'];
-    
-    //this.loadDICOMImages(this.filesToUpload)
-}
-
-  upload() {
-   
-    const formData: any = new FormData();
-    const files: Array<File> = this.filesToUpload;
-    console.log(files);
-
-    for(let i =0; i < files.length; i++){
-        formData.append("uploads[]", files[i], files[i]['name']);
-    }
-    console.log('form data variable :   '+ formData.toString());
-   
-    this.http.post(`http://localhost:8080/api/addpatient/${this.id}`,formData).subscribe(files =>{
-      alert('Successfully Uploaded');
-      //location.reload();
-      this.router.navigateByUrl('/clinicdashboard');
-     })
-
-  }
-
-
-  loadDICOMImages(files:any) {
-
-// var arrayBuffer = new ArrayBuffer(bufferSize);
-// var byteArray = new Uint8Array(arrayBuffer);
-
-// try
-// {
-//    // Parse the byte array to get a DataSet object that has the parsed contents
-//     var dataSet = dicomParser.parseDicom(byteArray/*, options */);
-
-//     // access a string element
-//     var studyInstanceUid = dataSet.string('x00100010');
-
-//     // get the pixel data element (contains the offset and length of the data)
-//     var pixelDataElement = dataSet.elements.x7fe00010;
-
-//     // create a typed array on the pixel data (this example assumes 16 bit unsigned data)
-//     var pixelData = new Uint16Array(dataSet.byteArray.buffer, pixelDataElement.dataOffset, pixelDataElement.length);
-// }
-// catch(ex)
-// {
-//    console.log('Error parsing byte stream', ex);
-// }
-
-
+  /**
+   * Load selected DICOM images
+   *
+   * @param files list of selected dicom files
+   */
+  loadDICOMImages(files: FileList) {
     if (files && files.length > 0) {
       let imageList = [];
       const fileList:Array<File> = Array.from(files);
@@ -124,23 +45,21 @@ export class DicomviewerComponent implements OnInit {
         if ( b.name > a.name ) return -1;
         return 0;
       })
-    cornerstoneWADOImageLoader.wadouri.fileManager.purge();
-      //cornerstoneWADOImageLoader.wadouri.dataSetCacheManager.purge();
+      //cornerstoneWADOImageLoader.wadouri.fileManager.purge();
+      cornerstoneWADOImageLoader.wadouri.dataSetCacheManager.purge();
 
+      // loop thru the File list and build a list of wadouri imageIds (dicomfile:)
       for (let i = 0; i < fileList.length; i++) {
         const dicomFile: File = fileList[i];
         const imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(dicomFile);
         imageList.push(imageId);
       }
+
       this.viewPort.resetAllTools();
+
+      // now load all Images, using their wadouri
       this.viewPort.loadStudyImages(imageList);
-      //console.log(this.viewPort);
 
-    } else alert('Sorry! No Dicom Images');
-}
-       
-
-
-
-
+    } else alert('Escolha imagens DICOM a exibir.');
+  }
 }

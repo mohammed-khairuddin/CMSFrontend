@@ -135,17 +135,17 @@ export class RegistrationComponent implements OnInit {
           
           //alert(JSON.stringify(this.registerForm.value))
     
-          this.loginService.registration(clinicManagementReq).subscribe(res =>{
-            //this.router.navigateByUrl('/')
-            //alert(res['status']);
-            if(res['status'] ==  '200' ) {
-              this.router.navigate(['/']);
-            } else{
-              alert("Invalid Details. Please Check the Details");
-              return false;
-              }
+        //   this.loginService.registration(clinicManagementReq).subscribe(res =>{
+        //     //this.router.navigateByUrl('/')
+        //     //alert(res['status']);
+        //     if(res['status'] ==  '200' ) {
+        //       this.router.navigate(['/']);
+        //     } else{
+        //       alert("Invalid Details. Please Check the Details");
+        //       return false;
+        //       }
             
-         })
+        //  })
        
 
        } else{

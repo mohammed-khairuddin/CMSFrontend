@@ -425,7 +425,6 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
       this.obtype = params.get('obtype');
    });
 
-
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
     //console.log(observation);
     const x = observation.observation.value;

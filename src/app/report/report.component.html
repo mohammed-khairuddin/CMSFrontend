@@ -151,7 +151,7 @@
                 </div>
                 <hr/>
                     <div>
-                        Echo Window :   xxxxx
+                        Echo Window :   {{ patientDataObject['ew'] }}
                     </div>
                 <hr/>
 
@@ -165,14 +165,15 @@
 
                     <div class="form-row">
                       <div class="form-group col-md-4"   >
-                        <h6>{{ Observations.type }} </h6>
+                        <h6> {{ Observations.ttype  | titlecase}} </h6> 
+                        <!-- <h6>{{ Observations.type | titlecase }} </h6> -->
                       </div>
                      
                       <div class="form-group col-md-8"   >
 
                         <div class="form-group col-md-4"   >
                         
-                          <h6>Masters : </h6>         
+                          <h6>Data : </h6>         
                           <angular2-multiselect [data]="Observations.masterValues" 
                           [(ngModel)]="selectedItemsObservations[k + 1]" [settings]="settings" 
                           name="mastervalue_{{k + 1}}" id="mastervalue_{{k + 1}}"  
@@ -193,10 +194,9 @@
                         </div>                       
 
                        
-
-                        <h6>Values  </h6>
                         <div *ngFor="let Obsvalue of Observations.value| keyvalue; let j = index;" class="observationvalues">
-                           <p>{{ Obsvalue.value }}</p>
+                          
+                          <p>{{ Obsvalue.key.replace('select','') | titlecase }} - {{ Obsvalue.value | titlecase }}</p>
                         </div>
 
                         <!------------------------------>
@@ -227,7 +227,9 @@
 
                         </div>
                       
-
+                        <!-- <div class="form-group col-md-3">
+                          <input type="submit" class="btn btn-success" value="Submit"/>
+                        </div> -->
                         <!------------------------------>
                       </div>
 
@@ -300,8 +302,11 @@
                     <div class="form-group col-md-3">
                       VALUE OF EF  :
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-3" *ngIf="patientDataObject['ef'] != ''">
                       {{ patientDataObject['ef'] }}
+                    </div>
+                    <div class="form-group col-md-3" *ngIf="patientDataObject['ef'] == ''">
+                      <input type="text" name="ef" id="ef" value=""  class="form-control" />
                     </div>
 
                   </div>
@@ -318,10 +323,10 @@
                       The reduced peak systolic strain over 
                     </div>
                     <div class="form-group col-md-3">
-                      <angular2-multiselect [data]="itemList1" 
+                      <angular2-multiselect [data]="speckleTracking" 
                           [(ngModel)]="selectedItems1" [settings]="settings" 
                           name="sysstrainmastervalue" id="sysstrainmastervalue"  
-                          (onSelect)="onItemSelect($event,'systolic')"
+                          (onSelect)="onItemSelect($event,'speckleTracking')"
                           (onDeSelect)="OnItemDeSelect($event)" 
                           (onSelectAll)="onSelectAll($event)" 
                           (onDeSelectAll)="onDeSelectAll($event)"
@@ -346,10 +351,10 @@
                     <div class="form-group col-md-3">
                       Impressions 
 
-                      <angular2-multiselect [data]="itemList1" 
+                      <angular2-multiselect [data]="impression" 
                           [(ngModel)]="selectedItems2" [settings]="settings" 
                           name="impressionsmastervalue" id="impressionsmastervalue"  
-                          (onSelect)="onItemSelect($event,'impressions')"
+                          (onSelect)="onItemSelect($event,'impression')"
                           (onDeSelect)="OnItemDeSelect($event)" 
                           (onSelectAll)="onSelectAll($event)" 
                           (onDeSelectAll)="onDeSelectAll($event)"
@@ -479,7 +484,7 @@
 
                       <angular2-multiselect [data]="doctorAdvice" 
                           [(ngModel)]="selectedItems4" [settings]="settings" 
-                          name="doctoradvicemastervalue" id="doctoradvicemastervalue"  
+                          name="doctoradvice" id="doctoradvicemastervalue"  
                           (onSelect)="onItemSelect($event,'docadvice')" 
                           (onDeSelect)="OnItemDeSelect($event)" 
                           (onSelectAll)="onSelectAll($event)" 
@@ -510,7 +515,7 @@
                         <div class="form-row" >
                           <div class="form-group col-md-12"   >
                             <label>Comment</label>                                   
-                            <textarea id="docadvicecomment" name="docadvicecomment_{{docadvicecomment.id}}"  class="form-control" placeholder="Comment" 
+                            <textarea id="docadvicecomment" name="doctoradvicecomment"  class="form-control" placeholder="Comment" 
                             required [(ngModel)]="docadvicecomment.docadvicecomment" #docadvicecomment="ngModel"  ></textarea>
                          
                           </div>
@@ -538,17 +543,20 @@
                     <div class="form-row">
                       <div class="form-group col-md-8">
                         <p>
-                          Dr Digambar Naik <br/>
-                          (MBBS, MD (Medicine), DOIH, DHA, FIAE, FAIMP (Cardiology)
+                          {{ DoctorData.name }} <br/>
+                          {{ DoctorData.qualification }} 
                         </p>
                       </div>
 
                       <div class="form-group col-md-4 text-right">
                         <div class="form-row">
-                          <div class=" form-group col-md-3"></div>
-                          <div class=" form-group col-md-2"></div>
+                         
+                          <div class=" form-group col-md-4">
+                            <input type="submit" class="btn btn-warning"  value="Download Report"/>
+                          </div>
+                          <div class=" form-group col-md-1"></div>
                         <div class=" form-group col-md-4">
-                          <input type="submit" class="btn btn-warning"  value="Preview Report"/>
+                          <input type="submit" class="btn btn-warning" (click)="generatePdf('open')" value="Preview Report"/>
                         </div>
 
                         <div class="form-group col-md-3">

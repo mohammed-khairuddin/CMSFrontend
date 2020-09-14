@@ -442,7 +442,7 @@ export class MasterLvComponent implements OnInit {
   const objectManagementReq = {
     "value": this.updform
    }
-   //console.log(objectManagementReq);
+   console.log(objectManagementReq);
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
       console.log(res);
       if(res['message'] ==  'submitted successfully' ) {

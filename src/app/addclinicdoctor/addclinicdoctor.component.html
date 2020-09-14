@@ -300,15 +300,15 @@
         <div class="form-group col-md-6">
           <label for="logo">Clinic/Doctor Logo &nbsp; &nbsp;</label>
           <input name="logoImage"
-              id="logo" 
-              type="file" 
+              id="logoImage" 
+              type="file"  #UploadFileInput
               (change)="onLogoChange($event)">
          
       </div>
     
         <div class="form-group col-md-6"  *ngIf="addform.role === 'CLINIC'">
             <label for="file">Hospital/Clinic Photo &nbsp; &nbsp;</label>
-            <input  id="file" name="profileImage" type="file"   (change)="onFileChange($event)">
+            <input  id="profileImage" name="profileImage"  type="file"   (change)="onFileChange($event)">
            
         </div>
       </div>

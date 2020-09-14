@@ -73,7 +73,7 @@ export class CaseCompletedComponent implements OnInit {
 
   }
 
-  
+
 
 
 }

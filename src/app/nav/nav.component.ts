@@ -22,6 +22,14 @@ export class NavComponent implements OnInit {
   constructor(private router:Router,private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+  //   setTimeout((router: Router) => {
+  //     localStorage.clear();
+  //   this.router.navigateByUrl('/')
+  //   this.isLogin = localStorage.getItem('token')  ? true : false;
+  //   this.id  = localStorage.getItem('id')
+  //   this.role  = localStorage.getItem('role')
+  // }, 500000);  //200s
     
   }
 

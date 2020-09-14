@@ -29,9 +29,9 @@ export class LoginserviceService {
      return this.http.post(`${this.ngrokUrl}/auth/signin`,loginBody,this.httpOptions)
   }
 
-  registration= (registrationBody) => {
-
-    return this.http.post(`${this.ngrokUrl}/auth/registration`,registrationBody,this.httpOptions)
+  registration= (registrationBody,formData) => {
+    //console.log("nsifnewjirnnwergnjinertifvnuiernfvnueirntu")
+    return this.http.post(`${this.ngrokUrl}/auth/registration`,registrationBody,formData)
  }
 
 // getListOfAssignmentsDoctor= () => {
@@ -279,6 +279,17 @@ observationsGetAllByPatientIdType= () => {
   return this.http.get(`${this.ngrokUrl}/findOne/observation/${pmid}/${obtype}`,this.httpOptions)
 }
 
+
+masterReportInsertion= (objectManagementReq) => {
+  const pmid = localStorage.getItem('pmid');
+  //const obtype = localStorage.getItem('obtype')
+  return this.http.post(`${this.ngrokUrl}/update/observation/${pmid}`,objectManagementReq,this.httpOptions)
+}
+
+observationsReportUpdate= (objectManagementReq) => {
+  const pmid = localStorage.getItem('pmid');  
+  return this.http.put(`${this.ngrokUrl}/update/report/${pmid}`,objectManagementReq,this.httpOptions)
+}
 
 
 }
