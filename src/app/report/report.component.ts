@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
 import {Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
-// import { format } from 'path';
-// import { EmptyError } from 'rxjs';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { ObservationsComponent } from '../observations/observations.component';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-report',
@@ -52,6 +55,12 @@ export class ReportComponent implements OnInit {
     docadvicecomment: ''
   }];
 
+  anteriorwall;
+  posteriorwall;
+  inferiorwall;
+  lateralwall;
+
+
   updform = {
     anteriorwall :'',
     posteriorwall:'',
@@ -66,6 +75,10 @@ export class ReportComponent implements OnInit {
   selectedItems4=[]
   regionalWallMotion = [];
   DoctorData;
+
+  insertedConclusionComments=[];
+
+  
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private actRoute: ActivatedRoute) { 
   }
@@ -93,12 +106,16 @@ export class ReportComponent implements OnInit {
 
   
     this.loginService.observationsGetAllByPatient().subscribe((data:any) => {
-        const {observations,masterData} = data;
-        //console.log(masterData);
+        const {observations,masterData,conclusioncomment,conclusionreport,doctorAdviceComments,
+          impressioncomment,impressionreport} = data;
+        console.log(conclusioncomment);
         this.doctorAdvice = masterData['doctorAdvice']
         this.conclusion = masterData['conclusion']
         this.impression = masterData['impressions']
         this.speckleTracking = masterData['speckleTracking']
+
+        this.insertedConclusionComments = conclusioncomment;
+
         this.observationsObject = observations.map(observation => {
           const type =observation.type
           const formatedTypename = type.replace("Observation","").replace(/ /g, "") 
@@ -220,6 +237,12 @@ removeDocAdviceComment(i: number) {
 
 reportFormData=() =>{
 
+  console.log('**********');
+  console.log(this.anteriorwall);
+  console.log(this.posteriorwall);
+
+  console.log('+++++++++++++++++');
+
   const impressionslen = this.selectedItems2.length;
   const impressionsCommentslen = this.impressioncomments.length;
 
@@ -250,6 +273,7 @@ const getObservationsReport  = {
 
 console.log(getObservationsReport)
 
+
 // this.loginService.masterReportInsertion(getReport).subscribe(res =>{
 //   console.log(res);
 //   if(res['message'] ==  'submitted successfully' ) {
@@ -261,7 +285,7 @@ console.log(getObservationsReport)
 
 
 
-// this.loginService.observationsReportUpdate(getObservationsReport).subscribe(res =>{
+// this.loginService.observationsReportUpdate(getReport).subscribe(res =>{
 //   console.log(res);
 //   if(res['message'] ==  'submitted successfully' ) {
 //   alert('Report Observations Updated Successfully');
@@ -270,106 +294,227 @@ console.log(getObservationsReport)
  
 // })
 
-
+return  {
+  selctedObservations: this.selectedItemsObservations.filter(data => data != 'Empty'),
+  patientData : this.patientDataObject,
+  impressions: this.selectedItems2,   //to do 
+  conclusions: this.selectedItems3,
+  doctorAdvice: this.selectedItems4,
+  observations:this.observationsObject
+}
 
 }
 
 /////////////////////////////// PDFF
 
-// generatePdf(action='open'){
-//   console.log("im looking for")
-//   console.log(this.reportFormData)
-//   console.log(this.getformatteddata)
-//   const documentDefinition = this.getDocumentDefinition();
-//   switch (action) {
-//     case 'open': pdfMake.createPdf(documentDefinition).open(); break;
-//     case 'download': pdfMake.createPdf(documentDefinition).download(); break;        
-//   }
-// }
+generatePdf(action='open'){
+  //console.log("im looking for")
+  //console.log(this.reportFormData)
+  //console.log(this.getformatteddata)
+  const documentDefinition = this.getDocumentDefinition();
+  switch (action) {
+    case 'open': pdfMake.createPdf(documentDefinition).open(); break;
+    case 'download': pdfMake.createPdf(documentDefinition).download(); break;        
+  }
+}
 
+getDocumentDefinition() {
+  sessionStorage.setItem('report', JSON.stringify(this.reportFormData));
+  //sessionStorage.setItem('report',JSON.stringify(this.getformatteddata))
+  //let pdfFormData = this.reportFormData()
+  console.log("Stringify Observations from reportformdata")
+  console.log(this.reportFormData())
 
-// getDocumentDefinition() {
-//   sessionStorage.setItem('report', JSON.stringify(this.reportFormData));
-//   sessionStorage.setItem('report',JSON.stringify(this.getformatteddata))
-//   //let pdfFormData = this.reportFormData()
-//   console.log("Stringify Observations from reportformdata")
-//   console.log(this.reportFormData())
+  //console.log(this.getObservationsToPdf(this.observationsObject))
 
-//   //console.log(this.getObservationsToPdf(this.observationsObject))
-
-//   const observations = [{
-//     value:{selectCavitysize:"Increased-Moderate",
-//     selectVentricularmass: "BorderLine",
-//     selectWallthickness: "Decreased"}},
-//     {
-//     value:{left:"sairate",
-//     right: "BorderLine",
-//     sai: "Decreased"}}]
+  const observations = [{
+    value:{selectCavitysize:"Increased-Moderate",
+    selectVentricularmass: "BorderLine",
+    selectWallthickness: "Decreased"}},
+    {
+    value:{left:"sairate",
+    right: "BorderLine",
+    sai: "Decreased"}}]
     
-//     let observationsObject = {}
-//     const y = observations.map(data => {
-//     Object.assign(observationsObject, data.value);
-//     })
-//     console.log("checking for observation object")
-//      console.log(observationsObject)
-//      console.log("get obs to pdf")
-//      console.log(this.getObservationsToPdf(this.observationsObject))
+    let observationsObject = {}
+    const y = observations.map(data => {
+    Object.assign(observationsObject, data.value);
+    })
+    console.log("checking for observation object")
+     console.log(observationsObject)
+     console.log("get obs to pdf")
+     console.log(this.getObservationsToPdf(this.observationsObject))
+     //console.log(JSON.stringify(pdfFormData.observations))
 
+  return {
+    content: [
+      {
+        text: 'Report',
+        bold: true,
+        fontSize: 20,
+        alignment: 'center',
+        margin: [0, 0, 0, 20],
+      },
+      {
+        columns: [
+          [
 
-//   //console.log(JSON.stringify(pdfFormData.observations))
+            {
+            text:`Name of The Patient: ${(this.reportFormData()).patientData.patientname}`,
+            alignment: 'left',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:` Patient Id: ${(this.reportFormData()).patientData.id}`,
+            alignment: 'center',
+            margin: [0, 0, 0, 0]
+            
+           },
 
-//   return {
-//     content: observationsObject}
-//   }
+           {
+            text:`Date Of Birth: ${(this.reportFormData()).patientData.dob}`,
+            alignment: 'right',
+            margin: [0, 0, 0, 0]
+            
+          },
+          
+          
+          {
+            text:`Age: ${(this.reportFormData()).patientData.age}`,
+            alignment: 'center',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`BP: ${(this.reportFormData()).patientData.bpsystolic}`,
+            alignment: 'right',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`BP: ${(this.reportFormData()).patientData.bpdiastolic}`,
+            alignment: 'right',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`Reffered By: `,
+            alignment: 'left',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`Date of Reporting: ${(this.reportFormData()).patientData.testdate}`,
+            alignment: 'center',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`Gender: ${(this.reportFormData()).patientData.gender}`,
+            alignment: 'left',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`Height: ${(this.reportFormData()).patientData.height}`,
+            alignment: 'center',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`Weight: ${(this.reportFormData()).patientData.weight}`,
+            alignment: 'right',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`BSA: ${(this.reportFormData()).patientData.bsa}`,
+            alignment: 'left',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`BMI: ${(this.reportFormData()).patientData.bmi}`,
+            alignment: 'center',
+            margin: [0, 0, 0, 0]
+          },
+          {
+            text:`Type of Test: ${(this.reportFormData()).patientData.testtype}`,
+            alignment: 'left',
+            margin: [0, 0, 0, 0]
+          },
+         
+
+          ]
+        ]
+      },
+      {
+        text: 'Observations',
+        bold: true,
+        fontSize: 20,
+        alignment: 'center',
+        margin: [0, 0, 0, 20]
+      },
+      {
+        columns: [
+          [
+
+            {
+            text:`Type: ${(this.reportFormData()).selctedObservations}`,
+            alignment: 'left',
+            margin: [0, 0, 0, 0]
+          },
+                                 
+
+          ]
+        ]
+      }
+
+    ]
+  }
+  }
+
   
+///////////////////
 
-//   getObservationsToPdf(data:any[]){
-//     let observation_data = {};
-//     data.forEach( obsData =>{
-//       // Value is json object with observation data, now you have to check each key if it is masterdata or comments or doctor advice or your head
-//     // then perform for each on the value after doing required value grab like master = value['masterdata] will again give you array of json objs
-//     //on which you have to do a foreach again and split them into rows and columns
-//     Object.entries(obsData).forEach(([key, value])=>{
-//       if (value && Array.isArray(value)){
-//         console.log(value)
-//         // observation_data[key] = this.getformatteddata(value)
-//       }
-//       //for each loop on json
-//     //  let resultset_array = this.getformatteddata(obsData[obsKey])//json_values are arrays)
-//     //  obsData.ObsKey, resultset_array// See how to add key value pair to json object.
-//     //   // this will create a json with the keys that you need or see in the report 
-//       //and the values are arrays that you can show as table in documentdefinition
-//     // on each function you get back an array, now you have to add them to json and return
-//     });
-    
-      
-//       //console.log(obsData)
-//   });
-//    // console.log("..............")
-//    // return observation_data
-//   }
 
-//   getformatteddata(data:any[]){
-//     data.forEach(scopedData=>{
-//       let column=[]
-//       let rows=[]
-//       let master_array=[]
-//       column = Object.keys(scopedData)
-//       console.log("Print column")
-//       console.log(column)
-//       Object.entries(scopedData).forEach(([key, value])=>{
-//         console.log("printing value of each key i.e, row values")
-//         console.log(value)
-//       });
+getObservationsToPdf(data:any[]){
+  let observation_data = {};
+  data.forEach( obsData =>{
+
+  Object.entries(obsData).forEach(([key, value])=>{
+    if (value && Array.isArray(value)){
+      console.log(value)
+      // observation_data[key] = this.getformatteddata(value)
+    }
+    //for each loop on json
+  });
   
-      
-//       //console.log(master_array)
     
-//     })
-//     console.log("...,,,,,,")
+    //console.log(obsData)
+});
+ // console.log("..............")
+ // return observation_data
+}
+
+getformatteddata(data:any[]){
+  data.forEach(scopedData=>{
+    let column=[]
+    let rows=[]
+    let master_array=[]
+    column = Object.keys(scopedData)
+    console.log("Print column")
+    console.log(column)
+    Object.entries(scopedData).forEach(([key, value])=>{
+      console.log("printing value of each key i.e, row values")
+      console.log(value)
+    });
+
     
-//     return this.getformatteddata;
-    
-//   }
+    //console.log(master_array)
+  
+  })
+  console.log("...,,,,,,")
+  
+  return this.getformatteddata;
+  
+}
+
+
+
+
+
+
 
 }

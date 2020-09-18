@@ -29,9 +29,9 @@ export class LoginserviceService {
      return this.http.post(`${this.ngrokUrl}/auth/signin`,loginBody,this.httpOptions)
   }
 
-  registration= (registrationBody,formData) => {
+  registration= (formData) => {
     //console.log("nsifnewjirnnwergnjinertifvnuiernfvnueirntu")
-    return this.http.post(`${this.ngrokUrl}/auth/registration`,registrationBody,formData)
+    return this.http.post(`${this.ngrokUrl}/auth/registration`,formData)
  }
 
 // getListOfAssignmentsDoctor= () => {
@@ -288,7 +288,7 @@ masterReportInsertion= (objectManagementReq) => {
 
 observationsReportUpdate= (objectManagementReq) => {
   const pmid = localStorage.getItem('pmid');  
-  return this.http.put(`${this.ngrokUrl}/update/report/${pmid}`,objectManagementReq,this.httpOptions)
+  return this.http.post(`${this.ngrokUrl}/update/report/${pmid}`,objectManagementReq,this.httpOptions)
 }
 
 

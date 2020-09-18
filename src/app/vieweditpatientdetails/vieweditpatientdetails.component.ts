@@ -186,7 +186,7 @@ calculateBsa(bsa){
 
      }         
     })
-   
+    
  }
 
  goToSendDetails = (patientDataObject):any=>{

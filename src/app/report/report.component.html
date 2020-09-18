@@ -150,7 +150,7 @@
                     <p>5. Speckle Tracking and Strain Imaging</p>
                 </div>
                 <hr/>
-                    <div>
+                    <div *ngIf="patientDataObject['ew'] != ''">
                         Echo Window :   {{ patientDataObject['ew'] }}
                     </div>
                 <hr/>
@@ -161,9 +161,25 @@
 
                 <div class="observations-class">
                  
-                  <div *ngFor="let Observations of observationsObject; let k = index" >                                       
+                  <div *ngFor="let Observations of observationsObject; let k = index" > 
+                   
+                    <h4 class="maintype-head" *ngIf="Observations.type === 'leftVentricalObservation' || 
+                    Observations.type === 'rightVentricleObservation' || Observations.type === 'leftAtriumObservation' ||
+                    Observations.type === 'rightAtriumObservation' "> 
+                        CHAMBERS
+                    </h4>   
 
-                    <div class="form-row">
+                    <h4 class="maintype-head" *ngIf="Observations.type === 'mitralValveObservation' || 
+                    Observations.type === 'tricuspidValveObservation' || Observations.type === 'pulmonicValveObservation' ||
+                    Observations.type === 'aortaObservation' "> 
+                        VALUES
+                    </h4> 
+
+                    <h4 class="maintype-head" *ngIf="Observations.type === 'pulmonaryArteryObservation' "> 
+                        GREAT ARTERY RELATION
+                    </h4> 
+
+                    <div class="form-row" style="border-bottom: 1px dotted #ccc;">
                       <div class="form-group col-md-4"   >
                         <h6> {{ Observations.ttype  | titlecase}} </h6> 
                         <!-- <h6>{{ Observations.type | titlecase }} </h6> -->
@@ -231,10 +247,12 @@
                           <input type="submit" class="btn btn-success" value="Submit"/>
                         </div> -->
                         <!------------------------------>
+
+                        
                       </div>
 
 
-
+                     
                       
                     </div>  
 
@@ -552,7 +570,7 @@
                         <div class="form-row">
                          
                           <div class=" form-group col-md-4">
-                            <input type="submit" class="btn btn-warning"  value="Download Report"/>
+                            <input type="submit" class="btn btn-warning" (click)="generatePdf('download')" value="Download Report"/>
                           </div>
                           <div class=" form-group col-md-1"></div>
                         <div class=" form-group col-md-4">

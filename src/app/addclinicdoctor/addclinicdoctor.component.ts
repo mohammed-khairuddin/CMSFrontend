@@ -105,7 +105,7 @@ export class AddclinicdoctorComponent implements OnInit {
 
   /*########################## File Upload ########################*/
   @ViewChild('fileInput') el: ElementRef;
-  //imageUrl: any = 'https://i.pinimg.com/236x/d6/27/d9/d627d9cda385317de4812a4f7bd922e9--man--iron-man.jpg';
+  
   editFile: boolean = true;
   removeUpload: boolean = false;
   uploadedFiles: Array<File>;
@@ -120,7 +120,6 @@ export class AddclinicdoctorComponent implements OnInit {
   
   ngOnInit(): void {
 
-    
     this.addClinicDoctorForm = this.formBuilder.group({
 
       role: ['', Validators.required],
@@ -168,8 +167,7 @@ export class AddclinicdoctorComponent implements OnInit {
 
 /******************************/
 
-  
-  
+
 get f(){
   return this.addClinicDoctorForm.controls;
 }
@@ -178,10 +176,11 @@ onLogoChange(event) {
 
   if (event.target.files.length > 0) {
     const logoImage = event.target.files[0];
-    this.addClinicDoctorForm.patchValue({
-      fileSource: logoImage
-    });
-    this.files.push(logoImage)
+    // this.addClinicDoctorForm.patchValue({
+    //   fileSource: logoImage
+    // });
+    // this.files.push(logoImage)
+    this.addClinicDoctorForm.get('fileSource').setValue(logoImage);
     console.log(logoImage);
   }
 }
@@ -209,52 +208,51 @@ onPhotoChange(event) {
   }
 }
 
- 
 
-/*****************************/
+/********************************/
   addClinicDoctor = (data):any => {
 
-    // if(data.role === '' || data.role === null  ){
-    //   alert('Please Select Valid User Role');
-    //  }
-    //  if(data.name === '' || data.name === null){
-    //   alert('Please Enter Valid Name For Clinic/Doctor');
-    //  }
-    //  if(data.email === '' || data.email === null){
-    //   alert('Please Enter Valid Email id');
-    //  }
-    //  if(data.mobNo === '' || data.mobNo === null ){
-    //   alert('Please Enter Valid Mobile Number');
-    //  }
-    // if(data.username === '' || data.username === null){
-    //   alert('Please Enter Valid User Name');
-    //  }
-    //  if(data.password === '' || data.password === null){
-    //   alert('Please Enter Valid Password');
-    //  }
-    //  if(data.cpassword === '' || data.cpassword === null){
-    //   alert('Please Enter Valid Confirm Password');
-    //  }
-    //  if(data.country === '' || data.coutry === null){
-    //   alert('Please Select Valid Country');
-    //  }
-    //  if(data.state === '' || data.state === null){
-    //   alert('Please Select Valid State');
-    //  }
-    //  if(data.city === '' || data.city === null ){
-    //   alert('Please Select Valid City');
-    //  }
-    //  if(data.address === '' || data.address === null ){
-    //   alert('Please Enter Address');
-    //  }
-    //  if(data.password != data.cpassword ){
-    //   alert('Password and Confirm Password Does not Match');
-    //   return false;
-    //  }
+    if(data.role === '' || data.role === null  ){
+      alert('Please Select Valid User Role');
+     }
+     if(data.name === '' || data.name === null){
+      alert('Please Enter Valid Name For Clinic/Doctor');
+     }
+     if(data.email === '' || data.email === null){
+      alert('Please Enter Valid Email id');
+     }
+     if(data.mobNo === '' || data.mobNo === null ){
+      alert('Please Enter Valid Mobile Number');
+     }
+    if(data.username === '' || data.username === null){
+      alert('Please Enter Valid User Name');
+     }
+     if(data.password === '' || data.password === null){
+      alert('Please Enter Valid Password');
+     }
+     if(data.cpassword === '' || data.cpassword === null){
+      alert('Please Enter Valid Confirm Password');
+     }
+     if(data.country === '' || data.coutry === null){
+      alert('Please Select Valid Country');
+     }
+     if(data.state === '' || data.state === null){
+      alert('Please Select Valid State');
+     }
+     if(data.city === '' || data.city === null ){
+      alert('Please Select Valid City');
+     }
+     if(data.address === '' || data.address === null ){
+      alert('Please Enter Address');
+     }
+     if(data.password != data.cpassword ){
+      alert('Password and Confirm Password Does not Match');
+      return false;
+     }
     
-    // if(data.role != '' && data.name != '' && data.email != '' && data.username != '' && 
-    // data.password != '' && data.mobNo != '' )
-    //   {
+    if(data.role != '' && data.name != '' && data.email != '' && data.username != '' && 
+    data.password != '' && data.mobNo != '' )
+      {
               
       var formData = new FormData();
 
@@ -275,6 +273,7 @@ onPhotoChange(event) {
       formData.append("whatsappno", data.whatsappno);
       formData.append("username", data.username);
       formData.append("password", data.password);
+      formData.append("country", data.country);
       formData.append("state", data.state);
       formData.append("district", data.district);
       formData.append("city", data.city);
@@ -290,60 +289,13 @@ onPhotoChange(event) {
       formData.append("timingshours", data.timingshours);
       formData.append("googlemaplocation", data.googlemaplocation);
 
-        //Now turn to files
-      // for (var i = 0; i < 2; i++) {
-      //     formData.append('file', this.files[i])
-      //     //formData.append('file', this.addClinicDoctorForm.get('fileSource').value);
-      //     //formData.append('logo', this.addClinicDoctorForm.get('fileSource1').value);
-      // }
-      
+     
       formData.append('logoImage', this.addClinicDoctorForm.get('fileSource').value);
-      //formData.append('profileImage', this.addClinicDoctorForm.get('fileSource1').value);
+      formData.append('profileImage', this.addClinicDoctorForm.get('fileSource1').value);
 
-      // Display the values
-// for (var value of formData.values()) {
-//   console.log(value); 
-// }
-      console.log('==========');
-      console.log(formData); 
-
-      // console.log('==========**************');
-      // console.log(value); 
-        const clinicManagementReq = {
-          "role": data.role,
-          "name": data.name,
-          "type":data.type,
-          "speciality":data.speciality,
-          "clinictype":data.clinictype,          
-          "clinicId": data.clinicId,
-          "qualification":data.qualification,
-          "specialitydoctor":data.specialitydoctor,
-          "email":data.email,
-          "phonenumber":data.phonenumber,
-          "mobNo": data.mobNo,
-          "emergencynumber":data.emergencynumber,
-          "emergencymobnumber":data.emergencymobnumber,
-          "whatsappno":data.whatsappno,
-          "username": data.username,
-          "password": data.password,
-          "country": data.country,
-          "state": data.state,
-          "district":data.district,
-          "city": data.city,
-          "citycode":data.citycode,
-          "pincode":data.pincode,
-          "address": data.address,        
-          "otherdetails":data.otherdetails,
-          "url":data.url,
-          "ambulance":data.ambulance,
-          "ambulancephno":data.ambulancephno,
-          "degreedoctor":data.degreedoctor,
-          "timingsdays":data.timingsdays,
-          "timingshours":data.timingshours,
-          "googlemaplocation":data.googlemaplocation,        
-        }
+     
   
-          this.loginService.registration(clinicManagementReq,formData).subscribe(res =>{
+          this.loginService.registration(formData).subscribe(res =>{
             console.log(res);
             if(res['message'] ==  'Successfully created' || res['message'] == 'File uploaded successfully!' ) {
               //if(res['status'] ==  '200' ) {
@@ -362,13 +314,13 @@ onPhotoChange(event) {
          })
        
 
-      //  } else{
+       } else{
 
-      //   alert("Please Fill the Details");
-      //   return false;
+        alert("Please Fill the Details");
+        return false;
         
 
-      //  }
+       }
        
   }
 
