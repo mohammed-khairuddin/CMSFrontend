@@ -60,7 +60,7 @@ export class ShowallpatientsComponent implements OnInit {
 
   goToUpdatePatientDoc = (alllist,index) => {
     window.localStorage.setItem("pid", alllist.id.toString());
-    this.router.navigateByUrl(`/vieweditpatientdetails/${alllist.id}`)
+    //this.router.navigateByUrl(`/vieweditpatientdetails/${alllist.id}`)
     this.loginService.updatePatientDoc(this.AllClinicPatientsList[index]).subscribe(updateAssignment =>{
      //alert('Doctor Assigned Successfully');
      this.router.navigateByUrl(`/vieweditpatientdetails/${alllist.id}`)

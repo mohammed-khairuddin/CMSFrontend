@@ -43,7 +43,6 @@ export class CaseCompletedComponent implements OnInit {
 
  reqdate = this.year + "-" + this.month + "-" + this.date;
 
-
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient) { }
   ngOnInit(): void {
 
@@ -73,6 +72,10 @@ export class CaseCompletedComponent implements OnInit {
 
   }
 
+  goToViewObservations = (alllist):any => {
+    window.localStorage.setItem("pmid", alllist.id.toString());
+    this.router.navigateByUrl(`/report-preview/${alllist.id}`)
+  }
 
 
 

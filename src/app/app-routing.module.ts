@@ -50,6 +50,7 @@ import { MasterAortaComponent } from './master-aorta/master-aorta.component';
 import { MasterPcComponent } from './master-pc/master-pc.component';
 import { PreviewObservationsComponent } from './preview-observations/preview-observations.component';
 import { ReportComponent } from './report/report.component';
+import { ReportPreviewComponent } from './report-preview/report-preview.component';
 
 const routes: Routes = [
   { 
@@ -197,6 +198,9 @@ const routes: Routes = [
   },
   { 
     path: 'report',component: ReportComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'report-preview/:id',component: ReportPreviewComponent  , canActivate:[AuthGuard]
   },
   { 
     path: 'clinicdashboard',

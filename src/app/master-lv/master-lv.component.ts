@@ -3,7 +3,7 @@ import {LoginserviceService} from '../loginservice.service';
 import {Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {defaultValue} from '../helperFunction'
+import {defaultValue} from '../helperFunction';
 
 @Component({
   selector: 'app-master-lv',
@@ -11,7 +11,7 @@ import {defaultValue} from '../helperFunction'
   styleUrls: ['./master-lv.component.scss']
 })
 export class MasterLvComponent implements OnInit {
-  defaultDropdownValue =  defaultValue()
+  defaultDropdownValue =  defaultValue();
   
   cavitySize = [
     {id:2,itemName:'Normal'},

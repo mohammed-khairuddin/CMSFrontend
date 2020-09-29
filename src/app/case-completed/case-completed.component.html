@@ -66,9 +66,11 @@
       </td>
       <td scope="row" class="sticky-col third-col">
         <span class="bell">
-          <img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   >
-          <!-- <span class="bellnumbers">{{ alllist.length }}</span> -->
-        </span>
+          <a  (click)="goToViewObservations(alllist)" ><img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   ></a>
+          <!-- <span class="bellnumbers">{{ alllist.length }}</span>  routerLink="/report-preview/{{alllist.id}}"  -->
+          <span class="bellnumbers">1</span>
+
+        </span>  
       </td>
       <td scope="row" class="sticky-col fourth-col">{{ alllist.patientname | titlecase }}</td>
       <td scope="row" class="sticky-col fifth-col">{{ alllist.gender}}</td>

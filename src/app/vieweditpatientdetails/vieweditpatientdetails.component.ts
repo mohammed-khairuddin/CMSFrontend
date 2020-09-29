@@ -177,7 +177,7 @@ calculateBsa(bsa){
 }
 
   updatePatient = ():any => {
-    console.log(this.patientDataObject);
+    console.log(this.patientDataObject); 
     this.loginService.updatePatientDoc(this.patientDataObject).subscribe(res =>{
      console.log(res);
      if(res['message'] ===  'patient updated successfully' ) {

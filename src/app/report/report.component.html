@@ -2,8 +2,8 @@
 
     <div class="total-container" id="print-section">
 
-        <form  name="reportForm"   #reportForm="ngForm"   (ngSubmit)="reportFormData()"    >
-     
+        <form  name="reportForm"   #reportForm="ngForm"      >
+          <!--  (ngSubmit)="reportFormData()" -->
             <h5 class="text-center">REPORT</h5>
 
           <div class="patientdetails"> 
@@ -191,8 +191,8 @@
                         
                           <h6>Data : </h6>         
                           <angular2-multiselect [data]="Observations.masterValues" 
-                          [(ngModel)]="selectedItemsObservations[k + 1]" [settings]="settings" 
-                          name="mastervalue_{{k + 1}}" id="mastervalue_{{k + 1}}"  
+                          [(ngModel)]="selectedItemsObservations[k]" [settings]="settings" 
+                          name="mastervalue_{{k}}" id="mastervalue_{{k}}"  
                           (onSelect)="onItemSelect($event,Observations.type)"
                           (onDeSelect)="OnItemDeSelect($event)" 
                           (onSelectAll)="onSelectAll($event)" 
@@ -217,6 +217,7 @@
 
                         <!------------------------------>
                         
+                        
                         <button type="button" class="btn btn-primary mb-2" (click)="addComment(k,Observations.type)">Add</button>
 
                         <div  class="addremove-class" *ngFor="let observationComment of Observations.comments; let i = index;">
@@ -233,7 +234,7 @@
                         <div class="form-row" >
                           <div class="form-group col-md-12"   >
                             <label>Comment</label>                                   
-                            <textarea id="comment" name="comment_{{comment}}"  class="form-control" placeholder="Comment" 
+                            <textarea id="comment" name="comments_{{comment.id}}"  class="form-control" placeholder="Comment" 
                             required [(ngModel)]="observationComment.comment" #comment="ngModel"  ></textarea>
                          
 
@@ -243,9 +244,6 @@
 
                         </div>
                       
-                        <!-- <div class="form-group col-md-3">
-                          <input type="submit" class="btn btn-success" value="Submit"/>
-                        </div> -->
                         <!------------------------------>
 
                         
@@ -324,7 +322,7 @@
                       {{ patientDataObject['ef'] }}
                     </div>
                     <div class="form-group col-md-3" *ngIf="patientDataObject['ef'] == ''">
-                      <input type="text" name="ef" id="ef" value=""  class="form-control" />
+                      <input type="text" name="valueofef" id="valueofef" value=""  class="form-control" />
                     </div>
 
                   </div>
@@ -334,7 +332,7 @@
                       The average peak systolic strain is
                     </div>
                     <div class="form-group col-md-3">
-                      <input type="text" name="sysstrain" id="sysstrain" value=""  class="form-control" />
+                      <input type="text" name="avgsystolicstrain" id="avgsystolicstrain" value=""  class="form-control" />
                     </div>
 
                     <div class="form-group col-md-3">
@@ -343,7 +341,7 @@
                     <div class="form-group col-md-3">
                       <angular2-multiselect [data]="speckleTracking" 
                           [(ngModel)]="selectedItems1" [settings]="settings" 
-                          name="sysstrainmastervalue" id="sysstrainmastervalue"  
+                          name="peaksystolicstrain" id="peaksystolicstrain"  
                           (onSelect)="onItemSelect($event,'speckleTracking')"
                           (onDeSelect)="OnItemDeSelect($event)" 
                           (onSelectAll)="onSelectAll($event)" 
@@ -402,7 +400,7 @@
                         <div class="form-row" >
                           <div class="form-group col-md-12"   >
                             <label>Comment</label>                                   
-                            <textarea id="impressioncomment" name="impressioncomment_{{impressioncomment.id}}"  class="form-control" placeholder="Comment" 
+                            <textarea id="impressioncomment" name="impressioncomments_{{impressioncomment.id}}"  class="form-control" placeholder="Comment" 
                             required [(ngModel)]="impressioncomment.impressioncomment" #impressioncomment="ngModel"  ></textarea>
                          
                           </div>
@@ -468,7 +466,7 @@
                         <div class="form-row" >
                           <div class="form-group col-md-12"   >
                             <label>Comment</label>                                   
-                            <textarea id="conclusioncomment" name="conclusioncomment_{{conclusioncomment.id}}"  class="form-control" placeholder="Comment" 
+                            <textarea id="conclusioncomment" name="conclusioncomments_{{conclusioncomment.id}}"  class="form-control" placeholder="Comment" 
                             required [(ngModel)]="conclusioncomment.conclusioncomment" #conclusioncomment="ngModel"  ></textarea>
                          
                           </div>
@@ -533,7 +531,7 @@
                         <div class="form-row" >
                           <div class="form-group col-md-12"   >
                             <label>Comment</label>                                   
-                            <textarea id="docadvicecomment" name="doctoradvicecomment"  class="form-control" placeholder="Comment" 
+                            <textarea id="docadvicecomment" name="docadvicecomments_{{docadvicecomment.id}}"  class="form-control" placeholder="Comment" 
                             required [(ngModel)]="docadvicecomment.docadvicecomment" #docadvicecomment="ngModel"  ></textarea>
                          
                           </div>
@@ -578,7 +576,7 @@
                         </div>
 
                         <div class="form-group col-md-3">
-                          <input type="submit" class="btn btn-success" value="Submit"/>
+                          <input type="submit" class="btn btn-success"   (click)="reportFormData()" value="Submit"/>
                         </div>
 
                       </div>
