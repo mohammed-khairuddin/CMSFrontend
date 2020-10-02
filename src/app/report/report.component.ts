@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ObservationsComponent } from '../observations/observations.component';
+import { type } from 'os';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -107,7 +108,6 @@ export class ReportComponent implements OnInit {
       })
 
     }, error => console.log(error));
-
   
     this.loginService.observationsGetAllByPatient().subscribe((data:any) => {
         const {observations,masterData,conclusioncomment,conclusionreport,doctorAdviceComments,
@@ -132,17 +132,7 @@ export class ReportComponent implements OnInit {
         //this.updform = regionalwallmotion;         
         this.regionalWalls=regionalWall,
          this.selectedItems1 = speckleTrackingreport;
-
-         /************/ 
-         let len = this.selectedObseravtionsInEditList.length;
-         console.log(len);
-          for(let i=0; i<len; i++){
-            const selecteditemtype =this.selectedObseravtionsInEditList[i]['type'];  
-            console.log(selecteditemtype);          
-            this.selectedItemsObservations[i] = this.getSelectedObservationsList(selecteditemtype)
-          }
-
-           /************/ 
+         this.mapSelectedObservationsToMultiSelect()
          let regionalwalllen = this.regionalWalls.length;
          for(let i=0; i<regionalwalllen; i++){
           this.updform =this.regionalWalls[i];            
@@ -159,8 +149,6 @@ export class ReportComponent implements OnInit {
 				  return ({...observation,ttype:formatedTypename,masterValues:masterdata,comments:this.Observationscomments,regionalWall,observationItem,impressionreport})
         })
     })
-
-
 
     this.regionalWallMotion = [
       { "id": 1, "itemName": "Normal" },
@@ -180,6 +168,33 @@ export class ReportComponent implements OnInit {
   };
 
   }
+  
+   groupBy(list) {
+    const map = new Map();
+    list.forEach((item) => {
+         const key = item['type'];
+         const collection = map.get(key);
+         if (!collection) {
+             map.set(key, [item]);
+         } else {
+             collection.push(item);
+         }
+    });
+    return map;
+}
+
+mapSelectedObservationsToMultiSelect = () => {
+  const groupedSelectedObservations = this.groupBy(this.selectedObseravtionsInEditList);
+  const observationTypesList =  this.selectedObseravtionsInEditList.map(data =>{
+    return data['type'];
+  })
+  const uniqueObservationsList = [...new Set(observationTypesList)]
+  for(var i=0; i<uniqueObservationsList.length;i++) {
+     this.selectedItemsObservations[i] =
+                groupedSelectedObservations.get(uniqueObservationsList[i])
+  }
+   
+}
 
 
   //////////////////////////////////
@@ -189,19 +204,19 @@ export class ReportComponent implements OnInit {
   }
 
 onItemSelect(item: any,type) {
-  console.log(item["itemName"]);
+  //console.log(item["itemName"]);
   console.log(this.selectedItemsObservations);
  
 }
-OnItemDeSelect(item: any) {
-  console.log(item);
+OnItemDeSelect(item: any,type) {
+  //console.log(item);
   console.log(this.selectedItemsObservations);
 }
-onSelectAll(items: any) {
-  console.log(items);
+onSelectAll(item: any,type) {
+  //console.log(items);
 }
-onDeSelectAll(items: any) {
-  console.log(items);
+onDeSelectAll(item: any,type) {
+  //console.log(items);
 }
 
 /////////////////////////////
@@ -283,6 +298,9 @@ reportFormData=() =>{
   const doctorslen = this.selectedItems4.length;
   const doctorsCommentslen = this.docadvicecomments.length;
 
+  console.log(this.selectedItemsObservations);
+  console.log('/**/*/////////***************');
+
   const getReport  = {
   selectedObservations: this.selectedItemsObservations.filter(data => data != 'Empty'),
   patientData : this.patientDataObject,
@@ -319,7 +337,7 @@ const getObservationsReport  = {
 this.loginService.observationsReportUpdate(getReport).subscribe(res =>{
   console.log(res);
   if(res['message'] ==  'report updated successfully' ) {
-  //alert('Report Observations Updated Successfully');
+  alert('Report Observations Updated Successfully');
   this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
 } 
  
@@ -341,6 +359,26 @@ return  {
 
 }
 
+///////////////////////////////////
+
+reportFormData1=() =>{
+
+  return  {
+    selctedObservations: this.selectedItemsObservations.filter(data => data != 'Empty'),
+    patientData : this.patientDataObject,
+    impressions: this.selectedItems2,   //to do 
+    conclusions: this.selectedItems3,
+    doctorAdvice: this.selectedItems4,
+    observations:this.observationsObject,
+    regionalWall:this.regionalWalls,
+    impressionComments:this.impressioncomments,
+    doctorAdviceComments:this.docadvicecomments,
+    conclusion:this.selectedItems3,
+    conclusionsComments:this.conclusioncomments
+  }
+
+}
+
 /////////////////////////////// PDFF
 
 generatePdf(action='open'){
@@ -355,11 +393,11 @@ generatePdf(action='open'){
 }
 
 getDocumentDefinition() {
-  sessionStorage.setItem('report', JSON.stringify(this.reportFormData));
+  sessionStorage.setItem('report', JSON.stringify(this.reportFormData1));
   //sessionStorage.setItem('report',JSON.stringify(this.getformatteddata))
-  //let pdfFormData = this.reportFormData()
+  //let pdfFormData = this.reportFormData1()
   console.log("Stringify Observations from reportformdata")
-  console.log(this.reportFormData())
+  console.log(this.reportFormData1())
   //console.log(this.observationsObject[0].value);
 
     console.log("checking for observation object")
@@ -378,10 +416,10 @@ getDocumentDefinition() {
      var impressionpdf=[];
      var doctoradvicepdf=[];
      var conclusionpdf=[];
-     for(var i in ((this.reportFormData()).observations)) { 
-      dd.push({columns:[{ text: 'Objective Type', bold:true,},{text: JSON.stringify(((this.reportFormData()).observations[i].type)),margin:[0,0,0,0]}]});
+     for(var i in ((this.reportFormData1()).observations)) { 
+      dd.push({columns:[{ text: 'Objective Type', bold:true,},{text: JSON.stringify(((this.reportFormData1()).observations[i].type)),margin:[0,0,0,0]}]});
       dd.push({ text: 'Value', bold:true,margin:[0,15,0,0]}),
-      dd.push({text: JSON.stringify(((this.reportFormData()).observations[i].value)),margin:[250,0,0,0]});
+      dd.push({text: JSON.stringify(((this.reportFormData1()).observations[i].value)),margin:[250,0,0,0]});
       dd.push({ 
         text: 'Master Value', 
         style: 'header',
@@ -389,12 +427,12 @@ getDocumentDefinition() {
        margin:[0,0,0,0]}
     ,);
     console.log('=================');
-      for(var j in (this.reportFormData().observations[i].observationItem)){
-      console.log(this.reportFormData().observations[i].observationItem)
-      if((this.reportFormData().observations[i].observationItem[j]).type==(this.reportFormData()).observations[i].type){
-        console.log(this.reportFormData().observations[i].observationItem[j])
+      for(var j in (this.reportFormData1().observations[i].observationItem)){
+      console.log(this.reportFormData1().observations[i].observationItem)
+      if((this.reportFormData1().observations[i].observationItem[j]).type==(this.reportFormData1()).observations[i].type){
+        console.log(this.reportFormData1().observations[i].observationItem[j])
        dd.push(
-        {lineHeight:1.5,columns:[{ text: '', bold:true},{text: `${(this.reportFormData()).observations[i].observationItem[j].itemName}`,margin:[0,-10,0,0] }]})
+        {lineHeight:1.5,columns:[{ text: '', bold:true},{text: `${(this.reportFormData1()).observations[i].observationItem[j].itemName}`,margin:[0,-10,0,0] }]})
         dd.push('')
       }
     }
@@ -404,16 +442,16 @@ getDocumentDefinition() {
       bold:true,
      margin:[0,15,0,0]}]}
   ,);
-      for(var k in this.reportFormData().observations[i].observtaionComments){
-        if((this.reportFormData()).observations[i].type==this.reportFormData().observations[i].observtaionComments[k].type){
+      for(var k in this.reportFormData1().observations[i].observtaionComments){
+        if((this.reportFormData1()).observations[i].type==this.reportFormData1().observations[i].observtaionComments[k].type){
           console.log(this.selectedObseravtionsInEditList)
-        console.log((this.reportFormData()).observations[i].type)  
-console.log(this.reportFormData().observations[i].observtaionComments[k])
+        console.log((this.reportFormData1()).observations[i].type)  
+console.log(this.reportFormData1().observations[i].observtaionComments[k])
 dd.push(
-  {lineHeight:1.5,columns:[{ text: '', bold:true},{text: `${(this.reportFormData()).observations[i].observtaionComments[k].comment}`,margin:[0,-25,0,0] }]})
+  {lineHeight:1.5,columns:[{ text: '', bold:true},{text: `${(this.reportFormData1()).observations[i].observtaionComments[k].comment}`,margin:[0,-25,0,0] }]})
 
       }
-      console.log((this.reportFormData()).observations[i].regionalWall[i].anteriorwall) 
+      console.log((this.reportFormData1()).observations[i].regionalWall[i].anteriorwall) 
         console.log()
       }
      
@@ -428,23 +466,23 @@ dd.push(
   rows1.push({ lineHeight: 2,columns:[{text: '5. Speckle Tracking and Strain Imaging'}]});
   rows1.push({ lineHeight: 1,columns:[{text: ``}]});
   
-  for(var i in this.reportFormData().regionalWall)
-  console.log(this.reportFormData().regionalWall);
+  for(var i in this.reportFormData1().regionalWall)
+  console.log(this.reportFormData1().regionalWall);
   {
-    dd1.push({ lineHeight: 2,columns:[{text:'AnteriorWall:',bold:true},{text: (this.reportFormData()).regionalWall[i].anteriorwall},
-    {text:'PosteriorWall:',bold:true},{text: (this.reportFormData()).regionalWall[i].posteriorwall}
+    dd1.push({ lineHeight: 2,columns:[{text:'AnteriorWall:',bold:true},{text: (this.reportFormData1()).regionalWall[i].anteriorwall},
+    {text:'PosteriorWall:',bold:true},{text: (this.reportFormData1()).regionalWall[i].posteriorwall}
   ]});
-  dd1.push({ lineHeight: 2,columns:[{text:'InferiorWall:',bold:true},{text: (this.reportFormData()).regionalWall[i].inferiorwall},
-    {text:'LateralWall:',bold:true},{text: (this.reportFormData()).regionalWall[i].lateralwall}
+  dd1.push({ lineHeight: 2,columns:[{text:'InferiorWall:',bold:true},{text: (this.reportFormData1()).regionalWall[i].inferiorwall},
+    {text:'LateralWall:',bold:true},{text: (this.reportFormData1()).regionalWall[i].lateralwall}
   ]});
-  dd1.push({ lineHeight: 2,columns:[{text:'Pulmonary Artery Pressure:',bold:true},{text: (this.reportFormData()).regionalWall[i].pulmonaryarterypressure},
-    {text:'Value of Ef:',bold:true},{text: (this.reportFormData()).regionalWall[i].valueofef}
+  dd1.push({ lineHeight: 2,columns:[{text:'Pulmonary Artery Pressure:',bold:true},{text: (this.reportFormData1()).regionalWall[i].pulmonaryarterypressure},
+    {text:'Value of Ef:',bold:true},{text: (this.reportFormData1()).regionalWall[i].valueofef}
   ]});
-  dd1.push({ lineHeight: 2,columns:[{text:'The Average peak of Systolic Strain:',bold:true},{text: (this.reportFormData()).regionalWall[i].avgsystolicstrain},
-    //{text:'PosteriorWall:',bold:true},{text: (this.reportFormData()).observations[i].regionalWall[i].posteriorwall}
+  dd1.push({ lineHeight: 2,columns:[{text:'The Average peak of Systolic Strain:',bold:true},{text: (this.reportFormData1()).regionalWall[i].avgsystolicstrain},
+    //{text:'PosteriorWall:',bold:true},{text: (this.reportFormData1()).observations[i].regionalWall[i].posteriorwall}
   ]})
-    console.log((this.reportFormData()).regionalWall[i].anteriorwall) 
-    console.log(this.reportFormData())
+    console.log((this.reportFormData1()).regionalWall[i].anteriorwall) 
+    console.log(this.reportFormData1())
    
   }
   
@@ -453,59 +491,59 @@ dd.push(
     bold:true,
    }]}
 ,);
-  for(var i in this.reportFormData().impressions){
-    impressionpdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData().impressions[i].itemName}`,margin:[0,-10,0,0]}]})
+  for(var i in this.reportFormData1().impressions){
+    impressionpdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData1().impressions[i].itemName}`,margin:[0,-10,0,0]}]})
   }
   impressionpdf.push({lineHeight:1.5,columns:[{
     text: 'Impression Comment',  
     bold:true,
    }]}
 ,);
-  for(var i in this.reportFormData().impressionComments){
+  for(var i in this.reportFormData1().impressionComments){
     
-    impressionpdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData().impressionComments[i].impressioncomment}`,margin:[0,-20,0,0]}]})
+    impressionpdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData1().impressionComments[i].impressioncomment}`,margin:[0,-20,0,0]}]})
   }
-  console.log(this.reportFormData().regionalWall)
+  console.log(this.reportFormData1().regionalWall)
   
   doctoradvicepdf.push({lineHeight:1.5,columns:[{
     text: 'DoctorAdvice Master',  
     bold:true,
    }]}
 ,);
-console.log(this.reportFormData().doctorAdvice)
-  for(var i in this.reportFormData().doctorAdvice){
-    console.log(this.reportFormData().doctorAdvice[i])
-    doctoradvicepdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData().doctorAdvice[i].itemName}`,margin:[0,-10,0,0]}]})
+console.log(this.reportFormData1().doctorAdvice)
+  for(var i in this.reportFormData1().doctorAdvice){
+    console.log(this.reportFormData1().doctorAdvice[i])
+    doctoradvicepdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData1().doctorAdvice[i].itemName}`,margin:[0,-10,0,0]}]})
   }
   doctoradvicepdf.push({columns:[{
     text: 'DoctorAdvice Comment',  
     bold:true,
    }]}
 ,);
-console.log(this.reportFormData().doctorAdviceComments)
-  for(var i in this.reportFormData().doctorAdviceComments){
-    console.log(this.reportFormData().doctorAdviceComments[i])
-    doctoradvicepdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData().doctorAdviceComments[i].docadvicecomment}`,margin:[0,-5,0,0]}]})
+console.log(this.reportFormData1().doctorAdviceComments)
+  for(var i in this.reportFormData1().doctorAdviceComments){
+    console.log(this.reportFormData1().doctorAdviceComments[i])
+    doctoradvicepdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData1().doctorAdviceComments[i].docadvicecomment}`,margin:[0,-5,0,0]}]})
   }
   conclusionpdf.push({lineHeight:1.5,columns:[{
     text: 'Conclusion Master',  
     bold:true,
    }]}
 ,);
-console.log(this.reportFormData().conclusion)
-  for(var i in this.reportFormData().conclusion){
-    console.log(this.reportFormData().conclusion[i])
-    conclusionpdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData().conclusion[i].itemName}`,margin:[0,-10,0,0]}]})
+//console.log(this.reportFormData1().conclusion)
+  for(var i in this.reportFormData1().conclusion){
+    console.log(this.reportFormData1().conclusion[i])
+    conclusionpdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData1().conclusion[i].itemName}`,margin:[0,-10,0,0]}]})
   }
   conclusionpdf.push({columns:[{
     text: 'Conclusion Comment',  
     bold:true,
    }]}
 ,);
-console.log(this.reportFormData().conclusionsComments)
-  for(var i in this.reportFormData().conclusionsComments){
-    console.log(this.reportFormData().conclusionsComments[i])
-    conclusionpdf.push({ columns:[{text:'',bold:true},{text:`${this.reportFormData().conclusionsComments[i].conclusioncomment}`,margin:[0,0,0,0]}]})
+//console.log(this.reportFormData1().conclusionsComments)
+  for(var i in this.reportFormData1().conclusionsComments){
+    console.log(this.reportFormData1().conclusionsComments[i])
+    conclusionpdf.push({ columns:[{text:'',bold:true},{text:`${this.reportFormData1().conclusionsComments[i].conclusioncomment}`,margin:[0,0,0,0]}]})
   }
 
 
@@ -548,19 +586,19 @@ console.log(this.reportFormData().conclusionsComments)
           
 
             {
-            text:`Patient Name: ${(this.reportFormData()).patientData.patientname}`,
+            text:`Patient Name: ${(this.reportFormData1()).patientData.patientname}`,
            alignment:'left'
             
           },
           {
-            text:` Patient Id: ${(this.reportFormData()).patientData.id}`,
+            text:` Patient Id: ${(this.reportFormData1()).patientData.id}`,
            alignment:'center'
             
             
            },
 
            {
-            text:`Date Of Birth: ${(this.reportFormData()).patientData.dob}`,
+            text:`Date Of Birth: ${(this.reportFormData1()).patientData.dob}`,
             alignment:'right'
             
           },
@@ -572,15 +610,15 @@ console.log(this.reportFormData().conclusionsComments)
       columns: [
         
           {
-            text:`Age: ${(this.reportFormData()).patientData.age}`,
+            text:`Age: ${(this.reportFormData1()).patientData.age}`,
              alignment:'left'
           },
           {
-            text:`BP: ${(this.reportFormData()).patientData.bpsystolic}`,
+            text:`BP: ${(this.reportFormData1()).patientData.bpsystolic}`,
          alignment:'center'
           },
           {
-            text:`BP: ${(this.reportFormData()).patientData.bpdiastolic}`,
+            text:`BP: ${(this.reportFormData1()).patientData.bpdiastolic}`,
            alignment:'right'
           },
         
@@ -596,12 +634,12 @@ console.log(this.reportFormData().conclusionsComments)
             
           },
           {
-            text:`Date of Reporting: ${(this.reportFormData()).patientData.testdate}`,
+            text:`Date of Reporting: ${(this.reportFormData1()).patientData.testdate}`,
             alignment: 'center',
            
           },
           {
-            text:`Gender: ${(this.reportFormData()).patientData.gender}`,
+            text:`Gender: ${(this.reportFormData1()).patientData.gender}`,
             alignment: 'right',
           
           },
@@ -612,17 +650,17 @@ console.log(this.reportFormData().conclusionsComments)
         columns: [
           
           {
-            text:`Height: ${(this.reportFormData()).patientData.height}`,
+            text:`Height: ${(this.reportFormData1()).patientData.height}`,
             alignment: 'left',
         
           },
           {
-            text:`Weight: ${(this.reportFormData()).patientData.weight}`,
+            text:`Weight: ${(this.reportFormData1()).patientData.weight}`,
             alignment: 'center',
             
           },
           {
-            text:`BSA: ${(this.reportFormData()).patientData.bsa}`,
+            text:`BSA: ${(this.reportFormData1()).patientData.bsa}`,
             alignment: 'right',
            
           },
@@ -634,12 +672,12 @@ console.log(this.reportFormData().conclusionsComments)
       columns: [
         
           {
-            text:`BMI: ${(this.reportFormData()).patientData.bmi}`,
+            text:`BMI: ${(this.reportFormData1()).patientData.bmi}`,
             alignment: 'left',
        
           },
           {
-            text:`Type of Test: ${(this.reportFormData()).patientData.testtype}`,
+            text:`Type of Test: ${(this.reportFormData1()).patientData.testtype}`,
             alignment: 'center',
         
           },

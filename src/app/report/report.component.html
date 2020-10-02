@@ -194,9 +194,9 @@
                           [(ngModel)]="selectedItemsObservations[k]" [settings]="settings" 
                           name="mastervalue_{{k}}" id="mastervalue_{{k}}"  
                           (onSelect)="onItemSelect($event,Observations.type)"
-                          (onDeSelect)="OnItemDeSelect($event)" 
-                          (onSelectAll)="onSelectAll($event)" 
-                          (onDeSelectAll)="onDeSelectAll($event)"
+                          (onDeSelect)="OnItemDeSelect($event,Observations.type)" 
+                          (onSelectAll)="onSelectAll($event,Observations.type)" 
+                          (onDeSelectAll)="onDeSelectAll($event,Observations.type)"
                           >
                             <c-badge>
                                      <ng-template let-item="item">
@@ -343,9 +343,9 @@
                           [(ngModel)]="selectedItems1" [settings]="settings" 
                           name="peaksystolicstrain" id="peaksystolicstrain"  
                           (onSelect)="onItemSelect($event,'speckleTracking')"
-                          (onDeSelect)="OnItemDeSelect($event)" 
-                          (onSelectAll)="onSelectAll($event)" 
-                          (onDeSelectAll)="onDeSelectAll($event)"
+                          (onDeSelect)="OnItemDeSelect($event,'speckleTracking')" 
+                          (onSelectAll)="onSelectAll($event,'speckleTracking')" 
+                          (onDeSelectAll)="onDeSelectAll($event,'speckleTracking')"
                           >
                             <c-badge>
                                      <ng-template let-item="item">
@@ -371,9 +371,9 @@
                           [(ngModel)]="selectedItems2" [settings]="settings" 
                           name="impressionsmastervalue" id="impressionsmastervalue"  
                           (onSelect)="onItemSelect($event,'impression')"
-                          (onDeSelect)="OnItemDeSelect($event)" 
-                          (onSelectAll)="onSelectAll($event)" 
-                          (onDeSelectAll)="onDeSelectAll($event)"
+                          (onDeSelect)="OnItemDeSelect($event,'impression')" 
+                          (onSelectAll)="onSelectAll($event,'impression')" 
+                          (onDeSelectAll)="onDeSelectAll($event,'impression')"
                           >
                             <c-badge>
                                      <ng-template let-item="item">
@@ -437,9 +437,9 @@
                           [(ngModel)]="selectedItems3" [settings]="settings" 
                           name="conclusionsmastervalue" id="conclusionsmastervalue"  
                           (onSelect)="onItemSelect($event,'conclusion')"
-                          (onDeSelect)="OnItemDeSelect($event)" 
-                          (onSelectAll)="onSelectAll($event)" 
-                          (onDeSelectAll)="onDeSelectAll($event)"
+                          (onDeSelect)="OnItemDeSelect($event,'conclusion')" 
+                          (onSelectAll)="onSelectAll($event,'conclusion')" 
+                          (onDeSelectAll)="onDeSelectAll($event,'conclusion')"
                           >
                             <c-badge>
                                      <ng-template let-item="item">
@@ -502,9 +502,9 @@
                           [(ngModel)]="selectedItems4" [settings]="settings" 
                           name="doctoradvice" id="doctoradvicemastervalue"  
                           (onSelect)="onItemSelect($event,'docadvice')" 
-                          (onDeSelect)="OnItemDeSelect($event)" 
-                          (onSelectAll)="onSelectAll($event)" 
-                          (onDeSelectAll)="onDeSelectAll($event)"
+                          (onDeSelect)="OnItemDeSelect($event,'docadvice')" 
+                          (onSelectAll)="onSelectAll($event,'docadvice')" 
+                          (onDeSelectAll)="onDeSelectAll($event,'docadvice')"
                           >
                             <c-badge>
                                      <ng-template let-item="item">

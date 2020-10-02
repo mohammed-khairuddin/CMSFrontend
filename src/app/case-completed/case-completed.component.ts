@@ -43,11 +43,14 @@ export class CaseCompletedComponent implements OnInit {
 
  reqdate = this.year + "-" + this.month + "-" + this.date;
 
+
+ observationsObject;
+
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient) { }
   ngOnInit(): void {
 
     this.loginService.getClinicData(localStorage.getItem("id")).subscribe(data => {
-      console.log(data)
+      //console.log(data)
       this.ClinicData = data['doctor']
     }, error => console.log(error));
       
@@ -69,6 +72,32 @@ export class CaseCompletedComponent implements OnInit {
     //   this.TotalList = this.AllClinicPatientsList;
 
     // })
+
+
+  //   this.loginService.observationsGetAllByPatient().subscribe((data:any) => {
+  //     const {observations,masterData,conclusioncomment,conclusionreport,doctorAdviceComments,
+  //       doctorAdvicereport,impressioncomment,impressionreport,observationItem,
+  //       observtaionComments,speckleTrackingreport,regionalWall} = data;          
+
+  //     //console.log(data);
+  //     //console.log('=====');      
+  //     //console.log(this.observationsObject.length);
+
+  //     this.observationsObject = observations.map(observation => {
+  //       const type =observation.type
+  //       const formatedTypename = type.replace("Observation","").replace(/ /g, "") ;
+
+  //       const masterdata = masterData[formatedTypename].map(master =>{
+  //         return {...master,type:`${formatedTypename}Observation`}
+  //       })
+  //       //console.log(masterdata);
+  //       return ({...observation,ttype:formatedTypename,masterValues:masterdata})
+  //     })
+  // })
+
+
+
+
 
   }
 

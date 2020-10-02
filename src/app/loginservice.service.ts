@@ -273,6 +273,11 @@ observationsGetAllByPatient= () => {
   return this.http.get(`${this.ngrokUrl}/findall/observations/${pmid}`,this.httpOptions)
 }
 
+// observationsGetAllByPatientmultiple= () => {
+//   const pmid = localStorage.getItem('pmid');  
+//   return this.http.get(`${this.ngrokUrl}/findall/observations/${pmid}`,this.httpOptions)
+// }
+
 observationsGetAllByPatientIdType= () => {
   const pmid = localStorage.getItem('pmid');  
   const obtype = localStorage.getItem('obtype')

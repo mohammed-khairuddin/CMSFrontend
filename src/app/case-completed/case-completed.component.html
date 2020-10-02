@@ -64,11 +64,15 @@
             <div class="loopindiv reqbg3" *ngIf="alllist.requirement === 'Routine'">
               <p>{{ alllist.requirement }}</p></div>   
       </td>
-      <td scope="row" class="sticky-col third-col">
+    <td scope="row" class="sticky-col third-col"> 
         <span class="bell">
-          <a  (click)="goToViewObservations(alllist)" ><img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   ></a>
+          <a *ngIf="alllist.totalCount > 0 ;else other_content"  (click)="goToViewObservations(alllist)" style="cursor: pointer;" ><img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   ></a>
           <!-- <span class="bellnumbers">{{ alllist.length }}</span>  routerLink="/report-preview/{{alllist.id}}"  -->
-          <span class="bellnumbers">1</span>
+          <ng-template #other_content>
+            <a><img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   ></a>
+          </ng-template>
+
+          <span *ngIf="alllist.totalCount > 0" class="bellnumbers">1</span>
 
         </span>  
       </td>
