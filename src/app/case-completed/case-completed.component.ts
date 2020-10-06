@@ -65,40 +65,6 @@ export class CaseCompletedComponent implements OnInit {
 
     })
 
-    // this.loginService.getAllClinicPatientsList().subscribe(patient =>{
-     
-    //   console.log(patient);
-    //   this.AllClinicPatientsList = patient['patient']
-    //   this.TotalList = this.AllClinicPatientsList;
-
-    // })
-
-
-  //   this.loginService.observationsGetAllByPatient().subscribe((data:any) => {
-  //     const {observations,masterData,conclusioncomment,conclusionreport,doctorAdviceComments,
-  //       doctorAdvicereport,impressioncomment,impressionreport,observationItem,
-  //       observtaionComments,speckleTrackingreport,regionalWall} = data;          
-
-  //     //console.log(data);
-  //     //console.log('=====');      
-  //     //console.log(this.observationsObject.length);
-
-  //     this.observationsObject = observations.map(observation => {
-  //       const type =observation.type
-  //       const formatedTypename = type.replace("Observation","").replace(/ /g, "") ;
-
-  //       const masterdata = masterData[formatedTypename].map(master =>{
-  //         return {...master,type:`${formatedTypename}Observation`}
-  //       })
-  //       //console.log(masterdata);
-  //       return ({...observation,ttype:formatedTypename,masterValues:masterdata})
-  //     })
-  // })
-
-
-
-
-
   }
 
   goToViewObservations = (alllist):any => {

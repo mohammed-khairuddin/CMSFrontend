@@ -153,7 +153,8 @@ export class EditdoctorComponent implements OnInit {
 
   updateDoctor = ():any => {
     this.loginService.updateDoctorData(this.updform).subscribe(updateDoctor =>{
-     this.router.navigateByUrl('/dashboard');
+      alert('Doctor Data Updated Successfully');
+     //this.router.navigateByUrl('/dashboard');
     })
    
  }

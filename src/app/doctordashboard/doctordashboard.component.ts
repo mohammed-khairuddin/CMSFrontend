@@ -20,7 +20,7 @@ export class DoctordashboardComponent implements OnInit {
   ngOnInit(): void {
 
     this.loginService.getDoctorData(localStorage.getItem("id")).subscribe(data => {
-      console.log(data)
+      //console.log(data)
       this.DoctorData = data['doctor']
     }, error => console.log(error));
 

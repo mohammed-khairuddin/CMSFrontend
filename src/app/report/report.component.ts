@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ObservationsComponent } from '../observations/observations.component';
-import { type } from 'os';
+//import { type } from 'os';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -23,9 +23,11 @@ export class ReportComponent implements OnInit {
   
   patientDataObject;
   observationsObject;
+  observationsObjecttype;
   AllMastersList;
   clinicDataObject;
 
+  
   itemList = [];
   itemList1 = [];
   selectedItemsObservations:any = [];
@@ -59,17 +61,19 @@ export class ReportComponent implements OnInit {
   inferiorwall;
   lateralwall;
   ef;
-  sysstrain;
-  sysstrainmastervalue;
+  pulmonaryarterypressure;
+  avgsystolicstrain;
 
+  
+  
   updform = {
     anteriorwall :'',
     posteriorwall:'',
     inferiorwall:'',
     lateralwall:'',
     ef:'',
-    sysstrain:'',
-    sysstrainmastervalue:''
+    pulmonaryarterypressure:'',
+    avgsystolicstrain:''
   }
   
   doctorAdvice= []
@@ -145,7 +149,7 @@ export class ReportComponent implements OnInit {
           const masterdata = masterData[formatedTypename].map(master =>{
             return {...master,type:`${formatedTypename}Observation`}
           })
-          //console.log(masterdata);
+          //console.log(formatedTypename);
 				  return ({...observation,ttype:formatedTypename,masterValues:masterdata,comments:this.Observationscomments,regionalWall,observationItem,impressionreport})
         })
     })
@@ -159,6 +163,12 @@ export class ReportComponent implements OnInit {
       { "id": 6, "itemName": "Not seen" }
   ];
 
+  //this.updform.anteriorwall = this.regionalWallMotion[0];
+
+   this.updform.anteriorwall = 'Normal';
+   this.updform.posteriorwall = 'Normal'; 
+   this.updform.inferiorwall = 'Normal';
+   this.updform.lateralwall = 'Normal';
 
   this.settings = {
       text: "Select Data",
@@ -188,10 +198,12 @@ mapSelectedObservationsToMultiSelect = () => {
   const observationTypesList =  this.selectedObseravtionsInEditList.map(data =>{
     return data['type'];
   })
+
   const uniqueObservationsList = [...new Set(observationTypesList)]
   for(var i=0; i<uniqueObservationsList.length;i++) {
+
      this.selectedItemsObservations[i] =
-                groupedSelectedObservations.get(uniqueObservationsList[i])
+              groupedSelectedObservations.get(uniqueObservationsList[i])
   }
    
 }
@@ -221,11 +233,32 @@ onDeSelectAll(item: any,type) {
 
 /////////////////////////////
 
-addComment(k,type) {
+addComment(k,type) { 
+  // console.log(k);
+  // console.log(this.observationsObject);
+  // this.observationsObject.comments.splice(k+1,1)
+  // console.log(this.observationsObject)
+  // const x = this.observationsObject;
+  // x[0].comments.push({})
+  // console.log("++++++++++++++++")
+  // console.log(x)
+
+  console.log(k);
+  console.log(type);
+  //console.log(this.observationsObject[k][type].comments.length);
+  // this.observationsObject[k][type].comments.push({
+  //  //id: k+ 1,
+  //  id:this.observationsObject[k][type].comments.length +1,
+  //   comment: ''
+  // })
+
   this.observationsObject[k].comments.push({
-   id: k+ 1,
+   //id: k+ 1,
+   id:this.observationsObject[k].length +1,
    type:type,
-  comment: ''
+    comment: ''
+   
+    
   })
 
 }
@@ -316,12 +349,6 @@ reportFormData=() =>{
 }
 
 console.log(getReport)
-
-const getObservationsReport  = {
-  selectedObservations: this.selectedItemsObservations.filter(data => data != 'Empty'),
-  //observations:this.observationsObject 
-}
-
 
 // this.loginService.masterReportInsertion(getReport).subscribe(res =>{
 //   console.log(res);

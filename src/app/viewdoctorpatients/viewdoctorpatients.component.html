@@ -66,8 +66,17 @@
     </td>
     <td scope="row" class="sticky-col third-col"> 
       <span class="bell">
-        <img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   >
+        <!-- <img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   > -->
         <!-- <span class="bellnumbers">{{ alllist.length }}</span> -->
+
+        <a *ngIf="alllist.totalCount > 0 ;else other_content"  (click)="goToViewObservations(alllist)" style="cursor: pointer;" ><img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   ></a>
+        <!-- <span class="bellnumbers">{{ alllist.length }}</span>  routerLink="/report-preview/{{alllist.id}}"  -->
+        <ng-template #other_content>
+          <a><img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   ></a>
+        </ng-template>
+
+        <span *ngIf="alllist.totalCount > 0" class="bellnumbers">1</span>
+
       </span>
     </td>
     <td scope="row" class="sticky-col fourth-col">{{ alllist.patientname | titlecase }}</td>

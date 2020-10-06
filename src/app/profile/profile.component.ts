@@ -116,7 +116,8 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfileData = ():any => {
-    this.loginService.updateClinicData(this.profileform).subscribe(updateDoctor =>{
+    this.loginService.updateClinicFrontData(this.profileform).subscribe(updateDoctor =>{
+      alert('Clinic Data Updated Successfully');
       this.router.navigateByUrl('/profile');
      })
    

@@ -25,17 +25,18 @@ export class ViewdoctorpatientsComponent implements OnInit {
 
     this.loginService.getAllClinicDoctorList().subscribe(user =>{
       this.AllClinicDoctorList = user['user']
-     console.log(this.AllClinicDoctorList)
+     //console.log(this.AllClinicDoctorList)
     })   
 
     this.loginService.getAllDoctorPatientsList().subscribe(user =>{
       this.AllDoctorPatientsList = user['doctor']
-     console.log(this.AllDoctorPatientsList)
+     //console.log(this.AllDoctorPatientsList)
+     //getAllClinicPatientsListClinicStatus
     })   
 
     
     this.loginService.getClinicData(localStorage.getItem("id")).subscribe(data => {
-      console.log(data)
+      //console.log(data)
       this.ClinicData = data['doctor']
     }, error => console.log(error));
 

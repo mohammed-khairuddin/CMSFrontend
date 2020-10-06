@@ -109,7 +109,7 @@ export class DoctorprofileComponent implements OnInit {
  
 
     this.loginService.getDoctorData(localStorage.getItem("id")).subscribe(data => {
-      console.log(data)
+      //console.log(data)
       this.profileform = data['doctor']
     }, error => console.log(error));
 
@@ -122,8 +122,11 @@ export class DoctorprofileComponent implements OnInit {
 
 
  updateProfileData = ():any => {
-    this.loginService.updateDoctorData(this.profileform).subscribe(updateDoctor =>{
-      this.router.navigateByUrl('/profile');
+    this.loginService.updateDoctorFrontData(this.profileform).subscribe(updateDoctor =>{
+      //console.log(updateDoctor);
+      //console.log('=====');
+      alert('Doctor Data Updated Successfully');
+      this.router.navigateByUrl('/doctorprofile');
      })
    
  }

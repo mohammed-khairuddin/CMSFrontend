@@ -64,6 +64,12 @@ updateClinicData= (updatedObj)=>{
   return this.http.put(`${this.ngrokUrl}/auth/updateclinic/${id}`,updatedObj)
 }
 
+updateClinicFrontData= (updatedObj)=>{
+  console.log(updatedObj)
+  const id = localStorage.getItem('id')
+  return this.http.put(`${this.ngrokUrl}/auth/updateclinic/${id}`,updatedObj)
+}
+
 /////////////////////////DOCTORS APIS//////////////////////
 getAllDoctorsList= () => {
   return this.http.get(`${this.ngrokUrl}/auth/doctor/`)
@@ -82,6 +88,12 @@ getDoctorData= (id)=>{
 updateDoctorData= (updatedObj)=>{
   console.log(updatedObj)
   const id = localStorage.getItem('aid')
+  return this.http.put(`${this.ngrokUrl}/auth/updatedoctor/${id}`,updatedObj)
+}
+
+updateDoctorFrontData= (updatedObj)=>{
+  console.log(updatedObj)
+  const id = localStorage.getItem('id')
   return this.http.put(`${this.ngrokUrl}/auth/updatedoctor/${id}`,updatedObj)
 }
 
@@ -143,6 +155,11 @@ getAllClinicPatientsListDateType= (date,status)=>{
 updatePatientDoc= (updatePatientDocObject)=>{
   const id = localStorage.getItem('pid')
   return this.http.put(`${this.ngrokUrl}/update/patient/${id}`,updatePatientDocObject,this.httpOptions)
+}
+
+updPatientDoc= (updatePatientDocObject)=>{
+  const id = localStorage.getItem('pid')
+  return this.http.put(`${this.ngrokUrl}/save/patient/${id}`,updatePatientDocObject,this.httpOptions)
 }
 
 getAllDoctorPatientsList= ()=>{

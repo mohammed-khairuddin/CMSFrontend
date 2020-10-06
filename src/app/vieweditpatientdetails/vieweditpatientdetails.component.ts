@@ -92,7 +92,7 @@ ews=['Good','Bad'];
     });
 
     this.loginService.getPatientData(localStorage.getItem("pid")).subscribe(data => {
-         
+         //console.log(data);
           this.patientDataObject = data['doctor']
         }, error => console.log(error));
   
@@ -106,10 +106,10 @@ calculateAge(birthday) {
  
   //convert date again to type Date
   const bdate = new Date(this.patientDataObject.dob);
-  console.log(bdate);
+  //console.log(bdate);
   const timeDiff = Math.abs(Date.now() - bdate.getTime() );
   this.patientDataObject['age'] = this.getAge(this.patientDataObject.dob);
-  //console.log(this.age);
+ 
 
 }
 
@@ -168,19 +168,16 @@ calculateBsa(bsa){
 
   const ht = this.patientDataObject.height;
   const wt = this.patientDataObject.weight;
-  //console.log(ht);
-  //console.log(wt);
+ 
   this.patientDataObject['bsa'] =  Math.pow(this.patientDataObject.height , wt/ 3600).toFixed(3);
   this.patientDataObject['bmi'] = (wt / Math.pow(this.patientDataObject.height,2)).toFixed(3); 
-  //console.log(this.patientDataObject['bsa']);
-  //console.log(this.patientDataObject['bmi']);
+ 
 }
 
   updatePatient = ():any => {
-    console.log(this.patientDataObject); 
-    this.loginService.updatePatientDoc(this.patientDataObject).subscribe(res =>{
+    this.loginService.updPatientDoc(this.patientDataObject).subscribe(res =>{
      console.log(res);
-     if(res['message'] ===  'patient updated successfully' ) {
+     if(res['description'] ===  'patient Details updated' ) {
       window.location.reload();
       alert('Patient Details Updated Successfully');
 
@@ -191,19 +188,35 @@ calculateBsa(bsa){
 
  goToSendDetails = (patientDataObject):any=>{
 
-  if(patientDataObject.sendreport === '' || patientDataObject.sendreport === undefined ){
+ //console.log(this.patientDataObject); 
+
+  if(this.patientDataObject.sendreport === null || this.patientDataObject.sendreport === 'undefined' ){
     alert('Please Select One of them to sent the Report');
     return false;
    }
   
-  if(patientDataObject.sendreport === 'sms'){
-  alert('Sms Sent Successfully');
-  }if(patientDataObject.sendreport === 'email'){
-    alert('Email Sent Successfully');
+  if(this.patientDataObject.sendreport === 'sms'){
+    this.loginService.updatePatientDoc(this.patientDataObject).subscribe(res =>{
+      console.log(res);
+      if(res['description'] ===  'patient Details updated' ) {
+       alert('Sms Sent Successfully');
+      }         
+     })
+
+  
+  }else if(this.patientDataObject.sendreport === 'email'){
+
+    this.loginService.updatePatientDoc(this.patientDataObject).subscribe(res =>{
+      console.log(res);
+      if(res['description'] ===  'patient Details updated' ) {
+       //window.location.reload();
+       //alert('Patient Details Updated Successfully');        
+        alert('Email Sent Successfully');
+      }         
+     })
+   
     }
 
-    this.router.navigateByUrl('/clinicdashboard');
-    //window.location.reload();
 
  }
 
