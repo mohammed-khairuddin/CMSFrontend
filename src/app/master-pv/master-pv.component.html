@@ -24,14 +24,7 @@
       </select>
      </div>
 
-     <!-- <div class="form-group col-md-4">
-      <label>Pulmonic Stenosis </label>
-      <select  class="form-control" [(ngModel)]="updform.selectPulmonicstenosis" name="selectPulmonicstenosis" 
-       (ngModelChange)="onOptionsSelected('Pulmonicstenosis',updform.selectPulmonicstenosis)">
-        <option> Not Applicable(N/A)</option>  
-        <option *ngFor="let sta of pulmonicStenosis" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-      </select>
-      </div> -->
+    
 
         </div>
 
@@ -263,14 +256,14 @@
     <div class="form-row"   >
       <div class="form-group col-md-2" ></div>
       <div class="form-group col-md-2" >
-        <button type="button" class="btn btn-warning  btn-block" onclick="$('#all-pa-tab').trigger('click')" 
+        <button type="button" class="btn btn-warning  btn-block" onclick="$('#tabeight').trigger('click')" 
         (click)="getAddPage('pulmonaryArteryObservation')"  >Previous</button>
       </div>
       <div class="form-group col-md-2" >
         <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
       </div>
       <div class="form-group col-md-2" >
-        <button type="button" class="btn btn-danger  btn-block" onclick="$('#all-aorta-tab').trigger('click')" 
+        <button type="button" class="btn btn-danger  btn-block" onclick="$('#tabten').trigger('click')" 
         (click)="getAddPage('aortaObservation')"  >Next</button>
       </div>
       <div class="form-group col-md-4" ></div>

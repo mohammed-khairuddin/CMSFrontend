@@ -4,14 +4,7 @@
       <h3 class="head-title"> TYPE : AORTA </h3> 
       <div class="total-container">
         <div class="form-row">
-          <!-- <div class="form-group col-md-4">
-            <label>Aorta </label>            
-            <select [(ngModel)]="updform.selectAorta" [ngModelOptions]="{standalone: true}"
-            (ngModelChange)="onOptionsSelected('Aorta',updform.selectAorta)" class="form-control" 
-            [value]="updform.selectAorta">
-            <option [ngValue]="sta.itemName"  *ngFor="let sta of aorta">{{sta.itemName}}</option>
-            </select>
-          </div> -->
+         
 
           <div class="form-group col-md-4" >
             <label> Dialation </label>               
@@ -46,19 +39,10 @@
           <label class="head-title">TYPE : PLAQUE</label>               
           </div>                                                    
         </div>
-<!--           
-        <h3 class="head-title">TYPE : PLAQUE</h3> -->
-        <div class="form-row">
 
-           
-          <!-- <div class="form-group col-md-4"  >
-            <label> Plaque </label>               
-            <select [(ngModel)]="updform.selectPlaque" name="selectPlaque" id="selectPlaque"   
-            (ngModelChange)="onOptionsSelected('Plaque',selectPlaque)" class="form-control">
-            <option> Not Applicable(N/A)</option>
-            <option *ngFor="let sta of plaque" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-            </select>
-          </div> -->
+
+        <div class="form-row">
+             
 
           <div class="form-group col-md-4"  >
             <label> Plaque : Location </label>               
@@ -111,16 +95,9 @@
           <label class="head-title">TYPE : GRAFT</label>               
           </div>                                                    
         </div>
-        <!-- <h3 class="head-title">TYPE : GRAFT</h3> -->
+      
         <div class="form-row">
-          <!-- <div class="form-group col-md-4"  >
-            <label> Graft </label>               
-            <select [(ngModel)]="updform.selectGraft" name="selectGraft" id="selectGraft"   
-            (ngModelChange)="onOptionsSelected('Graft',selectGraft)" class="form-control">
-            <option> Not Applicable(N/A)</option>
-            <option *ngFor="let sta of graft" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-            </select>
-          </div> -->
+         
 
           <div class="form-group col-md-4"  >
             <label> Graft : Type </label>               
@@ -148,17 +125,10 @@
           </div>                                                    
         </div>
 
-        <!-- <h3 class="head-title">TYPE : DISSECTION</h3> -->
+      
         <div class="form-row">
 
-          <!-- <div class="form-group col-md-4"  >
-            <label> Dissection </label>               
-            <select [(ngModel)]="updform.selectDissection" name="selectDissection" id="selectDissection"   
-            (ngModelChange)="onOptionsSelected('Dissection',selectDissection)" class="form-control">
-            <option> Not Applicable(N/A)</option>
-            <option *ngFor="let sta of dissection" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-            </select>
-          </div> -->
+         
 
           <div class="form-group col-md-4"  >
             <label> Dissection : Location </label>               
@@ -307,22 +277,23 @@
 
         </div>
         
-      </div>
-
-        
+      </div>        
 
       <div class="form-row"   >
+        <div class="form-group col-md-2" ></div>
+
         <div class="form-group col-md-2" >
-          <button type="button" class="btn btn-warning  btn-block" onclick="$('#all-pv-tab').trigger('click')" 
+          <button type="button" class="btn btn-warning  btn-block" onclick="$('#tabnine').trigger('click')" 
             (click)="getAddPage('pulmonicValveObservation')"  >Previous</button>
         </div>
         <div class="form-group col-md-2" >
           <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
         </div>
         <div class="form-group col-md-2" >
-          <button type="button" class="btn btn-danger  btn-block" onclick="$('#all-pericardium-tab').trigger('click')"
+          <button type="button" class="btn btn-danger  btn-block" onclick="$('#tabeleven').trigger('click')"
           (click)="getAddPage('pericardiumObservation')"  >Next</button>
         </div>
+        <div class="form-group col-md-4" ></div>
       </div> 
     </div>
   </div>

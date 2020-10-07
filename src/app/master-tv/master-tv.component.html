@@ -17,23 +17,10 @@
 
         </div>
 
-        <!-- <div class="form-row col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" >
-          <label class="head-title" style="text-align: center;" >Tricuspid Valve Abnormal </label>
-        </div> -->
-
 
         <div class="form-row"  >
 
-            <!---Rheumatic-->
-            <!-- <div class="form-group col-md-4"  >
-            <label> Tricuspid Valve Rheumatic </label>
-            <select [(ngModel)]="selectedtvrheumatic" name="Rheumatic" id="Rheumatic" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('rheumatic')" class="form-control">
-            <option> Not Applicable(N/A)</option>
-            <option *ngFor="let sta of rheumatic" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-            </select>
-            </div> -->
-
+          
             <!-- vegetation--->
             <div class="form-group col-md-12" style="text-align: center; padding-top:1%" 
              >
@@ -112,39 +99,7 @@
           [(ngModel)]="updform.septalleafletSizeDimension"  name="septalleafletSizeDimension" id="septalleafletSizeDimension"
           #septalleafletSizeDimension="ngModel">
           </div>
-          <!---Vegetation-->
-          <!-- <div class="form-group col-md-4"  *ngIf="updform.selectvegetationAnteriorleaflet === 'Anterior leaflet-Size' ">
-          <label> Anterior Leaflet Size</label>
-          <select [(ngModel)]="updform.selectanteriorleafletSize" name="selectanteriorleafletSize" id="selectanteriorleafletSize" placeholder="select" 
-          (ngModelChange)="onOptionsSelected('anteriorleafletSize',updform.selectanteriorleafletSize)" class="form-control">
-          <option> Not Applicable(N/A)</option>
-          <option *ngFor="let sta of anteriorleafletSize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-          </select>
-          </div> -->
-
-
-
-          <!---Vegetation-->
-          <!-- <div class="form-group col-md-4"  *ngIf="updform.selectedtvvegetationPosteriorleaflet === 'Posterior leaflet-Size' ">
-          <label> Posterior Leaflet Size</label>
-          <select [(ngModel)]="updform.selectposteriorleafletSize" name="selectposteriorleafletSize" id="selectposteriorleafletSize" placeholder="select" 
-          (ngModelChange)="onOptionsSelected('posteriorleafletSize',updform.selectposteriorleafletSize)" class="form-control">
-          <option> Not Applicable(N/A)</option>
-          <option *ngFor="let sta of posteriorleafletSize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-          </select>
-          </div> -->
-
-
-          <!---Vegetation-->
-          <!-- <div class="form-group col-md-4"  *ngIf="updform.selectvegetationSeptalleaflet === 'Septal leaflet-Size' ">
-
-          <label> Septal Leaflet Size</label>
-          <select [(ngModel)]="updform.selectseptalleafletSize" name="selectseptalleafletSize" id="selectseptalleafletSize" placeholder="select" 
-          (ngModelChange)="onOptionsSelected('septalleafletSize',updform.selectseptalleafletSize)" class="form-control">
-          <option> Not Applicable(N/A)</option>
-          <option *ngFor="let sta of septalleafletSize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-          </select>
-          </div> -->
+         
           </div>
           </div>
 
@@ -271,13 +226,7 @@
 
         <div class="form-row">
 
-          <!-- <div class="form-group col-md-4">
-          <label>Tricuspid Valve Regurgitation  </label>
-          <select [(ngModel)]="updform.selectregurgitation" name="selectregurgitation"  class="form-control"  placeholder="select" 
-                (ngModelChange)="onOptionsSelected('regurgitation',updform.selectregurgitation)">
-          <option *ngFor="let sta of regurgitation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-          </select>
-          </div> -->
+        
           <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%">
           <label class="head-title" >Regurgitation Present </label>
           <div class="form-row" >
@@ -312,13 +261,7 @@
         </div>
 
         <div class="form-row">
-            <!-- <div class="form-group col-md-4">
-            <label>Tricuspid Valve Stenosis  </label>
-            <select [(ngModel)]="updform.selecstenosis" name="selecstenosis"  class="form-control"  placeholder="select" 
-                  (ngModelChange)="onOptionsSelected('stenosis',updform.selecstenosis)">
-            <option *ngFor="let sta of stenosis" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-            </select>
-            </div> -->
+           
             <div class="form-group col-md-12" style="text-align: center; border-top:1px solid #f0f0f0; padding-top:1%" 
                 >
             <label class="head-title" >Stenosis Present </label>
@@ -384,14 +327,14 @@
         <div class="form-row"   >
           <div class="form-group col-md-2" ></div>
           <div class="form-group col-md-2" >
-            <button type="button" class="btn btn-warning  btn-block" onclick="$('#all-mv-tab').trigger('click')" 
+            <button type="button" class="btn btn-warning  btn-block" onclick="$('#tabsix').trigger('click')" 
             (click)="getAddPage('mitralValveObservation')"  >Previous</button>
           </div>
           <div class="form-group col-md-2" >
             <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
           </div>
           <div class="form-group col-md-2" >
-            <button type="button" class="btn btn-danger  btn-block" onclick="$('#all-pa-tab').trigger('click')" 
+            <button type="button" class="btn btn-danger  btn-block" onclick="$('#tabeight').trigger('click')" 
             (click)="getAddPage('pulmonaryArteryObservation')" >Next</button>
           </div>
           <div class="form-group col-md-4" ></div>

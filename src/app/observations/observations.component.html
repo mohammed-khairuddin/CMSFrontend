@@ -97,115 +97,103 @@
 
           <hr/>
 
-          <div class="card">    
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <!------------------------------------------------------------------>
 
-              <li class="nav-item">
-                <a class="nav-link active" id="all-md-tab" data-toggle="pill"   href="#all-md" role="tab" aria-controls="all-md" aria-selected="true"> LV Motion Diagram</a>
-                </li>  
-            <li class="nav-item">
-            <a class="nav-link" id="all-lv-tab" data-toggle="pill"  queryParamsHandling="preserve" (click)="getAddPage('leftVentricalObservation')"  href="#all-lv" role="tab" aria-controls="all-lv" aria-selected="true"> LV</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" id="all-rv-tab" data-toggle="pill"  queryParamsHandling="preserve" (click)="getAddPage('rightVentricleObservation')"  href="#all-rv" role="tab" aria-controls="all-rv" aria-selected="false">  RV</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" id="all-la-tab" data-toggle="pill" queryParamsHandling="preserve" (click)="getAddPage('leftAtriumObservation')" href="#all-la" role="tab" aria-controls="all-la" aria-selected="false">LA</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="all-ra-tab" data-toggle="pill"  queryParamsHandling="preserve" (click)="getAddPage('rightAtriumObservation')" href="#all-ra" role="tab" aria-controls="all-ra" aria-selected="false">RA</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="all-mv-tab" data-toggle="pill"  queryParamsHandling="preserve" (click)="getAddPage('mitralValveObservation')"  href="#all-mv" role="tab" aria-controls="all-mv" aria-selected="false">MV</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="all-tv-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('tricuspidValveObservation')" href="#all-tv" role="tab"  aria-controls="all-tv" aria-selected="false">TV</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="all-pa-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('pulmonaryArteryObservation')" href="#all-pa" role="tab" aria-controls="all-pa" aria-selected="false">PA</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="all-pv-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('pulmonicValveObservation')" href="#all-pv" role="tab" aria-controls="all-pv" aria-selected="false">PV</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="all-aorta-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('aortaObservation')" href="#all-aorta" role="tab" aria-controls="all-aorta" aria-selected="false">Aorta</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" id="all-pericardium-tab" data-toggle="pill" queryParamsHandling="preserve"  (click)="getAddPage('pericardiumObservation')" href="#all-pericardium" role="tab" aria-controls="all-pericardium" aria-selected="false">Pericardium</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" id="all-reports-tab" data-toggle="pill"  href="#all-reports" role="tab" aria-controls="all-reports" aria-selected="false">Reports</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" id="all-reportimage-tab" data-toggle="pill"  href="#all-reportimage" role="tab" aria-controls="all-reportimage" aria-selected="false">Reports Images</a>
-            </li>
-<!-- 
-            <li class="nav-item">
-              <a class="nav-link" id="all-preview-tab" data-toggle="pill"  href="#all-preview" role="tab" aria-controls="all-preview" aria-selected="false">preview</a>
-            </li> -->
-      
-            </ul>
-      
-            <div class="tab-content" id="pills-tabContent">
-      
-              <!-- <router-outlet></router-outlet> -->
-
-              <div class="tab-pane fade show active" id="all-md" role="tabpanel" aria-labelledby="all-md-tab" style="min-height: 300px;">
-               Lv Motion Diagram
-               </div>  
-      
-            <div class="tab-pane fade" id="all-lv" role="tabpanel" aria-labelledby="all-lv-tab" style="min-height: 300px;">
-            <app-master-lv></app-master-lv>           
+          <div class="tabs">
+            <input type="radio" name="tabs" id="tabone" checked="checked">
+            <label for="tabone">LV Motion Diagram</label>
+            <div class="tab">
+              <h1 class="text-head">LV Motion Diagram</h1>
+             
+            
             </div>
-            <div class="tab-pane fade" id="all-rv" role="tabpanel" aria-labelledby="all-rv-tab" style="min-height: 300px;">
+            
+            <input type="radio" name="tabs" id="tabtwo" queryParamsHandling="preserve" (click)="getAddPage('leftVentricalObservation')" >
+            <label for="tabtwo">LV</label>
+            <div class="tab">
+              <!-- <h1>LV</h1> -->
+              <app-master-lv></app-master-lv> 
+
+            </div>
+            
+            <input type="radio" name="tabs" id="tabthree"  queryParamsHandling="preserve" (click)="getAddPage('rightVentricleObservation')">
+            <label for="tabthree">RV</label>
+            <div class="tab">
               <app-master-rv></app-master-rv>
             </div>
-      
-            <div class="tab-pane fade" id="all-la" role="tabpanel" aria-labelledby="all-la-tab" style="min-height: 300px;">
-              <app-master-la></app-master-la>
-            </div> 
-      
-            <div class="tab-pane fade" id="all-ra" role="tabpanel" aria-labelledby="all-ra-tab" style="min-height: 300px;" >
-              <app-master-ra></app-master-ra>
-            </div> 
 
-            <div class="tab-pane fade" id="all-mv" role="tabpanel" aria-labelledby="all-mv-tab" style="min-height: 300px;" >
+            <input type="radio" name="tabs" id="tabfour" queryParamsHandling="preserve" (click)="getAddPage('leftAtriumObservation')">
+            <label for="tabfour">LA</label>
+            <div class="tab">
+              <app-master-la></app-master-la>
+            </div>
+
+            <input type="radio" name="tabs" id="tabfive" queryParamsHandling="preserve" (click)="getAddPage('rightAtriumObservation')">
+            <label for="tabfive">RA</label>
+            <div class="tab">
+              <app-master-ra></app-master-ra>
+            </div>
+
+            <input type="radio" name="tabs" id="tabsix" queryParamsHandling="preserve" (click)="getAddPage('mitralValveObservation')" >
+            <label for="tabsix">MV</label>
+            <div class="tab">
               <app-master-mv></app-master-mv>
-            </div> 
-            <div class="tab-pane fade" id="all-tv" role="tabpanel" aria-labelledby="all-tv-tab" style="min-height: 300px;" >
+            </div>
+
+
+            <input type="radio" name="tabs" id="tabseven" queryParamsHandling="preserve"  (click)="getAddPage('tricuspidValveObservation')">
+            <label for="tabseven">TV</label>
+            <div class="tab">
               <app-master-tv></app-master-tv>
-            </div> 
-            <div class="tab-pane fade" id="all-pa" role="tabpanel" aria-labelledby="all-pa-tab" style="min-height: 300px;" >
+            </div>
+
+
+            <input type="radio" name="tabs" id="tabeight" queryParamsHandling="preserve"  (click)="getAddPage('pulmonaryArteryObservation')">
+            <label for="tabeight">PA</label>
+            <div class="tab">
               <app-master-pa></app-master-pa>
-            </div> 
-            <div class="tab-pane fade" id="all-pv" role="tabpanel" aria-labelledby="all-pv-tab" style="min-height: 300px;" >
+            </div>
+
+
+            <input type="radio" name="tabs" id="tabnine" queryParamsHandling="preserve"  (click)="getAddPage('pulmonicValveObservation')">
+            <label for="tabnine">PV</label>
+            <div class="tab">
               <app-master-pv></app-master-pv>
             </div>
-            <div class="tab-pane fade" id="all-aorta" role="tabpanel" aria-labelledby="all-aorta-tab" style="min-height: 300px;" >
+
+            <input type="radio" name="tabs" id="tabten" queryParamsHandling="preserve"  (click)="getAddPage('aortaObservation')">
+            <label for="tabten">Aorta</label>
+            <div class="tab">
               <app-master-aorta></app-master-aorta>
             </div>
-            <div class="tab-pane fade" id="all-pericardium" role="tabpanel" aria-labelledby="all-pericardium-tab" style="min-height: 300px;" >
+
+            <input type="radio" name="tabs" id="tabeleven" queryParamsHandling="preserve"  (click)="getAddPage('pericardiumObservation')">
+            <label for="tabeleven">Pericardium</label>
+            <div class="tab">
               <app-master-pc></app-master-pc>
             </div>
 
-            <!-- <div class="tab-pane fade" id="all-preview" role="tabpanel" aria-labelledby="all-preview-tab" style="min-height: 300px;" >
-              <app-preview-observations></app-preview-observations>
-            </div> -->
 
-            <div class="tab-pane fade " id="all-reports" role="tabpanel" aria-labelledby="all-reports-tab" style="min-height: 300px;">
+            <input type="radio" name="tabs" id="tabtwelve">
+            <label for="tabtwelve">Reports</label>
+            <div class="tab">
               <app-report></app-report>
-            </div> 
-            
-            <div class="tab-pane fade " id="all-reportimage" role="tabpanel" aria-labelledby="all-reportimage-tab" style="min-height: 300px;">
-              Reports Images
-            </div> 
-
-      
             </div>
-      
+
+
+            <input type="radio" name="tabs" id="tabthirteen">
+            <label for="tabthirteen">Reports Image</label>
+            <div class="tab">
+              <h1> Reports Images</h1>
+              
+            </div>
+
+
           </div>
+
+
+          <!------------------------------------------------------------------>
+
 
       </form> 
      

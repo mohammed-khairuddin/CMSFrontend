@@ -257,8 +257,7 @@ addComment(k,type) {
    id:this.observationsObject[k].length +1,
    type:type,
     comment: ''
-   
-    
+        
   })
 
 }

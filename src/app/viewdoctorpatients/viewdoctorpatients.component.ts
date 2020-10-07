@@ -30,11 +30,10 @@ export class ViewdoctorpatientsComponent implements OnInit {
 
     this.loginService.getAllDoctorPatientsList().subscribe(user =>{
       this.AllDoctorPatientsList = user['doctor']
-     //console.log(this.AllDoctorPatientsList)
+      //console.log(this.AllDoctorPatientsList)
      //getAllClinicPatientsListClinicStatus
     })   
-
-    
+        
     this.loginService.getClinicData(localStorage.getItem("id")).subscribe(data => {
       //console.log(data)
       this.ClinicData = data['doctor']

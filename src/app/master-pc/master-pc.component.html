@@ -86,16 +86,7 @@
           <option value=""> Not Applicable(N/A)</option>
           <option *ngFor="let sta of pleuralEffusion" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
-          </div>
-
-          <!-- <div class="form-group col-md-4" *ngIf="updform.selectPleuralEffusion === 'Pleural Effusion-Present'">
-            <label>Pleural Effusion : Present</label>
-            <select [(ngModel)]="updform.selectPleuralEffusionPresent" name="selectPleuralEffusionPresent" id="selectPleuralEffusionPresent" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('PleuralEffusionPresent',selectPleuralEffusionPresent)" class="form-control">
-            <option> Not Applicable(N/A)</option>
-            <option *ngFor="let sta of pleuralEffusionPresent" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-            </select>
-            </div> -->
+          </div>        
 
         </div>
         <div class="form-row" style="text-align: center; padding-top:1%; border-top:1px solid #f0f0f0;" >
@@ -105,19 +96,10 @@
         </div>
         
         
-        <!-- <h3 class="head-title"> Type:Heamodynamic Compromise </h3> -->
+      
         <div class="form-row">
              
 
-        
-          <!-- <div class="form-group col-md-4" >
-            <label>Heamodynamic Compromise </label>               
-            <select [(ngModel)]="updform.selectHeamodynamicCompromise" name="selectHeamodynamicCompromise" id="selectHeamodynamicCompromise" placeholder="select" 
-            (ngModelChange)="onOptionsSelected('HeamodynamicCompromise',selectHeamodynamicCompromise)" class="form-control">
-            <option> Not Applicable(N/A)</option>
-            <option *ngFor="let sta of heamodynamicCompromise" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-            </select>
-          </div> -->
 
           <div class="form-group col-md-4" >
             <label>Heamodynamic Compromise : Tamponade</label>
@@ -166,15 +148,6 @@
             </select>
           </div>
 
-        
-          <!-- <div class="form-group col-md-4" *ngIf="updform.selectInversion === 'Heamodynamic Compromise-Inversion-Present'">
-            <label>Heamodynamic Compromise : Inversion : Present</label>
-            <select [(ngModel)]="updform.selectInversionPresent" name="selectInversionPresent" id="selectInversionPresent" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('inversionPresent',selectInversionPresent)" class="form-control">
-            <option> Not Applicable(N/A)</option>
-            <option *ngFor="let sta of inversionPresent" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-            </select>
-          </div> -->
 
           <div class="form-group col-md-4" >
             <label>Heamodynamic Compromise : Excessive Respiratory Variation</label>
@@ -185,15 +158,6 @@
             </select>
           </div>
         
-
-          <!-- <div class="form-group col-md-4" *ngIf="updform.selectHeamodynamicCompromise === 'Heamodynamic Compromise'">
-            <label>Heamodynamic Compromise : Doppler Flow Velocities</label>
-            <select [(ngModel)]="updform.selectDopplerFlowVelocities" name="selectDopplerFlowVelocities" id="selectDopplerFlowVelocities" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('dopplerFlowVelocities',selectDopplerFlowVelocities)" class="form-control">
-            <option> Not Applicable(N/A)</option>
-            <option *ngFor="let sta of dopplerFlowVelocities" [ngValue]="sta.itemName">{{sta.itemName}}</option>
-            </select>
-          </div> -->
 
           <div class="form-group col-md-4" >
             <label>Heamodynamic Compromise : Left Ventricular Diastole</label>
@@ -224,14 +188,14 @@
   <div class="form-row"   >
     <div class="form-group col-md-2" ></div>
     <div class="form-group col-md-2" >
-      <button type="button" class="btn btn-warning  btn-block" onclick="$('#all-aorta-tab').trigger('click')" 
+      <button type="button" class="btn btn-warning  btn-block" onclick="$('#tabten').trigger('click')" 
       (click)="getAddPage('aortaObservation')" >Previous</button>
     </div>
     <div class="form-group col-md-2" >
       <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
     </div>
     <div class="form-group col-md-2" >
-      <button type="button" class="btn btn-danger  btn-block" onclick="$('#all-reports-tab').trigger('click')"   >Next</button>
+      <button type="button" class="btn btn-danger  btn-block" onclick="$('#tabtwelve').trigger('click')"   >Next</button>
     </div>
     <div class="form-group col-md-4" ></div>
   </div>

@@ -7,25 +7,26 @@
         <div id="page-content-wrapper">
            
             <div  class="col-md-12 fright" >
-				
-				<table class="tablestyle">
-					<tr>
-						<td> <table class="tablestyleinn">
-							<tr>
-								<td><img  src="assets/images/logo.png"  name="Logo" class="img-responsive"   >    </td></tr>
-								<tr><td><h5> Welcome  {{ ClinicData.name }}</h5></td></tr>
-						
 							
-						</table> 
-							  
-							
-						</td>
-						<td>
-			
+				<div class="form-row">
+					<div class="form-group col-md-3">
+
+					</div>
+					<div class="form-group col-md-3">
+						<div>
+							<img  src="assets/images/logo.png"  name="Logo" class="img-responsive"   >  
+						</div>
+						<div>
+							<h5>  Welcome  {{ ClinicData.name }}</h5>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<div>
 							<table class="tablestyleinn">
 								<tr>
-									<td> <h5>Clinic Name </h5></td>
-									<td> <h5>: {{ ClinicData.name }} </h5></td>
+									<td> <h5>Clinic Name</h5></td>
+									<td> <h5>: {{ ClinicData.name }}  </h5></td>
 								</tr>
 								<tr>
 									<td> <h5>Phone Number </h5></td>
@@ -36,12 +37,46 @@
 									<td>: {{ ClinicData.address }}</td>
 								</tr>
 							</table>
-			
-						</td>
-					</tr>
-				</table>
+						</div>
+					</div>
+
+				</div>
+				
+	<!----------------------------------------------------->
+<div class="card">
+	<div class="tabs">
+		<input type="radio" name="tabs" id="tabone" checked="checked">
+		<label for="tabone">Cases To Be Assigned</label>
+		<div class="tab">
+			<app-showallpatients></app-showallpatients>
+		</div>
+		
+		<input type="radio" name="tabs" id="tabtwo">
+		<label for="tabtwo">Upload</label>
+		<div class="tab">
+			<app-dicomupload></app-dicomupload>
+		  
+		</div>
+		
+		<input type="radio" name="tabs" id="tabthree">
+		<label for="tabthree">Dashboard</label>
+		<div class="tab">
+			<app-clnic-dashboard-tab></app-clnic-dashboard-tab> 
+		</div>
+
+		<input type="radio" name="tabs" id="tabfour">
+		<label for="tabfour">Reports</label>
+		<div class="tab">
+		  <h1>Reports</h1>
+		</div>
+
+	  </div>
+	
+	</div>
+	<!--------------------------------------------------->
+				
 		   
-		<div class="card">    
+		<!-- <div class="card">    
 			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
 			<li class="nav-item">
@@ -63,7 +98,7 @@
 
 				<!-- <router-outlet></router-outlet> -->
 
-			<div class="tab-pane fade show active" id="all-cases" role="tabpanel" aria-labelledby="all-cases-tab">
+			<!--<div class="tab-pane fade show active" id="all-cases" role="tabpanel" aria-labelledby="all-cases-tab">
 				<app-showallpatients></app-showallpatients>
 			</div>
 			<div class="tab-pane fade" id="all-upload" role="tabpanel" aria-labelledby="all-upload-tab" style="min-height: 300px;">
@@ -80,7 +115,7 @@
 
 			</div>
 
-		</div>
+		</div> -->
 
 
             </div>
