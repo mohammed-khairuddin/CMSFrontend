@@ -12,9 +12,10 @@ export class DoctordashboardComponent implements OnInit {
   isLogin = localStorage.getItem('token')  ? true : false;
   id  = localStorage.getItem('id')
   role  = localStorage.getItem('role')
-  name  = localStorage.getItem('name')
+  //name  = localStorage.getItem('name')
   DoctorData;
-
+  name;
+  
   constructor(private loginService: LoginserviceService,private router:Router) { }
 
   ngOnInit(): void {

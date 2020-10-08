@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     this.loginService.getListOfAssignments().subscribe(assignmentsList =>{
       this.listAssignments = assignmentsList['listOfAssignments']
      //localStorage.setItem("list",data)
-     console.log(this.listAssignments);
+     //console.log(this.listAssignments);
     })
 
 

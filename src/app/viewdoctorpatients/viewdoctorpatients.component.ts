@@ -13,7 +13,11 @@ export class ViewdoctorpatientsComponent implements OnInit {
   AllClinicDoctorList:any;
   ClinicData;
   p: number = 1; 
-
+  searchString;
+  tempList;
+  TotalList;
+  filter;
+  
   isLogin = localStorage.getItem('token')  ? true : false;
   id  = localStorage.getItem('id')
   role  = localStorage.getItem('role')
@@ -25,17 +29,14 @@ export class ViewdoctorpatientsComponent implements OnInit {
 
     this.loginService.getAllClinicDoctorList().subscribe(user =>{
       this.AllClinicDoctorList = user['user']
-     //console.log(this.AllClinicDoctorList)
     })   
 
     this.loginService.getAllDoctorPatientsList().subscribe(user =>{
       this.AllDoctorPatientsList = user['doctor']
-      //console.log(this.AllDoctorPatientsList)
-     //getAllClinicPatientsListClinicStatus
     })   
         
     this.loginService.getClinicData(localStorage.getItem("id")).subscribe(data => {
-      //console.log(data)
+      
       this.ClinicData = data['doctor']
     }, error => console.log(error));
 

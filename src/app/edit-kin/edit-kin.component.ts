@@ -48,7 +48,7 @@ export class EditKinComponent implements OnInit {
 
     this.loginService.getRegisteredPatientKinDetail()
     .subscribe(data => {
-      console.log(data)
+      //console.log(data)
       this.updform = data['kinmaster']
     }, error => console.log(error));
     
@@ -71,7 +71,7 @@ export class EditKinComponent implements OnInit {
 /*****************************/
 
 updateKin = ():any => {
-    console.log(this.updform);
+    //console.log(this.updform);
      this.loginService.updateRegisteredPatientKinList(this.updform).subscribe(updateDoctor =>{
        alert('Kin Updated Successfully');
       this.router.navigateByUrl('/previewregkin');

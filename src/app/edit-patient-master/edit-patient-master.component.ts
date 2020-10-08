@@ -130,7 +130,7 @@ export class EditPatientMasterComponent implements OnInit {
 
     this.loginService.getRegisteredPatientDetail()
     .subscribe(data => {
-      console.log(data)
+      //console.log(data)
       this.updform = data['user']
     }, error => console.log(error));
     

@@ -17,7 +17,7 @@ export class ShowalldoctorsComponent implements OnInit {
   role  = localStorage.getItem('role')
   name  = localStorage.getItem('name')
   p: number = 1; 
-
+  filter;
 
   searchString;
   tempList;
@@ -29,17 +29,15 @@ export class ShowalldoctorsComponent implements OnInit {
 
     this.loginService.getAllDoctorsList().subscribe(clinic =>{
       this.AllDoctorList = clinic['clinic']
-     console.log(this.AllDoctorList)
+     //console.log(this.AllDoctorList)
     })   
-
-    
+ 
   }
 
   
   goToEditDoctor  = (list) => {
     window.localStorage.setItem("aid", list.id.toString());
     this.router.navigateByUrl(`/editdoctor/${list.id}`)
-
 
   }
 

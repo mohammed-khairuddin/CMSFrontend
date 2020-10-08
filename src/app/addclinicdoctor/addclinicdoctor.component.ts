@@ -181,7 +181,7 @@ onLogoChange(event) {
     // });
     // this.files.push(logoImage)
     this.addClinicDoctorForm.get('fileSource').setValue(logoImage);
-    console.log(logoImage);
+    //console.log(logoImage);
   }
 }
 
@@ -193,7 +193,7 @@ onFileChange(event) {
       fileSource1: profileImage
     });
     //this.files.push(profileImage)
-    console.log(profileImage);
+    //console.log(profileImage);
   }
 }
 
@@ -296,7 +296,7 @@ onPhotoChange(event) {
      
   
           this.loginService.registration(formData).subscribe(res =>{
-            console.log(res);
+            //console.log(res);
             if(res['message'] ==  'Successfully created' || res['message'] == 'File uploaded successfully!' ) {
               //if(res['status'] ==  '200' ) {
               alert('Added Successfully');

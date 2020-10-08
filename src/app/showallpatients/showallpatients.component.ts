@@ -32,6 +32,8 @@ export class ShowallpatientsComponent implements OnInit {
   TotalList;
   ClinicData;
   status = 'created';
+  filter;
+  
   // showpatientform = {
   //   docId:''
   // };

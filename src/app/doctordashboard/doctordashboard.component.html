@@ -17,8 +17,8 @@
 						<div>
 							<img  src="assets/images/profile-pic.png"  name="Logo" class="img-responsive"   > 
 						</div>
-						<div>
-							<h5> Welcome {{ DoctorData.name }}</h5>
+						<div style="padding-top: 10px;">
+							<h5> Welcome  {{ DoctorData?.name | titlecase}}</h5>
 						</div>
 					</div>
 
@@ -27,15 +27,15 @@
 							<table class="tablestyleinn">
 								<tr>
 									<td> <h5>Doctor Name </h5></td>
-									<td> <h5>: {{ DoctorData.name }}  </h5></td>
+									<td> <h5>: {{ DoctorData?.name | titlecase }}  </h5></td>
 								</tr>
 								<tr>
 									<td> <h5>Phone Number </h5></td>
-									<td>: {{ DoctorData.mobNo }}</td>
+									<td>: {{ DoctorData?.mobNo }}</td>
 								</tr>
 								<tr>
 									<td> <h5>Address</h5> </td>
-									<td>: {{ DoctorData.address }}</td>
+									<td>: {{ DoctorData?.address }}</td>
 								</tr>
 							</table>
 						</div>
@@ -54,14 +54,14 @@
 	
 	<input type="radio" name="tabs" id="tabtwo">
 	<label for="tabtwo">Reports</label>
-	<div class="tab">
+	<div class="tab" style="min-height: 300px;">
 	  <h1>All Reports</h1>
 	  
 	</div>
 	
 	<input type="radio" name="tabs" id="tabthree">
 	<label for="tabthree">Supplimentary Reports</label>
-	<div class="tab">
+	<div class="tab" style="min-height: 300px;">
 	  <h1>Supplimentary Reports</h1>
 	</div>
   </div>

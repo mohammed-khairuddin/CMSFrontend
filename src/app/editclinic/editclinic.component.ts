@@ -103,7 +103,7 @@ export class EditclinicComponent implements OnInit {
 
     this.loginService.getClinicData(localStorage.getItem("aid"))
     .subscribe(data => {
-      console.log(data)
+      //console.log(data)
       this.updform = data['doctor']
     }, error => console.log(error));
     
@@ -150,7 +150,7 @@ export class EditclinicComponent implements OnInit {
   }
 
   updateClinic = ():any => {
-    console.log(this.updform);
+    //console.log(this.updform);
      this.loginService.updateClinicData(this.updform).subscribe(updateDoctor =>{
        alert('Updated Successfully');
       this.router.navigateByUrl('/dashboard');

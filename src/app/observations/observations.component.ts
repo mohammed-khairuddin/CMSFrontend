@@ -47,10 +47,9 @@ export class ObservationsComponent implements OnInit {
 
 
   getAddPage  = (obtype) => {
-    console.log(obtype);
-    //console.log('=====//////////');
+   
     window.localStorage.setItem("obtype", obtype.toString());
-    // this.router.navigateByUrl(`/mastertable/`+type);   
+    
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
 

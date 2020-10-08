@@ -176,7 +176,7 @@ calculateBsa(bsa){
 
   updatePatient = ():any => {
     this.loginService.updPatientDoc(this.patientDataObject).subscribe(res =>{
-     console.log(res);
+     
      if(res['description'] ===  'patient Details updated' ) {
       window.location.reload();
       alert('Patient Details Updated Successfully');
@@ -188,8 +188,6 @@ calculateBsa(bsa){
 
  goToSendDetails = (patientDataObject):any=>{
 
- //console.log(this.patientDataObject); 
-
   if(this.patientDataObject.sendreport === null || this.patientDataObject.sendreport === 'undefined' ){
     alert('Please Select One of them to sent the Report');
     return false;
@@ -197,8 +195,8 @@ calculateBsa(bsa){
   
   if(this.patientDataObject.sendreport === 'sms'){
     this.loginService.updatePatientDoc(this.patientDataObject).subscribe(res =>{
-      console.log(res);
-      if(res['description'] ===  'patient Details updated' ) {
+    
+      if(res['message'] ===  'patient updated successfully' ) {
        alert('Sms Sent Successfully');
       }         
      })
@@ -207,10 +205,9 @@ calculateBsa(bsa){
   }else if(this.patientDataObject.sendreport === 'email'){
 
     this.loginService.updatePatientDoc(this.patientDataObject).subscribe(res =>{
-      console.log(res);
-      if(res['description'] ===  'patient Details updated' ) {
-       //window.location.reload();
-       //alert('Patient Details Updated Successfully');        
+    
+      if(res['message'] ===  'patient updated successfully' ) {
+              
         alert('Email Sent Successfully');
       }         
      })

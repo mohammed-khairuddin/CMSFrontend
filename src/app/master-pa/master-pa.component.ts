@@ -71,15 +71,6 @@ Pulmonarybranchstenosis=[
     this.updform =x;
   }, error => console.log(error));
 
-    // this.settings = {
-    //   singleSelection: false,
-    //   text: "Not Applicable(N/A)",
-    //   selectAllText: 'Select All',
-    //   unSelectAllText: 'UnSelect All',
-    //   searchPlaceholderText: 'Select ',
-    //   enableSearchFilter: true,
-    //   badgeShowLimit: 5,
-    // };
 
   }
 
@@ -92,21 +83,16 @@ Pulmonarybranchstenosis=[
 
   savePulmonaryArteryData = () => {
       //save function
-    //console.log(this.pulmonaryArteryObservation)
-
-    // this.pulmonaryArteryObservation = {
-    //   observation: this.selectData
-    // }
-
+  
     const objectManagementReq = {
       "value": this.updform
      }
-     console.log(objectManagementReq);
+     
      this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-        console.log(res);
+       
         if(res['message'] ==  'submitted successfully' ) {
         alert('Observation Inserted Successfully');
-        //this.router.navigateByUrl(`/observations/`);
+     
         this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
       } 
        
@@ -115,10 +101,9 @@ Pulmonarybranchstenosis=[
   }
 
   getAddPage  = (obtype) => {
-    console.log(obtype);
-    //console.log('=====//////////');
+   
     window.localStorage.setItem("obtype", obtype.toString());
-    // this.router.navigateByUrl(`/mastertable/`+type);   
+ 
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
   

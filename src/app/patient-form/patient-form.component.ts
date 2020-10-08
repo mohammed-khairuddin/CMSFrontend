@@ -69,8 +69,7 @@ export class PatientFormComponent implements OnInit {
 
   patientform = (data):any => {
 
-    //alert(data.role);
-    //alert(data.name);
+    
 
     if(data.requirement === '' || data.requirement === null  ){
       alert('Please Enter Valid Requirement');

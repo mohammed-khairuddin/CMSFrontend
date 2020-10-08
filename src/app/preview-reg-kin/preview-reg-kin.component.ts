@@ -22,6 +22,7 @@ export class PreviewRegKinComponent implements OnInit {
   tempList;
   TotalList;
   p: number = 1; 
+  filter;
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient) { }
 
@@ -30,11 +31,10 @@ export class PreviewRegKinComponent implements OnInit {
 
     
     this.loginService.getAllRegisteredPatientKin().subscribe(user =>{
-      console.log('patientss');
-      console.log(user['user'])
+    
       this.AllKinsList = user['user']
       this.TotalList = this.AllKinsList;
-     console.log(this.AllKinsList)
+     
 
     })
 
@@ -45,14 +45,14 @@ export class PreviewRegKinComponent implements OnInit {
  this.AllKinsList=  this.TotalList.filter(data => 
        data.regmobileno.toString().includes(this.searchString.toString())
   )
-  console.log(this.AllKinsList)
+  
  }
  else {
 //todo change 
   this.loginService.getAllRegisteredPatientKin().subscribe(user =>{
     //console.log(user['user'])
     this.AllKinsList = user['user']
-   console.log(this.AllKinsList)
+  
   })
   
  }

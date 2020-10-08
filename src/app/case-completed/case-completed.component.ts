@@ -1,9 +1,10 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
 import {Router} from '@angular/router';
-import { pid } from 'process';
+//import { pid } from 'process';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
 //import { filter } from 'rxjs/operators';
+
 
 
 @Component({
@@ -18,6 +19,8 @@ export class CaseCompletedComponent implements OnInit {
   itemsPerPage :number;
   currentPage :number;
   totalItems :number;
+  filter;
+ 
 
   AllClinicPatientsList: any = [];  
   AllClinicDoctorList: any;
@@ -27,6 +30,7 @@ export class CaseCompletedComponent implements OnInit {
   role  = localStorage.getItem('role')
   name  = localStorage.getItem('name')
 
+ 
   docId;
   searchString;
   tempList;
@@ -59,7 +63,7 @@ export class CaseCompletedComponent implements OnInit {
 
     this.loginService.getAllClinicPatientsListClinicStatus(this.status).subscribe(user =>{
      
-      console.log(user);
+      //console.log(user);
       this.AllClinicPatientsList = user['user']
       this.TotalList = this.AllClinicPatientsList;
 

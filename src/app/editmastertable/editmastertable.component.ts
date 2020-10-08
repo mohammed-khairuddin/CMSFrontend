@@ -35,7 +35,7 @@ addMasterForm: FormGroup;
 
   this.loginService.getMasterDetail(this.type).subscribe(master =>{
     this.updateform = master['master']
-   console.log(this.updateform)
+   //console.log(this.updateform)
   })
 
   }

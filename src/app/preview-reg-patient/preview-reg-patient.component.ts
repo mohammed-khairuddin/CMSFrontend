@@ -24,7 +24,8 @@ export class PreviewRegPatientComponent implements OnInit {
   tempList;
   TotalList;
   ClinicData;
-
+  filter;
+  
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient) { }
 
   ngOnInit(): void {
@@ -36,11 +37,10 @@ export class PreviewRegPatientComponent implements OnInit {
 
        
     this.loginService.getAllRegisteredPatient().subscribe(user =>{
-      //console.log('patientss');
-      //console.log(user['user'])
+      
       this.AllPatientsList = user['user']
       this.TotalList = this.AllPatientsList;
-     //console.log(this.AllPatientsList)
+     
 
     })
 
@@ -55,14 +55,14 @@ export class PreviewRegPatientComponent implements OnInit {
  this.AllPatientsList=  this.TotalList.filter(data => 
        data.regmobileno.toString().includes(this.searchString.toString())
   )
-  //console.log(this.AllPatientsList)
+ 
  }
  else {
 //todo change 
   this.loginService.getAllRegisteredPatient().subscribe(user =>{
-    //console.log(user['user'])
+    
     this.AllPatientsList = user['user']
-   //console.log(this.AllPatientsList)
+  
   })
   
  }

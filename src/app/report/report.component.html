@@ -12,13 +12,13 @@
               <div class="form-group col-md-8">
                 <div> 
                   <label>Name of The Patient :</label>
-                  {{ patientDataObject['patientname'] }}
+                  {{ patientDataObject?.patientname }}
                 </div>
               </div>
               <div class="form-group col-md-4">
                 <div> 
                   <label>Patient Id :</label>
-                  PATIENT {{ patientDataObject['id'] }}
+                  PATIENT {{ patientDataObject?.id }}
                 </div>
               </div>
                 
@@ -28,22 +28,22 @@
                 <div class="form-group col-md-4">
                     <div> 
                       <label>Date Of Birth :</label>
-                      {{ patientDataObject['dob'] }}
+                      {{ patientDataObject?.dob }}
                     </div>
                 </div>
 
                 <div class="form-group col-md-4">
                     <div> 
                       <label>Age :</label>
-                      {{ patientDataObject['age'] }}
+                      {{ patientDataObject?.age }}
                     </div>
                 </div>
 
                 <div class="form-group col-md-4">                   
                     <div> 
                     <label>BP :</label>
-                    {{ patientDataObject['bpsystolic'] }}  mmHg /
-                    {{ patientDataObject['bpdiastolic'] }}  mmHg 
+                    {{ patientDataObject?.bpsystolic }}  mmHg /
+                    {{ patientDataObject?.bpdiastolic }}  mmHg 
                     </div>              
               </div>
         
@@ -60,7 +60,7 @@
               <div class="form-group col-md-6">
                 <div> 
                   <label>Date of Reporting :</label>
-                  {{ patientDataObject['testdate'] }}
+                  {{ patientDataObject?.testdate }}
                 </div>
               </div>
         
@@ -70,7 +70,7 @@
             <div class="form-group col-md-2">
                 <div> 
                     <label>Gender :</label>
-                    {{ patientDataObject['gender'] }}
+                    {{ patientDataObject?.gender }}
                 </div>
             </div>
 
@@ -78,27 +78,27 @@
               <div class="form-group col-md-2">
                 <div> 
                   <label>Height :</label>
-                  {{ patientDataObject['height'] }} cms
+                  {{ patientDataObject?.height }} cms
                 </div>
               </div>
         
               <div class="form-group col-md-2">
                 <div> 
                   <label>Weight :</label>
-                  {{ patientDataObject['weight'] }} kgs
+                  {{ patientDataObject?.weight }} kgs
                 </div>
               </div>   
               <div class="form-group col-md-2">
                 <div> 
                   <label>BSA :</label>
-                  {{ patientDataObject['bsa'] }}
+                  {{ patientDataObject?.bsa }}
                 </div>
               </div>
 
               <div class="form-group col-md-2">
                 <div> 
                   <label>BMI :</label>
-                  {{ patientDataObject['bmi'] }}
+                  {{ patientDataObject?.bmi }}
                 </div>
               </div>
         
@@ -108,7 +108,7 @@
                 <div class="form-group col-md-6">
                     <div> 
                         <label>Type of Test :</label>
-                        {{ patientDataObject['testtype'] }}
+                        {{ patientDataObject?.testtype }}
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
               <div class="form-group col-md-6">
                 <div> 
                     <label>Clinic Name :</label>
-                    {{ clinicDataObject['name'] }}
+                    {{ clinicDataObject?.name }}
                 </div>
             </div>
                 <div class="form-group col-md-6">
@@ -150,8 +150,8 @@
                     <p>5. Speckle Tracking and Strain Imaging</p>
                 </div>
                 <hr/>
-                    <div *ngIf="patientDataObject['ew'] != ''">
-                        Echo Window :   {{ patientDataObject['ew'] }}
+                    <div *ngIf="patientDataObject?.ew != ''">
+                        Echo Window :   {{ patientDataObject?.ew }}
                     </div>
                 <hr/>
 
@@ -234,13 +234,13 @@
                         <div class="form-row" >
                           <div class="form-group col-md-12"   >
                             <label>Comment</label>                                   
-                            <!-- <textarea id="comment"   class="form-control" placeholder="Comment" 
-                            required [(ngModel)]="observationComment.comment"   ></textarea> -->
+                            <textarea id="comment"   class="form-control" placeholder="Comment" 
+                            required [(ngModel)]="observationComment.comment"   ></textarea>
                          
-                            <textarea id="comment" name="observationComment_{{comment.id}}"  
+                            <!-- <textarea id="comment" name="observationComment_{{comment.id}}"  
                             class="form-control" placeholder="Comment" 
                              [(ngModel)]="comment.comment" #comment="ngModel"  >
-                          </textarea>
+                          </textarea> -->
                          
                           <!-- <textarea id="impressioncomment" name="impressioncomments_{{impressioncomment.id}}"  
                           class="form-control" placeholder="Comment" 
@@ -326,14 +326,22 @@
                     <div class="form-group col-md-3">
                       VALUE OF EF  :
                     </div>
-                    <!-- <div class="form-group col-md-3" *ngIf="patientDataObject['ef'] != ''">
-                      {{ patientDataObject['ef'] }}  *ngIf="patientDataObject['ef'] == ''"
+                    <!-- <div class="form-group col-md-3" *ngIf="patientDataObject?.ef != ''">
+                      {{ patientDataObject?.ef }}  *ngIf="patientDataObject?.ef == ''"
                     </div> -->
-                    <div class="form-group col-md-3" >
+                    <div class="form-group col-md-3" *ngIf="updform.valueofef != ''; else elseBlock" >                      
+                   
                       <input type="text" name="valueofef" id="valueofef" value=""
-                      [(ngModel)]="patientDataObject.ef" #valueofef="ngModel"  class="form-control" />
+                      [(ngModel)]="updform.valueofef" #valueofef="ngModel"  class="form-control" />
                     </div>
+                    <ng-template #elseBlock>
+                      <div class="form-group col-md-3"  >
+                        elsee
+                        <input type="text" name="valueofef" id="valueofef" 
+                        [(ngModel)]="patientDataObject.ef" #valueofef="ngModel"  class="form-control" />
+                      </div>
 
+                    </ng-template>
                   </div>
 
                   <div class="form-row">
@@ -569,8 +577,8 @@
                     <div class="form-row">
                       <div class="form-group col-md-8">
                         <p>
-                          {{ DoctorData.name }} <br/>
-                          {{ DoctorData.qualification }} 
+                          {{ DoctorData?.name }} <br/>
+                          {{ DoctorData?.qualification }} 
                         </p>
                       </div>
 

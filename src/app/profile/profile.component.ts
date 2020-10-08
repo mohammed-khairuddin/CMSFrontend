@@ -109,7 +109,7 @@ export class ProfileComponent implements OnInit {
  
 
     this.loginService.getClinicData(localStorage.getItem("id")).subscribe(data => {
-      console.log(data)
+      
       this.profileform = data['doctor']
     }, error => console.log(error));
 

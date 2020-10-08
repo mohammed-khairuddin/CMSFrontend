@@ -84,10 +84,10 @@ registerPatientkin = (data):any => {
         "datefirstvisit": data.datefirstvisit
       }
       
-      console.log(kinManagementReq);
+     // console.log(kinManagementReq);
   
         this.loginService.registeredPatientKin(kinManagementReq).subscribe(res =>{
-          console.log(res);
+         
           //if(res['message'] ==  'Successfully created' || res['message'] == 'File uploaded successfully!' ) {
             if(res['status'] ==  '200' ) {
             alert('Registered kin Successfully');

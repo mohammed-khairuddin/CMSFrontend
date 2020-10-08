@@ -2,12 +2,13 @@
       
   <div class="row">
     <div class="col-md-7  "> <h1 class="heading">My Patients List </h1> </div>
-    <!-- <div class="col-md-3  searchsty">
+    <div class="col-md-2 searchsty"></div>
+    <div class="col-md-3  searchsty">
       <input type="text" [(ngModel)]="searchString"  [ngModelOptions]="{standalone: true}" 
-                class="form-control" placeholder="Search ......"  />
-       <button (click)="getResultData()">GetSearchResults</button>  
+                class="form-control" placeholder="Search ......"   [(ngModel)]="filter" />
+       <!-- <button (click)="getResultData()">GetSearchResults</button>   -->
     </div>
-    <div class="col-md-2 searchsty">
+    <!-- <div class="col-md-2 searchsty">
       <button type="submit" class="btn btn-warning  " (click)="getResultData()"  >Get Search Results</button>
     </div> -->
     </div>
@@ -52,7 +53,7 @@
     <td colspan="9"> <h4 class="norecords"> No Records Found </h4> </td>
   </tr>
 
-  <tr *ngFor="let alllist of AllDoctorPatientsList |filter:filter | paginate: { itemsPerPage: 5, currentPage: p };index as i " >
+  <tr *ngFor="let alllist of AllDoctorPatientsList |filter:filter  | paginate: { itemsPerPage: 5, currentPage: p };index as i " >
     <td scope="row" class="sticky-col first-col">PATIENT {{alllist.id}}</td>
     <td scope="row" class="sticky-col second-col">
       <div class="loopindiv reqbg1" *ngIf="alllist.requirement === 'Very Urgent'">
@@ -85,7 +86,7 @@
     <td scope="row" >{{ alllist.height}}</td>
     <td scope="row">{{ alllist.weight}}</td>
     <td scope="row">{{ alllist.dob}}</td>
-    <td scope="row"> CLINIC {{ ClinicData.id }} </td>
+    <td scope="row"> CLINIC {{ ClinicData?.id }} </td>
     <td scope="row"> {{ alllist.echoid}} </td>
     <td scope="row"> {{ alllist.caseId}} </td>
     <td scope="row"> {{ alllist.ew}} </td>

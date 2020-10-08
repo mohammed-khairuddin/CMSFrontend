@@ -426,9 +426,9 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
    });
 
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
-    //console.log(observation);
+   
     const x = observation.observation.value;
-    //console.log(x);
+   
     this.updform =x;
   }, error => console.log(error));
 
@@ -444,16 +444,16 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
 
 saveMitralValueData = () => {
   //save function
-  console.log(this.updform);
+ 
   const objectManagementReq = {
     "value": this.updform
    }
    console.log(objectManagementReq);
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-      console.log(res);
+ 
       if(res['message'] ==  'submitted successfully' ) {
       alert('Observation Inserted Successfully');
-      //this.router.navigateByUrl(`/observations/`);
+    
       this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
     } 
      
@@ -463,10 +463,9 @@ saveMitralValueData = () => {
 }
 
 getAddPage  = (obtype) => {
-  console.log(obtype);
-  //console.log('=====//////////');
+ 
   window.localStorage.setItem("obtype", obtype.toString());
-  // this.router.navigateByUrl(`/mastertable/`+type);   
+
   this.actRoute.paramMap.subscribe(params => {
     this.obtype = params.get('obtype');
 

@@ -10,6 +10,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class MastertableComponent implements OnInit {
   AllMastersList;
   p: number = 1; 
+  filter;
 
   constructor(private loginService: LoginserviceService,private router:Router,private actRoute: ActivatedRoute) { }
 

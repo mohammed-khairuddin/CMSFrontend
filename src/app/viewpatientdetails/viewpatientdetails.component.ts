@@ -73,7 +73,7 @@ ews=['Good','Bad'];
     });
 
     this.loginService.getPatientData(localStorage.getItem("pid")).subscribe(data => {
-          console.log(data)
+          
           this.patientDataObject = data['doctor']
         }, error => console.log(error));
   
@@ -83,7 +83,7 @@ ews=['Good','Bad'];
 
 
   updatePatient = ():any => {
-    console.log(this.patientDataObject);
+    
     this.loginService.updatePatientDoc(this.patientDataObject).subscribe(updateAssignment =>{
      //this.router.navigateByUrl('/dashboard');
      this.router.navigateByUrl('/viewdoctorpatients');
@@ -118,7 +118,7 @@ calculateAge(birthday) {
   //console.log(this.patientDataObject.dob);
   //convert date again to type Date
   const bdate = new Date(this.patientDataObject.dob);
-  console.log(bdate);
+  
   const timeDiff = Math.abs(Date.now() - bdate.getTime() );
   this.patientDataObject['age'] = this.getAge(this.patientDataObject.dob);
   //console.log(this.age);
@@ -179,13 +179,10 @@ calculateBsa(bsa){
 
   const ht = this.patientDataObject.height;
   const wt = this.patientDataObject.weight;
-  //console.log(ht);
-  //console.log(wt); 
+   
   this.patientDataObject['bsa'] =  Math.pow(ht , wt/ 3600).toFixed(3);
   this.patientDataObject['bmi'] = (wt / Math.pow(ht,2)).toFixed(3); 
-  //console.log(this.patientDataObject['bsa']);
-  //console.log(this.patientDataObject['bmi']);
-
+  
 }
 
 

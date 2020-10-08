@@ -96,9 +96,8 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
    });
 
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
-    //console.log(observation);
-    const x = observation.observation.value;
-    //console.log(x);
+      const x = observation.observation.value;
+   
     this.updform =x;
   }, error => console.log(error));
 
@@ -107,24 +106,22 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
     const formatedkey =key => key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
     const selectedKey = `select${key}`
     this.updform[selectedKey] = itemName
-    console.log(this.updform)
+   
   }
 
 
   saveRightVentricleData = () => {
       //save function
-    console.log(this.updform)
-
     
   const objectManagementReq = {
     "value": this.updform
    }
-   console.log(objectManagementReq);
+  
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-      console.log(res);
+   
       if(res['message'] ==  'submitted successfully' ) {
       alert('Observation Inserted Successfully');
-      //this.router.navigateByUrl(`/observations/`);
+    
       this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
     } 
      
@@ -133,10 +130,9 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
   }
 
   getAddPage  = (obtype) => {
-    console.log(obtype);
-    //console.log('=====//////////');
+   
     window.localStorage.setItem("obtype", obtype.toString());
-    // this.router.navigateByUrl(`/mastertable/`+type);   
+   
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
   

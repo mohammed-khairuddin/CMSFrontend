@@ -19,7 +19,8 @@ export class ShowallclinicsComponent implements OnInit {
   searchString;
   tempList;
   TotalList;
-
+  filter;
+  
   constructor(private loginService: LoginserviceService,private router:Router) { }
 
   ngOnInit(): void {
@@ -27,7 +28,7 @@ export class ShowallclinicsComponent implements OnInit {
     this.loginService.getAllClinicList().subscribe(clinic =>{
       this.AllClinicList = clinic['clinic']
      //localStorage.setItem("list",cliniclist)
-     console.log(this.AllClinicList)
+     //console.log(this.AllClinicList)
     })
 
   }

@@ -57,8 +57,9 @@ export class ReportPreviewComponent implements OnInit {
   inferiorwall;
   lateralwall;
   ef;
-  sysstrain;
-  sysstrainmastervalue;
+  pulmonaryarterypressure;
+  avgsystolicstrain;
+
 
   updform = {
     anteriorwall :'',
@@ -66,8 +67,8 @@ export class ReportPreviewComponent implements OnInit {
     inferiorwall:'',
     lateralwall:'',
     ef:'',
-    sysstrain:'',
-    sysstrainmastervalue:''
+    pulmonaryarterypressure:'',
+    avgsystolicstrain:''
   }
   
   doctorAdvice= []
@@ -196,14 +197,14 @@ console.log(item["itemName"]);
 console.log(this.selectedItemsObservations);
 
 }
-OnItemDeSelect(item: any) {
+OnItemDeSelect(item: any,type) {
 console.log(item);
 console.log(this.selectedItemsObservations);
 }
-onSelectAll(items: any) {
+onSelectAll(items: any,type) {
 console.log(items);
 }
-onDeSelectAll(items: any) {
+onDeSelectAll(items: any,type) {
 console.log(items);
 }
 

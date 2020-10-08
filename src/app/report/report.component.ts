@@ -21,7 +21,27 @@ export class ReportComponent implements OnInit {
   role  = localStorage.getItem('role')
   //type  = localStorage.getItem('type')
   
-  patientDataObject;
+  //patientDataObject;
+  patientDataObject = { 
+    'ef' : '',
+    'patientname' : '',
+    'id' : '',
+    'dob' : '',
+    'age' : '',
+    'bpsystolic' : '',
+    'bpdiastolic' : '',
+    'testdate' : '',
+    'gender' : '',
+    'height' : '',
+    'weight' : '',
+    'bsa' : '',
+    'bmi' : '',
+    'testtype' : '',
+    'ew' : '',
+    'clinicId' : ''
+
+   };
+
   observationsObject;
   observationsObjecttype;
   AllMastersList;
@@ -60,7 +80,7 @@ export class ReportComponent implements OnInit {
   posteriorwall;
   inferiorwall;
   lateralwall;
-  ef;
+  valueofef:any;
   pulmonaryarterypressure;
   avgsystolicstrain;
 
@@ -71,7 +91,7 @@ export class ReportComponent implements OnInit {
     posteriorwall:'',
     inferiorwall:'',
     lateralwall:'',
-    ef:'',
+    valueofef:'',
     pulmonaryarterypressure:'',
     avgsystolicstrain:''
   }
@@ -118,7 +138,7 @@ export class ReportComponent implements OnInit {
           doctorAdvicereport,impressioncomment,impressionreport,observationItem,
           observtaionComments,speckleTrackingreport,regionalWall} = data;          
 
-        console.log(data);
+        //console.log(data);
         this.doctorAdvice = masterData['doctorAdvice']
         this.conclusion = masterData['conclusion']
         this.impression = masterData['impressions']
@@ -217,12 +237,12 @@ mapSelectedObservationsToMultiSelect = () => {
 
 onItemSelect(item: any,type) {
   //console.log(item["itemName"]);
-  console.log(this.selectedItemsObservations);
+  //console.log(this.selectedItemsObservations);
  
 }
 OnItemDeSelect(item: any,type) {
   //console.log(item);
-  console.log(this.selectedItemsObservations);
+  //console.log(this.selectedItemsObservations);
 }
 onSelectAll(item: any,type) {
   //console.log(items);
@@ -243,8 +263,8 @@ addComment(k,type) {
   // console.log("++++++++++++++++")
   // console.log(x)
 
-  console.log(k);
-  console.log(type);
+  //console.log(k);
+  //console.log(type);
   //console.log(this.observationsObject[k][type].comments.length);
   // this.observationsObject[k][type].comments.push({
   //  //id: k+ 1,
@@ -330,9 +350,6 @@ reportFormData=() =>{
   const doctorslen = this.selectedItems4.length;
   const doctorsCommentslen = this.docadvicecomments.length;
 
-  console.log(this.selectedItemsObservations);
-  console.log('/**/*/////////***************');
-
   const getReport  = {
   selectedObservations: this.selectedItemsObservations.filter(data => data != 'Empty'),
   patientData : this.patientDataObject,
@@ -348,16 +365,6 @@ reportFormData=() =>{
 }
 
 console.log(getReport)
-
-// this.loginService.masterReportInsertion(getReport).subscribe(res =>{
-//   console.log(res);
-//   if(res['message'] ==  'submitted successfully' ) {
-//   alert('Report Observations Inserted Successfully');
-//   this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
-// } 
- 
-// })
-
 
 
 this.loginService.observationsReportUpdate(getReport).subscribe(res =>{

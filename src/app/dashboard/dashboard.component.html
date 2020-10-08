@@ -13,8 +13,51 @@
             <div  class="col-md-11 fright" >
 				<!-- style="margin-top:-200px; float:right;" -->
 				<h2>Welcome Admin</h2>
+
+
+	<!----------------------------------------------------->
+<div class="card">
+	<div class="tabs">
+		<input type="radio" name="tabs" id="tabone" checked="checked">
+		<label for="tabone">All Clinics</label>
+		<div class="tab">
+			<app-showallclinics></app-showallclinics>
+		</div>
+		
+		<input type="radio" name="tabs" id="tabtwo">
+		<label for="tabtwo">All Doctors</label>
+		<div class="tab" style="min-height: 300px;">
+			<app-showalldoctors></app-showalldoctors>
+		  
+		</div>
+		
+		<input type="radio" name="tabs" id="tabthree">
+		<label for="tabthree">Masters</label>
+		<div class="tab" style="min-height: 300px;">
+		  <h1> Masters</h1>
+		</div>
+
+		<input type="radio" name="tabs" id="tabfour">
+		<label for="tabfour">Force Closures</label>
+		<div class="tab" style="min-height: 300px;">
+		  <h1>Force Closures </h1>
+		</div>
+
+
+		<input type="radio" name="tabs" id="tabfive">
+		<label for="tabfive">Transfers</label>
+		<div class="tab" style="min-height: 300px;">
+		  <h1>Transfers</h1>
+		</div>
+
+
+	  </div>
+	
+	</div>
+	<!--------------------------------------------------->
+					
 		   
-		<div class="card">    
+		<!-- <div class="card">    
 			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
 			<li class="nav-item">
@@ -37,7 +80,7 @@
 
 			<div class="tab-content" id="pills-tabContent">
 
-				<!-- <router-outlet></router-outlet> -->
+			
 
 			<div class="tab-pane fade show active" id="all-clinics" role="tabpanel" aria-labelledby="all-clinics-tab">
 				<app-showallclinics></app-showallclinics>
@@ -60,7 +103,7 @@
 
 			</div>
 
-		</div>
+		</div> -->
 
 
             </div>

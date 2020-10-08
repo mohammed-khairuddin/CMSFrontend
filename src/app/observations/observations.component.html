@@ -19,21 +19,21 @@
             <div class="form-group col-md-4">
               <div> 
                 <label>Name of The Patient :</label>
-                {{ patientDataObject['patientname'] }}
+                {{ patientDataObject?.patientname | titlecase}}
               </div>
             </div>
 
             <div class="form-group col-md-4">
               <div> 
                 <label>Gender :</label>
-                {{ patientDataObject['gender'] }}
+                {{ patientDataObject?.gender }}
               </div>
             </div>
 
             <div class="form-group col-md-4">
               <div> 
                 <label>Date Of Birth :</label>
-                {{ patientDataObject['dob'] }}
+                {{ patientDataObject?.dob }}
               </div>
             </div>
 
@@ -60,36 +60,36 @@
             <div class="form-group col-md-2">
               <div> 
                 <label>BMI :</label>
-                {{ patientDataObject['bmi'] }}
+                {{ patientDataObject?.bmi }}
               </div>
             </div>
 
             <div class="form-group col-md-2">
               <div> 
                 <label>BSA :</label>
-                {{ patientDataObject['bsa'] }}
+                {{ patientDataObject?.bsa }}
               </div>
             </div>
 
             <div class="form-group col-md-2">
               <div> 
                 <label>Height :</label>
-                {{ patientDataObject['height'] }} cms
+                {{ patientDataObject?.height }} cms
               </div>
             </div>
 
             <div class="form-group col-md-2">
               <div> 
                 <label>Weight :</label>
-                {{ patientDataObject['weight'] }} kgs
+                {{ patientDataObject?.weight }} kgs
               </div>
             </div>
 
             <div class="form-group col-md-2">
               <div> 
                 <label>BP :</label>
-               {{ patientDataObject['bpsystolic'] }}  mmHg /
-               {{ patientDataObject['bpdiastolic'] }}  mmHg 
+               {{ patientDataObject?.bpsystolic }}  mmHg /
+               {{ patientDataObject?.bpdiastolic }}  mmHg 
               </div>
             </div>
 
@@ -102,7 +102,7 @@
           <div class="tabs">
             <input type="radio" name="tabs" id="tabone" checked="checked">
             <label for="tabone">LV Motion Diagram</label>
-            <div class="tab">
+            <div class="tab" style="min-height: 300px;"> 
               <h1 class="text-head">LV Motion Diagram</h1>
              
             
@@ -110,7 +110,7 @@
             
             <input type="radio" name="tabs" id="tabtwo" queryParamsHandling="preserve" (click)="getAddPage('leftVentricalObservation')" >
             <label for="tabtwo">LV</label>
-            <div class="tab">
+            <div class="tab" >
               <!-- <h1>LV</h1> -->
               <app-master-lv></app-master-lv> 
 
@@ -183,7 +183,7 @@
 
             <input type="radio" name="tabs" id="tabthirteen">
             <label for="tabthirteen">Reports Image</label>
-            <div class="tab">
+            <div class="tab"  style="min-height: 300px;">
               <h1> Reports Images</h1>
               
             </div>

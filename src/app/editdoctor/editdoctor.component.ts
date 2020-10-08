@@ -144,7 +144,7 @@ export class EditdoctorComponent implements OnInit {
     this.loginService.getAllClinicList().subscribe(clinic =>{
       this.AllClinicList = clinic['clinic']
      //localStorage.setItem("list",cliniclist)
-     console.log(this.AllClinicList)
+     //console.log(this.AllClinicList)
     })
 
 

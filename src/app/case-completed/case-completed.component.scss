@@ -119,49 +119,51 @@
     width:150px;
 }
 
-.sticky-col {
-    position: sticky;
-    position: -webkit-sticky;    
-    background-color: #fff;
-}
-.first-col {
-	width: 100px;
-    min-width: 100px;
-    max-width: 100px;
-	left: 0px;    
-}
+// .sticky-col {
+//     position: sticky;
+//     position: -webkit-sticky;    
+//     background-color: #fff;
+// }
+// .first-col {
+// 	width: 100px;
+//     min-width: 100px;
+//     max-width: 100px;
+// 	left: 0px;    
+// }
 
-.second-col {
-	width: 150px;
-    min-width: 150px;
-    max-width: 150px;
-	left: 100px;    
-}
+// .second-col {
+// 	width: 150px;
+//     min-width: 150px;
+//     max-width: 150px;
+// 	left: 100px;    
+// }
 
-.third-col {
-	width: 100px;
-    min-width: 100px;
-    max-width: 100px;
-	left: 250px;    
-}
-.fourth-col {
-	width: 150px;
-    min-width: 150px;
-    max-width: 150px;
-	left: 350px;    
-}
-.fifth-col {
-	width: 150px;
-    min-width: 150px;
-    max-width: 150px;
-	left: 500px;    
-}
-.sixth-col {
-	width: 200px;
-    min-width: 200px;
-    max-width: 200px;
-	left: 600px;    
-} 
+// .third-col {
+// 	width: 100px;
+//     min-width: 100px;
+//     max-width: 100px;
+// 	left: 250px;    
+// }
+// .fourth-col {
+// 	width: 150px;
+//     min-width: 150px;
+//     max-width: 150px;
+// 	left: 350px;    
+// }
+// .fifth-col {
+// 	width: 150px;
+//     min-width: 150px;
+//     max-width: 150px;
+// 	left: 500px;    
+// }
+// .sixth-col {
+// 	width: 200px;
+//     min-width: 200px;
+//     max-width: 200px;
+// 	left: 600px;    
+// } 
+
+
 
 .wrapper {
 	position: relative;
@@ -173,3 +175,54 @@
 // table {
 //     border-collapse: 0 !important;
 // }
+
+
+@media (min-width: 960px){ 
+
+    
+    .sticky-col {
+        position: sticky;
+        position: -webkit-sticky;    
+        background-color: white;
+    }
+    .first-col {
+        width: 100px;
+        min-width: 100px;
+        max-width: 100px;
+        left: 0px;    
+    }
+    
+    .second-col {
+        width: 150px;
+        min-width: 150px;
+        max-width: 150px;
+        left: 100px;    
+    }
+    
+    .third-col {
+        width: 100px;
+        min-width: 100px;
+        max-width: 100px;
+        left: 250px;    
+    }
+    .fourth-col {
+        width: 150px;
+        min-width: 150px;
+        max-width: 150px;
+        left: 350px;    
+    }
+    .fifth-col {
+        width: 150px;
+        min-width: 150px;
+        max-width: 150px;
+        left: 500px;    
+    }
+    .sixth-col {
+        width: 200px;
+        min-width: 200px;
+        max-width: 200px;
+        left: 600px;    
+    } 
+     
+        
+        }

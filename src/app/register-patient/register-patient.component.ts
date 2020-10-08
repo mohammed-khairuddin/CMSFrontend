@@ -200,9 +200,9 @@ export class RegisterPatientComponent implements OnInit {
   }
   
   onItemSelect(item: any) {
-    console.log(item);
-    console.log(this.selectedItems);
-    console.log('*******');
+    // console.log(item);
+    // console.log(this.selectedItems);
+    // console.log('*******');
     // item = item['id'];
     // console.log(item);
     // item= Object.values(item).join(",");
@@ -213,21 +213,21 @@ export class RegisterPatientComponent implements OnInit {
 
   }
   OnItemDeSelect(item: any) {
-    console.log(item);
-    console.log(this.selectedItems);
+    // console.log(item);
+    // console.log(this.selectedItems);
   }
   onSelectAll(items: any) {
-    console.log(items);
+    //console.log(items);
   }
   onDeSelectAll(items: any) {
-    console.log(items);
+    //console.log(items);
   }
  
 
 onChangeCountry(countryValue) {
   this.stateInfo=this.countryInfo[countryValue].States;
   this.cityInfo=this.stateInfo[0].Cities;
-  console.log(this.cityInfo);
+  //console.log(this.cityInfo);
 }
 
 onChangeState(stateValue) {
@@ -237,15 +237,11 @@ onChangeState(stateValue) {
 
 
 calculateAge(birthday) {
-  console.log(this.addform.dob);
-  //convert date again to type Date
-  console.log(birthday);
-  console.log('=========+++');
+  
   const bdate = new Date(this.addform.dob);
-  console.log(bdate);
+  
   const timeDiff = Math.abs(Date.now() - bdate.getTime() );
   this.addform['age'] = this.getAge(this.addform.dob);
-  console.log(this.age);
   
   
 }
@@ -342,11 +338,9 @@ registerPatient = (data):any => {
         "reason":data.reason
       }
       
-      console.log(patientManagementReq);
-       
-
+     
         this.loginService.registeredPatient(patientManagementReq).subscribe(res =>{
-          console.log(res);
+         
           //if(res['message'] ==  'Successfully created' || res['message'] == 'File uploaded successfully!' ) {
             if(res['status'] ==  '200' ) {
             alert('Registered Successfully');
