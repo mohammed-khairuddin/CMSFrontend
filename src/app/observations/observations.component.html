@@ -110,73 +110,72 @@
             
             <input type="radio" name="tabs" id="tabtwo" queryParamsHandling="preserve" (click)="getAddPage('leftVentricalObservation')" >
             <label for="tabtwo">LV</label>
-            <div class="tab" >
-              <!-- <h1>LV</h1> -->
+            <div class="tab" *ngIf="isDataLoadedInLV" >              
               <app-master-lv></app-master-lv> 
 
             </div>
             
             <input type="radio" name="tabs" id="tabthree"  queryParamsHandling="preserve" (click)="getAddPage('rightVentricleObservation')">
             <label for="tabthree">RV</label>
-            <div class="tab">
+            <div class="tab" *ngIf="isDataLoadedInRV">
               <app-master-rv></app-master-rv>
             </div>
 
             <input type="radio" name="tabs" id="tabfour" queryParamsHandling="preserve" (click)="getAddPage('leftAtriumObservation')">
             <label for="tabfour">LA</label>
-            <div class="tab">
+            <div class="tab" *ngIf="isDataLoadedInLA">
               <app-master-la></app-master-la>
             </div>
 
             <input type="radio" name="tabs" id="tabfive" queryParamsHandling="preserve" (click)="getAddPage('rightAtriumObservation')">
             <label for="tabfive">RA</label>
-            <div class="tab">
+            <div class="tab" *ngIf="isDataLoadedInRA">
               <app-master-ra></app-master-ra>
             </div>
 
             <input type="radio" name="tabs" id="tabsix" queryParamsHandling="preserve" (click)="getAddPage('mitralValveObservation')" >
             <label for="tabsix">MV</label>
-            <div class="tab">
+            <div class="tab" *ngIf="isDataLoadedInMV">
               <app-master-mv></app-master-mv>
             </div>
 
 
             <input type="radio" name="tabs" id="tabseven" queryParamsHandling="preserve"  (click)="getAddPage('tricuspidValveObservation')">
             <label for="tabseven">TV</label>
-            <div class="tab">
+            <div class="tab" *ngIf="isDataLoadedInTV">
               <app-master-tv></app-master-tv>
             </div>
 
 
             <input type="radio" name="tabs" id="tabeight" queryParamsHandling="preserve"  (click)="getAddPage('pulmonaryArteryObservation')">
             <label for="tabeight">PA</label>
-            <div class="tab">
+            <div class="tab" *ngIf="isDataLoadedInPA">
               <app-master-pa></app-master-pa>
             </div>
 
 
             <input type="radio" name="tabs" id="tabnine" queryParamsHandling="preserve"  (click)="getAddPage('pulmonicValveObservation')">
             <label for="tabnine">PV</label>
-            <div class="tab">
+            <div class="tab" *ngIf="isDataLoadedInPV">
               <app-master-pv></app-master-pv>
             </div>
 
             <input type="radio" name="tabs" id="tabten" queryParamsHandling="preserve"  (click)="getAddPage('aortaObservation')">
             <label for="tabten">Aorta</label>
-            <div class="tab">
+            <div class="tab" *ngIf="isDataLoadedInAORTA">
               <app-master-aorta></app-master-aorta>
             </div>
 
             <input type="radio" name="tabs" id="tabeleven" queryParamsHandling="preserve"  (click)="getAddPage('pericardiumObservation')">
             <label for="tabeleven">Pericardium</label>
-            <div class="tab">
+            <div class="tab" *ngIf="isDataLoadedInPC">
               <app-master-pc></app-master-pc>
             </div>
 
 
             <input type="radio" name="tabs" id="tabtwelve">
-            <label for="tabtwelve">Reports</label>
-            <div class="tab">
+            <label for="tabtwelve" > Reports</label>
+            <div class="tab" *ngIf="isDataLoadedInREPORT">
               <app-report></app-report>
             </div>
 

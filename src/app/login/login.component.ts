@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginserviceService,private router:Router,private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
+    
     this.loginForm = new FormGroup({
       username: new FormControl("", Validators.compose([
          Validators.required,
@@ -36,6 +37,8 @@ export class LoginComponent implements OnInit {
       ])),
       password: new FormControl("", this.passwordvalidation)
    });
+
+
   }
 
   passwordvalidation(formcontrol) {

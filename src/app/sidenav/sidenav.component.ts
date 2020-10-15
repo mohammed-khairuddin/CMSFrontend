@@ -18,7 +18,8 @@ export class SidenavComponent implements OnInit {
   name  = localStorage.getItem('name')
   type  = localStorage.getItem('type')
   
-  
+  isDataLoadedInAS:boolean = false;
+  isDataLoadedInAW = false;
   constructor(private router:Router,private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -71,6 +72,13 @@ export class SidenavComponent implements OnInit {
    
     this.actRoute.paramMap.subscribe(params => {
       this.type = params.get('type');
+      //this.isDataLoadedInAS = false;
+      if(type === 'anteriorSeptum'){
+        this.isDataLoadedInAS = true;
+      }
+      if(type === 'anteriorWall'){
+        this.isDataLoadedInAW = true;
+      }
 
    });
 

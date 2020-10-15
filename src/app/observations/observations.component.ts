@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
 import {Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
+import { SharedService } from '../event-emitter.service';
 
 
 @Component({
@@ -15,8 +16,17 @@ export class ObservationsComponent implements OnInit {
   isLogin = localStorage.getItem('token')  ? true : false;
   id  = localStorage.getItem('id')
   role  = localStorage.getItem('role')
-  //type  = localStorage.getItem('type')
-
+  isDataLoadedInLV:boolean = false;
+  isDataLoadedInRV:boolean = false;
+  isDataLoadedInLA:boolean = false;
+  isDataLoadedInRA:boolean = false;
+  isDataLoadedInMV:boolean = false;
+  isDataLoadedInTV:boolean = false;
+  isDataLoadedInPA:boolean = false;
+  isDataLoadedInPV:boolean = false;
+  isDataLoadedInAORTA:boolean = false;
+  isDataLoadedInPC:boolean = false;
+  isDataLoadedInREPORT:boolean = false;
   master :Object;
   obtype: string;
   patientDataObject;
@@ -25,10 +35,12 @@ export class ObservationsComponent implements OnInit {
   selectedItems = [];
   settings = {};
 
-  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private actRoute: ActivatedRoute) { 
+  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private actRoute: ActivatedRoute,private sharedService:SharedService) { 
 
   }
-
+  click(){
+    this.sharedService.sendClickEvent();
+    }
   ngOnInit(): void {
 
     this.actRoute.paramMap.subscribe(params => {
@@ -46,13 +58,46 @@ export class ObservationsComponent implements OnInit {
   }
 
 
-  getAddPage  = (obtype) => {
-   
+  getAddPage  = (obtype) => {   
+
     window.localStorage.setItem("obtype", obtype.toString());
-    
+    //this.isDataLoadedInLV = false;
+    //this.isDataLoadedInRV = false;
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
-
+      if(obtype === 'rightVentricleObservation'){
+        this.isDataLoadedInRV = true;
+      }
+      if(obtype === 'leftVentricalObservation'){
+        this.isDataLoadedInLV = true;
+      }
+      if(obtype === 'leftAtriumObservation'){
+        this.isDataLoadedInLA = true;
+      }
+      if(obtype === 'rightAtriumObservation'){
+        this.isDataLoadedInRA = true;
+      }
+      if(obtype === 'mitralValveObservation'){
+        this.isDataLoadedInMV = true;
+      }
+      if(obtype === 'tricuspidValveObservation'){
+        this.isDataLoadedInTV = true;
+      }
+      if(obtype === 'pulmonaryArteryObservation'){
+        this.isDataLoadedInPA = true;
+      }
+      if(obtype === 'pulmonicValveObservation'){
+        this.isDataLoadedInPV = true;
+      }
+      if(obtype === 'aortaObservation'){
+        this.isDataLoadedInAORTA = true;
+      }
+      if(obtype === 'pericardiumObservation'){
+        this.isDataLoadedInPC = true;
+      }
+      if(obtype === ''){
+        this.isDataLoadedInREPORT = true;
+      }
    });
 
 

@@ -10,7 +10,7 @@
               <label>Cavity Size </label>               
                 <select [(ngModel)]="updform.selectCavitySize" name="selectCavitySize" placeholder="select" 
                 (ngModelChange)="onOptionsSelected('CavitySize',updform.selectCavitySize)" class="form-control" >
-                   <option value=""> Not Applicable(N/A)</option>
+                   <option  [ngValue]="undefined"> Not Applicable(N/A)</option>
                    <option *ngFor="let sta of cavitySize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
                </select>
 
@@ -19,7 +19,7 @@
               <label>Wall Thickness </label>
               <select [(ngModel)]="updform.selectWallThickness" name="selectWallThickness" placeholder="select"                  
               (ngModelChange)="onOptionsSelected('WallThickness',updform.selectWallThickness)" class="form-control">
-              <option value="">Not Applicable(N/A)</option>
+              <option  [ngValue]="undefined">Not Applicable(N/A)</option>
                <option *ngFor="let sta of wallThickness" [ngValue]="sta.itemName">{{sta.itemName}}</option>
                </select>
              </div>
@@ -28,7 +28,7 @@
               <label>Global Systolic Function</label>
               <select [(ngModel)]="updform.selectGlobalSystolicFunction" name="selectGlobalSystolicFunction" placeholder="select" 
               (ngModelChange)="onOptionsSelected('GlobalSystolicFunction',updform.selectGlobalSystolicFunction)" class="form-control">
-              <option value=""> Not Applicable(N/A)</option>
+              <option  [ngValue]="undefined"> Not Applicable(N/A)</option>
               <option *ngFor="let sta of globalSystolicFunction" [ngValue]="sta.itemName">{{sta.itemName}}</option>
               </select>
     
@@ -48,7 +48,7 @@
           <label>Segment Wall Analysis</label>            
           <select [(ngModel)]="updform.selectSegmentWallAnalysis" name="selectSegmentWallAnalysis" placeholder="select" 
           (ngModelChange)="onOptionsSelected('SegmentWallAnalysis',updform.selectSegmentWallAnalysis)" class="form-control">
-          <option value="">Not Applicable(N/A)</option>
+          <option  [ngValue]="undefined">Not Applicable(N/A)</option>
           <option *ngFor="let sta of segmentWallAnalysis" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
 
@@ -58,7 +58,7 @@
           <label>Segment Wall Analysis : Free Wall</label>            
           <select [(ngModel)]="updform.selectSegmentWallAnalysisFreeWall" name="selectSegmentWallAnalysisFreeWall" placeholder="select" 
           (ngModelChange)="onOptionsSelected('SegmentWallAnalysisFreeWall',updform.selectSegmentWallAnalysisFreeWall)" class="form-control">
-          <option value="">Not Applicable(N/A)</option>
+          <option  [ngValue]="undefined">Not Applicable(N/A)</option>
           <option *ngFor="let sta of segmentWallAnalysisFreeWall" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
 
@@ -68,7 +68,7 @@
           <label>Segment Wall Analysis : Septum </label>            
           <select [(ngModel)]="updform.selectSegmentWallAnalysisSeptum" name="selectSegmentWallAnalysisSeptum" placeholder="select" 
           (ngModelChange)="onOptionsSelected('SegmentWallAnalysisSeptum',updform.selectSegmentWallAnalysisSeptum)" class="form-control">
-          <option value="">Not Applicable(N/A)</option>
+          <option  [ngValue]="undefined">Not Applicable(N/A)</option>
           <option *ngFor="let sta of segmentWallAnalysisSeptum" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
 
@@ -89,7 +89,7 @@
         <label>Segment Wall Analysis : Apex</label>            
         <select [(ngModel)]="updform.selectSegmentWallAnalysisApex" name="selectSegmentWallAnalysisApex" placeholder="select" 
         (ngModelChange)="onOptionsSelected('SegmentWallAnalysisApex',updform.selectSegmentWallAnalysisApex)" class="form-control">
-        <option value="">Not Applicable(N/A)</option>
+        <option  [ngValue]="undefined">Not Applicable(N/A)</option>
         <option *ngFor="let sta of segmentWallAnalysisApex" [ngValue]="sta.itemName">{{sta.itemName}}</option>
         </select>
 
@@ -102,7 +102,7 @@
       <label>Miscellaneous</label>            
       <select [(ngModel)]="updform.selectMiscellaneous" name="selectMiscellaneous" placeholder="select" 
       (ngModelChange)="onOptionsSelected('Miscellaneous',updform.selectMiscellaneous)" class="form-control">
-      <option value="">Not Applicable(N/A)</option>
+      <option  [ngValue]="undefined">Not Applicable(N/A)</option>
       <option *ngFor="let sta of miscellaneous" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
 

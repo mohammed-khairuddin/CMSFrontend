@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
 import {Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
@@ -10,7 +10,7 @@ import {defaultValue} from '../helperFunction';
   templateUrl: './master-lv.component.html',
   styleUrls: ['./master-lv.component.scss']
 })
-export class MasterLvComponent implements OnInit {
+export class MasterLvComponent {
   defaultDropdownValue =  defaultValue();
   
   cavitySize = [
@@ -396,20 +396,16 @@ export class MasterLvComponent implements OnInit {
   }
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
-
+        this.getPageData()
   }
 
-  ngOnInit(): void {
-
+  getPageData() {
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
    });
-
   
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
-    
     const x = observation.observation.value;
- 
     this.updform =x;
   }, error => console.log(error));
 
@@ -438,6 +434,7 @@ export class MasterLvComponent implements OnInit {
   const objectManagementReq = {
     "value": this.updform
    }
+   console.log(objectManagementReq);
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
      
       if(res['message'] ==  'submitted successfully' ) {
@@ -449,7 +446,7 @@ export class MasterLvComponent implements OnInit {
 
 
 }
-
+ 
 getAddPage  = (obtype) => {
   window.localStorage.setItem("obtype", obtype.toString());  
   this.actRoute.paramMap.subscribe(params => {

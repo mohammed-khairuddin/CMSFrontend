@@ -51,7 +51,7 @@ export class NavComponent implements OnInit {
   
 
   getAddPage  = (type) => {
-    console.log(type);
+    //console.log(type);
     window.localStorage.setItem("type", type.toString());
     this.router.navigateByUrl(`/mastertable/`+type);
    
@@ -63,17 +63,5 @@ export class NavComponent implements OnInit {
 
   }
  
-  // changeRoute(url) {
-  //   this.router.navigateByUrl('/home', { skipLocationChange: true });
-  //   if(this.role==='CLINIC'){
-  //     this.router.navigate(["/clinicdashboard"]);
-  //   } else if(this.role==='DOCTOR'){
-  //     this.router.navigate(["/doctordashboard"]);
-  //   } else{
-  //     this.router.navigate(["/dashboard"]);
-  //   }
-    
-  // }
-
-
+ 
 }

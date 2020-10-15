@@ -116,7 +116,7 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
   const objectManagementReq = {
     "value": this.updform
    }
-  
+  console.log(objectManagementReq);
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
    
       if(res['message'] ==  'submitted successfully' ) {

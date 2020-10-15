@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ObservationsComponent } from '../observations/observations.component';
+import { SharedService } from '../event-emitter.service';
+import { Subscription } from 'rxjs';
 //import { type } from 'os';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -15,7 +17,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   styleUrls: ['./report.component.scss']
 })
 export class ReportComponent implements OnInit {
-
+  clickEventsubscription:Subscription;
   isLogin = localStorage.getItem('token')  ? true : false;
   id  = localStorage.getItem('id')
   role  = localStorage.getItem('role')
@@ -110,7 +112,10 @@ export class ReportComponent implements OnInit {
 
   regionalWalls:[];
 
-  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private actRoute: ActivatedRoute) { 
+  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private actRoute: ActivatedRoute,private sharedService:SharedService) { 
+    this.clickEventsubscription=this.sharedService.getClickEvent().subscribe(()=>{
+      this.ngOnInit();
+      })
   }
 
   dynamicComment: Array<ReportComponent> = [];  
@@ -138,7 +143,7 @@ export class ReportComponent implements OnInit {
           doctorAdvicereport,impressioncomment,impressionreport,observationItem,
           observtaionComments,speckleTrackingreport,regionalWall} = data;          
 
-        //console.log(data);
+        console.log(data);
         this.doctorAdvice = masterData['doctorAdvice']
         this.conclusion = masterData['conclusion']
         this.impression = masterData['impressions']
@@ -146,32 +151,35 @@ export class ReportComponent implements OnInit {
         
         this.selectedItems2 = impressionreport;
         this.selectedObseravtionsInEditList = observationItem;
-        this.Observationscomments = observtaionComments;
+        this.comments = observtaionComments;
         this.conclusioncomments = conclusioncomment;
         this.selectedItems3 = conclusionreport;
         this.docadvicecomments = doctorAdviceComments;
         this.selectedItems4 = doctorAdvicereport;
         this.impressioncomments = impressioncomment;
-       
+         console.log(this.comments)
         //this.updform = regionalwallmotion;         
         this.regionalWalls=regionalWall,
          this.selectedItems1 = speckleTrackingreport;
-         this.mapSelectedObservationsToMultiSelect()
          let regionalwalllen = this.regionalWalls.length;
          for(let i=0; i<regionalwalllen; i++){
           this.updform =this.regionalWalls[i];            
          }
 
         this.observationsObject = observations.map(observation => {
-          const type =observation.type
+          const {type,comments} =observation
           const formatedTypename = type.replace("Observation","").replace(/ /g, "") ;
  
           const masterdata = masterData[formatedTypename].map(master =>{
             return {...master,type:`${formatedTypename}Observation`}
           })
-          //console.log(formatedTypename);
-				  return ({...observation,ttype:formatedTypename,masterValues:masterdata,comments:this.Observationscomments,regionalWall,observationItem,impressionreport})
+          //const getRespectiveComments = this.groupBy(comments)
+
+				  return ({...observation,ttype:formatedTypename,masterValues:masterdata,comments:[],regionalWall,observationItem,impressionreport})
         })
+
+        this.mapSelectedObservationsToMultiSelect();
+        this.mapCommentsToTextbox();
     })
 
     this.regionalWallMotion = [
@@ -183,7 +191,6 @@ export class ReportComponent implements OnInit {
       { "id": 6, "itemName": "Not seen" }
   ];
 
-  //this.updform.anteriorwall = this.regionalWallMotion[0];
 
    this.updform.anteriorwall = 'Normal';
    this.updform.posteriorwall = 'Normal'; 
@@ -214,34 +221,34 @@ export class ReportComponent implements OnInit {
 }
 
 mapSelectedObservationsToMultiSelect = () => {
-  const groupedSelectedObservations = this.groupBy(this.selectedObseravtionsInEditList);
-  const observationTypesList =  this.selectedObseravtionsInEditList.map(data =>{
-    return data['type'];
-  })
-
-  const uniqueObservationsList = [...new Set(observationTypesList)]
-  for(var i=0; i<uniqueObservationsList.length;i++) {
-
+  const groupedSelectedObservations = this.groupBy(this.selectedObseravtionsInEditList)
+  for(var i=0; i<this.observationsObject.length;i++) {
      this.selectedItemsObservations[i] =
-              groupedSelectedObservations.get(uniqueObservationsList[i])
-  }
+              groupedSelectedObservations.get(this.observationsObject[i].type)
+      }
    
 }
 
-
-  //////////////////////////////////
-
+mapCommentsToTextbox = () => {
+  const groupedSelectedObservations = this.groupBy(this.comments)
+ 
+  for(var i=0; i<this.observationsObject.length;i++) {    
+     this.observationsObject[i].comments =
+              groupedSelectedObservations.get(this.observationsObject[i].type) || []
+      }
+   
+}
   getSelectedObservationsList = (filterType) => {
       return this.selectedObseravtionsInEditList.filter((data:any) => data.type == filterType)
   }
 
 onItemSelect(item: any,type) {
-  //console.log(item["itemName"]);
+
   //console.log(this.selectedItemsObservations);
  
 }
 OnItemDeSelect(item: any,type) {
-  //console.log(item);
+
   //console.log(this.selectedItemsObservations);
 }
 onSelectAll(item: any,type) {
@@ -251,46 +258,20 @@ onDeSelectAll(item: any,type) {
   //console.log(items);
 }
 
-/////////////////////////////
-
 addComment(k,type) { 
-  // console.log(k);
-  // console.log(this.observationsObject);
-  // this.observationsObject.comments.splice(k+1,1)
-  // console.log(this.observationsObject)
-  // const x = this.observationsObject;
-  // x[0].comments.push({})
-  // console.log("++++++++++++++++")
-  // console.log(x)
-
-  //console.log(k);
-  //console.log(type);
-  //console.log(this.observationsObject[k][type].comments.length);
-  // this.observationsObject[k][type].comments.push({
-  //  //id: k+ 1,
-  //  id:this.observationsObject[k][type].comments.length +1,
-  //   comment: ''
-  // })
-
+console.log(type);
   this.observationsObject[k].comments.push({
-   //id: k+ 1,
-   id:this.observationsObject[k].length +1,
-   type:type,
+   //id:this.observationsObject[k].length +1,
+   id:this.observationsObject[k].comments.length +1,
+    type:type,
     comment: ''
-        
-  })
-
+  });
+  
 }
 
-removeComment(k) {
-  this.observationsObject[k].comments.splice(k, 1);
+removeComment(commentsIndex,mainObjectIndex) {
+  this.observationsObject[mainObjectIndex].comments.splice(commentsIndex, 1);
 }
-
-logValue() {
-  console.log(this.comments);
-}
-
-//////////////////////////////////
 
 addImpressionComment() {
   this.impressioncomments.push({
@@ -298,13 +279,13 @@ addImpressionComment() {
     //id: k + 1,
     comment: ''
   });
+ 
+  
 }
 
 removeImpressionComment(i: number) {
   this.impressioncomments.splice(i, 1);
 }
-
-/////////////////////////////////
 
 addConclusionComment() {
   this.conclusioncomments.push({
@@ -318,29 +299,21 @@ removeConclusionComment(i: number) {
   this.conclusioncomments.splice(i, 1);
 }
 
-/////////////////////////////////
 
 addDocAdviceComment() {
   this.docadvicecomments.push({
     id: this.docadvicecomments.length + 1,
-    //id: k + 1,
     comment: ''
   });
+ 
 }
 
 removeDocAdviceComment(i: number) {
   this.docadvicecomments.splice(i, 1);
 }
 
-/////////////////////////////////
-
-
-
 reportFormData=() =>{
 
-
-  // console.log(this.reportFormData);
-  // console.log('===========');
   const impressionslen = this.selectedItems2.length;
   const impressionsCommentslen = this.impressioncomments.length;
 
@@ -364,8 +337,7 @@ reportFormData=() =>{
   speckleTracking:this.selectedItems1 
 }
 
-console.log(getReport)
-
+console.log(getReport);
 
 this.loginService.observationsReportUpdate(getReport).subscribe(res =>{
   console.log(res);

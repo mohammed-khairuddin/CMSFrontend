@@ -21,6 +21,7 @@ export class ClinicdashboardComponent implements OnInit {
   tempList;
   TotalList;
   ClinicData;
+  
 
   allcases = '#all-cases';
 
@@ -34,8 +35,6 @@ export class ClinicdashboardComponent implements OnInit {
       //console.log(data)
       this.ClinicData = data['doctor']
     }, error => console.log(error));
-
-   
    
   }
 

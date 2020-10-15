@@ -11,7 +11,7 @@
               <label>Pulmonary Artery Observations </label>
           <select [(ngModel)]="updform.selectObservation"  class="form-control" name="selectObservation" placeholder="select" 
           (ngModelChange)="onOptionsSelected('Observation',updform.selectObservation)">
-          <option> Not Applicable(N/A)</option>  
+         <option [ngValue]="undefined"> Not Applicable(N/A)</option>  
               <option *ngFor="let sta of observation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
          </div>
@@ -26,7 +26,7 @@
           <label>Pulmonary Artery Dialated </label>
       <select [(ngModel)]="updform.selectDilated"  class="form-control" name="selectDilated" placeholder="select" 
       (ngModelChange)="onOptionsSelected('Dilated',updform.selectDilated)">
-      <option> Not Applicable(N/A)</option>
+     <option [ngValue]="undefined"> Not Applicable(N/A)</option>
           <option *ngFor="let sta of dilated" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
         </div>
@@ -34,7 +34,7 @@
           <label>Pulmonary Artery Suspectthromboembolism </label>
       <select [(ngModel)]="updform.selectSuspectThromboembolism"  class="form-control" name="selectSuspectThromboembolism" placeholder="select" 
       (ngModelChange)="onOptionsSelected('SuspectThromboembolism',updform.selectSuspectThromboembolism)">
-      <option> Not Applicable(N/A)</option>
+     <option [ngValue]="undefined"> Not Applicable(N/A)</option>
           <option *ngFor="let sta of Suspectthromboembolism" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
         </div>
@@ -42,7 +42,7 @@
           <label>Pulmonary Artery Pulmonary hypertension </label>
       <select [(ngModel)]="updform.selectHypertension"  class="form-control" name="selectHypertension" placeholder="select" 
       (ngModelChange)="onOptionsSelected('Hypertension',updform.selectHypertension)">
-      <option> Not Applicable(N/A)</option>
+     <option [ngValue]="undefined"> Not Applicable(N/A)</option>
           <option *ngFor="let sta of pulmonaryhypertension" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
         </div>
@@ -50,7 +50,7 @@
           <label>Pulmonary Artery Pulmonary branch stenosis </label>
       <select [(ngModel)]="updform.selectStenosis"  class="form-control" name="selectStenosis" placeholder="select" 
       (ngModelChange)="onOptionsSelected('Stenosis',updform.selectStenosis)">
-      <option> Not Applicable(N/A)</option>
+     <option [ngValue]="undefined"> Not Applicable(N/A)</option>
           <option *ngFor="let sta of Pulmonarybranchstenosis" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
         </div>
@@ -58,7 +58,7 @@
           <label>Pulmonary Artery Patent ductusarteriosus </label>
       <select [(ngModel)]="updform.selectDuctusarteriosus"  class="form-control" name="selectDuctusarteriosus" placeholder="select" 
       (ngModelChange)="onOptionsSelected('Ductusarteriosus',updform.selectDuctusarteriosus)">
-      <option> Not Applicable(N/A)</option>
+     <option [ngValue]="undefined"> Not Applicable(N/A)</option>
           <option *ngFor="let sta of Patentductusarteriosus" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
         </div>

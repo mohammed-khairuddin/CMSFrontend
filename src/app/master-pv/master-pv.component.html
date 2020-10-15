@@ -11,7 +11,7 @@
               <label>Structure</label>
               <select  class="form-control" [(ngModel)]="updform.selectStructure" name="selectStructure"                
               (ngModelChange)="onOptionsSelected('Structure',updform.selectStructure)" >
-                <option> Not Applicable(N/A)</option> 
+                <option [ngValue]="undefined"> Not Applicable(N/A)</option> 
                 <option *ngFor="let sta of structure" [ngValue]="sta.itemName">{{sta.itemName}}</option>
               </select>
             </div>
@@ -19,7 +19,7 @@
           <label>Pulmonic Regurgitation </label>
       <select  class="form-control" [(ngModel)]="updform.selectPulmonicregurgitation" name="selectpulmonicregurgitation"  
       (ngModelChange)="onOptionsSelected('Pulmonicregurgitation',updform.selectPulmonicregurgitation)">
-        <option> Not Applicable(N/A)</option>  
+        <option [ngValue]="undefined"> Not Applicable(N/A)</option>  
         <option *ngFor="let sta of pulmonicRegurgitation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>
      </div>
@@ -40,7 +40,7 @@
         <label>Pulmonic Stenosis :Location </label>
         <select  class="form-control" [(ngModel)]="updform.selectStenosisLocation" name="selectStenosisLocation" 
          (ngModelChange)="onOptionsSelected('StenosisLocation',updform.selectStenosisLocation)">
-          <option> Not Applicable(N/A)</option>  
+          <option [ngValue]="undefined"> Not Applicable(N/A)</option>  
           <option *ngFor="let sta of stenosisLocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
         </select>
         </div>
@@ -50,7 +50,7 @@
           <label>Pulmonic Stenosis :Location  : Branch</label>
           <select  class="form-control" [(ngModel)]="updform.selectStenosisLocationBranch" name="selectStenosisLocationBranch" 
            (ngModelChange)="onOptionsSelected('StenosisLocationBranch',updform.selectStenosisLocationBranch)">
-            <option> Not Applicable(N/A)</option>  
+            <option [ngValue]="undefined"> Not Applicable(N/A)</option>  
             <option *ngFor="let sta of branch" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
           </div>
@@ -67,7 +67,7 @@
           <label>Pulmonic Stenosis :Severity </label>
           <select  class="form-control" [(ngModel)]="updform.selectStenosisSeverity" name="selectStenosisSeverity" 
            (ngModelChange)="onOptionsSelected('StenosisSeverity',updform.selectStenosisSeverity)">
-            <option> Not Applicable(N/A)</option>  
+            <option [ngValue]="undefined"> Not Applicable(N/A)</option>  
             <option *ngFor="let sta of stenosisSeverity" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
           </div>
@@ -76,7 +76,7 @@
             <label>Pulmonic Stenosis :Quantitative Measurements </label>
             <select  class="form-control" [(ngModel)]="updform.StenosisQuantitativeMeasurements" name="StenosisQuantitativeMeasurements" 
              (ngModelChange)="onOptionsSelected('StenosisQuantitativeMeasurements',updform.StenosisQuantitativeMeasurements)">
-              <option> Not Applicable(N/A)</option>  
+              <option [ngValue]="undefined"> Not Applicable(N/A)</option>  
               <option *ngFor="let sta of stenosisQuantitativeMeasurements" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
             </div>
@@ -97,7 +97,7 @@
         <label>Pulmonary Pressure  </label>
         <select  class="form-control" [(ngModel)]="updform.selectPulmonaryPressure" name=" selectPulmonaryPressure" 
          (ngModelChange)="onOptionsSelected('PulmonaryPressure',updform.selectPulmonaryPressure)">
-          <option> Not Applicable(N/A)</option>   
+          <option [ngValue]="undefined"> Not Applicable(N/A)</option>   
           <option *ngFor="let sta of pulmonaryPressure" [ngValue]="sta.itemName">{{sta.itemName}}</option>
         </select> 
        </div>
@@ -129,7 +129,7 @@
           <label>Structure Abnormal </label>
           <select  class="form-control" [(ngModel)]="updform.selectstructureAbnormal" name="selectstructureAbnormal"  
             (ngModelChange)="onOptionsSelected('structureAbnormal',updform.selectstructureAbnormal)">
-            <option> Not Applicable(N/A)</option>   
+            <option [ngValue]="undefined"> Not Applicable(N/A)</option>   
             <option *ngFor="let sta of abnormal" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
           </div>
@@ -150,7 +150,7 @@
             <label>Pulmonic Regurgitation-Present</label>
             <select  class="form-control" [(ngModel)]="updform.selectPulmonicRegurgitationPresent" name="selectPulmonicRegurgitationPresent"  
                 (ngModelChange)="onOptionsSelected('PulmonicRegurgitationPresent',updform.selectPulmonicRegurgitationPresent)">
-              <option> Not Applicable(N/A)</option>    
+              <option [ngValue]="undefined"> Not Applicable(N/A)</option>    
               <option *ngFor="let sta of regurgitationPresent" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
             </div>
@@ -162,7 +162,7 @@
               <label>Pulmonic Stenosis-Location</label>
               <select  class="form-control" [(ngModel)]="updform.selectPulmonicstenosislocation" name="selectPulmonicstenosislocation"  
               (ngModelChange)="onOptionsSelected('Pulmonicstenosislocation',updform.selectPulmonicstenosislocation)">
-                <option> Not Applicable(N/A)</option>    
+                <option [ngValue]="undefined"> Not Applicable(N/A)</option>    
                 <option *ngFor="let sta of stenosisLocation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
               </select>
               
@@ -174,7 +174,7 @@
                 <label>Pulmonic Stenosis-Severity</label>
                 <select  class="form-control" [(ngModel)]="updform.selectPulmonicstenosisseverity" name="selectPulmonicstenosisseverity"  
                 (ngModelChange)="onOptionsSelected('Pulmonicstenosisseverity',updform.selectPulmonicstenosisseverity)">
-                  <option> Not Applicable(N/A)</option>    
+                  <option [ngValue]="undefined"> Not Applicable(N/A)</option>    
                   <option *ngFor="let sta of stenosisSeverity" [ngValue]="sta.itemName">{{sta.itemName}}</option>
                 </select>
                 </div>
@@ -211,7 +211,7 @@
                   <label>Pulmonic Stenosis-Quantitative Measurements</label>
                   <select  class="form-control" [(ngModel)]="updform.selectStenosisQuantitativeMeasurements" name="StenosisQuantitativeMeasurements"  
                   (ngModelChange)="onOptionsSelected('StenosisQuantitativeMeasurements',updform.StenosisQuantitativeMeasurements)">
-                    <option> Not Applicable(N/A)</option>    
+                    <option [ngValue]="undefined"> Not Applicable(N/A)</option>    
                     <option *ngFor="let sta of stenosisQuantitativeMeasurements" [ngValue]="sta.itemName">{{sta.itemName}}</option>
                   </select>
                   
@@ -238,7 +238,7 @@
                   <label>Pulmonary Systolic Pressure</label>
                   <select  class="form-control" [(ngModel)]="updform.selectPaSystolicPressure" name="selectPaSystolicPressure"  
                   (ngModelChange)="onOptionsSelected('PaSystolicPressure',updform.selectPaSystolicPressure)">
-                    <option> Not Applicable(N/A)</option>    
+                    <option [ngValue]="undefined"> Not Applicable(N/A)</option>    
                     <option *ngFor="let sta of paSystolicPressure" [ngValue]="sta.itemName">{{sta.itemName}}</option>
                   </select>
                   </div>

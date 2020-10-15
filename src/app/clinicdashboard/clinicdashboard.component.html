@@ -17,7 +17,7 @@
 							<img  src="assets/images/logo.png"  name="Logo" class="img-responsive"   >  
 						</div>
 						<div>
-							<h5>  Welcome  {{ ClinicData.name }}</h5>
+							<h5>  Welcome  {{ ClinicData?.name }}</h5>
 						</div>
 					</div>
 
@@ -26,15 +26,15 @@
 							<table class="tablestyleinn">
 								<tr>
 									<td> <h5>Clinic Name</h5></td>
-									<td> <h5>: {{ ClinicData.name }}  </h5></td>
+									<td> <h5>: {{ ClinicData?.name }}  </h5></td>
 								</tr>
 								<tr>
 									<td> <h5>Phone Number </h5></td>
-									<td>: {{ ClinicData.mobNo }}</td>
+									<td>: {{ ClinicData?.mobNo }}</td>
 								</tr>
 								<tr>
 									<td> <h5>Address</h5> </td>
-									<td>: {{ ClinicData.address }}</td>
+									<td>: {{ ClinicData?.address }}</td>
 								</tr>
 							</table>
 						</div>
