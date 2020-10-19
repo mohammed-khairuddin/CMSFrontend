@@ -191,15 +191,13 @@ export class MasterAortaComponent implements OnInit {
    });
 
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
- 
-    const x = observation.observation.value;
-    
-    this.updform =x;
+    const x = observation.observation.value;    
+    //if(x != ''){
+      this.updform =x;
+     //}
   }, error => console.log(error));
 
   
-
-
   }
 
   onOptionsSelected = (key,itemName)  => {
@@ -212,16 +210,22 @@ export class MasterAortaComponent implements OnInit {
 
 
   saveAortaitemNameData = () => {
+    document.getElementById("overlay").style.display = "block";
+
     const objectManagementReq = {
       "value": this.updform
      }
      this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-     
+      document.getElementById("overlay").style.display = "none";
+
         if(res['message'] ==  'submitted successfully' ) {
         alert('Observation Inserted Successfully');
        
         this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
-      } 
+      }  else if(res['message'] ==  ' updated successfully' ) {
+      alert('Observation Updated Successfully');
+      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+    } 
        
    })
 

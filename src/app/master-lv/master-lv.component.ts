@@ -396,7 +396,10 @@ export class MasterLvComponent {
   }
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
-        this.getPageData()
+        this.getPageData();
+
+  this.router.routeReuseStrategy.shouldReuseRoute = function(){return false;};this.router.routeReuseStrategy.shouldReuseRoute = function(){return false;};
+
   }
 
   getPageData() {
@@ -405,8 +408,11 @@ export class MasterLvComponent {
    });
   
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
+   
+      //if(observation.observation.value){
     const x = observation.observation.value;
-    this.updform =x;
+      this.updform =x;
+     //}
   }, error => console.log(error));
 
   this.settings = {
@@ -430,15 +436,22 @@ export class MasterLvComponent {
 
 
   saveLeftVentricleValueData = () => {
+
+    document.getElementById("overlay").style.display = "block";
   
   const objectManagementReq = {
     "value": this.updform
    }
    console.log(objectManagementReq);
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-     
+   
+    document.getElementById("overlay").style.display = "none";
+
       if(res['message'] ==  'submitted successfully' ) {
       alert('Observation Inserted Successfully');
+      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+    } else if(res['message'] ==  ' updated successfully' ) {
+      alert('Observation Updated Successfully');
       this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
     } 
      

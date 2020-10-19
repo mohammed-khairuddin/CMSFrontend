@@ -12,16 +12,11 @@
          <li *ngIf="isLogin"> <a routerLink="/dashboard"   *ngIf="role==='ADMIN'"  >  Dashboard</a></li>
          <li *ngIf="isLogin"> <a routerLink="/doctordashboard"   *ngIf="role==='DOCTOR'"   >  Dashboard</a></li>
          <li *ngIf="role === 'ADMIN'"><a routerLink="/addclinicdoctor"  >Add Clinic or Doctor</a> </li>
-         <!-- <li *ngIf="role === 'ADMIN'" routerLink="/showallclinics"> <a routerLink="/showallclinics"  > All Clinics List</a></li>
-         <li  *ngIf="role === 'ADMIN'" routerLink="/showalldoctors"><a routerLink="/showalldoctors"  > All Doctors List</a></li> -->
-         <!-- <li  *ngIf="role === 'CLINIC'" routerLink="/showallpatients"><a routerLink="/showallpatients"  > All Patients List</a></li>
-         <li  *ngIf="role === 'CLINIC'" routerLink="/patientform"><a routerLink="/patientform"  >Add Patient</a></li> 
-         <li   *ngIf="role === 'DOCTOR'" routerLink="/viewdoctorpatients"><a routerLink="/viewdoctorpatients"  > View All Patients</a></li> -->
-       
+        
        
         <!-- ADMIN MASTER TABLES -->
         <li *ngIf="role === 'ADMIN'" class="dropdown-header">Master Tables </li>
-        <li *ngIf="role === 'ADMIN'">  <a [routerLink]="" queryParamsHandling="preserve" (click)="getAddPage('anteriorSeptum')" >- Anterior Septum</a></li>
+        <li *ngIf="role === 'ADMIN'">  <a [routerLink]="" queryParamsHandling="preserve" (click)="getAddPage('anteriorSeptum');"  > - Anterior Septum</a></li>
         <li *ngIf="role === 'ADMIN'">  <a [routerLink]="" queryParamsHandling="preserve" (click)="getAddPage('anteriorWall')"    >- Anterior Wall</a></li>   
         <li *ngIf="role === 'ADMIN'">  <a [routerLink]="" queryParamsHandling="preserve" (click)="getAddPage('aorta')"  >- Aorta </a></li> 
         <li *ngIf="role === 'ADMIN'">  <a [routerLink]="" queryParamsHandling="preserve" (click)="getAddPage('aorticValve')"  >- Aortic Valve</a></li>  

@@ -18,12 +18,11 @@ export class SidenavComponent implements OnInit {
   name  = localStorage.getItem('name')
   type  = localStorage.getItem('type')
   
-  isDataLoadedInAS:boolean = false;
-  isDataLoadedInAW = false;
   constructor(private router:Router,private actRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){return false;};this.router.routeReuseStrategy.shouldReuseRoute = function(){return false;};
 
 	  
     $(document).ready(function () {
@@ -58,13 +57,6 @@ export class SidenavComponent implements OnInit {
       
   }
 
-  // openNav() {
-  //   document.getElementById("mySidenav").style.width = "250px";
-  // }
-  // closeNav() {
-  //   document.getElementById("mySidenav").style.width = "0";
-  // }
-
   getAddPage  = (type) => {
     console.log(type);
     window.localStorage.setItem("type", type.toString());
@@ -72,14 +64,6 @@ export class SidenavComponent implements OnInit {
    
     this.actRoute.paramMap.subscribe(params => {
       this.type = params.get('type');
-      //this.isDataLoadedInAS = false;
-      if(type === 'anteriorSeptum'){
-        this.isDataLoadedInAS = true;
-      }
-      if(type === 'anteriorWall'){
-        this.isDataLoadedInAW = true;
-      }
-
    });
 
 

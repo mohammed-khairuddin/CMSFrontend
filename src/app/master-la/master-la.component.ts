@@ -231,7 +231,9 @@ export class MasterLaComponent implements OnInit {
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
   
     const x = observation.observation.value;
-    this.updform =x;
+    //if(x != ''){
+      this.updform =x;
+     //}
   }, error => console.log(error));
 
 
@@ -246,13 +248,19 @@ export class MasterLaComponent implements OnInit {
 
   
   saveLeftAtriumValueData = () => {
+    document.getElementById("overlay").style.display = "block";	  
+ 
   const objectManagementReq = {
     "value": this.updform
    }
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-     
+    document.getElementById("overlay").style.display = "none";
+
       if(res['message'] ==  'submitted successfully' ) {
       alert('Observation Inserted Successfully');
+      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+    }  else if(res['message'] ==  ' updated successfully' ) {
+      alert('Observation Updated Successfully');
       this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
     } 
      

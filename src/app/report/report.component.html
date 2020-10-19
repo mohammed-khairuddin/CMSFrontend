@@ -132,6 +132,7 @@
 
         <!-- <patientDetails form completes></patientDetails> -->
 
+
             <hr/>
 
             <div class="total-container-report">
@@ -236,10 +237,14 @@
                         <div class="form-row" >
                           <div class="form-group col-md-12">
                             <label>Comment</label>                     
-                            <textarea name="{{comment}}" [(ngModel)]="comment.comment"
+                            <!-- <textarea name="{{comment}}" [(ngModel)]="comment.comment"
+                            class="form-control" placeholder="Comment" #comment='ngModel'
+                            required ></textarea> -->
+                            
+                            <textarea id="comment" name="comments_{{comment.id}}" [(ngModel)]="comment.comment"
                             class="form-control" placeholder="Comment" #comment='ngModel'
                             required ></textarea>
-                            
+
                           </div>
                         </div>  
                         </div>
@@ -561,6 +566,11 @@
                   </div>
                    <!--------------->    
                   <hr/>
+
+      
+      <div id="overlay">
+        <div class="loader"></div>
+    </div> 
 
                   <div>
 

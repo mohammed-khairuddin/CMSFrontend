@@ -16,25 +16,11 @@ export class MasterTvComponent implements OnInit {
     {id:2,itemName:'Abnormal-Rheumatic'},  
   ]
   
-  // structureAbnormal= [
-  //   {id:2,itemName:'Structure-Abnormal-Rheumatic'},
-  //   {id:3,itemName:'Structure-Abnormal-Vegetation'},
-  //   {id:4,itemName:'Structure-Abnormal-Myxomatous (redundant)'},
-  //   {id:5,itemName:'Structure-Abnormal-Prolapse'},
-  //   {id:6,itemName:'Structure-Abnormal-Ruptured chordae/flail leaflet(s)'},
-    
-  // ]
   rheumatic =[
     {id:2,itemName:'Abnormal-Rheumatic'},
 
   ]
-  // vegetation = [
-  //   {id:2,itemName:'Vegetation-Anterior leaflet'},
-  //   {id:3,itemName:'Vegetation-Posterior leaflet'},
-  //   {id:4,itemName:'Vegetation-Septal leaflet'},
-   
-
-  // ]
+  
   vegetationAnteriorleaflet = [
 
     {id:2,itemName:'Anterior leaflet-Non-mobile'},
@@ -49,13 +35,6 @@ export class MasterTvComponent implements OnInit {
 
   ]
 
-  // anteriorleafletSize = [
-  //   {id:2,itemName:'Size-Small'},
-  //   {id:3,itemName:'Size-Moderate'},
-  //   {id:4,itemName:'Size-Large'},
-  //   {id:5,itemName:'Size-Dimensions'},
-
-  // ]
   vegetationPosteriorleaflet = [
 
     {id:2,itemName:'Posterior leaflet-Non-mobile'},
@@ -67,13 +46,7 @@ export class MasterTvComponent implements OnInit {
     {id:8,itemName:'Posterior leaflet-Size-Large'},
     {id:9,itemName:'Posterior leaflet-Size-Dimensions'},
   ]
-  // posteriorleafletSize = [
-  //   {id:2,itemName:'Size-Small'},
-  //   {id:3,itemName:'Size-Moderate'},
-  //   {id:4,itemName:'Size-Large'},
-  //   {id:5,itemName:'Size-Dimensions'},
-
-  // ]
+  
   vegetationSeptalleaflet = [
 
     {id:2,itemName:'Septal leaflet-Non-mobile'},
@@ -85,24 +58,12 @@ export class MasterTvComponent implements OnInit {
     {id:8,itemName:'Septal leaflet-Size-Large'},
     {id:9,itemName:'Septal leaflet-Size-Dimensions'},
   ]
-  // septalleafletSize = [
-  //   {id:2,itemName:'Size-Small'},
-  //   {id:3,itemName:'Size-Moderate'},
-  //   {id:4,itemName:'Size-Large'},
-  //   {id:5,itemName:'Size-Dimensions'},
-  // ]
+  
   myxomatousredundant =[
     {id:2,itemName:'Abnormal-Myxomatous (redundant)'},
 
   ]
-  // prolapse= [
-  //   {id:2,itemName:'Prolapse-Anterior leaflet'},
-  //   {id:3,itemName:'Prolapse-Posterior leaflet'},
-  //   {id:4,itemName:'Prolapse-Septal leaflet'},
-  //   {id:5,itemName:'Prolapse-Holosystolic'},
-  //   {id:6,itemName:'Prolapse-Late systolic'},
-
-  // ]
+  
   prolapseAnteriorleaflet =[
     {id:2,itemName:'Anterior leaflet-Mild'},
     {id:3,itemName:'Anterior leaflet-Moderate'},
@@ -129,15 +90,7 @@ export class MasterTvComponent implements OnInit {
     {id:2,itemName:'Prolaspe-Late Systolic'},
 
   ]
-  // rupturedchordae = [
-  //   {id:2,itemName:'rupturedchordae-Anterior leaflet'},
-  //   {id:3,itemName:'rupturedchordae-Posterior leaflet'},
-  //   {id:4,itemName:'rupturedchordae-Septal leaflet'},
-  //   {id:5,itemName:'rupturedchordae-Dilated Annulus Dimensions'},
-  //   {id:6,itemName:'rupturedchordae-Ebstein’s anomaly'},
-  //   {id:7,itemName:'rupturedchordae-Tricuspid atresia'},
-
-  // ]
+ 
   rupturedchordaeAnteriorleaflet =[
     {id:2,itemName:'Anterior leaflet-Mild'},
     {id:3,itemName:'Anterior leaflet-Moderate'},
@@ -172,12 +125,7 @@ export class MasterTvComponent implements OnInit {
     {id:2,itemName:'Absent'},
     {id:3,itemName:'Present'},  
   ]
-  // regurgitationPresent= [
-  //   {id:2,itemName:'regurgitation-Present-Severity'},
-  //   {id:3,itemName:'regurgitation-Present-Jet direction'},
-  //   {id:4,itemName:'regurgitation-Present-Hepatic vein systolic flow'},
-   
-  // ]
+  
   severity = [
     {id:2,itemName:'Severity-Trace'},
     {id:3,itemName:'Severity-Mild'},
@@ -236,16 +184,17 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
 }
 
   ngOnInit(): void {
-
+    
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
    });
 
-   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
-    
+   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {    
+      
+    if(observation.observation.value){
     const x = observation.observation.value;
-   
-    this.updform =x;
+      this.updform =x;
+    }
   }, error => console.log(error));
 
   }
@@ -259,16 +208,20 @@ constructor(private loginService: LoginserviceService,private router:Router,priv
 
   saveTricuspidValveData = () => {
       //save function
-     
+      document.getElementById("overlay").style.display = "block";  
   const objectManagementReq = {
     "value": this.updform
    }
  
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-     
+    document.getElementById("overlay").style.display = "none";
+
       if(res['message'] ==  'submitted successfully' ) {
       alert('Observation Inserted Successfully');
       //this.router.navigateByUrl(`/observations/`);
+      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+    }  else if(res['message'] ==  ' updated successfully' ) {
+      alert('Observation Updated Successfully');
       this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
     } 
      

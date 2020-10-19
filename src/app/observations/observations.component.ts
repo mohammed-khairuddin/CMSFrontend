@@ -65,6 +65,9 @@ export class ObservationsComponent implements OnInit {
     //this.isDataLoadedInRV = false;
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
+      // console.log('type======');
+      // console.log(obtype);
+
       if(obtype === 'rightVentricleObservation'){
         this.isDataLoadedInRV = true;
       }
@@ -95,9 +98,9 @@ export class ObservationsComponent implements OnInit {
       if(obtype === 'pericardiumObservation'){
         this.isDataLoadedInPC = true;
       }
-      if(obtype === ''){
-        this.isDataLoadedInREPORT = true;
-      }
+      // if(obtype === 'report'){
+      //   this.isDataLoadedInREPORT = true;
+      // }
    });
 
 

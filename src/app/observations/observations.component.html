@@ -173,9 +173,10 @@
             </div>
 
 
-            <input type="radio" name="tabs" id="tabtwelve">
-            <label for="tabtwelve" > Reports</label>
-            <div class="tab" *ngIf="isDataLoadedInREPORT">
+            <input type="radio" name="tabs" id="tabtwelve" queryParamsHandling="preserve"  (click)="getAddPage('report')">
+            <label for="tabtwelve" (click)="click()" > Reports</label>
+            <!--  *ngIf="isDataLoadedInREPORT" --> 
+            <div class="tab" >
               <app-report></app-report>
             </div>
 

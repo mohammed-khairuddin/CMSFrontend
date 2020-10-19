@@ -181,11 +181,11 @@ obtype: string;
       this.obtype = params.get('obtype');
    });
 
-   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
-   
-    const x = observation.observation.value;
-  
-    this.updform =x;
+   this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {   
+    if(observation.observation.value){
+    const x = observation.observation.value;       
+      this.updform =x;
+     }
   }, error => console.log(error));
 
   }
@@ -205,10 +205,14 @@ obtype: string;
    }
  
    this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-   
+    document.getElementById("overlay").style.display = "none";
+    
       if(res['message'] ==  'submitted successfully' ) {
       alert('Observation Inserted Successfully');
     
+      this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+    }  else if(res['message'] ==  ' updated successfully' ) {
+      alert('Observation Updated Successfully');
       this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
     } 
      

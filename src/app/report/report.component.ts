@@ -86,7 +86,7 @@ export class ReportComponent implements OnInit {
   pulmonaryarterypressure;
   avgsystolicstrain;
 
-  
+
   
   updform = {
     anteriorwall :'',
@@ -113,9 +113,9 @@ export class ReportComponent implements OnInit {
   regionalWalls:[];
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private actRoute: ActivatedRoute,private sharedService:SharedService) { 
-    this.clickEventsubscription=this.sharedService.getClickEvent().subscribe(()=>{
-      this.ngOnInit();
-      })
+    // this.clickEventsubscription=this.sharedService.getClickEvent().subscribe(()=>{
+    //   this.ngOnInit();
+    //   })
   }
 
   dynamicComment: Array<ReportComponent> = [];  
@@ -143,7 +143,7 @@ export class ReportComponent implements OnInit {
           doctorAdvicereport,impressioncomment,impressionreport,observationItem,
           observtaionComments,speckleTrackingreport,regionalWall} = data;          
 
-        console.log(data);
+        //console.log(data);
         this.doctorAdvice = masterData['doctorAdvice']
         this.conclusion = masterData['conclusion']
         this.impression = masterData['impressions']
@@ -259,14 +259,17 @@ onDeSelectAll(item: any,type) {
 }
 
 addComment(k,type) { 
+console.log(k);
 console.log(type);
   this.observationsObject[k].comments.push({
-   //id:this.observationsObject[k].length +1,
-   id:this.observationsObject[k].comments.length +1,
-    type:type,
-    comment: ''
-  });
-  
+    //id:this.observationsObject[k].length +1,
+    id:this.observationsObject[k].comments.length +1,
+     type:type,
+     comment: ''
+   });
+console.log(this.id);
+console.log('///////////');
+ 
 }
 
 removeComment(commentsIndex,mainObjectIndex) {
@@ -279,7 +282,8 @@ addImpressionComment() {
     //id: k + 1,
     comment: ''
   });
- 
+  
+  console.log(this.id);
   
 }
 
@@ -314,6 +318,9 @@ removeDocAdviceComment(i: number) {
 
 reportFormData=() =>{
 
+  
+  document.getElementById("overlay").style.display = "block";
+
   const impressionslen = this.selectedItems2.length;
   const impressionsCommentslen = this.impressioncomments.length;
 
@@ -340,6 +347,9 @@ reportFormData=() =>{
 console.log(getReport);
 
 this.loginService.observationsReportUpdate(getReport).subscribe(res =>{
+  
+  
+  document.getElementById("overlay").style.display = "none";
   console.log(res);
   if(res['message'] ==  'report updated successfully' ) {
   alert('Report Observations Updated Successfully');
@@ -363,6 +373,16 @@ return  {
 }
 
 }
+
+/////////////////////////////////////
+
+ hideloader() { 
+  
+  // Setting display of spinner 
+  // element to none 
+  document.getElementById('loading') 
+      .style.display = 'none'; 
+} 
 
 ///////////////////////////////////
 
@@ -390,6 +410,7 @@ generatePdf(action='open'){
   //console.log("im looking for")
   //console.log(this.reportFormData)
   //console.log(this.getformatteddata)
+  this.sharedService.sendClickEvent();
   const documentDefinition = this.getDocumentDefinition();
   switch (action) {
     case 'open': pdfMake.createPdf(documentDefinition).open(); break;

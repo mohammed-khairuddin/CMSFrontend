@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, FormControl,Validators} from "@angular/forms";
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,20 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginserviceService,private router:Router,private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
+    $('#myModal').submit(function() {
+      var b = $('body');
+      var normalw = 0;
+      var scrollw = 0;
+      if(b.prop('scrollHeight')>b.height()){
+          normalw = window.innerWidth;
+          scrollw = normalw - b.width();
+          $('.modal-backdrop').remove();
+          $('.modal-open').css('overflow-y','auto')
+          $('.modal-open').css({marginRight:'-'+scrollw+'px'});
+      }
+    });
+  
+
     
     this.loginForm = new FormGroup({
       username: new FormControl("", Validators.compose([
@@ -86,6 +101,9 @@ export class LoginComponent implements OnInit {
           else{
         this.router.navigate(['/dashboard']);
         }
+
+      
+
        } else  if(res['message'] ===  'Please check the details' || res['status'] === '401' ) {
         alert("Invalid Login. Please Check the Details");
         return false;
@@ -94,7 +112,8 @@ export class LoginComponent implements OnInit {
         alert("Invalid Login. Please Check the Details");
         return false;
        }
-      
+
+       
      },
      err => {
         //console.log(err);

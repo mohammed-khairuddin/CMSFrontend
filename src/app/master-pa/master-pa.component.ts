@@ -65,10 +65,10 @@ Pulmonarybranchstenosis=[
    });
 
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
-    //console.log(observation);
-    const x = observation.observation.value;
-    //console.log(x);
-    this.updform =x;
+    const x = observation.observation.value;    
+    //if(x != ''){
+      this.updform =x;
+     //}
   }, error => console.log(error));
 
 
@@ -83,19 +83,24 @@ Pulmonarybranchstenosis=[
 
   savePulmonaryArteryData = () => {
       //save function
-  
+      document.getElementById("overlay").style.display = "block";	
     const objectManagementReq = {
       "value": this.updform
      }
      
      this.loginService.observationsInsertion(objectManagementReq).subscribe(res =>{
-       
+      document.getElementById("overlay").style.display = "none";
+
         if(res['message'] ==  'submitted successfully' ) {
         alert('Observation Inserted Successfully');
      
         this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
+      }   else if(res['message'] ==  ' updated successfully' ) {
+        alert('Observation Updated Successfully');
+        
+        this.router.navigateByUrl(`/observations/`+localStorage.getItem('pmid'));
       } 
-       
+        
    })
 
   }
