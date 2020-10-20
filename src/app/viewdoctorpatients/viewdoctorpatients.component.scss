@@ -2,6 +2,12 @@
     width:100%;
 }
 
+tr:nth-child(even) {
+     background: #CCC;
+    //background-color: #ffffff80;
+}
+tr:nth-child(odd) {background: #FFF}
+
 #page-content-wrapper {
     //position: absolute;
     padding: 15px;
@@ -29,7 +35,7 @@
 // }
 .looprows{
     padding: 15px;
-    border-bottom: 1px solid #ced4da;
+    //border-bottom: 1px solid #ced4da;
 }
 
 .reqbg1 p{
@@ -132,8 +138,11 @@
 .sticky-col {
     position: sticky;
     position: -webkit-sticky;    
-    background-color: white;
+    //background-color: white;    
+    background: #CCC;
+    background-color: #ffffff80;
 }
+
 .first-col {
 	width: 100px;
     min-width: 100px;

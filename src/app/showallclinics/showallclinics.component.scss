@@ -1,6 +1,8 @@
 .table{
     width:90%;
 }
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
 .main-tit{
     margin: 10px;
 }

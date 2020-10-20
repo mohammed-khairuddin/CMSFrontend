@@ -22,6 +22,9 @@
   float: right;
 }
 
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+
 .pagination {
   display: flex;
   padding-left: 0;

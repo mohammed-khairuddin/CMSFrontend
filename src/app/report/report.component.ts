@@ -157,7 +157,7 @@ export class ReportComponent implements OnInit {
         this.docadvicecomments = doctorAdviceComments;
         this.selectedItems4 = doctorAdvicereport;
         this.impressioncomments = impressioncomment;
-         console.log(this.comments)
+         //console.log(this.comments)
         //this.updform = regionalwallmotion;         
         this.regionalWalls=regionalWall,
          this.selectedItems1 = speckleTrackingreport;
@@ -259,16 +259,15 @@ onDeSelectAll(item: any,type) {
 }
 
 addComment(k,type) { 
-console.log(k);
-console.log(type);
+
+ 
   this.observationsObject[k].comments.push({
     //id:this.observationsObject[k].length +1,
     id:this.observationsObject[k].comments.length +1,
      type:type,
      comment: ''
    });
-console.log(this.id);
-console.log('///////////');
+
  
 }
 
