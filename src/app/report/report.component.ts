@@ -113,9 +113,10 @@ export class ReportComponent implements OnInit {
   regionalWalls:[];
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private actRoute: ActivatedRoute,private sharedService:SharedService) { 
-    // this.clickEventsubscription=this.sharedService.getClickEvent().subscribe(()=>{
-    //   this.ngOnInit();
-    //   })
+    this.clickEventsubscription=this.sharedService.getClickEvent().subscribe(()=>{
+      this.ngOnInit();
+      //this.generatePdf();
+      })
   }
 
   dynamicComment: Array<ReportComponent> = [];  
@@ -442,14 +443,16 @@ getDocumentDefinition() {
      var doctoradvicepdf=[];
      var conclusionpdf=[];
      for(var i in ((this.reportFormData1()).observations)) { 
-      dd.push({columns:[{ text: 'Objective Type', bold:true,},{text: JSON.stringify(((this.reportFormData1()).observations[i].type)),margin:[0,0,0,0]}]});
+       console.log(((this.reportFormData1()).observations[i].type).replace(/Observation/g,''))
+      dd.push({columns:[{ text: 'Objective Type', bold:true,},{text: ((this.reportFormData1()).observations[i].type).replace(/Observation/g,'').toUpperCase(),margin:[-6,0,0,0]}]});
       dd.push({ text: 'Value', bold:true,margin:[0,15,0,0]}),
-      dd.push({text: JSON.stringify(((this.reportFormData1()).observations[i].value)),margin:[250,0,0,0]});
+      console.log(((JSON.stringify((this.reportFormData1()).observations[i].value).replace( /[{}]/g, '' )).replace(/['"]+/g, '')).replace(/select/g,''))
+      dd.push({lineHeight:2,text: ((JSON.stringify((this.reportFormData1()).observations[i].value).replace( /[{}]/g, '' )).replace(/['"]+/g, '')).split(",").join("\n").replace(/select/g,''),margin:[250,-15,0,0]});
       dd.push({ 
         text: 'Master Value', 
         style: 'header',
         bold:true,
-       margin:[0,0,0,0]}
+       margin:[0,15,0,0]}
     ,);
     console.log('=================');
       for(var j in (this.reportFormData1().observations[i].observationItem)){
@@ -457,7 +460,7 @@ getDocumentDefinition() {
       if((this.reportFormData1().observations[i].observationItem[j]).type==(this.reportFormData1()).observations[i].type){
         console.log(this.reportFormData1().observations[i].observationItem[j])
        dd.push(
-        {lineHeight:1.5,columns:[{ text: '', bold:true},{text: `${(this.reportFormData1()).observations[i].observationItem[j].itemName}`,margin:[0,-10,0,0] }]})
+        {lineHeight:2,columns:[{ text: '', bold:true},{text: `${(this.reportFormData1()).observations[i].observationItem[j].itemName}`,margin:[0,-15,0,0] }]})
         dd.push('')
       }
     }
@@ -465,7 +468,7 @@ getDocumentDefinition() {
       text: 'Comment', 
       style: 'header',
       bold:true,
-     margin:[0,15,0,0]}]}
+     margin:[0,0,0,0]}]}
   ,);
       for(var k in this.reportFormData1().observations[i].observtaionComments){
         if((this.reportFormData1()).observations[i].type==this.reportFormData1().observations[i].observtaionComments[k].type){
@@ -473,7 +476,7 @@ getDocumentDefinition() {
         console.log((this.reportFormData1()).observations[i].type)  
 console.log(this.reportFormData1().observations[i].observtaionComments[k])
 dd.push(
-  {lineHeight:1.5,columns:[{ text: '', bold:true},{text: `${(this.reportFormData1()).observations[i].observtaionComments[k].comment}`,margin:[0,-25,0,0] }]})
+  {lineHeight:1.5,columns:[{ text: '', bold:true},{text: `${(this.reportFormData1()).observations[i].observtaionComments[k].comment}`,margin:[0,0,0,0] }]})
 
       }
       console.log((this.reportFormData1()).observations[i].regionalWall[i].anteriorwall) 
@@ -517,16 +520,16 @@ dd.push(
    }]}
 ,);
   for(var i in this.reportFormData1().impressions){
-    impressionpdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData1().impressions[i].itemName}`,margin:[0,-10,0,0]}]})
+    impressionpdf.push({lineHeight:2, columns:[{text:'',bold:true},{text:`${this.reportFormData1().impressions[i].itemName}`,margin:[0,-15,0,0]}]})
   }
-  impressionpdf.push({lineHeight:1.5,columns:[{
+  impressionpdf.push({columns:[{
     text: 'Impression Comment',  
     bold:true,
    }]}
 ,);
   for(var i in this.reportFormData1().impressionComments){
     
-    impressionpdf.push({lineHeight:1.5, columns:[{text:'',bold:true},{text:`${this.reportFormData1().impressionComments[i].impressioncomment}`,margin:[0,-20,0,0]}]})
+    impressionpdf.push({lineHeight:2, columns:[{text:'',bold:true},{text:`${this.reportFormData1().impressionComments[i].impressioncomment}`,margin:[0,-16,0,0]}]})
   }
   console.log(this.reportFormData1().regionalWall)
   
@@ -570,6 +573,8 @@ console.log(this.reportFormData1().doctorAdviceComments)
     console.log(this.reportFormData1().conclusionsComments[i])
     conclusionpdf.push({ columns:[{text:'',bold:true},{text:`${this.reportFormData1().conclusionsComments[i].conclusioncomment}`,margin:[0,0,0,0]}]})
   }
+
+
 
 
 

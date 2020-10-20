@@ -42,6 +42,8 @@ export class RegisterPatientComponent implements OnInit {
   scars:string;
   datefirstvisit :string;
   reason:string;
+  village:string;
+  district:string;
   
 
   stateInfo: any[] = [];
@@ -98,9 +100,19 @@ export class RegisterPatientComponent implements OnInit {
     identificationmarks:'',
     scars:'',
     datefirstvisit:'',
-    reason:''
+    reason:'',
+    village:'',
+    district:'',
 
   };
+
+  clinicDoctorsList;
+  salutationList;
+  complainsList;
+  maritalstatusList;
+  occupationList;
+  religionList;
+  educationalqualificationsList;
 
   ///////////////////////////////////
 
@@ -133,6 +145,20 @@ export class RegisterPatientComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.loginService.getAllPatientMasterFetch().subscribe( (data : any) => { 
+      const {salutation,complains,maritalstatus,
+        occupation,religion,educationalqualifications,doctor} = data; 
+      
+    console.log(data['complains'])
+    this.salutationList = data['salutation'];
+    this.complainsList = data['complains'];        
+    this.maritalstatusList = data['maritalstatus'];
+    this.occupationList = data['occupation'];
+    this.religionList = data['religion'];
+    this.educationalqualificationsList = data['educationalqualifications'];
+    this.clinicDoctorsList = data['doctor'];
+    }, error => console.log(error));
+
     this.regPatientForm = this.formBuilder.group({
       firstname:['',Validators.required],
       middlename:['',Validators.required],
@@ -147,20 +173,20 @@ export class RegisterPatientComponent implements OnInit {
       age: ['', Validators.required],
       country: ['', Validators.required],
       state: ['', Validators.required],
-      city: ['', Validators.required],
-      referred: ['', Validators.required],
-      fdoctor: ['', Validators.required],
+      //city: ['', Validators.required],
+      //referred: ['', Validators.required],
+      //fdoctor: ['', Validators.required],
       email: ['', Validators.required],
       regmobileno: ['', Validators.required],
       kinmobileno: ['', Validators.required],
       wtsno:['', Validators.required],
-      address:['', Validators.required],
-      pincode: ['',Validators.required],
-      qualification: ['', Validators.required],
-      identificationmarks: ['', Validators.required],
-      scars:['', Validators.required],
+      //address:['', Validators.required],
+      //pincode: ['',Validators.required],
+      //qualification: ['', Validators.required],
+      //identificationmarks: ['', Validators.required],
+      //scars:['', Validators.required],
       datefirstvisit:['', Validators.required],
-      reason: ['',Validators.required]
+      //reason: ['',Validators.required]
     });
 
   

@@ -27,6 +27,7 @@ export class ObservationsComponent implements OnInit {
   isDataLoadedInAORTA:boolean = false;
   isDataLoadedInPC:boolean = false;
   isDataLoadedInREPORT:boolean = false;
+  isDataLoadedInRI:boolean = false;
   master :Object;
   obtype: string;
   patientDataObject;
@@ -61,13 +62,10 @@ export class ObservationsComponent implements OnInit {
   getAddPage  = (obtype) => {   
 
     window.localStorage.setItem("obtype", obtype.toString());
-    //this.isDataLoadedInLV = false;
-    //this.isDataLoadedInRV = false;
+    
     this.actRoute.paramMap.subscribe(params => {
       this.obtype = params.get('obtype');
-      // console.log('type======');
-      // console.log(obtype);
-
+    
       if(obtype === 'rightVentricleObservation'){
         this.isDataLoadedInRV = true;
       }
@@ -101,6 +99,9 @@ export class ObservationsComponent implements OnInit {
       // if(obtype === 'report'){
       //   this.isDataLoadedInREPORT = true;
       // }
+      if(obtype === 'referralImage'){
+        this.isDataLoadedInRI = true;
+      }
    });
 
 

@@ -181,11 +181,10 @@
             </div>
 
 
-            <input type="radio" name="tabs" id="tabthirteen">
-            <label for="tabthirteen">Reports Image</label>
-            <div class="tab"  style="min-height: 300px;">
-              <h1> Reports Images</h1>
-              
+            <input type="radio" name="tabs" id="tabthirteen" queryParamsHandling="preserve"  (click)="getAddPage('referralImage')">
+            <label for="tabthirteen">Referral Image</label>
+            <div class="tab" *ngIf="isDataLoadedInRI">              
+              <app-referral-image></app-referral-image>
             </div>
 
 

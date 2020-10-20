@@ -314,4 +314,14 @@ observationsReportUpdate= (objectManagementReq) => {
 }
 
 
+/////////////////////////////////////////
+
+getAllPatientMasterFetch= () => {
+  const id = localStorage.getItem('id')
+
+  return this.http.get(`${this.ngrokUrl}/auth/getallpatientmasterfetch/${id}`)
+}
+
+
+
 }

@@ -3,6 +3,7 @@ import {LoginserviceService} from '../loginservice.service';
 import {Router} from '@angular/router';
 //import { pid } from 'process';
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
+import { SharedService } from '../event-emitter.service';
 //import { filter } from 'rxjs/operators';
 
 
@@ -50,7 +51,10 @@ export class CaseCompletedComponent implements OnInit {
 
  observationsObject;
 
-  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient) { }
+  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private sharedService:SharedService)
+  {
+    
+   }
   ngOnInit(): void {
 
     this.loginService.getClinicData(localStorage.getItem("id")).subscribe(data => {
@@ -76,6 +80,8 @@ export class CaseCompletedComponent implements OnInit {
     this.router.navigateByUrl(`/report-preview/${alllist.id}`)
   }
 
-
+  click(){
+    this.sharedService.sendClickEvent();
+    }
 
 }

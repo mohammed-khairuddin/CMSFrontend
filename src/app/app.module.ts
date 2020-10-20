@@ -65,6 +65,7 @@ import { MasterPcComponent } from './master-pc/master-pc.component';
 import { PreviewObservationsComponent } from './preview-observations/preview-observations.component';
 import { ReportComponent } from './report/report.component';
 import { ReportPreviewComponent } from './report-preview/report-preview.component';
+import { ReferralImageComponent } from './referral-image/referral-image.component';
 
 const x = [
   { 
@@ -128,7 +129,8 @@ const x = [
     MasterPcComponent,
     PreviewObservationsComponent,
     ReportComponent,
-    ReportPreviewComponent
+    ReportPreviewComponent,
+    ReferralImageComponent
   ],
   imports: [
     BrowserModule,
