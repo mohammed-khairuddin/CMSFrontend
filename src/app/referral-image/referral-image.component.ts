@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginserviceService} from '../loginservice.service';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-referral-image',
@@ -7,30 +11,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReferralImageComponent implements OnInit {
 
+  addform = {
+    comment:''
+  };
+  comment;
+  constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder,private http:HttpClient) { }
 
-  public comments: any[] = [{
-    id: 1,
-    comment: ''
-  }];
-
-
-  constructor() { }
 
   ngOnInit(): void {
 
+  this.loginService.getReferralCommentPatientId().subscribe(data => {    
+    //console.log(data);
+    this.comment = data['referralcomment']
+  }, error => console.log(error));
+
   }
 
-  addComment() {
-    this.comments.push({
-      id: this.comments.length + 1,
-      comment: ''
-    });
+ 
+
+
+  //////////////////////////////////////////
+  
+  addComment = (data):any => {
     
-  }
 
-  removeComment(i: number) {
-    this.comments.splice(i, 1);
-  }  
+    const referralComment = {
+      "comment": data.comment
+    }
+
+    this.loginService.referralCommentInsert(referralComment).subscribe(res =>{  
+       if(res['description'] ==  'Comment Success' ) {
+        alert('Referral Comment Successfully');
+        //this.router.navigate(['/previewregkin']);
+        window.location.reload();
+      } 
+   })
+
+  }
 
 
 }

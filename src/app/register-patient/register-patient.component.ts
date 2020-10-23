@@ -65,14 +65,14 @@ export class RegisterPatientComponent implements OnInit {
   ////////////////////////////////////////
   genders=['Male','Female','Others'];
   martialstatuss=['Married','Unmarried'];
-  occupationss=['Private JOb','Employee','Govt.Job'];
-  religionss=['Hindu','Christian','Muslim','Others'];
+  //occupationss=['Private JOb','Employee','Govt.Job'];
+  //religionss=['Hindu','Christian','Muslim','Others'];
   roles = ['CLINIC', 'DOCTOR'];
   countrys = ['India', 'USA', 'Australia'];
   states = ['Telangana','AndhraPradesh'];
   citys = ['Hyderabad', 'Visakhapatnam', 'Vijayawada'];
-  complainss=['Vomiting','Headache'];
-  salutationss=['salutations1','salutations2'];
+  //complainss=['Vomiting','Headache'];
+  //salutationss=['salutations1','salutations2'];
   addform = {
     firstname:'',
     middlename:'',
@@ -113,6 +113,8 @@ export class RegisterPatientComponent implements OnInit {
   occupationList;
   religionList;
   educationalqualificationsList;
+  countryList;
+  stateList;
 
   ///////////////////////////////////
 
@@ -145,11 +147,13 @@ export class RegisterPatientComponent implements OnInit {
 
   ngOnInit(): void {
 
+    
+
     this.loginService.getAllPatientMasterFetch().subscribe( (data : any) => { 
-      const {salutation,complains,maritalstatus,
+      const {salutation,complains,maritalstatus,country,state,
         occupation,religion,educationalqualifications,doctor} = data; 
       
-    console.log(data['complains'])
+    console.log(data['complains']);
     this.salutationList = data['salutation'];
     this.complainsList = data['complains'];        
     this.maritalstatusList = data['maritalstatus'];
@@ -157,6 +161,8 @@ export class RegisterPatientComponent implements OnInit {
     this.religionList = data['religion'];
     this.educationalqualificationsList = data['educationalqualifications'];
     this.clinicDoctorsList = data['doctor'];
+    this.countryList = data['country'];
+    this.stateList = data['state'];
     }, error => console.log(error));
 
     this.regPatientForm = this.formBuilder.group({
@@ -199,44 +205,26 @@ export class RegisterPatientComponent implements OnInit {
       { "id": 5, "name": "Irritable" }
     ];
 
-    //  this.selectedItems = [ 'India', 'Singapore', 'Australia'];
-    
+   
 
     this.settings = {
       text: "Select Complains",
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      primaryKey: 'name',
-      labelKey: 'name',
-    };
+      classes: "myclass custom-class"
+  };
+
+////////////////////////////////
 
 
-
-    // this.dropdownSettings = {
-    //   singleSelection: false,
-    //   idField: 'id',
-    //   textField: 'name',
-    //   selectAllText: 'Select All',
-    //   unSelectAllText: 'UnSelect All',
-    //   itemsShowLimit: 3,
-    //   allowSearchFilter: true
-    // };
 
 
   }
   
   onItemSelect(item: any) {
-    // console.log(item);
-    // console.log(this.selectedItems);
-    // console.log('*******');
-    // item = item['id'];
-    // console.log(item);
-    // item= Object.values(item).join(",");
-    // item = Array.prototype.map.call(item, s => s.name).toString();
-    // console.log('*******');
-    // console.log(item);
-
-
+     console.log(item);
+     console.log(this.selectedItems);
+    
   }
   OnItemDeSelect(item: any) {
     // console.log(item);
@@ -339,7 +327,8 @@ registerPatient = (data):any => {
         "middlename": data.middlename,
         "lastname":data.lastname,
         "salutation": data.salutation,
-        "complains": comp,
+        //"complains": comp,
+        "complains": data.complains,
         "gender": data.gender,
         "martialstatus": data.martialstatus,
         "occupation": data.occupation,
@@ -361,19 +350,21 @@ registerPatient = (data):any => {
         "identificationmarks":data.identificationmarks,
         "scars":data.scars,
         "datefirstvisit":data.datefirstvisit,
-        "reason":data.reason
+        "reason":data.reason,
+        "village":data.village,
+        "district":data.district,
       }
       
      
         this.loginService.registeredPatient(patientManagementReq).subscribe(res =>{
          
-          //if(res['message'] ==  'Successfully created' || res['message'] == 'File uploaded successfully!' ) {
-            if(res['status'] ==  '200' ) {
-            alert('Registered Successfully');
+          if(res['descsription'] ==  'Patient Created' ) {
+            //if(res['status'] ==  '200' ) {
+            alert('Patient Created Successfully');
             this.router.navigate(['/previewregpatient']);
           } 
           else{
-            alert("Registration Failed. Please Check the Details");
+            alert("Patient Creation Failed. Please Check the Details");
             return false;
             }
           

@@ -1,46 +1,45 @@
 <h3 class="textalign"> Referral Images</h3>
+<form  name="addCommentForm"   #addCommentForm="ngForm" (ngSubmit)="addComment(addCommentForm.value)" > 
 
+             
+  
 <div class="form-row align-center">
     <div class="form-group col-md-12">
-    
         <img src="../../assets/images/heart-referral-image.jpg" name="Referral Images"
               id="Referral Images" />
-
     </div>
 
     <div class="form-group col-md-6">
-
-        <button type="button" class="btn btn-primary mb-2" (click)="addComment()">Add</button>
-
-          <div  class="addremove-class" *ngFor="let comment of comments; let ii = index;">
-
+       
           <div class="form-row" >
             <div class="form-group col-md-6"   >
-              <h4>Comment {{ii + 1}}</h4>
+              <h4>Comment </h4>
             </div>
-            <div class="form-group col-md-6 text-right"   >
-              <button type="button" class="btn btn-danger btn-sm" (click)="removeComment(ii)">Remove</button>
-            </div>
-          </div>
+            
 
           <div class="form-row" >
-            <div class="form-group col-md-12"   >
-              <label>Comment</label>                                   
-              <textarea id="comment" name="comments_{{comment.id}}"  class="form-control" placeholder="Comment" 
-              required [(ngModel)]="comment.comment" #comment="ngModel"  ></textarea>
-           
+            <div class="form-group col-md-12"  *ngFor="let comment of this.comment" >
+                                               
+              <textarea id="comment" name="comment"  class="form-control" placeholder="Comment" 
+              required  rows="6" cols="50" [(ngModel)]="comment.comment" #comment="ngModel" ></textarea>
+     
             </div>
           </div>  
-
-
           </div>
         
-
-          <div class="text-right">
-            <input type="submit" class="btn btn-success" value="Submit"/>
+          <div class="form-row">
+          <div class="form-group col-md-6">
+          <button type="submit" class="btn btn-primary  btn-block"  >Submit</button>
           </div>
-          
-       </div>
+         
+          </div>
 
+
+
+          
+      
+</div>
 
 </div>
+
+</form>

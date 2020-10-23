@@ -28,6 +28,7 @@ export class ObservationsComponent implements OnInit {
   isDataLoadedInPC:boolean = false;
   isDataLoadedInREPORT:boolean = false;
   isDataLoadedInRI:boolean = false;
+  isDataLoadedInME:boolean = false;
   master :Object;
   obtype: string;
   patientDataObject;
@@ -101,6 +102,9 @@ export class ObservationsComponent implements OnInit {
       // }
       if(obtype === 'referralImage'){
         this.isDataLoadedInRI = true;
+      }
+      if(obtype === 'measurements'){
+        this.isDataLoadedInME = true;
       }
    });
 

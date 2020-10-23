@@ -183,6 +183,17 @@ tr:nth-child(odd) {background: #FFF}
 
 @media (min-width: 960px){ 
 
+    // .sticky-col:nth-of-type(odd){
+    //     position: sticky;
+    //     position: -webkit-sticky;  
+    //     background-color: #fff;
+    //   }
+    //   .sticky-col:nth-of-type(even){
+    //     position: sticky;
+    //     position: -webkit-sticky;  
+    //     background-color: #ccc;
+    //   }
+   
     
     .sticky-col {
         position: sticky;

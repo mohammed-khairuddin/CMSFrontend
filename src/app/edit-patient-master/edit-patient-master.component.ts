@@ -40,8 +40,9 @@ export class EditPatientMasterComponent implements OnInit {
   identificationmarks:string;
   scars:string;
   datefirstvisit :string;
-  reason:string;
-  
+  reason:string;  
+  village:string;
+  district:string;
 
   stateInfo: any[] = [];
   countryInfo: any[] = [];
@@ -92,9 +93,18 @@ export class EditPatientMasterComponent implements OnInit {
     identificationmarks:'',
     scars:'',
     datefirstvisit:'',
-    reason:''
-
+    reason:'',
+    village:'',
+    district:'',
   };
+
+  clinicDoctorsList;
+  salutationList;
+  complainsList;
+  maritalstatusList;
+  occupationList;
+  religionList;
+  educationalqualificationsList;
 
   ///////////////////////////////////
 
@@ -127,6 +137,20 @@ export class EditPatientMasterComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.loginService.getAllPatientMasterFetch().subscribe( (data : any) => { 
+      const {salutation,complains,maritalstatus,
+        occupation,religion,educationalqualifications,doctor} = data; 
+      
+    //console.log(data['complains']);
+    this.salutationList = data['salutation'];
+    this.complainsList = data['complains'];        
+    this.maritalstatusList = data['maritalstatus'];
+    this.occupationList = data['occupation'];
+    this.religionList = data['religion'];
+    this.educationalqualificationsList = data['educationalqualifications'];
+    this.clinicDoctorsList = data['doctor'];
+    }, error => console.log(error));
+
 
     this.loginService.getRegisteredPatientDetail()
     .subscribe(data => {
@@ -144,29 +168,28 @@ export class EditPatientMasterComponent implements OnInit {
       gender:['',Validators.required],
       martialstatus: ['', Validators.required],      
       occupation: ['', Validators.required],
-      religion: ['', Validators.required],
+      //religion: ['', Validators.required],
       dob: ['', Validators.required],
       age: ['', Validators.required],
       country: ['', Validators.required],
       state: ['', Validators.required],
-      city: ['', Validators.required],
-      referred: ['', Validators.required],
-      fdoctor: ['', Validators.required],
+      //city: ['', Validators.required],
+      //referred: ['', Validators.required],
+      //fdoctor: ['', Validators.required],
       email: ['', Validators.required],
       regmobileno: ['', Validators.required],
       kinmobileno: ['', Validators.required],
       wtsno:['', Validators.required],
       address:['', Validators.required],
-      pincode: ['',Validators.required],
-      qualification: ['', Validators.required],
-      identificationmarks: ['', Validators.required],
-      scars:['', Validators.required],
-      datefirstvisit:['', Validators.required],
-      reason: ['',Validators.required]
+      //pincode: ['',Validators.required],
+      // qualification: ['', Validators.required],
+      // identificationmarks: ['', Validators.required],
+      // scars:['', Validators.required],
+       datefirstvisit:['', Validators.required],
+      // reason: ['',Validators.required]
     });
 
-    this.getCountries();
-
+    
     ///
     this.dropdownList = [
       { item_id: 1, item_text: 'Nausea' },
@@ -217,6 +240,72 @@ onChangeState(stateValue) {
   this.cityInfo=this.stateInfo[stateValue].Cities;
   //console.log(this.cityInfo);
 }
+
+
+calculateAge(birthday) {
+  
+  const bdate = new Date(this.updform.dob);
+  
+  const timeDiff = Math.abs(Date.now() - bdate.getTime() );
+  this.updform['age'] = this.getAge(this.updform.dob);
+  
+  
+}
+
+ getAge(dateString) {
+  var today = new Date();
+  var DOB = new Date(dateString);
+  var totalMonths = (today.getFullYear() - DOB.getFullYear()) * 12 + today.getMonth() - DOB.getMonth();
+  totalMonths += today.getDay() < DOB.getDay() ? -1 : 0;
+  var years = today.getFullYear() - DOB.getFullYear();
+  if (DOB.getMonth() > today.getMonth())
+      years = years - 1;
+  else if (DOB.getMonth() === today.getMonth())
+      if (DOB.getDate() > today.getDate())
+          years = years - 1;
+
+  var days;
+  var months;
+
+  if (DOB.getDate() > today.getDate()) {
+      months = (totalMonths % 12);
+      if (months == 0)
+          months = 11;
+      var x = today.getMonth();
+      switch (x) {
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12: {
+              var a = DOB.getDate() - today.getDate();
+              days = 31 - a;
+              break;
+          }
+          default: {
+              var a = DOB.getDate() - today.getDate();
+              days = 30 - a;
+              break;
+          }
+      }
+
+  }
+  else {
+      days = today.getDate() - DOB.getDate();
+      if (DOB.getMonth() === today.getMonth())
+          months = (totalMonths % 12);
+      else
+          months = (totalMonths % 12) + 1;
+  }
+  var age = years + ' years ' + months + ' months ' + days + ' days';
+  return age;
+}
+
+
+/*****************************/
+
 /*****************************/
 
 updatePatientMaster = ():any => {

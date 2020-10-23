@@ -31,7 +31,11 @@ export class ViewdoctorpatientsComponent implements OnInit {
       this.AllClinicDoctorList = user['user']
     })   
 
-    this.loginService.getAllDoctorPatientsList().subscribe(user =>{
+    // this.loginService.getAllDoctorPatientsList().subscribe(user =>{
+    //   this.AllDoctorPatientsList = user['doctor']
+    // }) 
+
+    this.loginService.getAllDoctorPatientsListStatus().subscribe(user =>{
       this.AllDoctorPatientsList = user['doctor']
     })   
         

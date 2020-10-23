@@ -66,6 +66,7 @@ import { PreviewObservationsComponent } from './preview-observations/preview-obs
 import { ReportComponent } from './report/report.component';
 import { ReportPreviewComponent } from './report-preview/report-preview.component';
 import { ReferralImageComponent } from './referral-image/referral-image.component';
+import { MeasurementsComponent } from './measurements/measurements.component';
 
 const x = [
   { 
@@ -130,7 +131,8 @@ const x = [
     PreviewObservationsComponent,
     ReportComponent,
     ReportPreviewComponent,
-    ReferralImageComponent
+    ReferralImageComponent,
+    MeasurementsComponent
   ],
   imports: [
     BrowserModule,

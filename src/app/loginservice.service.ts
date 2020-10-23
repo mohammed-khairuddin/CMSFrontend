@@ -145,6 +145,12 @@ getAllClinicPatientsListClinicStatus= (status)=>{
   return this.http.get(`${this.ngrokUrl}/findall/patient/${id}/${status}`)
 }
 
+getAllClinicPatientsListClinicStatusReport= (status)=>{
+  const id = localStorage.getItem('id');
+  return this.http.get(`${this.ngrokUrl}/findall/patientstatusreport/${id}/${status}`)
+}
+
+
 
 getAllClinicPatientsListDateType= (date,status)=>{
   const id = localStorage.getItem('id');
@@ -162,9 +168,20 @@ updPatientDoc= (updatePatientDocObject)=>{
   return this.http.put(`${this.ngrokUrl}/save/patient/${id}`,updatePatientDocObject,this.httpOptions)
 }
 
+updPatientDocReportStatusClosed= ()=>{
+  const id = localStorage.getItem('rpid')
+  return this.http.put(`${this.ngrokUrl}/save/patientReportclosed/${id}`,this.httpOptions)
+}
+
 getAllDoctorPatientsList= ()=>{
   const id = localStorage.getItem('id')
   return this.http.get(`${this.ngrokUrl}/findall/patdoc/${id}`)
+}
+
+getAllDoctorPatientsListStatus= ()=>{
+  const id = localStorage.getItem('id');
+  const status = 'assigned';
+  return this.http.get(`${this.ngrokUrl}/findall/patientdoc/${id}/${status}`)
 }
 
 getPatientData= (id)=>{
@@ -290,6 +307,11 @@ observationsGetAllByPatient= () => {
   return this.http.get(`${this.ngrokUrl}/findall/observations/${pmid}`,this.httpOptions)
 }
 
+observationsGetAllByPatientReport= () => {
+  const pmid = localStorage.getItem('prid');  
+  return this.http.get(`${this.ngrokUrl}/findall/observations/${pmid}`,this.httpOptions)
+}
+
 // observationsGetAllByPatientmultiple= () => {
 //   const pmid = localStorage.getItem('pmid');  
 //   return this.http.get(`${this.ngrokUrl}/findall/observations/${pmid}`,this.httpOptions)
@@ -318,10 +340,17 @@ observationsReportUpdate= (objectManagementReq) => {
 
 getAllPatientMasterFetch= () => {
   const id = localStorage.getItem('id')
-
   return this.http.get(`${this.ngrokUrl}/auth/getallpatientmasterfetch/${id}`)
 }
 
+referralCommentInsert= (referralComment) => {
+  const pmid = localStorage.getItem('pmid'); 
+  return this.http.post(`${this.ngrokUrl}/auth/referralcomment/${pmid}`,referralComment,this.httpOptions)
+}
 
+getReferralCommentPatientId= () => {
+  const id = localStorage.getItem('pmid')
+  return this.http.get(`${this.ngrokUrl}/auth/getreferralcomment/${id}`)
+}
 
 }

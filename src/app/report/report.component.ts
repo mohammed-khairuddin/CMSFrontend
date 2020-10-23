@@ -245,7 +245,7 @@ mapCommentsToTextbox = () => {
 
 onItemSelect(item: any,type) {
 
-  //console.log(this.selectedItemsObservations);
+  console.log(this.selectedItemsObservations);
  
 }
 OnItemDeSelect(item: any,type) {

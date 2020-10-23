@@ -167,7 +167,7 @@
             </div>
 
             <input type="radio" name="tabs" id="tabeleven" queryParamsHandling="preserve"  (click)="getAddPage('pericardiumObservation')">
-            <label for="tabeleven">Pericardium</label>
+            <label for="tabeleven">PC</label>
             <div class="tab" *ngIf="isDataLoadedInPC">
               <app-master-pc></app-master-pc>
             </div>
@@ -187,6 +187,12 @@
               <app-referral-image></app-referral-image>
             </div>
 
+
+            <input type="radio" name="tabs" id="tabfourteen" queryParamsHandling="preserve"  (click)="getAddPage('measurements')">
+            <label for="tabfourteen">Measurements</label>
+            <div class="tab" *ngIf="isDataLoadedInME">              
+              <app-measurements></app-measurements>
+            </div>
 
           </div>
 
