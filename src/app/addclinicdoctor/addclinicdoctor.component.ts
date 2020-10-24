@@ -46,9 +46,15 @@ export class AddclinicdoctorComponent implements OnInit {
   timingshours :string;
   logoImage;
   profileImage;
+  services;
 
   AllClinicList: Object;  
   clinic: Object;
+
+  dropdownList = [];
+  selectedItems = [];
+  //dropdownSettings = {};
+  settings = {};
 
   ///////////////////////////////////
 
@@ -94,8 +100,16 @@ export class AddclinicdoctorComponent implements OnInit {
   timingshours:'',
   googlemaplocation:'',
   logoImage:'',
-  profileImage:''
+  profileImage:'',
+  services:'',
   };
+
+  specialityList;
+  serviceList;
+  typeList;
+  countryList;
+  stateList;
+  filteredCities;
 
   ///////////////////////////////////
 
@@ -119,6 +133,19 @@ export class AddclinicdoctorComponent implements OnInit {
 
   
   ngOnInit(): void {
+
+    this.loginService.getAllHospitalClinicFetch().subscribe( (data : any) => { 
+      const {hospitalSpeciality,hospitalService,country,state,
+        hostipalType} = data; 
+      console.log(data);
+    
+    this.specialityList = data['hospitalSpeciality'];
+    this.serviceList = data['hospitalService'];
+    this.typeList = data['hostipalType'];  
+    this.countryList = data['country']; 
+    this.stateList = data['state'];        
+    
+    }, error => console.log(error));
 
     this.addClinicDoctorForm = this.formBuilder.group({
 
@@ -163,13 +190,47 @@ export class AddclinicdoctorComponent implements OnInit {
      //console.log(this.AllClinicList)
     })
 
+    this.settings = {
+      text: "Select Services",
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      classes: "myclass custom-class"
+  };
+
   }
 
 /******************************/
 
 
+onCountrySelect(data){
+   
+  if (JSON.stringify(data) !== JSON.stringify({})) {
+    if(data){
+      this.filteredCities = this.stateList.filter(state=>state.countryId==data);
+
+   }
+ }
+
+}
+
 get f(){
   return this.addClinicDoctorForm.controls;
+}
+
+onItemSelect(item: any) {
+  console.log(item);
+  console.log(this.selectedItems);
+ 
+}
+OnItemDeSelect(item: any) {
+ // console.log(item);
+ // console.log(this.selectedItems);
+}
+onSelectAll(items: any) {
+ //console.log(items);
+}
+onDeSelectAll(items: any) {
+ //console.log(items);
 }
 
 onLogoChange(event) {

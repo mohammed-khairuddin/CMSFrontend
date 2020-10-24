@@ -23,6 +23,10 @@
    <div class="col-md-2 bgcolor"> Delete</div>
 </div>
 
+<!-- <div class="row looprows" *ngIf="!AllClinicList || AllClinicList.length === 0">
+  <td colspan="9"> <h4 class="norecords"> No Records Found </h4> </td>
+</div> -->
+
 <div class="row looprows" *ngFor="let alllist of AllClinicList |filter:filter | paginate: { itemsPerPage: 5, currentPage: p };index as i">
    <div class="col-md-2 loopindiv">CLINIC {{alllist.id}}</div>
    <div class="col-md-2  loopindiv">{{ alllist.name }}</div>

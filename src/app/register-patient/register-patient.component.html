@@ -160,25 +160,21 @@
                
                 <div class="form-group col-md-6">
                     <label for="country">Select Country</label> 
-                    <!-- <select id="country" name="country" class="form-control" required [(ngModel)]="addform.country" #country="ngModel" >
+                    <select id="country" name="country" class="form-control" required [(ngModel)]="addform.country" 
+                    #country="ngModel"  (ngModelChange)="onCountrySelect(addform.country)" >
                       <option value="">Select Country</option>
                         <option *ngFor="let country of this.countryList" [value]="country['key']">{{country['value']}}</option>
-                      </select> -->
-                      <select id="country" name="country" class="form-control" ng-model="countrySrc" ng-options="country for (country, states) in countries" ng-change="GetSelectedCountry()">
-                        <option value=''>Select Country</option>
-                      </select>
-
+                          </select>
+                    
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="state">Select State</label>  
-                    <!-- <select id="state" name="state" class="form-control" required [(ngModel)]="addform.state" #state="ngModel" >
-                    <option value="">Select State</option>
-                    <option *ngFor="let state of this.stateList" [value]="state['key']">{{state['value']}}</option>
-                    </select> -->
-                    <select id="state" name="state" class="form-control" ng-disabled="!countrySrc" ng-model="stateSrc" ng-options="state for (state,city) in countrySrc" ng-change="GetSelectedState()">
-                      <option value=''>Select</option>
-                    </select>
+                  
+                    <select class="form-control" id="state" name="state" [(ngModel)]="addform.state" #state="ngModel">
+                      <option value="">Select State</option>
+                      <option *ngFor="let state of filteredCities"  [value]="state['key']">{{state['value']}}</option>
+                        </select>
                 </div>
                 
                     <!-- <div class="form-group col-md-4"  >
@@ -202,7 +198,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                  <label for="village">Name of Village</label>                  
+                  <label for="village">Name of Village / City</label>                  
                   <input type="text" class="form-control" name="village" id="village" placeholder="Village" 
                   required [(ngModel)]="addform.village" #village="ngModel"    >
              </div>
@@ -361,41 +357,4 @@
 
     </div>
     <!-- /#wrapper -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script>
-      angular
-        .module('myApp', [])
-        .run(function($rootScope) {
-          $rootScope.title = 'myTest Page';
-        })
-        .controller('testController', ['$scope',
-          function($scope) {
-  
-  
-            $scope.countries = {
-  
-              'USA': {
-                'Alabama': ['Montgomery', 'Birmingham'],
-                'California': ['Sacramento', 'Fremont'],
-                'Illinois': ['Springfield', 'Chicago']
-              },
-              'India': {
-                'Maharashtra': ['Pune', 'Mumbai', 'Nagpur', 'Akola'],
-                'Madhya Pradesh': ['Indore', 'Bhopal', 'Jabalpur'],
-                'Rajasthan': ['Jaipur', 'Ajmer', 'Jodhpur']
-              },
-              'Australia': {
-                'New South Wales': ['Sydney'],
-                'Victoria': ['Melbourne']
-              }
-            };
-  
-            $scope.GetSelectedCountry = function() {
-              $scope.strCountry = $scope.countrySrc;
-            };
-            $scope.GetSelectedState = function() {
-              $scope.strState = $scope.stateSrc;
-            };
-          }
-        ])
-    </script>
+   

@@ -353,4 +353,8 @@ getReferralCommentPatientId= () => {
   return this.http.get(`${this.ngrokUrl}/auth/getreferralcomment/${id}`)
 }
 
+getAllHospitalClinicFetch= () => {
+  return this.http.get(`${this.ngrokUrl}/auth/getallhospitalclinicfetch`)
+}
+
 }

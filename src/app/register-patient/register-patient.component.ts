@@ -56,7 +56,7 @@ export class RegisterPatientComponent implements OnInit {
   settings = {};
   
   dropdownSettings:IDropdownSettings;
-  length : any[] = [];
+  //length : any[] = [];
   ///////////////////////////////////
 
  
@@ -116,6 +116,10 @@ export class RegisterPatientComponent implements OnInit {
   countryList;
   stateList;
 
+  countries:Array<any> = [];
+  cities:Array<any> = [];
+  filteredCities: Array<any> = [];
+
   ///////////////////////////////////
 
   constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder,private http:HttpClient) { }
@@ -153,7 +157,7 @@ export class RegisterPatientComponent implements OnInit {
       const {salutation,complains,maritalstatus,country,state,
         occupation,religion,educationalqualifications,doctor} = data; 
       
-    console.log(data['complains']);
+    
     this.salutationList = data['salutation'];
     this.complainsList = data['complains'];        
     this.maritalstatusList = data['maritalstatus'];
@@ -217,10 +221,20 @@ export class RegisterPatientComponent implements OnInit {
 ////////////////////////////////
 
 
+  }
 
+
+  onCountrySelect(data){
+   
+    if (JSON.stringify(data) !== JSON.stringify({})) {
+      if(data){
+        this.filteredCities = this.stateList.filter(state=>state.countryId==data);
+
+     }
+   }
 
   }
-  
+
   onItemSelect(item: any) {
      console.log(item);
      console.log(this.selectedItems);
@@ -236,19 +250,6 @@ export class RegisterPatientComponent implements OnInit {
   onDeSelectAll(items: any) {
     //console.log(items);
   }
- 
-
-onChangeCountry(countryValue) {
-  this.stateInfo=this.countryInfo[countryValue].States;
-  this.cityInfo=this.stateInfo[0].Cities;
-  //console.log(this.cityInfo);
-}
-
-onChangeState(stateValue) {
-  this.cityInfo=this.stateInfo[stateValue].Cities;
-  //console.log(this.cityInfo);
-}
-
 
 calculateAge(birthday) {
   
@@ -354,7 +355,8 @@ registerPatient = (data):any => {
         "village":data.village,
         "district":data.district,
       }
-      
+      console.log(patientManagementReq);
+      console.log('==============');
      
         this.loginService.registeredPatient(patientManagementReq).subscribe(res =>{
          

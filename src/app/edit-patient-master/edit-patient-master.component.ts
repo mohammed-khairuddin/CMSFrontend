@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
 import {Router} from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-edit-patient-master',
@@ -49,23 +50,24 @@ export class EditPatientMasterComponent implements OnInit {
   cityInfo: any[] = [];
 
   dropdownList = [];
-  selectedItems = [];
+  selectedItems;
   //dropdownSettings = {};
+  settings = {};
   
-  
+  //selectedItemsList;
   dropdownSettings:IDropdownSettings;
   ///////////////////////////////////
 
   genders=['Male','Female','Others'];
   martialstatuss=['Married','Unmarried'];
   occupationss=['Private JOb','Employee','Govt.Job'];
-  religionss=['Hindu','Christian','Muslim','Others'];
+  //religionss=['Hindu','Christian','Muslim','Others'];
   roles = ['CLINIC', 'DOCTOR'];
-  countrys = ['India', 'USA', 'Australia'];
-  states = ['Telangana','AndhraPradesh'];
-  citys = ['Hyderabad', 'Visakhapatnam', 'Vijayawada'];
-  complainss=['Vomiting','Headache'];
-  salutationss=['salutations1','salutations2'];
+  //countrys = ['India', 'USA', 'Australia'];
+  //states = ['Telangana','AndhraPradesh'];
+  //citys = ['Hyderabad', 'Visakhapatnam', 'Vijayawada'];
+  //complainss=['Vomiting','Headache'];
+  //salutationss=['salutations1','salutations2'];
   updform = {
     firstname:'',
     middlename:'',
@@ -105,6 +107,13 @@ export class EditPatientMasterComponent implements OnInit {
   occupationList;
   religionList;
   educationalqualificationsList;
+  countryList;
+  stateList;
+
+  editcomplainsList;
+  countries:Array<any> = [];
+  cities:Array<any> = [];
+  filteredCities: Array<any> = [];
 
   ///////////////////////////////////
 
@@ -138,10 +147,10 @@ export class EditPatientMasterComponent implements OnInit {
   ngOnInit(): void {
 
     this.loginService.getAllPatientMasterFetch().subscribe( (data : any) => { 
-      const {salutation,complains,maritalstatus,
+      const {salutation,complains,maritalstatus,country,state,
         occupation,religion,educationalqualifications,doctor} = data; 
       
-    //console.log(data['complains']);
+    
     this.salutationList = data['salutation'];
     this.complainsList = data['complains'];        
     this.maritalstatusList = data['maritalstatus'];
@@ -149,16 +158,34 @@ export class EditPatientMasterComponent implements OnInit {
     this.religionList = data['religion'];
     this.educationalqualificationsList = data['educationalqualifications'];
     this.clinicDoctorsList = data['doctor'];
+    this.countryList = data['country'];
+    this.stateList = data['state'];
+
     }, error => console.log(error));
 
 
     this.loginService.getRegisteredPatientDetail()
-    .subscribe(data => {
+    .subscribe((data : any) => {
       //console.log(data)
       this.updform = data['user']
+      this.selectedItems = this.updform.complains;
+
+    
+          if(this.updform.country){
+            console.log('ccccccccccccccc');
+            this.filteredCities = this.stateList.filter(state=>state.countryId==this.updform.country);
+      console.log(this.filteredCities);
+         }
+      
+
     }, error => console.log(error));
-    
-    
+
+    $("#datepickeraddcustomer").datepicker({  
+      dateFormat: "yy-mm-dd",  
+      maxDate: new Date()  
+ });
+ 
+ 
     this.regPatientForm = this.formBuilder.group({
       firstname:['',Validators.required],
       middlename:['',Validators.required],
@@ -190,28 +217,14 @@ export class EditPatientMasterComponent implements OnInit {
     });
 
     
-    ///
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Nausea' },
-      { item_id: 2, item_text: 'Vomiting' },
-      { item_id: 3, item_text: 'Heartburn acidity' },
-      { item_id: 4, item_text: 'Headache' },
-      { item_id: 5, item_text: 'Irritable' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Heartburn acidity' },
-      { item_id: 4, item_text: 'Headache' }
-    ];
 
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+
+ this.settings = {
+      text: "Select Complains",
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
+      classes: "myclass custom-class"
+  };
 
 
   }
@@ -230,16 +243,35 @@ getCountries(){
 }
 
 
-onChangeCountry(countryValue) {
-  this.stateInfo=this.countryInfo[countryValue].States;
-  this.cityInfo=this.stateInfo[0].Cities;
-  //console.log(this.cityInfo);
+onCountrySelect(data){
+   
+  if (JSON.stringify(data) !== JSON.stringify({})) {
+    if(data){
+      this.filteredCities = this.stateList.filter(state=>state.countryId==data);
+
+   }
+ }
+
 }
 
-onChangeState(stateValue) {
-  this.cityInfo=this.stateInfo[stateValue].Cities;
-  //console.log(this.cityInfo);
+
+onItemSelect(item: any) {
+  console.log(item);
+  console.log(this.selectedItems);
+ 
 }
+OnItemDeSelect(item: any) {
+ // console.log(item);
+ // console.log(this.selectedItems);
+}
+onSelectAll(items: any) {
+ //console.log(items);
+}
+onDeSelectAll(items: any) {
+ //console.log(items);
+}
+
+
 
 
 calculateAge(birthday) {

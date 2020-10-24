@@ -66,22 +66,22 @@
             <div class="form-group col-md-8">
                 <label for="complains">Complains / Symptoms </label>                                   
               
-                  <!-- <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" [settings]="settings"  
-                  (onSelect)="onItemSelect($event)"   name="complains" id="complains" class="Checkbox"
-                  (onDeSelect)="OnItemDeSelect($event)" 
-                  (onSelectAll)="onSelectAll($event)" 
-                  (onDeSelectAll)="onDeSelectAll($event)"  >
-                    <c-item>
-                            <ng-template let-item="item">
-                              <label style="color: #495057;min-width: 150px;font-weight: 500">{{item.name}}</label> 
-                            </ng-template>
-                    </c-item>  
-                  </angular2-multiselect>  -->
+                <angular2-multiselect [data]="this.complainsList" [(ngModel)]="selectedItems" [settings]="settings"  
+                (onSelect)="onItemSelect($event)"   name="complains" id="complains" class="Checkbox"
+                (onDeSelect)="OnItemDeSelect($event)" 
+                (onSelectAll)="onSelectAll($event)" 
+                (onDeSelectAll)="onDeSelectAll($event)"  >
+                  <c-item>
+                          <ng-template let-item="item">
+                            <label style="color: #495057;min-width: 150px;font-weight: 500">{{item.itemName}}</label> 
+                          </ng-template>
+                  </c-item>  
+                </angular2-multiselect> 
                 
-                <select id="complains" name="complains" class="form-control" required [(ngModel)]="updform.complains" #complains="ngModel"  >
+                <!-- <select id="complains" name="complains" class="form-control" required [(ngModel)]="updform.complains" #complains="ngModel"  >
                   <option value="">Select Complains / Symptoms</option>                 
                   <option *ngFor="let com of this.complainsList" [value]="com['key']">{{com['value']}}</option>
-              </select>
+              </select> -->
                 
              
     
@@ -160,29 +160,25 @@
                
                 <div class="form-group col-md-6">
                     <label for="country">Select Country</label> 
-                    <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" #country="ngModel" >
-                      <option value="">Select Country</option>
-                        <option *ngFor="let c of countrys" [value]="c">{{c}}</option>
-                      </select>
+                  
+                      <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" 
+                      #country="ngModel"  (ngModelChange)="onCountrySelect(updform.country)" >
+                        <option value="">Select Country</option>
+                          <option *ngFor="let country of this.countryList" [value]="country['key']">{{country['value']}}</option>
+                            </select>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="state">Select State</label>  
-                    <select id="state" name="state" class="form-control" required [(ngModel)]="updform.state" #state="ngModel" >
-                    <option value="">Select State</option>
-                    <option *ngFor="let s of states" [value]="s">{{s}}</option>
-                    </select>
-                   
+                    
+                    
+                    <select class="form-control" id="state" name="state" [(ngModel)]="updform.state" #state="ngModel">
+                      <option value="">Select State</option>
+                      <option *ngFor="let state of this.filteredCities"  [value]="state['key']">{{state['value']}}</option>
+                        </select>
                 </div>
                 
-                    <!-- <div class="form-group col-md-4"  >
-                        <label for="city">Select City</label>                          
-                        <select id="city" name="city" class="form-control" required [(ngModel)]="updform.city" #city="ngModel" >
-                        <option value="">Select City</option>
-                        <option *ngFor="let ct of citys" [value]="ct">{{ct}}</option>
-                        </select>
-                      
-                </div> -->
+                  
         
             </div>  
 
@@ -196,7 +192,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                  <label for="village">Name of Village</label>                  
+                  <label for="village">Name of Village / City</label>                  
                   <input type="text" class="form-control" name="village" id="village" placeholder="Village" 
                   required [(ngModel)]="updform.village" #village="ngModel"    >
              </div>
@@ -336,7 +332,7 @@
                     <label for="datefirstvisit">Date of First Visit</label> 
                    <input type="date" class="form-control" name="datefirstvisit" id="datefirstvisit" placeholder="Date of First Visit" 
                    required [(ngModel)]="updform.datefirstvisit" #datefirstvisit="ngModel"   >
-               
+                   <!-- <input type="text" class="datepicker"> -->
                </div>
             </div>
 
@@ -362,3 +358,4 @@
 
     </div>
     <!-- /#wrapper -->
+   

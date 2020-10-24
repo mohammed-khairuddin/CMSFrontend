@@ -21,7 +21,7 @@ export class ReferralImageComponent implements OnInit {
   ngOnInit(): void {
 
   this.loginService.getReferralCommentPatientId().subscribe(data => {    
-    //console.log(data);
+    console.log(data);
     this.comment = data['referralcomment']
   }, error => console.log(error));
 
@@ -34,13 +34,12 @@ export class ReferralImageComponent implements OnInit {
   
   addComment = (data):any => {
     
-
     const referralComment = {
       "comment": data.comment
     }
 
     this.loginService.referralCommentInsert(referralComment).subscribe(res =>{  
-       if(res['description'] ==  'Comment Success' ) {
+       if(res['message'] ==  'referral comment submitted successfully' ) {
         alert('Referral Comment Successfully');
         //this.router.navigate(['/previewregkin']);
         window.location.reload();
