@@ -49,6 +49,8 @@ export class ShowallclinicsComponent implements OnInit {
      })
 
     
+   
+    
   }
 
   

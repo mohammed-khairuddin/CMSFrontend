@@ -47,9 +47,7 @@
     <tr *ngFor="let alllist of AllPatientsList |filter:filter | paginate: { itemsPerPage: 5, currentPage: p };index as i">
         <td>{{getShortName(ClinicData?.name)}}00000{{ alllist.id}}</td>
         <td>{{ alllist.firstname | titlecase }} {{ alllist.lastname | titlecase }}</td>
-        <td> --
-          <!-- {{ alllist.complains}} -->
-        </td>
+        <td>{{ alllist.complains}}</td>
         <td>{{ alllist.gender}}</td>
         <td>{{ alllist.regmobileno }}</td>
         <td><button type="button" class="btn btn-primary btn-sm" (click)="goToEditPatientMaster(alllist)"  >Edit</button>   </td>

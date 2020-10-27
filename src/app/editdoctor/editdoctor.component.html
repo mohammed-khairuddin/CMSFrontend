@@ -18,7 +18,7 @@
                 <h2 class="text-center">Edit Doctor</h2> 
               
                 <div class="form-row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label for="name">Role</label>
                         <select id="role" name="role" class="form-control" required [(ngModel)]="updform.role" #role="ngModel"  >
                             <option value="">Select User Role</option>
@@ -29,21 +29,7 @@
                             </div>    
             
                     </div>
-
-                    <div class="form-group col-md-4" *ngIf="updform.role === 'DOCTOR'" >
-                      <label for="salutation">Salutation</label>
-                      <select id="salutation" name="salutation" class="form-control" required [(ngModel)]="updform.salutation" #salutation="ngModel"  >
-                        <option value="">Select Salutation</option>
-                          <option *ngFor="let salutation of this.salutationList" [value]="salutation['key']">{{salutation['value']}}</option>
-                    </select>
-      
-                    <div *ngIf="salutation.errors && salutation.touched" class="alert alert-danger">
-                      <div *ngIf="salutation.errors.required">Salutation is required.</div>
-                    </div> 
-      
-                    </div> 
-
-                        <div class="form-group col-md-4"  >
+                        <div class="form-group col-md-6"  >
                             <label for="name">Name Of Clinic/Doctor</label>
                             <input  id="name" name="name" class="form-control" required [(ngModel)]="updform.name" #name="ngModel" placeholder="Name Of Clinic/Doctor" >
                             <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
@@ -54,46 +40,6 @@
                           </div>
                           
                    
-                 
-                  </div>
-
-                  <div class="form-row" *ngIf="updform.role === 'DOCTOR'" >
-
-      
-                    <div class="form-group col-md-4">
-                        
-                    <label for="middlename">Middle Name</label>
-                    <input  type="text" id="middlename" name="middlename" class="form-control" required [(ngModel)]="updform.middlename" #middlename="ngModel" placeholder="Middle Name" >
-                    <div *ngIf="middlename.invalid && (middlename.dirty || middlename.touched)" class="alert alert-danger">
-                    <div *ngIf="middlename.errors.required">
-                    Middle Name is required.
-                    </div>
-                    </div>     
-            
-                    </div>
-                    <div class="form-group col-md-4"  >
-                      <label for="lastname">Last Name</label>
-                      <input  type="text" id="lastname" name="lastname" class="form-control" required [(ngModel)]="updform.lastname" #lastname="ngModel" placeholder="Last Name" >
-                      <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
-                      <div *ngIf="lastname.errors.required">
-                      Last Name is required.
-                      </div>
-                      </div>       
-                           
-                    </div>
-                          
-                    <div class="form-group col-md-4"  >
-                      <label for="branch">Branch</label>
-                      <select id="branch" name="branch" class="form-control" required [(ngModel)]="updform.branch" #branch="ngModel"  >
-                        <option value="">Select Branch</option>
-                          <option *ngFor="let branch of this.branchList" [value]="branch['key']">{{branch['value']}}</option>
-                    </select>
-      
-                    <div *ngIf="branch.errors && branch.touched" class="alert alert-danger">
-                      <div *ngIf="branch.errors.required">Salutation is required.</div>
-                    </div> 
-      
-                    </div> 
                  
                   </div>
             
@@ -226,15 +172,10 @@
       
                     <div class="form-group col-md-4">
                       <label for="country">Select Country</label> 
-                      <!-- <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" #country="ngModel" >
+                      <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" #country="ngModel" >
                         <option value="">Select Country</option>
                           <option *ngFor="let c of countrys" [value]="c">{{c}}</option>
-                        </select> -->
-                        <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" 
-                        #country="ngModel"  (ngModelChange)="onCountrySelect(updform.country)" >
-                          <option value="">Select Country</option>
-                            <option *ngFor="let country of this.countryList" [value]="country['key']">{{country['value']}}</option>
-                              </select>
+                        </select>
                         <div *ngIf="country.errors && country.touched" class="alert alert-danger">
                           <div *ngIf="country.errors.required">Country is required.</div>
                         </div>    
@@ -242,14 +183,10 @@
                  
                         <div class="form-group col-md-4">
                             <label for="state">Select State</label> 
-                            <!-- <select id="state" name="state" class="form-control" required [(ngModel)]="updform.state" #state="ngModel" >
+                            <select id="state" name="state" class="form-control" required [(ngModel)]="updform.state" #state="ngModel" >
                             <option value="">Select State</option>
                             <option *ngFor="let s of states" [value]="s">{{s}}</option>
-                            </select> -->                           
-                                  <select class="form-control" id="state" name="state" [(ngModel)]="updform.state" #state="ngModel">
-                                    <option value="">Select State</option>
-                                    <option *ngFor="let state of this.filteredCities"  [value]="state['key']">{{state['value']}}</option>
-                                      </select>
+                            </select>
                             <div *ngIf="state.errors && state.touched" class="alert alert-danger">
                             <div *ngIf="state.errors.required">State is required.</div>
                             </div>    

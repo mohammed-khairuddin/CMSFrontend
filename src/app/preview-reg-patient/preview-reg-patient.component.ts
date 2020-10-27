@@ -37,8 +37,7 @@ export class PreviewRegPatientComponent implements OnInit {
 
        
     this.loginService.getAllRegisteredPatient().subscribe(user =>{
-      console.log(user);
-      console.log('*************');
+      
       this.AllPatientsList = user['user']
       this.TotalList = this.AllPatientsList;
      

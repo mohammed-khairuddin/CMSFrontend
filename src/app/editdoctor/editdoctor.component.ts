@@ -43,10 +43,6 @@ export class EditdoctorComponent implements OnInit {
   timingsdays:string;
   timingshours :string;
   googlemaplocation:string;
-  middlename:string;
-  lastname:string;
-  salutation;
-  branch;
 
   AllClinicList: Object;  
   clinic: Object;
@@ -93,21 +89,8 @@ export class EditdoctorComponent implements OnInit {
   degreedoctor:'',
   timingsdays:'',
   timingshours:'',
-  googlemaplocation:'',
-  middlename:'',
-  lastname:'',
-  salutation:'',
-  branch:'',
+  googlemaplocation:''
   };
-
-  // specialityList;
-  // serviceList;
-  // typeList;
-  countryList;
-  stateList;
-  filteredCities;
-  salutationList;
-  branchList;
 
   ///////////////////////////////////
 
@@ -120,20 +103,8 @@ export class EditdoctorComponent implements OnInit {
     
     this.loginService.getDoctorData(localStorage.getItem("aid"))
     .subscribe(data => {
-      //console.log(data);          
-      this.updform = data['doctor'];
-      this.salutationList = data['salutation'];
-      this.branchList = data['branch'];
-      this.countryList = data['country'];
-      this.stateList = data['state'];
-
-      
-      if(this.updform.country){
-           
-        this.filteredCities = this.stateList.filter(state=>state.countryId==this.updform.country);
-  console.log(this.filteredCities);
-     }
-
+      console.log(data)
+      this.updform = data['doctor']
     }, error => console.log(error));
     
     this.addClinicDoctorForm = this.formBuilder.group({
@@ -179,16 +150,6 @@ export class EditdoctorComponent implements OnInit {
 
   }
 
-  onCountrySelect(data){
-   
-    if (JSON.stringify(data) !== JSON.stringify({})) {
-      if(data){
-        this.filteredCities = this.stateList.filter(state=>state.countryId==data);
-  
-     }
-   }
-  
-  }
 
   updateDoctor = ():any => {
     this.loginService.updateDoctorData(this.updform).subscribe(updateDoctor =>{

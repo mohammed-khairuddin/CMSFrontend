@@ -64,7 +64,7 @@
                         <label for="speciality">Hospital / Clinic Speciality</label>
                         <select id="speciality" name="speciality" class="form-control" required [(ngModel)]="updform.speciality" #speciality="ngModel"  >
                             <option value="">Select Speciality</option>
-                            <option *ngFor="let sp of specialityList" [value]="sp['key']">{{sp['value']}}</option>
+                              <option *ngFor="let sp of specialitys" [value]="sp">{{sp}}</option>
                         </select>
                           
             
@@ -73,7 +73,7 @@
                             <label for="clinictype">Hospital / Clinic Type </label>
                             <select id="clinictype" name="clinictype" class="form-control" required [(ngModel)]="updform.clinictype" #clinictype="ngModel"  >
                               <option value="">Select Hospital / Clinic Type</option>
-                              <option *ngFor="let ct of this.typeList" [value]="ct['key']">{{ct['value']}}</option>
+                                <option *ngFor="let ct of clinictypes" [value]="ct">{{ct}}</option>
                           </select>
                            
                           </div>
@@ -191,10 +191,9 @@
 
                   <div class="form-group col-md-4">
                     <label for="country">Select Country</label> 
-                    <select id="country" name="country" class="form-control" required 
-                    [(ngModel)]="updform.country" #country="ngModel" (ngModelChange)="onCountrySelect(updform.country)" >
+                    <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" #country="ngModel" >
                       <option value="">Select Country</option>
-                        <option *ngFor="let country of countryList" [value]="country['key']">{{country['value']}}</option>
+                        <option *ngFor="let c of countrys" [value]="c">{{c}}</option>
                       </select>
                       <div *ngIf="country.errors && country.touched" class="alert alert-danger">
                         <div *ngIf="country.errors.required">Country is required.</div>
@@ -205,7 +204,7 @@
                           <label for="state">Select State</label> 
                           <select id="state" name="state" class="form-control" required [(ngModel)]="updform.state" #state="ngModel" >
                           <option value="">Select State</option>
-                          <option *ngFor="let state of filteredCities" [value]="state['key']">{{state['value']}}</option>
+                          <option *ngFor="let s of states" [value]="s">{{s}}</option>
                           </select>
                           <div *ngIf="state.errors && state.touched" class="alert alert-danger">
                           <div *ngIf="state.errors.required">State is required.</div>
@@ -288,7 +287,7 @@
           
           
               <div class="form-row" >
-                <div class="form-group col-md-6" *ngIf="updform.ambulancephno!='' ">
+                <div class="form-group col-md-6" *ngIf="updform.ambulancephno!=''">
                     <label for="ambulancephno">Ambulance Phone Number</label> 
                     <input type="text" placeholder="Ambulance Phone Number" name="ambulancephno" class="form-control" id="ambulancephno" 
                     required [(ngModel)]="updform.ambulancephno" #ambulancephno="ngModel"  >
@@ -303,23 +302,6 @@
               </div>
           
             </div> 
-
-            <div class="form-group col-md-6" *ngIf="updform.role === 'CLINIC'">
-              <label for="services">Service Available </label> 
-              <!-- <input type="text" placeholder="Services Available" name="services" class="form-control" id="services" 
-              required [(ngModel)]="updform.services" #services="ngModel"  > -->
-              <angular2-multiselect [data]="this.serviceList" [(ngModel)]="selectedItems" [settings]="settings"  
-              (onSelect)="onItemSelect($event)"   name="services" id="services" class="Checkbox"
-              (onDeSelect)="OnItemDeSelect($event)" 
-              (onSelectAll)="onSelectAll($event)" 
-              (onDeSelectAll)="onDeSelectAll($event)"  >
-                <c-item>
-                        <ng-template let-item="item">
-                          <label style="color: #495057;min-width: 150px;font-weight: 500">{{item.itemName}}</label> 
-                        </ng-template>
-                </c-item>  
-              </angular2-multiselect> 
-          </div>
 
           
             

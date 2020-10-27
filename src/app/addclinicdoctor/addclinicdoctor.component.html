@@ -18,7 +18,7 @@
           <h2 class="text-center">Add Clinic/Doctor </h2> 
         
           <div class="form-row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-6">
                   <label for="name">Role</label>
                   <select id="role" name="role" class="form-control" required [(ngModel)]="addform.role" #role="ngModel"  >
                       <option value="">Select User Role</option>
@@ -29,21 +29,7 @@
                       </div>    
       
               </div>
-              
-              <div class="form-group col-md-4" *ngIf="addform.role === 'DOCTOR'" >
-                <label for="salutation">Salutation</label>
-                <select id="salutation" name="salutation" class="form-control" required [(ngModel)]="addform.salutation" #salutation="ngModel"  >
-                  <option value="">Select Salutation</option>
-                    <option *ngFor="let salutation of this.salutationList" [value]="salutation['key']">{{salutation['value']}}</option>
-              </select>
-
-              <div *ngIf="salutation.errors && salutation.touched" class="alert alert-danger">
-                <div *ngIf="salutation.errors.required">Salutation is required.</div>
-              </div> 
-
-              </div> 
-
-                  <div class="form-group col-md-4"  >
+                  <div class="form-group col-md-6"  >
                       <label for="name">Name Of Clinic/Doctor</label>
                       <input  type="text" id="name" name="name" class="form-control" required [(ngModel)]="addform.name" #name="ngModel" placeholder="Name Of Clinic/Doctor" >
                       <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
@@ -52,8 +38,6 @@
                         </div>
                         </div>
                     </div>
-
-                     
                                             
             </div>
 
@@ -62,40 +46,26 @@
             <div class="form-row" *ngIf="addform.role === 'CLINIC'" >
 
               <div class="form-group col-md-4">
-                <label for="type">Type Of Registration : &nbsp; &nbsp; </label> <br/>              
+                <label for="type">Type Of Registration : &nbsp; &nbsp; </label> <br/>
+                <!-- <input type="radio" id="type" name="type" [value]="HOSPITAL" [(ngModel)]="type" />  &nbsp; HOSPITAL
+                <input type="radio" id="type" name="type" [value]="CLINIC" [(ngModel)]="type" />  &nbsp; CLINIC
+                    -->
+
                 <select id="type" name="type" class="form-control" required [(ngModel)]="addform.type" #type="ngModel"  >
                   <option value="">Select Type Of Registration</option>
                     <option *ngFor="let ty of typess" [value]="ty">{{ty}}</option>
               </select>
-
-              <div *ngIf="type.errors && type.touched" class="alert alert-danger">
-                <div *ngIf="type.errors.required">Type is required.</div>
-              </div> 
-
+    
               </div>
 
               <div class="form-group col-md-4">
                   <label for="speciality">Hospital / Clinic Speciality</label>
-                  <!-- <select id="speciality" name="speciality" class="form-control" required [(ngModel)]="addform.speciality" #speciality="ngModel"  >
+                  <select id="speciality" name="speciality" class="form-control" required [(ngModel)]="addform.speciality" #speciality="ngModel"  >
                       <option value="">Select Speciality</option>
                         <option *ngFor="let sp of specialityList" [value]="sp['key']">{{sp['value']}}</option>
-                  </select> -->
-
-                  <angular2-multiselect [data]="this.specialityList" [(ngModel)]="selectedItems" [settings]="settings"  
-      (onSelect)="onItemSelect($event)"   name="speciality" id="speciality" class="Checkbox"
-      (onDeSelect)="OnItemDeSelect($event)" 
-      (onSelectAll)="onSelectAll($event)" 
-      (onDeSelectAll)="onDeSelectAll($event)"  >
-        <c-item>
-                <ng-template let-item="item">
-                  <label style="color: #495057;min-width: 150px;font-weight: 500">{{item.itemName}}</label> 
-                </ng-template>
-        </c-item>  
-      </angular2-multiselect> 
+                  </select>
                     
-                  <!-- <div *ngIf="speciality.errors && speciality.touched" class="alert alert-danger">
-                    <div *ngIf="speciality.errors.required">Speciality is required.</div>
-                  </div>  -->
+      
               </div>
                   <div class="form-group col-md-4"  >
                       <label for="clinictype">Hospital / Clinic Type </label>
@@ -103,56 +73,12 @@
                         <option value="">Select Hospital / Clinic Type</option>
                           <option *ngFor="let ct of typeList" [value]="ct['key']">{{ct['value']}}</option>
                     </select>
-
-                    <div *ngIf="clinictype.errors && clinictype.touched" class="alert alert-danger">
-                      <div *ngIf="clinictype.errors.required">Clinic Type is required.</div>
-                    </div> 
-                    
-                    
-                    </div>
-                                            
-            </div>
-
-
-            <div class="form-row" *ngIf="addform.role === 'DOCTOR'" >
-
-              <div class="form-group col-md-4">
-                  
-              <label for="middlename">Middle Name</label>
-              <input  type="text" id="middlename" name="middlename" class="form-control" required [(ngModel)]="addform.middlename" #middlename="ngModel" placeholder="Middle Name" >
-              <div *ngIf="middlename.invalid && (middlename.dirty || middlename.touched)" class="alert alert-danger">
-              <div *ngIf="middlename.errors.required">
-              Middle Name is required.
-              </div>
-              </div>     
-      
-              </div>
-              <div class="form-group col-md-4"  >
-                <label for="lastname">Last Name</label>
-                <input  type="text" id="lastname" name="lastname" class="form-control" required [(ngModel)]="addform.lastname" #lastname="ngModel" placeholder="Last Name" >
-                <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
-                <div *ngIf="lastname.errors.required">
-                Last Name is required.
-                </div>
-                </div>       
                      
-              </div>
+                    </div>
                     
-              <div class="form-group col-md-4"  >
-                <label for="branch">Branch</label>
-                <select id="branch" name="branch" class="form-control" required [(ngModel)]="addform.branch" #branch="ngModel"  >
-                  <option value="">Select Branch</option>
-                    <option *ngFor="let branch of this.branchList" [value]="branch['key']">{{branch['value']}}</option>
-              </select>
-
-              <div *ngIf="branch.errors && branch.touched" class="alert alert-danger">
-                <div *ngIf="branch.errors.required">Salutation is required.</div>
-              </div> 
-
-              </div> 
+             
            
             </div>
-      
       
             
       
@@ -457,24 +383,26 @@
         
     </div>
 
+    <div class="form-group col-md-6" *ngIf="addform.role === 'CLINIC'">
+      <label for="services">Service Available </label> 
+      <!-- <input type="text" placeholder="Services Available" name="services" class="form-control" id="services" 
+      required [(ngModel)]="addform.services" #services="ngModel"  > -->
+      <angular2-multiselect [data]="this.serviceList" [(ngModel)]="selectedItems" [settings]="settings"  
+      (onSelect)="onItemSelect($event)"   name="services" id="services" class="Checkbox"
+      (onDeSelect)="OnItemDeSelect($event)" 
+      (onSelectAll)="onSelectAll($event)" 
+      (onDeSelectAll)="onDeSelectAll($event)"  >
+        <c-item>
+                <ng-template let-item="item">
+                  <label style="color: #495057;min-width: 150px;font-weight: 500">{{item.itemName}}</label> 
+                </ng-template>
+        </c-item>  
+      </angular2-multiselect> 
+  </div>
+
   </div> 
 
-  <div class="form-group col-md-6" *ngIf="addform.role === 'CLINIC'">
-    <label for="services">Service Available </label> 
-    <!-- <input type="text" placeholder="Services Available" name="services" class="form-control" id="services" 
-    required [(ngModel)]="addform.services" #services="ngModel"  > -->
-    <angular2-multiselect [data]="this.serviceList" [(ngModel)]="selectedItems1" [settings]="servicessettings"  
-    (onSelect)="onItemSelect($event)"   name="services" id="services" class="Checkbox"
-    (onDeSelect)="OnItemDeSelect($event)" 
-    (onSelectAll)="onSelectAll($event)" 
-    (onDeSelectAll)="onDeSelectAll($event)"  >
-      <c-item>
-              <ng-template let-item="item">
-                <label style="color: #495057;min-width: 150px;font-weight: 500">{{item.itemName}}</label> 
-              </ng-template>
-      </c-item>  
-    </angular2-multiselect> 
-</div>
+  
 
  
 

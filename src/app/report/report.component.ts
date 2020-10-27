@@ -573,8 +573,7 @@ console.log(this.reportFormData1().doctorAdviceComments)
     console.log(this.reportFormData1().conclusionsComments[i])
     conclusionpdf.push({ columns:[{text:'',bold:true},{text:`${this.reportFormData1().conclusionsComments[i].conclusioncomment}`,margin:[0,0,0,0]}]})
   }
-  
-  //console.log(this.ngOnInit);
+
 
 
 

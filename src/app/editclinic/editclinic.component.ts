@@ -43,7 +43,6 @@ export class EditclinicComponent implements OnInit {
   timingsdays:string;
   timingshours :string;
   googlemaplocation:string;
-  services;
 
   AllClinicList: Object;  
   clinic: Object;
@@ -90,23 +89,11 @@ export class EditclinicComponent implements OnInit {
   degreedoctor:'',
   timingsdays:'',
   timingshours:'',
-  googlemaplocation:'',
-  services:'',
+  googlemaplocation:''
   };
 
   ///////////////////////////////////
 
-  countryList;
-  stateList;
-  filteredCities;
-  serviceList;
-  specialityList;
-  typeList;
-
-  dropdownList = [];
-  selectedItems = [];
-  //dropdownSettings = {};
-  settings = {};
 
   constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder) { }
 
@@ -116,20 +103,8 @@ export class EditclinicComponent implements OnInit {
 
     this.loginService.getClinicData(localStorage.getItem("aid"))
     .subscribe(data => {
-      console.log(data);
-      this.updform = data['doctor'];
-      this.countryList = data['country'];
-      this.stateList = data['state'];
-      this.serviceList = data['hospitalService'];
-      this.specialityList = data['hospitalSpeciality'];
-      this.typeList = data['hospitalType'];
-
-      if(this.updform.country){
-           
-        this.filteredCities = this.stateList.filter(state=>state.countryId==this.updform.country);
-  console.log(this.filteredCities);
-     }
-
+      //console.log(data)
+      this.updform = data['doctor']
     }, error => console.log(error));
     
     this.addClinicDoctorForm = this.formBuilder.group({
@@ -174,34 +149,6 @@ export class EditclinicComponent implements OnInit {
 
   }
 
-  onCountrySelect(data){
-   
-    if (JSON.stringify(data) !== JSON.stringify({})) {
-      if(data){
-        this.filteredCities = this.stateList.filter(state=>state.countryId==data);
-  
-     }
-   }
-  
-  }
-
-  onItemSelect(item: any) {
-    console.log(item);
-    console.log(this.selectedItems);
-   
-  }
-  OnItemDeSelect(item: any) {
-   // console.log(item);
-   // console.log(this.selectedItems);
-  }
-  onSelectAll(items: any) {
-   //console.log(items);
-  }
-  onDeSelectAll(items: any) {
-   //console.log(items);
-  }
-
-  
   updateClinic = ():any => {
     //console.log(this.updform);
      this.loginService.updateClinicData(this.updform).subscribe(updateDoctor =>{
