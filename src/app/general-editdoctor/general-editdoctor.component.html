@@ -86,7 +86,7 @@
                       <label for="branch">Branch</label>
                       <select id="branch" name="branch" class="form-control" required [(ngModel)]="updform.branch" #branch="ngModel"  >
                         <option value="">Select Branch</option>
-                          <option *ngFor="let branch of this.branchList" [value]="branch['key']">{{branch['value']}}</option>
+                          <option *ngFor="let branch of this.branchList" [value]="branch['id']">{{branch['itemName']}}</option>
                     </select>
       
                     <div *ngIf="branch.errors && branch.touched" class="alert alert-danger">

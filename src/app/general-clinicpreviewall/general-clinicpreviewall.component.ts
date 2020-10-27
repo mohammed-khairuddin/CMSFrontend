@@ -3,11 +3,11 @@ import {LoginserviceService} from '../loginservice.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-showallclinics',
-  templateUrl: './showallclinics.component.html',
-  styleUrls: ['./showallclinics.component.scss']
+  selector: 'app-general-clinicpreviewall',
+  templateUrl: './general-clinicpreviewall.component.html',
+  styleUrls: ['./general-clinicpreviewall.component.scss']
 })
-export class ShowallclinicsComponent implements OnInit {
+export class GeneralClinicpreviewallComponent implements OnInit {
 
   AllClinicList: Object;  
 
@@ -25,7 +25,8 @@ export class ShowallclinicsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.loginService.getAllClinicList().subscribe(clinic =>{
+    this.loginService.getGeneralAllClinicList().subscribe(clinic =>{
+      //console.log(clinic);
       this.AllClinicList = clinic['clinic']
      //localStorage.setItem("list",cliniclist)
      //console.log(this.AllClinicList)
@@ -35,19 +36,21 @@ export class ShowallclinicsComponent implements OnInit {
 
   
   goToEditClinic  = (list) => {
-    window.localStorage.setItem("aid", list.id.toString());
-    this.router.navigateByUrl(`/editclinic/${list.id}`)
+    window.localStorage.setItem("gaid", list.id.toString());
+    this.router.navigateByUrl(`/general-editclinic/${list.id}`)
 
 
   }
 
   goToDeleteClinic = (list):any => {
-    window.localStorage.setItem("aid", list.id.toString());
-     this.loginService.deleteClinic().subscribe(res =>{
+    window.localStorage.setItem("gaid", list.id.toString());
+     this.loginService.deleteGeneralClinic().subscribe(res =>{
        window.location.reload();
         //this.router.navigateByUrl('/dashboard')
      })
 
+    
+   
     
   }
 

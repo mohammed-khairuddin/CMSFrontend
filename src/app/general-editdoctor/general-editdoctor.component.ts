@@ -4,11 +4,11 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-editdoctor',
-  templateUrl: './editdoctor.component.html',
-  styleUrls: ['./editdoctor.component.scss']
+  selector: 'app-general-editdoctor',
+  templateUrl: './general-editdoctor.component.html',
+  styleUrls: ['./general-editdoctor.component.scss']
 })
-export class EditdoctorComponent implements OnInit {
+export class GeneralEditdoctorComponent implements OnInit {
 
   
   role: string;
@@ -118,9 +118,9 @@ export class EditdoctorComponent implements OnInit {
   ngOnInit(): void {
 
     
-    this.loginService.getDoctorData(localStorage.getItem("aid"))
+    this.loginService.getGeneralDoctorData(localStorage.getItem("gaid"))
     .subscribe(data => {
-      //console.log(data);          
+      console.log(data);          
       this.updform = data['doctor'];
       this.salutationList = data['salutation'];
       this.branchList = data['branch'];
@@ -170,7 +170,7 @@ export class EditdoctorComponent implements OnInit {
       googlemaplocation:['',Validators.required]
     });
 
-    this.loginService.getAllClinicList().subscribe(clinic =>{
+    this.loginService.getGeneralAllClinicList().subscribe(clinic =>{
       this.AllClinicList = clinic['clinic']
      //localStorage.setItem("list",cliniclist)
      //console.log(this.AllClinicList)
@@ -191,9 +191,9 @@ export class EditdoctorComponent implements OnInit {
   }
 
   updateDoctor = ():any => {
-    this.loginService.updateDoctorData(this.updform).subscribe(updateDoctor =>{
+    this.loginService.updateGeneralDoctorData(this.updform).subscribe(updateDoctor =>{
       alert('Doctor Data Updated Successfully');
-     //this.router.navigateByUrl('/dashboard');
+     this.router.navigateByUrl('/general-previewdoctorall');
     })
    
  }

@@ -179,7 +179,7 @@ export class CaseCompletedComponent implements OnInit {
     
       this.loginService.getPatientData(alllist.id).subscribe(data => {   
       console.log(data);
-      console.log('+++++--------');
+      
        this.patientDataObject = data['doctor'];
        this.loginService.getDoctorData(this.patientDataObject.docId).subscribe(data => {      
          this.DoctorData = data['doctor']

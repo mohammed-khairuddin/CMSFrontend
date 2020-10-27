@@ -4,11 +4,11 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-editdoctor',
-  templateUrl: './editdoctor.component.html',
-  styleUrls: ['./editdoctor.component.scss']
+  selector: 'app-general-editclinic',
+  templateUrl: './general-editclinic.component.html',
+  styleUrls: ['./general-editclinic.component.scss']
 })
-export class EditdoctorComponent implements OnInit {
+export class GeneralEditclinicComponent implements OnInit {
 
   
   role: string;
@@ -43,10 +43,7 @@ export class EditdoctorComponent implements OnInit {
   timingsdays:string;
   timingshours :string;
   googlemaplocation:string;
-  middlename:string;
-  lastname:string;
-  salutation;
-  branch;
+  services;
 
   AllClinicList: Object;  
   clinic: Object;
@@ -94,22 +91,22 @@ export class EditdoctorComponent implements OnInit {
   timingsdays:'',
   timingshours:'',
   googlemaplocation:'',
-  middlename:'',
-  lastname:'',
-  salutation:'',
-  branch:'',
+  services:'',
   };
 
-  // specialityList;
-  // serviceList;
-  // typeList;
+  ///////////////////////////////////
+
   countryList;
   stateList;
   filteredCities;
-  salutationList;
-  branchList;
+  serviceList;
+  specialityList;
+  typeList;
 
-  ///////////////////////////////////
+  dropdownList = [];
+  selectedItems = [];
+  //dropdownSettings = {};
+  settings = {};
 
   constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder) { }
 
@@ -117,17 +114,16 @@ export class EditdoctorComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
-    this.loginService.getDoctorData(localStorage.getItem("aid"))
+    this.loginService.getGeneralClinicData(localStorage.getItem("gaid"))
     .subscribe(data => {
-      //console.log(data);          
+      console.log(data);
       this.updform = data['doctor'];
-      this.salutationList = data['salutation'];
-      this.branchList = data['branch'];
       this.countryList = data['country'];
       this.stateList = data['state'];
+      this.serviceList = data['hospitalService'];
+      this.specialityList = data['hospitalSpeciality'];
+      this.typeList = data['hospitalType'];
 
-      
       if(this.updform.country){
            
         this.filteredCities = this.stateList.filter(state=>state.countryId==this.updform.country);
@@ -144,7 +140,7 @@ export class EditdoctorComponent implements OnInit {
       clinictype: ['', Validators.required],
       clinicId: ['', Validators.required],
       qualification: ['', Validators.required],
-      specialitydoctor: ['', Validators.required],
+      //specialitydoctor: ['', Validators.required],
       email: ['', Validators.required],
       phonenumber: ['', Validators.required],
       mobNo: ['', Validators.required],
@@ -170,12 +166,11 @@ export class EditdoctorComponent implements OnInit {
       googlemaplocation:['',Validators.required]
     });
 
-    this.loginService.getAllClinicList().subscribe(clinic =>{
-      this.AllClinicList = clinic['clinic']
-     //localStorage.setItem("list",cliniclist)
-     //console.log(this.AllClinicList)
-    })
-
+    // this.loginService.getAllClinicList().subscribe(clinic =>{
+    //   this.AllClinicList = clinic['clinic']
+    //  //localStorage.setItem("list",cliniclist)
+    //  console.log(this.AllClinicList)
+    // })
 
   }
 
@@ -190,13 +185,32 @@ export class EditdoctorComponent implements OnInit {
   
   }
 
-  updateDoctor = ():any => {
-    this.loginService.updateDoctorData(this.updform).subscribe(updateDoctor =>{
-      alert('Doctor Data Updated Successfully');
-     //this.router.navigateByUrl('/dashboard');
-    })
+  onItemSelect(item: any) {
+    console.log(item);
+    console.log(this.selectedItems);
    
- }
+  }
+  OnItemDeSelect(item: any) {
+   // console.log(item);
+   // console.log(this.selectedItems);
+  }
+  onSelectAll(items: any) {
+   //console.log(items);
+  }
+  onDeSelectAll(items: any) {
+   //console.log(items);
+  }
+
+  
+  updateClinic = ():any => {
+    //console.log(this.updform);
+     this.loginService.updateGeneralClinicData(this.updform).subscribe(updateDoctor =>{
+       alert('Updated Successfully');
+      this.router.navigateByUrl('/general-previewclinicall');
+     })
+    
+  }
+
 
 
 

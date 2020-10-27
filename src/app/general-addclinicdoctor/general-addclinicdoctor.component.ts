@@ -6,11 +6,11 @@ import {Router} from '@angular/router';
 
 
 @Component({
-  selector: 'app-addclinicdoctor',
-  templateUrl: './addclinicdoctor.component.html',
-  styleUrls: ['./addclinicdoctor.component.scss']
+  selector: 'app-general-addclinicdoctor',
+  templateUrl: './general-addclinicdoctor.component.html',
+  styleUrls: ['./general-addclinicdoctor.component.scss']
 })
-export class AddclinicdoctorComponent implements OnInit {
+export class GeneralAddclinicdoctorComponent implements OnInit {
   files:any = [];
 
   role: string;
@@ -58,10 +58,8 @@ export class AddclinicdoctorComponent implements OnInit {
 
   dropdownList = [];
   selectedItems = [];
-  selectedItems1 = [];
   //dropdownSettings = {};
   settings = {};
-  servicessettings= {};
 
   ///////////////////////////////////
 
@@ -200,24 +198,17 @@ export class AddclinicdoctorComponent implements OnInit {
       fileSource1:['', Validators.required],
     });
 
-    this.loginService.getAllClinicList().subscribe(clinic =>{
+    this.loginService.getGeneralAllClinicList().subscribe(clinic =>{
       this.AllClinicList = clinic['clinic']
      //console.log(this.AllClinicList)
     })
 
     this.settings = {
-      text: "Select Speciality",
+      text: "Select Services",
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       classes: "myclass custom-class"
   };
-
-  this.servicessettings = {
-    text: "Select Services",
-    selectAllText: 'Select All',
-    unSelectAllText: 'UnSelect All',
-    classes: "myclass custom-class"
-};
 
   }
 
@@ -295,47 +286,47 @@ onPhotoChange(event) {
 /********************************/
   addClinicDoctor = (data):any => {
 
-    // if(data.role === '' || data.role === null  ){
-    //   alert('Please Select Valid User Role');
-    //  }
-    //  if(data.name === '' || data.name === null){
-    //   alert('Please Enter Valid Name For Clinic/Doctor');
-    //  }
-    //  if(data.email === '' || data.email === null){
-    //   alert('Please Enter Valid Email id');
-    //  }
-    //  if(data.mobNo === '' || data.mobNo === null ){
-    //   alert('Please Enter Valid Mobile Number');
-    //  }
-    // if(data.username === '' || data.username === null){
-    //   alert('Please Enter Valid User Name');
-    //  }
-    //  if(data.password === '' || data.password === null){
-    //   alert('Please Enter Valid Password');
-    //  }
-    //  if(data.cpassword === '' || data.cpassword === null){
-    //   alert('Please Enter Valid Confirm Password');
-    //  }
-    //  if(data.country === '' || data.coutry === null){
-    //   alert('Please Select Valid Country');
-    //  }
-    //  if(data.state === '' || data.state === null){
-    //   alert('Please Select Valid State');
-    //  }
-    //  if(data.city === '' || data.city === null ){
-    //   alert('Please Select Valid City');
-    //  }
-    //  if(data.address === '' || data.address === null ){
-    //   alert('Please Enter Address');
-    //  }
-    //  if(data.password != data.cpassword ){
-    //   alert('Password and Confirm Password Does not Match');
-    //   return false;
-    //  }
+    if(data.role === '' || data.role === null  ){
+      alert('Please Select Valid User Role');
+     }
+     if(data.name === '' || data.name === null){
+      alert('Please Enter Valid Name For Clinic/Doctor');
+     }
+     if(data.email === '' || data.email === null){
+      alert('Please Enter Valid Email id');
+     }
+     if(data.mobNo === '' || data.mobNo === null ){
+      alert('Please Enter Valid Mobile Number');
+     }
+    if(data.username === '' || data.username === null){
+      alert('Please Enter Valid User Name');
+     }
+     if(data.password === '' || data.password === null){
+      alert('Please Enter Valid Password');
+     }
+     if(data.cpassword === '' || data.cpassword === null){
+      alert('Please Enter Valid Confirm Password');
+     }
+     if(data.country === '' || data.coutry === null){
+      alert('Please Select Valid Country');
+     }
+     if(data.state === '' || data.state === null){
+      alert('Please Select Valid State');
+     }
+     if(data.city === '' || data.city === null ){
+      alert('Please Select Valid City');
+     }
+     if(data.address === '' || data.address === null ){
+      alert('Please Enter Address');
+     }
+     if(data.password != data.cpassword ){
+      alert('Password and Confirm Password Does not Match');
+      return false;
+     }
     
-    // if(data.role != '' && data.name != '' && data.email != '' && data.username != '' && 
-    // data.password != '' && data.mobNo != '' )
-    //   {
+    if(data.role != '' && data.name != '' && data.email != '' && data.username != '' && 
+    data.password != '' && data.mobNo != '' )
+      {
               
       var formData = new FormData();
 
@@ -346,7 +337,6 @@ onPhotoChange(event) {
       formData.append("lastname", data.lastname);
       formData.append("salutation", data.salutation);
       formData.append("branch", data.branch);
-      formData.append("services", data.services);
       formData.append("type", data.type);
       formData.append("speciality", data.speciality);
       formData.append("clinictype", data.clinictype);
@@ -381,24 +371,18 @@ onPhotoChange(event) {
       formData.append('logoImage', this.addClinicDoctorForm.get('fileSource').value);
       formData.append('profileImage', this.addClinicDoctorForm.get('fileSource1').value);
 
-     console.log('FORRRRRRRR');
-     console.log(data.speciality);
-
-     const patientFormReq = {
-      "speciality": data.speciality,
-      "services": data.services,
-     }
+     
   
-          this.loginService.registration(formData,patientFormReq).subscribe(res =>{
+          this.loginService.generalAddClinicDoctor(formData).subscribe(res =>{
             //console.log(res);
             if(res['message'] ==  'Successfully created' || res['message'] == 'File uploaded successfully!' ) {
               //if(res['status'] ==  '200' ) {
               alert('Added Successfully');
-              //this.router.navigate(['/dashboard']);
+              this.router.navigate(['/dashboard']);
             } 
             if(res['message'] ==  'cannot enter' ) {
               alert('Maximum Doctors Assigned to this Clinic.');
-              //this.router.navigate(['/addclinicdoctor']);
+              this.router.navigate(['/general-addclinicdoctor']);
             } 
             // else{
             //   alert("Invalid Details. Please Check the Details");
@@ -408,13 +392,13 @@ onPhotoChange(event) {
          })
        
 
-      //  } else{
+       } else{
 
-      //   alert("Please Fill the Details");
-      //   return false;
+        alert("Please Fill the Details");
+        return false;
         
 
-      //  }
+       }
        
   }
 

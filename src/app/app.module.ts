@@ -67,6 +67,12 @@ import { ReportComponent } from './report/report.component';
 import { ReportPreviewComponent } from './report-preview/report-preview.component';
 import { ReferralImageComponent } from './referral-image/referral-image.component';
 import { MeasurementsComponent } from './measurements/measurements.component';
+import { GeneralAddclinicdoctorComponent } from './general-addclinicdoctor/general-addclinicdoctor.component';
+import { GeneralAddmasterComponent } from './general-addmaster/general-addmaster.component';
+import { GeneralEditdoctorComponent } from './general-editdoctor/general-editdoctor.component';
+import { GeneralEditclinicComponent } from './general-editclinic/general-editclinic.component';
+import { GeneralClinicpreviewallComponent } from './general-clinicpreviewall/general-clinicpreviewall.component';
+import { GeneralDoctorpreviewallComponent } from './general-doctorpreviewall/general-doctorpreviewall.component';
 
 const x = [
   { 
@@ -132,7 +138,13 @@ const x = [
     ReportComponent,
     ReportPreviewComponent,
     ReferralImageComponent,
-    MeasurementsComponent
+    MeasurementsComponent,
+    GeneralAddclinicdoctorComponent,
+    GeneralAddmasterComponent,
+    GeneralEditdoctorComponent,
+    GeneralEditclinicComponent,
+    GeneralClinicpreviewallComponent,
+    GeneralDoctorpreviewallComponent
   ],
   imports: [
     BrowserModule,
