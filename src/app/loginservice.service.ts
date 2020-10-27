@@ -29,10 +29,15 @@ export class LoginserviceService {
      return this.http.post(`${this.ngrokUrl}/auth/signin`,loginBody,this.httpOptions)
   }
 
-  registration= (formData) => {
-    //console.log("nsifnewjirnnwergnjinertifvnuiernfvnueirntu")
-    return this.http.post(`${this.ngrokUrl}/auth/registration`,formData)
- }
+//   registration= (formData) => {
+//     //console.log("nsifnewjirnnwergnjinertifvnuiernfvnueirntu")
+//     return this.http.post(`${this.ngrokUrl}/auth/registration`,formData)
+//  }
+
+registration= (formData,patientData) => {
+  //console.log("nsifnewjirnnwergnjinertifvnuiernfvnueirntu")
+  return this.http.post(`${this.ngrokUrl}/auth/registration`,formData,patientData)
+}
 
 // getListOfAssignmentsDoctor= () => {
 //   const id = localStorage.getItem('id')
@@ -356,5 +361,79 @@ getReferralCommentPatientId= () => {
 getAllHospitalClinicFetch= () => {
   return this.http.get(`${this.ngrokUrl}/auth/getallhospitalclinicfetch`)
 }
+
+/////////////////////////// GENERAL CLINIC AND DOCTOR APIS //////////////////
+
+generalAddClinicDoctor= (formData) => {
+  //console.log("nsifnewjirnnwergnjinertifvnuiernfvnueirntu")
+  return this.http.post(`${this.ngrokUrl}/auth/generalAddClinicDoctor`,formData)
+}
+
+getGeneralAllClinicList= () => {
+  return this.http.get(`${this.ngrokUrl}/auth/generalclinic/`)
+}
+
+getGeneralClinicData= (id)=>{
+  //const id = localStorage.getItem('aid')
+  return this.http.get(`${this.ngrokUrl}/test/generalclinic/${id}`)
+}
+updateGeneralClinicData= (updatedObj)=>{
+  console.log(updatedObj)
+  const id = localStorage.getItem('gaid')
+  return this.http.put(`${this.ngrokUrl}/auth/updategeneralclinic/${id}`,updatedObj)
+}
+deleteGeneralClinic= ()=>{
+  const id = localStorage.getItem('gaid')
+  return this.http.delete(`${this.ngrokUrl}/auth/deletegeneralclinic/${id}`)
+}
+
+
+
+getGeneralAllClinicDoctorList= ()=>{
+  const id = localStorage.getItem('id')
+  return this.http.get(`${this.ngrokUrl}/auth/doctors/${id}`)
+}
+
+
+
+
+// updateGeneralClinicFrontData= (updatedObj)=>{
+//   console.log(updatedObj)
+//   const id = localStorage.getItem('id')
+//   return this.http.put(`${this.ngrokUrl}/auth/updateclinic/${id}`,updatedObj)
+// }
+
+/////////////////////////DOCTORS APIS//////////////////////
+getGeneralAllDoctorsList= () => {
+  return this.http.get(`${this.ngrokUrl}/auth/generaldoctor/`)
+}
+
+deleteGeneralDoctor= ()=>{
+  const id = localStorage.getItem('gaid')
+  return this.http.delete(`${this.ngrokUrl}/auth/deletegeneraldoctor/${id}`)
+}
+getGeneralDoctorData= (id)=>{
+  //const id = localStorage.getItem('aid')
+  return this.http.get(`${this.ngrokUrl}/test/generaldoctor/${id}`)
+}
+
+updateGeneralDoctorData= (updatedObj)=>{
+  console.log(updatedObj)
+  const id = localStorage.getItem('gaid')
+  return this.http.put(`${this.ngrokUrl}/auth/updategeneraldoctor/${id}`,updatedObj)
+}
+
+
+
+
+updateGeneralDoctorFrontData= (updatedObj)=>{
+  console.log(updatedObj)
+  const id = localStorage.getItem('id')
+  return this.http.put(`${this.ngrokUrl}/auth/updatedoctor/${id}`,updatedObj)
+}
+
+
+////////////////////////////////////////////////////
+
 
 }

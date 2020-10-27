@@ -12,6 +12,9 @@
          <li *ngIf="isLogin"> <a routerLink="/dashboard"   *ngIf="role==='ADMIN'"  >  Dashboard</a></li>
          <li *ngIf="isLogin"> <a routerLink="/doctordashboard"   *ngIf="role==='DOCTOR'"   >  Dashboard</a></li>
          <li *ngIf="role === 'ADMIN'"><a routerLink="/addclinicdoctor"  >Add Clinic or Doctor</a> </li>
+         <li *ngIf="role === 'ADMIN'"><a routerLink="/general-addclinicdoctor"  >Add General Clinic or Doctor</a> </li>
+         <li *ngIf="role === 'ADMIN'"><a routerLink="/general-previewclinicall"  >Preview General All Clinics </a> </li>
+         <li *ngIf="role === 'ADMIN'"><a routerLink="/general-previewdoctorall"  >Preview General All Doctors</a> </li>
         
        
         <!-- ADMIN MASTER TABLES -->

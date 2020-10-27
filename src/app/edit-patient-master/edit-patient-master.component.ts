@@ -172,7 +172,7 @@ export class EditPatientMasterComponent implements OnInit {
 
     
           if(this.updform.country){
-            console.log('ccccccccccccccc');
+           
             this.filteredCities = this.stateList.filter(state=>state.countryId==this.updform.country);
       console.log(this.filteredCities);
          }
@@ -180,10 +180,10 @@ export class EditPatientMasterComponent implements OnInit {
 
     }, error => console.log(error));
 
-    $("#datepickeraddcustomer").datepicker({  
-      dateFormat: "yy-mm-dd",  
-      maxDate: new Date()  
- });
+//     $("#datepickeraddcustomer").datepicker({  
+//       dateFormat: "yy-mm-dd",  
+//       maxDate: new Date()  
+//  });
  
  
     this.regPatientForm = this.formBuilder.group({

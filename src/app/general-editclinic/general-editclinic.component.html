@@ -12,7 +12,7 @@
             </button>
             <div  class="col-md-12 " >
                
-              <h2 class="text-center">Edit Clinic</h2> 
+              <h2 class="text-center">Edit General Clinic</h2> 
               <div class="login-form">
                 <form  name="updateClinicForm"  #updateClinicForm="ngForm"  (ngSubmit)="updateClinic()"  >
                     
@@ -73,7 +73,7 @@
                             <label for="clinictype">Hospital / Clinic Type </label>
                             <select id="clinictype" name="clinictype" class="form-control" required [(ngModel)]="updform.clinictype" #clinictype="ngModel"  >
                               <option value="">Select Hospital / Clinic Type</option>
-                              <option *ngFor="let ct of this.typeList" [value]="ct['key']">{{ct['value']}}</option>
+                                <option *ngFor="let ct of this.typeList" [value]="ct['key']">{{ct['value']}}</option>
                           </select>
                            
                           </div>

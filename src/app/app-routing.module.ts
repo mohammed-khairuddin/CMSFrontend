@@ -51,6 +51,12 @@ import { MasterPcComponent } from './master-pc/master-pc.component';
 import { PreviewObservationsComponent } from './preview-observations/preview-observations.component';
 import { ReportComponent } from './report/report.component';
 import { ReportPreviewComponent } from './report-preview/report-preview.component';
+import { GeneralAddclinicdoctorComponent } from './general-addclinicdoctor/general-addclinicdoctor.component';
+import { GeneralAddmasterComponent } from './general-addmaster/general-addmaster.component';
+import { GeneralEditclinicComponent } from './general-editclinic/general-editclinic.component';
+import { GeneralEditdoctorComponent } from './general-editdoctor/general-editdoctor.component';
+import { GeneralClinicpreviewallComponent } from './general-clinicpreviewall/general-clinicpreviewall.component';
+import { GeneralDoctorpreviewallComponent } from './general-doctorpreviewall/general-doctorpreviewall.component';
 
 const routes: Routes = [
   { 
@@ -201,6 +207,24 @@ const routes: Routes = [
   },
   { 
     path: 'report-preview/:id',component: ReportPreviewComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'general-addclinicdoctor',component: GeneralAddclinicdoctorComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'general-addmaster',component: GeneralAddmasterComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'general-editclinic/:id',component: GeneralEditclinicComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'general-editdoctor/:id',component: GeneralEditdoctorComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'general-previewclinicall',component: GeneralClinicpreviewallComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'general-previewdoctorall',component: GeneralDoctorpreviewallComponent  , canActivate:[AuthGuard]
   },
   { 
     path: 'clinicdashboard',
