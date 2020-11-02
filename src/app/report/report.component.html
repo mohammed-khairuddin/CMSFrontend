@@ -182,7 +182,9 @@
 
                     <div class="form-row" style="border-bottom: 1px dotted #ccc;">
                       <div class="form-group col-md-4"   >
-                        <h6> {{ Observations.ttype  | uppercase}} </h6> 
+                       
+                        <h6> {{ Observations.ttype  | uppercase}} </h6>
+                       
                         <!-- <h6>{{ Observations.type | titlecase }} </h6> -->
                       </div>
                      
@@ -213,7 +215,7 @@
                        
                         <div *ngFor="let Obsvalue of Observations.value| keyvalue; let j = index;" class="observationvalues">
                           
-                          <p>{{ Obsvalue.key.replace('select','') | titlecase }} - {{ Obsvalue.value | titlecase }}</p>
+                          <p>{{ Obsvalue.key.replace('select','').replace('_','') | titlecase }} - {{ Obsvalue.value | titlecase }}</p>
                         </div>
 
                         <!------------------------------>

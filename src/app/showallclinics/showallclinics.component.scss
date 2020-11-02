@@ -6,6 +6,11 @@ tr:nth-child(odd) {background: #FFF}
 .main-tit{
     margin: 10px;
 }
+
+.looprows:nth-of-type(even) {
+    background: #e0e0e0;
+}
+
 #page-content-wrapper {
     //position: absolute;
     padding: 15px;

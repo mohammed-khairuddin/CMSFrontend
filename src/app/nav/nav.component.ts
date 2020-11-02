@@ -11,7 +11,7 @@ import {Router, ActivatedRoute } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  appTitle: string = 'ClinicManagement System';
+  appTitle: string = 'Golden Health Services Pvt. Ltd.';
 
   isLogin = localStorage.getItem('token')  ? true : false;
   id  = localStorage.getItem('id')
@@ -58,6 +58,19 @@ export class NavComponent implements OnInit {
     this.actRoute.paramMap.subscribe(params => {
       this.type = params.get('type');
 
+   });
+
+
+  }
+
+  
+  getgeneralAddPage  = (gtype) => {
+    console.log(gtype);
+    window.localStorage.setItem("gtype", gtype.toString());
+    this.router.navigateByUrl(`/general-previewmasterall/`+gtype);
+   
+    this.actRoute.paramMap.subscribe(params => {
+      this.type = params.get('gtype');
    });
 
 

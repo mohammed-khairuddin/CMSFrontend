@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-editclinic',
@@ -14,7 +15,7 @@ export class EditclinicComponent implements OnInit {
   role: string;
   name: string;
   type:string;
-  speciality:string;
+  specialities= [];
   clinictype:string;
   clinicId: string;
   qualification:string;
@@ -43,7 +44,7 @@ export class EditclinicComponent implements OnInit {
   timingsdays:string;
   timingshours :string;
   googlemaplocation:string;
-  services;
+  services=[];
 
   AllClinicList: Object;  
   clinic: Object;
@@ -62,7 +63,7 @@ export class EditclinicComponent implements OnInit {
   role: '',
   name:'',
   type:'',
-  speciality:'',
+  specialities:'',
   clinictype:'',
   clinicId: '',
   qualification:'',
@@ -103,27 +104,63 @@ export class EditclinicComponent implements OnInit {
   specialityList;
   typeList;
 
+  updform1 = [];
+
   dropdownList = [];
-  selectedItems = [];
+  selectedItems;
+  selectedItems1;
   //dropdownSettings = {};
   settings = {};
-
-  constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder) { }
+  servicessettings= {};
+  constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder,private http:HttpClient) { }
 
   addClinicDoctorForm: FormGroup;
 
+  
+  onItemSelect(item: any) {
+   //alert('****');
+    console.log(item);
+    console.log(this.selectedItems);
+   
+  }
+  OnItemDeSelect(item: any) {
+   // console.log(item);
+   // console.log(this.selectedItems);
+  }
+  onSelectAll(items: any) {
+   //console.log(items);
+  }
+  onDeSelectAll(items: any) {
+   //console.log(items);
+  }
+
+
+
   ngOnInit(): void {
 
-    this.loginService.getClinicData(localStorage.getItem("aid"))
-    .subscribe(data => {
-      console.log(data);
-      this.updform = data['doctor'];
+    this.loginService.getAllClinicDoctorMasterFetch().subscribe( (data : any) => { 
+      const {country,state,hospitalService,hospitalSpeciality,hospitalType} = data;         
+    // console.log(data);
+    // console.log('///////////////');
       this.countryList = data['country'];
       this.stateList = data['state'];
       this.serviceList = data['hospitalService'];
       this.specialityList = data['hospitalSpeciality'];
       this.typeList = data['hospitalType'];
 
+    }, error => console.log(error));
+
+
+
+    this.loginService.getClinicData(localStorage.getItem("aid"))
+    .subscribe(data  => {
+      //console.log(data);
+      this.updform = data['doctor'];
+      this.selectedItems = data['speciality'];
+      //this.selectedItems = this.updform.speciality;
+      this.selectedItems1 = data['services'];
+      
+     
       if(this.updform.country){
            
         this.filteredCities = this.stateList.filter(state=>state.countryId==this.updform.country);
@@ -136,7 +173,7 @@ export class EditclinicComponent implements OnInit {
       role: ['', Validators.required],
       name: ['', Validators.required],
       type: ['', Validators.required],
-      speciality: ['', Validators.required],
+      specialities: ['', Validators.required],
       clinictype: ['', Validators.required],
       clinicId: ['', Validators.required],
       qualification: ['', Validators.required],
@@ -172,6 +209,8 @@ export class EditclinicComponent implements OnInit {
     //  console.log(this.AllClinicList)
     // })
 
+    
+
   }
 
   onCountrySelect(data){
@@ -185,28 +224,16 @@ export class EditclinicComponent implements OnInit {
   
   }
 
-  onItemSelect(item: any) {
-    console.log(item);
-    console.log(this.selectedItems);
-   
-  }
-  OnItemDeSelect(item: any) {
-   // console.log(item);
-   // console.log(this.selectedItems);
-  }
-  onSelectAll(items: any) {
-   //console.log(items);
-  }
-  onDeSelectAll(items: any) {
-   //console.log(items);
-  }
-
   
   updateClinic = ():any => {
-    //console.log(this.updform);
+   
+    this.updform.specialities = this.selectedItems;
+    //JSON.stringify()
+    this.updform.services = this.selectedItems1;
+  
      this.loginService.updateClinicData(this.updform).subscribe(updateDoctor =>{
        alert('Updated Successfully');
-      this.router.navigateByUrl('/dashboard');
+      //this.router.navigateByUrl('/dashboard');
      })
     
   }

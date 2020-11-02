@@ -61,11 +61,20 @@
                     </div>
       
                     <div class="form-group col-md-4">
-                        <label for="speciality">Hospital / Clinic Speciality</label>
-                        <select id="speciality" name="speciality" class="form-control" required [(ngModel)]="updform.speciality" #speciality="ngModel"  >
-                            <option value="">Select Speciality</option>
-                            <option *ngFor="let sp of specialityList" [value]="sp['key']">{{sp['value']}}</option>
-                        </select>
+                        <label for="specialities">Hospital / Clinic Speciality</label>
+                       
+
+                        <angular2-multiselect [data]="this.specialityList" [(ngModel)]="selectedItems" [settings]="settings"  
+                        (onSelect)="onItemSelect($event)"   name="specialities" id="specialities" class="Checkbox"
+                        (onDeSelect)="OnItemDeSelect($event)" 
+                        (onSelectAll)="onSelectAll($event)" 
+                        (onDeSelectAll)="onDeSelectAll($event)"  >
+                          <c-item>
+                                  <ng-template let-item="item">
+                                    <label style="color: #495057;min-width: 150px;font-weight: 500">{{item.itemName}}</label> 
+                                  </ng-template>
+                          </c-item>  
+                        </angular2-multiselect> 
                           
             
                     </div>
@@ -306,9 +315,8 @@
 
             <div class="form-group col-md-6" *ngIf="updform.role === 'CLINIC'">
               <label for="services">Service Available </label> 
-              <!-- <input type="text" placeholder="Services Available" name="services" class="form-control" id="services" 
-              required [(ngModel)]="updform.services" #services="ngModel"  > -->
-              <angular2-multiselect [data]="this.serviceList" [(ngModel)]="selectedItems" [settings]="settings"  
+            
+              <angular2-multiselect [data]="this.serviceList" [(ngModel)]="selectedItems1" [settings]="servicessettings"  
               (onSelect)="onItemSelect($event)"   name="services" id="services" class="Checkbox"
               (onDeSelect)="OnItemDeSelect($event)" 
               (onSelectAll)="onSelectAll($event)" 

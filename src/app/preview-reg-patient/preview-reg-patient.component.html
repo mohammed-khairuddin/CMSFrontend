@@ -44,7 +44,7 @@
   </thead>
   <tbody>
      
-    <tr *ngFor="let alllist of AllPatientsList |filter:filter | paginate: { itemsPerPage: 5, currentPage: p };index as i">
+    <tr *ngFor="let alllist of AllPatientsList |filter:filter | paginate: { itemsPerPage: 10, currentPage: p };index as i">
         <td>{{getShortName(ClinicData?.name)}}00000{{ alllist.id}}</td>
         <td>{{ alllist.firstname | titlecase }} {{ alllist.lastname | titlecase }}</td>
         <td> --

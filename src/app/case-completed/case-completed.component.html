@@ -52,7 +52,7 @@
       <td colspan="9"> <h4 class="norecords"> No Records Found </h4> </td>
     </tr>
      
-    <tr *ngFor="let alllist of AllClinicPatientsList |filter:filter | paginate: { itemsPerPage: 5, currentPage: p };index as i " >
+    <tr *ngFor="let alllist of AllClinicPatientsList |filter:filter | paginate: { itemsPerPage: 10, currentPage: p };index as i " >
       <td scope="row" class="sticky-col first-col">PATIENT {{alllist.id}}</td>
       <td scope="row" class="sticky-col second-col">
         <div class="loopindiv reqbg1" *ngIf="alllist.requirement === 'Very Urgent'">
@@ -66,9 +66,8 @@
       </td>
     <td scope="row" class="sticky-col third-col"> 
         <span class="bell">
-          <a *ngIf="alllist.totalCount > 0 ;else other_content"  (click)="goToViewObservations(alllist); generatePdf('open')" style="cursor: pointer;" ><img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   ></a>
-          <!-- <span class="bellnumbers">{{ alllist.length }}</span>  routerLink="/report-preview/{{alllist.id}}"  -->
-          <ng-template #other_content>
+          <a *ngIf="alllist.totalCount > 0 ;else other_content"  (click)="goToViewObservations(alllist); " style="cursor: pointer;" ><img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   ></a>
+           <ng-template #other_content>
             <a><img  src="assets/images/mail.png"  name="Reports" class="img-responsive1"   ></a>
           </ng-template>
 

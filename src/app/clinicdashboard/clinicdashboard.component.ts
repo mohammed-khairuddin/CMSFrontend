@@ -32,7 +32,7 @@ export class ClinicdashboardComponent implements OnInit {
   ngOnInit(): void {
 
     this.loginService.getClinicData(localStorage.getItem("id")).subscribe(data => {
-      //console.log(data)
+     
       this.ClinicData = data['doctor']
     }, error => console.log(error));
    
@@ -42,7 +42,7 @@ export class ClinicdashboardComponent implements OnInit {
   goToUpdatePatientDoc = (alllist,index) => {
     window.localStorage.setItem("pid", alllist.id.toString());
     this.loginService.updatePatientDoc(this.AllClinicPatientsList[index]).subscribe(updateAssignment =>{
-     //alert('Doctor Assigned Successfully');
+    
      this.router.navigateByUrl(`/vieweditpatientdetails/${alllist.id}`)
 
     })

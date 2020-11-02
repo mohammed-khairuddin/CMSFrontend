@@ -53,7 +53,7 @@
     <td colspan="9"> <h4 class="norecords"> No Records Found </h4> </td>
   </tr>
 
-  <tr *ngFor="let alllist of AllDoctorPatientsList |filter:filter  | paginate: { itemsPerPage: 5, currentPage: p };index as i " >
+  <tr *ngFor="let alllist of AllDoctorPatientsList |filter:filter  | paginate: { itemsPerPage: 10, currentPage: p };index as i " >
     <td scope="row" class="sticky-col first-col">PATIENT {{alllist.id}}</td>
     <td scope="row" class="sticky-col second-col">
       <div class="loopindiv reqbg1" *ngIf="alllist.requirement === 'Very Urgent'">

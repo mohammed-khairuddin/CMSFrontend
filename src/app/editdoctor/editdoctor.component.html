@@ -84,15 +84,27 @@
                           
                     <div class="form-group col-md-4"  >
                       <label for="branch">Branch</label>
-                      <select id="branch" name="branch" class="form-control" required [(ngModel)]="updform.branch" #branch="ngModel"  >
+                      <!-- <select id="branch" name="branch" class="form-control" required [(ngModel)]="updform.branch" #branch="ngModel"  >
                         <option value="">Select Branch</option>
-                          <option *ngFor="let branch of this.branchList" [value]="branch['key']">{{branch['value']}}</option>
+                          <option *ngFor="let branch of branchList" [value]="branch['key']">{{branch['value']}}</option>
                     </select>
       
                     <div *ngIf="branch.errors && branch.touched" class="alert alert-danger">
                       <div *ngIf="branch.errors.required">Salutation is required.</div>
-                    </div> 
+                    </div>  -->
       
+                    <angular2-multiselect [data]="this.branchList" [(ngModel)]="selectedItems" [settings]="settings"  
+                        (onSelect)="onItemSelect($event)"   name="bbranch" id="bbranch" class="Checkbox"
+                        (onDeSelect)="OnItemDeSelect($event)" 
+                        (onSelectAll)="onSelectAll($event)" 
+                        (onDeSelectAll)="onDeSelectAll($event)"  >
+                          <c-item>
+                                  <ng-template let-item="item">
+                                    <label style="color: #495057;min-width: 150px;font-weight: 500">{{item.itemName}}</label> 
+                                  </ng-template>
+                          </c-item>  
+                        </angular2-multiselect> 
+
                     </div> 
                  
                   </div>
@@ -226,10 +238,7 @@
       
                     <div class="form-group col-md-4">
                       <label for="country">Select Country</label> 
-                      <!-- <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" #country="ngModel" >
-                        <option value="">Select Country</option>
-                          <option *ngFor="let c of countrys" [value]="c">{{c}}</option>
-                        </select> -->
+                     
                         <select id="country" name="country" class="form-control" required [(ngModel)]="updform.country" 
                         #country="ngModel"  (ngModelChange)="onCountrySelect(updform.country)" >
                           <option value="">Select Country</option>
@@ -242,10 +251,7 @@
                  
                         <div class="form-group col-md-4">
                             <label for="state">Select State</label> 
-                            <!-- <select id="state" name="state" class="form-control" required [(ngModel)]="updform.state" #state="ngModel" >
-                            <option value="">Select State</option>
-                            <option *ngFor="let s of states" [value]="s">{{s}}</option>
-                            </select> -->                           
+                                                     
                                   <select class="form-control" id="state" name="state" [(ngModel)]="updform.state" #state="ngModel">
                                     <option value="">Select State</option>
                                     <option *ngFor="let state of this.filteredCities"  [value]="state['key']">{{state['value']}}</option>

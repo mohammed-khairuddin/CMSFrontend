@@ -46,21 +46,21 @@ export class EditdoctorComponent implements OnInit {
   middlename:string;
   lastname:string;
   salutation;
-  branch;
+  bbranch=[];
 
   AllClinicList: Object;  
   clinic: Object;
-  
+  settings = {};
   ///////////////////////////////////
 
   typess = ['HOSPITAL', 'CLINIC'];
   roles = ['CLINIC', 'DOCTOR'];
-  countrys = ['India', 'USA', 'Australia'];
-  states = ['Telangana','AndhraPradesh'];
-  citys = ['Hyderabad', 'Visakhapatnam', 'Vijayawada'];
+  // countrys = ['India', 'USA', 'Australia'];
+  // states = ['Telangana','AndhraPradesh'];
+  // citys = ['Hyderabad', 'Visakhapatnam', 'Vijayawada'];
 
-  specialitys = ['Speciaity1','Speciaity2'];
-  clinictypes = ['clinictype1','clinictype2'];
+  // specialitys = ['Speciaity1','Speciaity2'];
+  // clinictypes = ['clinictype1','clinictype2'];
   updform = {
   role: '',
   name:'',
@@ -97,7 +97,7 @@ export class EditdoctorComponent implements OnInit {
   middlename:'',
   lastname:'',
   salutation:'',
-  branch:'',
+  bbranch:'',
   };
 
   // specialityList;
@@ -108,7 +108,7 @@ export class EditdoctorComponent implements OnInit {
   filteredCities;
   salutationList;
   branchList;
-
+  selectedItems;
   ///////////////////////////////////
 
   constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder) { }
@@ -117,17 +117,22 @@ export class EditdoctorComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.loginService.getAllDoctorMasterFetch().subscribe( (data : any) => { 
+      const {country,state,salutation,branches} = data;         
+   
+      this.countryList = data['country'];
+      this.stateList = data['state'];
+      this.salutationList = data['salutation'];
+      this.branchList = data['branches'];
+    }, error => console.log(error));
+
     
     this.loginService.getDoctorData(localStorage.getItem("aid"))
     .subscribe(data => {
-      //console.log(data);          
+      console.log(data);          
       this.updform = data['doctor'];
-      this.salutationList = data['salutation'];
-      this.branchList = data['branch'];
-      this.countryList = data['country'];
-      this.stateList = data['state'];
-
-      
+       this.selectedItems = data['bindBranches'];
+     
       if(this.updform.country){
            
         this.filteredCities = this.stateList.filter(state=>state.countryId==this.updform.country);
@@ -172,12 +177,37 @@ export class EditdoctorComponent implements OnInit {
 
     this.loginService.getAllClinicList().subscribe(clinic =>{
       this.AllClinicList = clinic['clinic']
-     //localStorage.setItem("list",cliniclist)
-     //console.log(this.AllClinicList)
+
     })
 
+    this.settings = {
+      text: "Select Branch",
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      classes: "myclass custom-class"
+  };
 
   }
+
+  
+  onItemSelect(item: any) {
+    //alert('****');
+     console.log(item);
+     console.log(this.selectedItems);
+    
+   }
+   OnItemDeSelect(item: any) {
+    // console.log(item);
+    // console.log(this.selectedItems);
+   }
+   onSelectAll(items: any) {
+    //console.log(items);
+   }
+   onDeSelectAll(items: any) {
+    //console.log(items);
+   }
+ 
+ 
 
   onCountrySelect(data){
    
@@ -191,6 +221,9 @@ export class EditdoctorComponent implements OnInit {
   }
 
   updateDoctor = ():any => {
+
+    this.updform.bbranch = this.selectedItems;
+
     this.loginService.updateDoctorData(this.updform).subscribe(updateDoctor =>{
       alert('Doctor Data Updated Successfully');
      //this.router.navigateByUrl('/dashboard');

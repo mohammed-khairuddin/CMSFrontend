@@ -29,15 +29,11 @@ export class LoginserviceService {
      return this.http.post(`${this.ngrokUrl}/auth/signin`,loginBody,this.httpOptions)
   }
 
-//   registration= (formData) => {
-//     //console.log("nsifnewjirnnwergnjinertifvnuiernfvnueirntu")
-//     return this.http.post(`${this.ngrokUrl}/auth/registration`,formData)
-//  }
+  registration= (formData) => {
+    //console.log("nsifnewjirnnwergnjinertifvnuiernfvnueirntu")
+    return this.http.post(`${this.ngrokUrl}/auth/registration`,formData)
+ }
 
-registration= (formData,patientData) => {
-  //console.log("nsifnewjirnnwergnjinertifvnuiernfvnueirntu")
-  return this.http.post(`${this.ngrokUrl}/auth/registration`,formData,patientData)
-}
 
 // getListOfAssignmentsDoctor= () => {
 //   const id = localStorage.getItem('id')
@@ -64,13 +60,13 @@ getClinicData= (id)=>{
 }
 
 updateClinicData= (updatedObj)=>{
-  console.log(updatedObj)
+  //console.log(updatedObj)
   const id = localStorage.getItem('aid')
   return this.http.put(`${this.ngrokUrl}/auth/updateclinic/${id}`,updatedObj)
 }
 
 updateClinicFrontData= (updatedObj)=>{
-  console.log(updatedObj)
+  //console.log(updatedObj)
   const id = localStorage.getItem('id')
   return this.http.put(`${this.ngrokUrl}/auth/updateclinic/${id}`,updatedObj)
 }
@@ -91,13 +87,13 @@ getDoctorData= (id)=>{
 }
 
 updateDoctorData= (updatedObj)=>{
-  console.log(updatedObj)
+  //console.log(updatedObj)
   const id = localStorage.getItem('aid')
   return this.http.put(`${this.ngrokUrl}/auth/updatedoctor/${id}`,updatedObj)
 }
 
 updateDoctorFrontData= (updatedObj)=>{
-  console.log(updatedObj)
+  //console.log(updatedObj)
   const id = localStorage.getItem('id')
   return this.http.put(`${this.ngrokUrl}/auth/updatedoctor/${id}`,updatedObj)
 }
@@ -108,7 +104,7 @@ getAssignmentData= (id)=>{
   return this.http.get(`${this.ngrokUrl}/update/assignment/${id}`)
 }
 updateAssignment= (updatedObj)=>{
-  console.log(updatedObj)
+  //console.log(updatedObj)
   const id = localStorage.getItem('aid')
   return this.http.put(`${this.ngrokUrl}/auth/updateassignment/${id}`,updatedObj)
 }
@@ -128,7 +124,7 @@ getListOfAssignments= () => {
 }
 
 assignment= (assignmentBody) => {
-  console.log(assignmentBody);
+  //console.log(assignmentBody);
     return this.http.post(`${this.ngrokUrl}/auth/assignment`,assignmentBody,this.httpOptions)
   }
   
@@ -218,6 +214,7 @@ getAllRegisteredPatient= () => {
   return this.http.get(`${this.ngrokUrl}/auth/findpatientmaster/`,this.httpOptions)
 }
 
+
 getRegisteredPatientDetail= () => {  
   const id = localStorage.getItem('pmid')
   return this.http.get(`${this.ngrokUrl}/auth/findonepatientmaster/${id}`,this.httpOptions)
@@ -225,7 +222,7 @@ getRegisteredPatientDetail= () => {
 
 updateRegisteredPatientList= (updatePatientMasterObject) => {
   const id = localStorage.getItem('pmid')
-  console.log(updatePatientMasterObject)
+  //console.log(updatePatientMasterObject)
   return this.http.put(`${this.ngrokUrl}/auth/updatepatientmaster/${id}`,updatePatientMasterObject,this.httpOptions)
 }
 
@@ -259,7 +256,7 @@ getRegisteredPatientKinDetail= () => {
 
 updateRegisteredPatientKinList= (updatePatientKinObject) => {
   const id = localStorage.getItem('kid')
-  console.log(updatePatientKinObject)
+  //console.log(updatePatientKinObject)
   return this.http.put(`${this.ngrokUrl}/auth/updatekinmaster/${id}`,updatePatientKinObject,this.httpOptions)
 }
 deleteKinMaster= ()=>{
@@ -279,7 +276,7 @@ getMaster= (data) => {
 
 updateMaster= (updateMasterObject,data) => {
   const id = localStorage.getItem('mid')
-  console.log(updateMasterObject)
+  //console.log(updateMasterObject)
   return this.http.put(`${this.ngrokUrl}/auth/updatemaster/${id}/${data}`,updateMasterObject,this.httpOptions)
 }
 
@@ -378,7 +375,7 @@ getGeneralClinicData= (id)=>{
   return this.http.get(`${this.ngrokUrl}/test/generalclinic/${id}`)
 }
 updateGeneralClinicData= (updatedObj)=>{
-  console.log(updatedObj)
+  //console.log(updatedObj)
   const id = localStorage.getItem('gaid')
   return this.http.put(`${this.ngrokUrl}/auth/updategeneralclinic/${id}`,updatedObj)
 }
@@ -386,8 +383,6 @@ deleteGeneralClinic= ()=>{
   const id = localStorage.getItem('gaid')
   return this.http.delete(`${this.ngrokUrl}/auth/deletegeneralclinic/${id}`)
 }
-
-
 
 getGeneralAllClinicDoctorList= ()=>{
   const id = localStorage.getItem('id')
@@ -418,7 +413,7 @@ getGeneralDoctorData= (id)=>{
 }
 
 updateGeneralDoctorData= (updatedObj)=>{
-  console.log(updatedObj)
+  //console.log(updatedObj)
   const id = localStorage.getItem('gaid')
   return this.http.put(`${this.ngrokUrl}/auth/updategeneraldoctor/${id}`,updatedObj)
 }
@@ -426,14 +421,91 @@ updateGeneralDoctorData= (updatedObj)=>{
 
 
 
-updateGeneralDoctorFrontData= (updatedObj)=>{
-  console.log(updatedObj)
-  const id = localStorage.getItem('id')
-  return this.http.put(`${this.ngrokUrl}/auth/updatedoctor/${id}`,updatedObj)
-}
+// updateGeneralDoctorFrontData= (updatedObj)=>{
+//   console.log(updatedObj)
+//   const id = localStorage.getItem('id')
+//   return this.http.put(`${this.ngrokUrl}/auth/updatedoctor/${id}`,updatedObj)
+// }
 
 
 ////////////////////////////////////////////////////
+
+////////////////////// GENERAL ALL MASTERS /////////////////
+
+masterGeneralInsertion= (masterManagementReq,data) => {
+  return this.http.post(`${this.ngrokUrl}/auth/creategeneralmaster/${data}`,masterManagementReq,this.httpOptions)
+}
+
+getGeneralMaster= (data) => {
+  return this.http.get(`${this.ngrokUrl}/auth/getgeneralmaster/${data}`,this.httpOptions)
+}
+
+updateGeneralMaster= (updateMasterObject,data) => {
+  const id = localStorage.getItem('gmid')
+  //console.log(updateMasterObject)
+  return this.http.put(`${this.ngrokUrl}/auth/updategeneralmaster/${id}/${data}`,updateMasterObject,this.httpOptions)
+}
+
+getGeneralMasterDetail= (data) => {  
+  const id = localStorage.getItem('gmid')
+  return this.http.get(`${this.ngrokUrl}/auth/findonegeneralmaster/${id}/${data}`,this.httpOptions)
+}
+
+
+///////////////////////// FAMILY AND OTHERS
+otherDetailsInsertion= (otherDetailsReq) => {
+  return this.http.post(`${this.ngrokUrl}/auth/createotherdetails`,otherDetailsReq,this.httpOptions)
+}
+getAllOtherFormDetails= () => {
+  return this.http.get(`${this.ngrokUrl}/auth/getallotherdetails`)
+}
+getAllClinicDoctorMasterFetch= () => {
+  //const id = localStorage.getItem('id');
+  return this.http.get(`${this.ngrokUrl}/auth/getallclinicdoctorfetch/`)
+}
+getAllDoctorMasterFetch= () => {
+  //const id = localStorage.getItem('id');
+  return this.http.get(`${this.ngrokUrl}/auth/getalldoctorfetch/`)
+}
+
+////////////////////////
+getEditOtherDetailData= ()=>{
+  const id = localStorage.getItem('odid')
+  return this.http.get(`${this.ngrokUrl}/auth/getotherdetails/${id}`)
+}
+updateOtherDetailData= (updatedObj)=>{
+  //console.log(updatedObj)
+  const id = localStorage.getItem('odid')
+  return this.http.put(`${this.ngrokUrl}/auth/updateotherdetails/${id}`,updatedObj)
+}
+deleteOtherDetail= ()=>{
+  const id = localStorage.getItem('odid')
+  return this.http.delete(`${this.ngrokUrl}/auth/deleteotherdetails/${id}`)
+}
+
+/////////////////////////////
+
+familyDetailsInsertion= (familyManagementReq) => {
+  return this.http.post(`${this.ngrokUrl}/auth/createfamily`,familyManagementReq,this.httpOptions)
+}
+getAllFamilyFormDetails= () => {
+  return this.http.get(`${this.ngrokUrl}/auth/getallfamily`)
+}
+
+getEditFamilyDetailData= ()=>{
+  const id = localStorage.getItem('fdid')
+  return this.http.get(`${this.ngrokUrl}/auth/getfamily/${id}`)
+}
+updateFamilyDetailData= (updatedObj)=>{
+  //console.log(updatedObj)
+  const id = localStorage.getItem('fdid')
+  return this.http.put(`${this.ngrokUrl}/auth/updatefamily/${id}`,updatedObj)
+}
+deleteFamilyDetail= ()=>{
+  const id = localStorage.getItem('fdid')
+  return this.http.delete(`${this.ngrokUrl}/auth/deletefamily/${id}`)
+}
+
 
 
 }

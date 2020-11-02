@@ -11,10 +11,10 @@ header {
         ul {
             list-style-type: none;
             margin: 0; padding: 0;
-
+            z-index: 1;
             li {
                 float: left;
-
+                width:100%;
                 a {
                     padding: 1em;
                     text-transform: uppercase;
@@ -33,46 +33,56 @@ header {
 
 ///////////////////////////////////////////
 
-// ul li
+// ul
 // {
-//     display: block;
-//     position: relative;
-//     float: left;
+//     font-family: Arial, Verdana;
+//     font-size: 14px;
+//     margin: 0;
+//     padding: 0;
+//     list-style: none;
 // }
 
-// li ul
-// {
-//     display: none;
-// }
+ul li
+{
+    display: block;
+    position: relative;
+    float: left;
+}
 
-// ul li a 
-// {
-//     display: block;
-//     text-decoration: none;
-//     color: #ffffff;
-//     border-top: 1px solid #ffffff;
-//     padding: 5px 15px 5px 15px;
-//     background: #2C5463;
-//     margin-left: 1px;
-//     white-space: nowrap;
-// }
+li ul
+{
+    display: none;
+}
 
-// ul li a:hover 
-// {
-//     background: #617F8A;
-// }
-// li:hover ul 
-// {
-//     display: block;
-//     position: absolute;
-// }
+ul li a 
+{
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    //border-top: 1px solid #ffffff;
+    padding: 5px 15px 5px 15px;
+    background: #17a2b8;
+    //margin-left: 1px;
+    white-space: nowrap;
+}
 
-// li:hover li
-// {
-//     float: none;
-//     font-size: 11px;
-// }
+ul li a:hover 
+{
+    background: #EAEAEA;
+    color: #17a2b8;
+    font-weight: bold;
+}
+li:hover ul 
+{
+    display: block;
+    position: absolute;
+}
 
+li:hover li
+{
+    float: none;
+    //font-size: 11px;
+}
 // li:hover a 
 // {
 //     background: #617F8A;

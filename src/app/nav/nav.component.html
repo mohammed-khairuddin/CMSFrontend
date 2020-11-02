@@ -5,7 +5,8 @@
         <div class="container">
         <a routerLink="/login" class="navbar-brand title logo">
               <img  src="assets/images/logo.png"  name="CG_Heart" class="img-responsive"   >    
-            {{ appTitle }}
+            {{ appTitle }} 
+            <p style="text-align: center; padding-left: 10%;">(ISO 9001:2015 Certified)</p>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -17,42 +18,39 @@
             </div>
            
               <ul class="navbar-nav ml-auto">
-                  <li *ngIf="!isLogin"><a routerLink="/login" class="nav-item nav-link menuli active" data-toggle="modal" data-target="#myModal" >Login</a></li>              
+                  <li *ngIf="!isLogin"><a routerLink="/login" class="nav-item nav-link menuli active" data-toggle="modal" data-target="#myModal" >Login </a></li>              
                   <li *ngIf="isLogin">                                 
                     <a   routerLink="/clinicdashboard"   *ngIf="role==='CLINIC'" class="nav-item nav-link menuli" > 
-                      Dashboard</a></li>
-                  <li> <a routerLink="/dashboard"   *ngIf="role==='ADMIN'"  class="nav-item nav-link menuli" >  Dashboard</a></li>
-                  <li> <a routerLink="/dashboard"   *ngIf="role==='ADMIN'"  class="nav-item nav-link menuli" >  All General Master</a>
-                    <!-- <span class="caret"></span>
+                      Dashboard &nbsp; |</a></li>
+                  <li> <a routerLink="/dashboard"   *ngIf="role==='ADMIN'"  class="nav-item nav-link menuli" >  Dashboard &nbsp; |</a></li>
+                  <li> <a routerLink="/dashboard"   *ngIf="role==='ADMIN'"  class="nav-item nav-link menuli" >  All General Master &nbsp;  |</a>
+                    <span class="caret"></span>
 
-                      <ul>
-                        <li>111</li>
-                        <li>111</li>
-                      </ul> -->
+                    <ul>
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;"><a routerLink="/general-addclinicdoctor" >Add General Clinic or Doctor</a></li>
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;"><a routerLink="/general-previewclinicall"  >Preview General All Clinics </a> </li>
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" ><a routerLink="/general-previewdoctorall"  >Preview General All Doctors</a> </li>
+                    
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('Speciality');"  >Speciality</a></li>
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('Services');"  > Services</a></li>
+
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/previewallotherdetails"  > Preview Other Details Form</a></li> 
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/addotherdetails"  > Add Other Details Form</a></li> 
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/previewallfamilyhistory"  > Preview Family Details Form</a></li> 
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/addfamilyhistory"  > Add Family Details Form</a></li> 
+                    </ul>
                   
                   </li>
 
 
-                  <li> <a routerLink="/doctordashboard"   *ngIf="role==='DOCTOR'"  class="nav-item nav-link menuli" >  Dashboard</a></li>
-                  <li> <a routerLink="/registerpatient"   *ngIf="role==='CLINIC'"  class="nav-item nav-link menuli" >  Register  Patient</a></li>
-                  <li *ngIf="isLogin && role!='ADMIN' && role==='CLINIC'"><a routerLink="/profile" class="nav-item nav-link menuli" >Profile</a></li>
-                  <li *ngIf="isLogin && role!='ADMIN' && role==='DOCTOR' "><a routerLink="/doctorprofile" class="nav-item nav-link menuli" >Profile</a></li>
+                  <li> <a routerLink="/doctordashboard"   *ngIf="role==='DOCTOR'"  class="nav-item nav-link menuli" >  Dashboard  &nbsp;|</a></li>
+                  <li> <a routerLink="/registerpatient"   *ngIf="role==='CLINIC'"  class="nav-item nav-link menuli" >  Register  Patient &nbsp; |</a></li>
+                  <li *ngIf="isLogin && role!='ADMIN' && role==='CLINIC'"><a routerLink="/profile" class="nav-item nav-link menuli" >Profile &nbsp; |</a></li>
+                  <li *ngIf="isLogin && role!='ADMIN' && role==='DOCTOR' "><a routerLink="/doctorprofile" class="nav-item nav-link menuli" >Profile &nbsp; |</a></li>
                   <li *ngIf="isLogin"><a routerLink="" class="nav-item nav-link menuli" (click)="logout()">Log Out</a></li>
                  
                  
-                </ul>
-              
-                <!-- <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">HTML</a></li>
-                    <li><a href="#">CSS</a></li>
-                    <li><a href="#">JavaScript</a></li>
-                  </ul>
-                </div>      -->
- 
-    
+                </ul>                        
 
         </div>
       </div>

@@ -35,7 +35,7 @@ import { ClinicdashboardComponent } from './clinicdashboard/clinicdashboard.comp
 import { ClnicDashboardTabComponent } from './clnic-dashboard-tab/clnic-dashboard-tab.component';
 import { MastertableComponent } from './mastertable/mastertable.component';
 import { LeftventriclesComponent } from './leftventricles/leftventricles.component';
-import { AddleftventricleComponent } from './addleftventricle/addleftventricle.component';
+//import { AddleftventricleComponent } from './addleftventricle/addleftventricle.component';
 import { DicomviewerComponent } from './dicomviewer/dicomviewer.component';
 import { AddmastertableComponent } from './addmastertable/addmastertable.component';
 import { EditmastertableComponent } from './editmastertable/editmastertable.component';
@@ -50,7 +50,7 @@ import { EditKinComponent } from './edit-kin/edit-kin.component';
 import { EditPatientMasterComponent } from './edit-patient-master/edit-patient-master.component';
 import { DoctorprofileComponent } from './doctorprofile/doctorprofile.component';
 import { ObservationsComponent } from './observations/observations.component';
-import { CommentsComponent } from './comments/comments.component';
+//import { CommentsComponent } from './comments/comments.component';
 import { CaseCompletedComponent } from './case-completed/case-completed.component';
 import { MasterLvComponent } from './master-lv/master-lv.component';
 import { MasterLaComponent } from './master-la/master-la.component';
@@ -73,6 +73,14 @@ import { GeneralEditdoctorComponent } from './general-editdoctor/general-editdoc
 import { GeneralEditclinicComponent } from './general-editclinic/general-editclinic.component';
 import { GeneralClinicpreviewallComponent } from './general-clinicpreviewall/general-clinicpreviewall.component';
 import { GeneralDoctorpreviewallComponent } from './general-doctorpreviewall/general-doctorpreviewall.component';
+import { GenerateEditmasterComponent } from './generate-editmaster/generate-editmaster.component';
+import { GeneratePreviewallmasterComponent } from './generate-previewallmaster/generate-previewallmaster.component';
+import { AddOtherdetailsComponent } from './add-otherdetails/add-otherdetails.component';
+import { PreviewallOtherdetailsComponent } from './previewall-otherdetails/previewall-otherdetails.component';
+import { EditOtherdetailsComponent } from './edit-otherdetails/edit-otherdetails.component';
+import { AddFamilyhistoryComponent } from './add-familyhistory/add-familyhistory.component';
+import { EditFamilyhistoryComponent } from './edit-familyhistory/edit-familyhistory.component';
+import { PreviewallFamilyhistoryComponent } from './previewall-familyhistory/previewall-familyhistory.component';
 
 const x = [
   { 
@@ -107,7 +115,7 @@ const x = [
     ClnicDashboardTabComponent,
     MastertableComponent,
     LeftventriclesComponent,
-    AddleftventricleComponent,
+    //AddleftventricleComponent,
     DicomviewerComponent,
     AddmastertableComponent,
     EditmastertableComponent,
@@ -122,7 +130,7 @@ const x = [
     EditPatientMasterComponent,
     DoctorprofileComponent,
     ObservationsComponent,
-    CommentsComponent,
+    //CommentsComponent,
     CaseCompletedComponent,    
     MasterLvComponent,
     MasterLaComponent,
@@ -144,7 +152,15 @@ const x = [
     GeneralEditdoctorComponent,
     GeneralEditclinicComponent,
     GeneralClinicpreviewallComponent,
-    GeneralDoctorpreviewallComponent
+    GeneralDoctorpreviewallComponent,
+    GenerateEditmasterComponent,
+    GeneratePreviewallmasterComponent,
+    AddOtherdetailsComponent,
+    PreviewallOtherdetailsComponent,
+    EditOtherdetailsComponent,
+    AddFamilyhistoryComponent,
+    EditFamilyhistoryComponent,
+    PreviewallFamilyhistoryComponent
   ],
   imports: [
     BrowserModule,

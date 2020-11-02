@@ -20,7 +20,7 @@ import { VieweditpatientdetailsComponent } from './vieweditpatientdetails/viewed
 import { ClinicdashboardComponent } from './clinicdashboard/clinicdashboard.component';
 import { ClnicDashboardTabComponent } from './clnic-dashboard-tab/clnic-dashboard-tab.component';
 import { LeftventriclesComponent } from './leftventricles/leftventricles.component';
-import { AddleftventricleComponent } from './addleftventricle/addleftventricle.component';
+//import { AddleftventricleComponent } from './addleftventricle/addleftventricle.component';
 import { DicomviewerComponent } from './dicomviewer/dicomviewer.component';
 import { MastertableComponent } from './mastertable/mastertable.component';
 import { AddmastertableComponent } from './addmastertable/addmastertable.component';
@@ -36,7 +36,7 @@ import { EditKinComponent } from './edit-kin/edit-kin.component';
 import { EditPatientMasterComponent } from './edit-patient-master/edit-patient-master.component';
 import { DoctorprofileComponent } from './doctorprofile/doctorprofile.component';
 import { ObservationsComponent } from './observations/observations.component';
-import { CommentsComponent } from './comments/comments.component';
+//import { CommentsComponent } from './comments/comments.component';
 import { CaseCompletedComponent } from './case-completed/case-completed.component';
 import { MasterLvComponent } from './master-lv/master-lv.component';
 import { MasterLaComponent } from './master-la/master-la.component';
@@ -57,6 +57,14 @@ import { GeneralEditclinicComponent } from './general-editclinic/general-editcli
 import { GeneralEditdoctorComponent } from './general-editdoctor/general-editdoctor.component';
 import { GeneralClinicpreviewallComponent } from './general-clinicpreviewall/general-clinicpreviewall.component';
 import { GeneralDoctorpreviewallComponent } from './general-doctorpreviewall/general-doctorpreviewall.component';
+import { GenerateEditmasterComponent } from './generate-editmaster/generate-editmaster.component';
+import { GeneratePreviewallmasterComponent } from './generate-previewallmaster/generate-previewallmaster.component';
+import { PreviewallOtherdetailsComponent } from './previewall-otherdetails/previewall-otherdetails.component';
+import { AddOtherdetailsComponent } from './add-otherdetails/add-otherdetails.component';
+import { EditOtherdetailsComponent } from './edit-otherdetails/edit-otherdetails.component';
+import { PreviewallFamilyhistoryComponent } from './previewall-familyhistory/previewall-familyhistory.component';
+import { AddFamilyhistoryComponent } from './add-familyhistory/add-familyhistory.component';
+import { EditFamilyhistoryComponent } from './edit-familyhistory/edit-familyhistory.component';
 
 const routes: Routes = [
   { 
@@ -115,9 +123,9 @@ const routes: Routes = [
   { 
     path: 'leftventricles',component: LeftventriclesComponent  , canActivate:[AuthGuard]
   },
-  { 
-    path: 'addleftventricle',component: AddleftventricleComponent  , canActivate:[AuthGuard]
-  },
+  // { 
+  //   path: 'addleftventricle',component: AddleftventricleComponent  , canActivate:[AuthGuard]
+  // },
   { 
     path: 'mastertable/:type',component: MastertableComponent  , canActivate:[AuthGuard]
   },
@@ -160,9 +168,9 @@ const routes: Routes = [
   { 
     path: 'observations/:id',component: ObservationsComponent  , canActivate:[AuthGuard]
   },
-  { 
-    path: 'comments',component: CommentsComponent  , canActivate:[AuthGuard]
-  },
+  // { 
+  //   path: 'comments',component: CommentsComponent  , canActivate:[AuthGuard]
+  // },
   { 
     path: 'casescompleted',component: CaseCompletedComponent  , canActivate:[AuthGuard]
   },
@@ -212,7 +220,13 @@ const routes: Routes = [
     path: 'general-addclinicdoctor',component: GeneralAddclinicdoctorComponent  , canActivate:[AuthGuard]
   },
   { 
-    path: 'general-addmaster',component: GeneralAddmasterComponent  , canActivate:[AuthGuard]
+    path: 'general-addmaster/:type',component: GeneralAddmasterComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'general-editmaster/:id',component: GenerateEditmasterComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'general-previewmasterall/:type',component: GeneratePreviewallmasterComponent  , canActivate:[AuthGuard]
   },
   { 
     path: 'general-editclinic/:id',component: GeneralEditclinicComponent  , canActivate:[AuthGuard]
@@ -225,6 +239,24 @@ const routes: Routes = [
   },
   { 
     path: 'general-previewdoctorall',component: GeneralDoctorpreviewallComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'previewallotherdetails',component: PreviewallOtherdetailsComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'addotherdetails',component: AddOtherdetailsComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'editotherdetails/:id',component: EditOtherdetailsComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'previewallfamilyhistory',component: PreviewallFamilyhistoryComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'addfamilyhistory',component: AddFamilyhistoryComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'editfamilyhistory/:id',component: EditFamilyhistoryComponent  , canActivate:[AuthGuard]
   },
   { 
     path: 'clinicdashboard',

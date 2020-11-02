@@ -198,8 +198,12 @@ tr:nth-child(odd) {background: #FFF}
     .sticky-col {
         position: sticky;
         position: -webkit-sticky;    
-        background-color: white;
+        //background-color: white;
+
+        background: #CCC;
+        background-color: #ffffff80;
     }
+    
     .first-col {
         width: 100px;
         min-width: 100px;

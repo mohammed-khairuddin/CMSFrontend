@@ -24,7 +24,7 @@
 <div *ngIf="!AllDoctorList || AllDoctorList.length === 0">
    <h4 class="norecords"> No Records Found </h4> 
 </div>
-<div class="row looprows" *ngFor="let alllist of AllDoctorList |filter:filter | paginate: { itemsPerPage: 5, currentPage: p };index as i">
+<div class="row looprows" *ngFor="let alllist of AllDoctorList |filter:filter | paginate: { itemsPerPage: 10, currentPage: p };index as i">
   <div class="col-md-2 loopindiv">DOCTOR {{alllist.id}}</div>
   <div class="col-md-2  loopindiv">{{ alllist.name }}</div>
   <div class="col-md-2 loopindiv">{{ alllist.mobNo }}</div>

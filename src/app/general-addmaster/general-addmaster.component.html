@@ -40,7 +40,7 @@
                       <td colspan="9"> <h4 class="norecords"> No Records Found </h4> </td>
                     </tr>
 
-                    <tr *ngFor="let alllist of AllMastersList |filter:filter | paginate: { itemsPerPage: 5, currentPage: p };index as i " >
+                    <tr *ngFor="let alllist of AllMastersList |filter:filter | paginate: { itemsPerPage: 10, currentPage: p };index as i " >
                       <td>{{i+1}}</td>
 
                       <td> {{alllist.itemName}} </td>

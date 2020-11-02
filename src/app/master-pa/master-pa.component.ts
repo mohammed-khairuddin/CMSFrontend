@@ -38,14 +38,14 @@ Pulmonarybranchstenosis=[
     {id:2,itemName:'Pulmonary branch stenosis-Right pulmonary artery'},
     {id:3,itemName:'Pulmonary branch stenosis-Left pulmonary artery'} 
   ]
-  pulmonaryArteryObservation = {
-    observation:[],
-    dilated:[],
-    pulmonaryhypertension:[],
-    Patentductusarteriosus:[],
-    Suspectthromboembolism:[],
-    Pulmonarybranchstenosis:[]
-  }
+  // pulmonaryArteryObservation = {
+  //   observation:[],
+  //   dilated:[],
+  //   pulmonaryhypertension:[],
+  //   Patentductusarteriosus:[],
+  //   Suspectthromboembolism:[],
+  //   Pulmonarybranchstenosis:[]
+  // }
   selectPulmonaryArteryData:any;
   updform : any  ={
 

@@ -148,7 +148,7 @@ export class EditPatientMasterComponent implements OnInit {
 
     this.loginService.getAllPatientMasterFetch().subscribe( (data : any) => { 
       const {salutation,complains,maritalstatus,country,state,
-        occupation,religion,educationalqualifications,doctor} = data; 
+        occupation,religion,educationalqualifications,doctor} = data;   
       
     
     this.salutationList = data['salutation'];
@@ -170,7 +170,8 @@ export class EditPatientMasterComponent implements OnInit {
       this.updform = data['user']
       this.selectedItems = this.updform.complains;
 
-    
+      console.log(this.selectedItems);
+      console.log('.....................');
           if(this.updform.country){
            
             this.filteredCities = this.stateList.filter(state=>state.countryId==this.updform.country);

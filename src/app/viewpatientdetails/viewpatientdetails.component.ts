@@ -13,7 +13,7 @@ export class ViewpatientdetailsComponent implements OnInit {
 
 ///////////////////////////////////
    
-requirements = ['Very Urgent', 'With in a Day','Routine'];
+requirements = ['Very Urgent','With in a Day','Routine'];
 protocols = ['Transthoracic', 'Ultra Sound'];
 ews=['Good','Bad'];
   patientDataObject : any= {
