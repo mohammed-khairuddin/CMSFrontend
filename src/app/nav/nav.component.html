@@ -13,9 +13,9 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav">
-                  <!-- <a href="#" class="nav-item nav-link active">Home</a>   -->
-            </div>
+          <!-- <div class="navbar-nav"> -->
+            <!-- <a href="#" class="nav-item nav-link active">Home</a>   -->
+          <!-- </div> -->
            
               <ul class="navbar-nav ml-auto">
                   <li *ngIf="!isLogin"><a routerLink="/login" class="nav-item nav-link menuli active" data-toggle="modal" data-target="#myModal" >Login </a></li>              
@@ -31,23 +31,28 @@
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;"><a routerLink="/general-previewclinicall"  >Preview General All Clinics </a> </li>
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" ><a routerLink="/general-previewdoctorall"  >Preview General All Doctors</a> </li>
                     
-                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('Speciality');"  >Speciality</a></li>
-                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('Services');"  > Services</a></li>
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('speciality');"  >Speciality</a></li>
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('services');"  > Services</a></li>
 
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/previewallotherdetails"  > Preview Other Details Form</a></li> 
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/addotherdetails"  > Add Other Details Form</a></li> 
+                      
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/previewallfamilyhistory"  > Preview Family Details Form</a></li> 
-                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/addfamilyhistory"  > Add Family Details Form</a></li> 
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/addfamilyhistory"  > Add Family Details Form</a></li>
+                      
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/"  > Preview Life Style Form</a></li> 
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/addlifestyle"  > Add Life Style Form</a></li>
+
                     </ul>
                   
                   </li>
-
 
                   <li> <a routerLink="/doctordashboard"   *ngIf="role==='DOCTOR'"  class="nav-item nav-link menuli" >  Dashboard  &nbsp;|</a></li>
                   <li> <a routerLink="/registerpatient"   *ngIf="role==='CLINIC'"  class="nav-item nav-link menuli" >  Register  Patient &nbsp; |</a></li>
                   <li *ngIf="isLogin && role!='ADMIN' && role==='CLINIC'"><a routerLink="/profile" class="nav-item nav-link menuli" >Profile &nbsp; |</a></li>
                   <li *ngIf="isLogin && role!='ADMIN' && role==='DOCTOR' "><a routerLink="/doctorprofile" class="nav-item nav-link menuli" >Profile &nbsp; |</a></li>
-                  <li *ngIf="isLogin"><a routerLink="" class="nav-item nav-link menuli" (click)="logout()">Log Out</a></li>
+                  <!-- <li><a routerLink="/contactus" class="nav-item nav-link menuli" >Contact Us </a></li> -->
+                  <li *ngIf="isLogin"><a routerLink="" class="nav-item nav-link menuli" (click)="logout()">| Log Out</a></li>
                  
                  
                 </ul>                        

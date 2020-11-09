@@ -89,7 +89,15 @@ export class DicomuploadComponent implements OnInit {
       this.upLoadFlag = false;
       alert('Successfully Uploaded');
       window.location.reload();
-      this.router.navigateByUrl('/clinicdashboard');
+      //this.router.navigateByUrl('/clinicdashboard');
+    
+      // let url:any = '/clinicdashboard';
+      // this.router.navigateByUrl('/clinicdashboard', { skipLocationChange: true });
+      // setTimeout(() => this.router.navigate(url));
+
+      // this.router.navigateByUrl('/contactus', { skipLocationChange: true });
+      // this.router.navigate(["/clinicdashboard"]);
+
      })
 
   }

@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.1.11",
     "@angular/platform-browser-dynamic": "~9.1.11",
     "@angular/router": "~9.1.11",
+    "angular2-humanize": "^2.1.0",
     "angular2-multiselect-dropdown": "^4.6.3",
     "bootstrap": "^4.5.0",
     "cornerstone-core": "^2.3.0",

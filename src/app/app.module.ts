@@ -81,6 +81,10 @@ import { EditOtherdetailsComponent } from './edit-otherdetails/edit-otherdetails
 import { AddFamilyhistoryComponent } from './add-familyhistory/add-familyhistory.component';
 import { EditFamilyhistoryComponent } from './edit-familyhistory/edit-familyhistory.component';
 import { PreviewallFamilyhistoryComponent } from './previewall-familyhistory/previewall-familyhistory.component';
+import { AddLifestyleComponent } from './add-lifestyle/add-lifestyle.component';
+import { PreviewLifestyleComponent } from './preview-lifestyle/preview-lifestyle.component';
+import { EditLifestyleComponent } from './edit-lifestyle/edit-lifestyle.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const x = [
   { 
@@ -160,7 +164,11 @@ const x = [
     EditOtherdetailsComponent,
     AddFamilyhistoryComponent,
     EditFamilyhistoryComponent,
-    PreviewallFamilyhistoryComponent
+    PreviewallFamilyhistoryComponent,
+    AddLifestyleComponent,
+    PreviewLifestyleComponent,
+    EditLifestyleComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

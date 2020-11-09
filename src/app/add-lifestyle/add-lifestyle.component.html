@@ -1,0 +1,138 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<app-nav></app-nav>
+
+<div id="wrapper">       
+	<app-sidenav></app-sidenav> 	
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div  class="col-md-12 fright" >
+
+        <div class="login-form">
+            <form  name="lifeStyleForm"   #lifeStyleForm="ngForm" (ngSubmit)="registerLifeStyle(lifeStyleForm.value)"   enctype="multipart/form-data">
+            
+          <h2 class="text-center"> Life Style Form</h2> 
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="patientId">Patient Name/No </label>
+                <select id="patientId" name="patientId" class="form-control" required [(ngModel)]="addform.patientId" #patientId="ngModel" >
+                  <option value="">Select Patient Name</option>
+                    <option *ngFor="let list of AllPatientList" [value]="list.id">{{list.firstname}} {{list.lastname}}</option>
+                  </select>
+                  <div *ngIf="patientId.errors && patientId.touched" class="alert alert-danger">
+                    <div *ngIf="patientId.errors.required">Patient Name is required.</div>
+                  </div>   
+    
+            </div>
+            <div class="form-group col-md-4">
+                <label for="typelifestyle">Type of Life Style </label>
+                <br/>
+    
+                <input name="typelifestyle"  [(ngModel)]="addform.typelifestyle" type="radio" [value]="true" [checked]="typelifestyle"/> Active
+                <input name="typelifestyle"[(ngModel)]="addform.typelifestyle" type="radio" [value]="false" [checked]="!typelifestyle"/> Sedentary
+      
+              </div>
+
+            <div class="form-group col-md-4"  >
+                <label for="smoking">Smoking</label>             
+                <br/>
+    
+                <input name="smoking"  [(ngModel)]="addform.smoking" type="radio" [value]="true" [checked]="smoking"/> Yes
+                <input name="smoking"[(ngModel)]="addform.smoking" type="radio" [value]="false" [checked]="!smoking"/> No
+      
+            </div>
+
+          </div>
+         
+          <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="tobaccochewing">Tobacco Chewing</label>             
+                <br/>
+    
+                <input name="tobaccochewing"  [(ngModel)]="addform.tobaccochewing" type="radio" [value]="true" [checked]="tobaccochewing"/> Yes
+                <input name="tobaccochewing"[(ngModel)]="addform.tobaccochewing" type="radio" [value]="false" [checked]="!tobaccochewing"/> No
+      
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="alcoholconsumption">Alcohol Consumption</label>             
+                <br/>
+    
+                <input name="alcoholconsumption"  [(ngModel)]="addform.alcoholconsumption" type="radio" [value]="true" [checked]="alcoholconsumption"/> Yes
+                <input name="alcoholconsumption"[(ngModel)]="addform.alcoholconsumption" type="radio" [value]="false" [checked]="!alcoholconsumption"/> No
+      
+            </div>
+
+            <div class="form-group col-md-4">
+
+                <label for="glassbeer ">No of Glasses of Beer </label>
+                <input type="text" id="glassbeer" name="glassbeer" class="form-control"   placeholder="No of Glasses Beer" 
+                required [(ngModel)]="addform.glassbeer" #glassbeer ="ngModel" >
+    
+                <!-- <div *ngIf=" glassbeer.invalid && ( glassbeer.dirty ||  glassbeer.touched)" class="alert alert-danger">
+                  <div *ngIf=" glassbeer.errors.required">
+                    Glass Beer  is required.
+                  </div>
+                  </div> -->
+    
+            </div> 
+            
+          </div>    
+
+          <div class="form-row">
+
+            <div class="form-group col-md-4">
+
+                <label for="brandypegs ">No of brandy pegs a day </label>
+                <input type="text" id="brandypegs" name="brandypegs" class="form-control"   placeholder="No of brandy pegs a day " 
+                required [(ngModel)]="addform.brandypegs" #brandypegs ="ngModel" >
+    
+            </div> 
+
+            <div class="form-group col-md-4">
+
+                <label for="whiskypegs ">No of whisky pegs a day </label>
+                <input type="text" id="whiskypegs" name="whiskypegs" class="form-control"   placeholder="No of whisky pegs  a day" 
+                required [(ngModel)]="addform.whiskypegs" #whiskypegs ="ngModel" >
+    
+            </div> 
+
+            <div class="form-group col-md-4">
+
+                <label for="localalcoholpegs ">No of local alcoholic pegs a day </label>
+                <input type="text" id="localalcoholpegs" name="localalcoholpegs" class="form-control"   placeholder="No of local alcoholic pegs a day" 
+                required [(ngModel)]="addform.localalcoholpegs" #localalcoholpegs ="ngModel" >
+    
+            </div> 
+
+          </div>        
+         
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-primary  btn-block"  >Submit Form</button>
+                </div>
+                <div class="form-group col-md-6">
+                   <button type="button" class="btn btn-danger  btn-block" (click)="lifeStyleForm.resetForm({})">Reset Form</button>
+                </div>        
+            
+      
+              </div>
+      </form> 
+     
+      </div>
+			
+	
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+<!-- <app-footer></app-footer> -->

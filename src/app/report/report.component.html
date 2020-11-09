@@ -183,9 +183,9 @@
                     <div class="form-row" style="border-bottom: 1px dotted #ccc;">
                       <div class="form-group col-md-4"   >
                        
-                        <h6> {{ Observations.ttype  | uppercase}} </h6>
+                        <h6> {{ spacecamel(Observations.ttype)  | uppercase}} </h6>
                        
-                        <!-- <h6>{{ Observations.type | titlecase }} </h6> -->
+                       
                       </div>
                      
                       <div class="form-group col-md-8"   >
@@ -215,7 +215,7 @@
                        
                         <div *ngFor="let Obsvalue of Observations.value| keyvalue; let j = index;" class="observationvalues">
                           
-                          <p>{{ Obsvalue.key.replace('select','').replace('_','') | titlecase }} - {{ Obsvalue.value | titlecase }}</p>
+                          <p>{{ Obsvalue.key.replace('select','').split('_').join('\t') | titlecase }} - {{ Obsvalue.value.split('-').join('\t')| titlecase }}</p>
                         </div>
 
                         <!------------------------------>
@@ -224,10 +224,10 @@
                         <button type="button" class="btn btn-primary mb-2" (click)="addComment(k,Observations.type)">Add</button>
 
                         <div  class="addremove-class" *ngFor="let comment of Observations.comments; let i = index;">
-
+                         
                         <div class="form-row" >
                           <div class="form-group col-md-6"   >
-                            <!-- {{comment.comment}} -->
+                           
                             <h4>Comment {{i + 1}}</h4>
                           </div>
                           <div class="form-group col-md-6 text-right">
@@ -239,16 +239,16 @@
                         <div class="form-row" >
                           <div class="form-group col-md-12">
                             <label>
-                               {{ Observations.ttype  | titlecase}} 
+                               {{ spacecamel(Observations.ttype ) | titlecase}} 
                             </label>                     
-                            <!-- <textarea name="{{comment}}" [(ngModel)]="comment.comment"
-                            class="form-control" placeholder="Comment" #comment='ngModel'
-                            required ></textarea> -->
+                           
                             
                             <textarea id="comment" name="comments_{{comment.id}}" [(ngModel)]="comment.comment"
                             class="form-control" placeholder="Comment" #comment='ngModel'
                             required ></textarea>
 
+                          
+                            
                           </div>
                         </div>  
                         </div>

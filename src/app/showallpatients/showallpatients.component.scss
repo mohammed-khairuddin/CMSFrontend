@@ -124,10 +124,16 @@ tr:nth-child(odd) {background: #FFF}
     width:150px;
 }
 
-.sticky-col {
+// .sticky-col {
+//     position: sticky;
+//     position: -webkit-sticky;    
+//     background-color: white;
+// }
+
+.sticky-col :nth-child(odd){
     position: sticky;
     position: -webkit-sticky;    
-    background-color: white;
+    background-color: #CCC;
 }
 .first-col {
 	width: 100px;

@@ -2,12 +2,12 @@
     width:100%;
 }
 
-tr:nth-child(even) {
-     background: #CCC;
-    //background-color: #ffffff80;
+// tr:nth-child(even) {
+//      background: #CCC;
+//     //background-color: #ffffff80;
     
-}
-tr:nth-child(odd) {background: #FFF}
+// }
+// tr:nth-child(odd) {background: #FFF}
 
 #page-content-wrapper {
     //position: absolute;
@@ -139,10 +139,19 @@ tr:nth-child(odd) {background: #FFF}
 .sticky-col {
     position: sticky;
     position: -webkit-sticky;    
-    //background-color: white;    
-    background: #CCC;
-    background-color: #ffffff80;
+    background-color: white;    
+    // background: #CCC;
+    // background-color: #ffffff80;
 }
+
+    
+// .sticky-col {
+//     position: sticky;
+//     position: -webkit-sticky;    
+//     //background-color: white;    
+//     background: #CCC;
+//     //background-color: #ffffff80;
+// }
 
 .first-col {
 	width: 100px;

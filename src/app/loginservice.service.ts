@@ -441,13 +441,13 @@ getGeneralMaster= (data) => {
 }
 
 updateGeneralMaster= (updateMasterObject,data) => {
-  const id = localStorage.getItem('gmid')
+  const id = localStorage.getItem('ggmid')
   //console.log(updateMasterObject)
   return this.http.put(`${this.ngrokUrl}/auth/updategeneralmaster/${id}/${data}`,updateMasterObject,this.httpOptions)
 }
 
 getGeneralMasterDetail= (data) => {  
-  const id = localStorage.getItem('gmid')
+  const id = localStorage.getItem('ggmid')
   return this.http.get(`${this.ngrokUrl}/auth/findonegeneralmaster/${id}/${data}`,this.httpOptions)
 }
 

@@ -1,18 +1,15 @@
-// .container-fluid{
-//     border:1px solid red;
-// }
 .side-form {
     margin-bottom: 5px;
     //background: #f7f7f7;
-    background-color: #000;
+    //background-color: #000;
+    background-color: #6c737dc4;
     opacity: 0.6;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    //padding: 10%;
+    //box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     //height: 60.5vh;
-    padding: 8% 10% 25% 10%;
+    padding: 5% 8% 5% 5%;
     width: 100%;
     color:#fff;
-    height:462px;
+    height:452px;
     overflow: auto;
 }
 .bodymodal{
@@ -27,7 +24,7 @@
     margin: 0 auto;
     //padding: 2em;
     //border:1px solid red;
-    padding-top: 4%;;
+    padding-top: 3%;
 }
 .row .imgg {
     margin-right: -15px;
@@ -35,8 +32,9 @@
 }
 
 .col-sm-6{
-    padding: 0px !important;
+    //padding: 0px !important;
     //border:1px solid green;
+    padding: 1% !important;
  }
 .login-form {
     max-width: 100%;
@@ -198,3 +196,31 @@
           padding: 1rem;
     }
   }
+
+
+  ////////////////////////////
+
+  
+  [class^="col"] {
+    //padding: 1rem;
+    padding: 1rem;
+    //padding-bottom: 2%;
+  }
+  
+
+
+.bg {
+/* The image used */
+background-image: url("../../assets/images/DIG.jpg");
+
+/* Full height */
+height: 100%;
+
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+
+
+}

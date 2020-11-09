@@ -8,6 +8,7 @@ import { ObservationsComponent } from '../observations/observations.component';
 import { SharedService } from '../event-emitter.service';
 import { Subscription } from 'rxjs';
 //import { type } from 'os';
+//import { HumanizePipe } from 'angular2-humanize';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -161,8 +162,7 @@ export class ReportComponent implements OnInit {
         this.docadvicecomments = doctorAdviceComments;
         this.selectedItems4 = doctorAdvicereport;
         this.impressioncomments = impressioncomment;
-         //console.log(this.comments)
-              
+         //console.log(this.comments);
         this.regionalWalls=regionalWall,
          this.selectedItems1 = speckleTrackingreport;
          let regionalwalllen = this.regionalWalls.length;
@@ -175,6 +175,7 @@ export class ReportComponent implements OnInit {
         
 
         this.observationsObject = observations.map(observation => {
+         
           const {type,comments} =observation
           const formatedTypename = type.replace("Observation","").replace(/ /g, "") ;
  
@@ -239,13 +240,28 @@ mapCommentsToTextbox = () => {
  
   for(var i=0; i<this.observationsObject.length;i++) {    
      this.observationsObject[i].comments =
-              groupedSelectedObservations.get(this.observationsObject[i].type) || []
+         groupedSelectedObservations.get(this.observationsObject[i].type) || []
       }
+
+
+  // for(var i=0; i<this.comments.length;i++) {    
+  //   console.log(groupedSelectedObservations.get(this.comments[i].type));
+  //       this.comments =
+  //       groupedSelectedObservations.get(this.comments[i].type) || []
+
+  //    }
    
 }
   getSelectedObservationsList = (filterType) => {
       return this.selectedObseravtionsInEditList.filter((data:any) => data.type == filterType)
   }
+
+
+  ///////////////////////////////////
+
+   spacecamel(s){
+    return s.replace(/([a-z])([A-Z])/g, '$1 $2');
+}
 
 onItemSelect(item: any,type) {
   //console.log(item);
@@ -264,16 +280,21 @@ onDeSelectAll(item: any,type) {
 }
 
 addComment(k,type) { 
+  console.log(this.observationsObject);  
+  console.log(type);
 
- 
+  let count =0;
+  for(let i=0;i<this.observationsObject.length;i++){
+    count+= this.observationsObject[i].comments.length+1;
+  }
+
   this.observationsObject[k].comments.push({
-    //id:this.observationsObject[k].length +1,
-    id:this.observationsObject[k].comments.length +1,
+    id:count,
      type:type,
      comment: ''
    });
 
- 
+   console.log(this.id);
 }
 
 removeComment(commentsIndex,mainObjectIndex) {
@@ -281,13 +302,13 @@ removeComment(commentsIndex,mainObjectIndex) {
 }
 
 addImpressionComment() {
+  
   this.impressioncomments.push({
     id: this.impressioncomments.length + 1,
-    //id: k + 1,
     comment: ''
   });
   
-  //console.log(this.id);
+  console.log(this.id);
   
 }
 
@@ -455,11 +476,11 @@ for(i in this.observationsObject){
   var tmp = camelCase[0];
  
            
-      dd.push({columns:[{ text: 'Objective Type', bold:true,},{text: (this.observationsObject[i].type).replace(/Observation/g,'').toUpperCase().replace(/\s+/g, ' '),margin:[-5,0,0,0]}]});
+      dd.push({columns:[{ text: 'Objective Type', bold:true,},{text: (this.observationsObject[i].type).replace(/Observation/g,'').replace(/\s+/g, ' ').replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1").toUpperCase(),margin:[-5,0,0,0]}]});
     
         dd.push({ text: 'Value', bold:true,margin:[0,15,0,0]}),
         //console.log(((JSON.stringify(this.observationsObject[i].value).replace( /[{}]/g, '' )).replace(/['"]+/g, '')).replace(/select/g,''));
-        dd.push({lineHeight:2,text: ((JSON.stringify(this.observationsObject[i].value).replace( /[{}]/g, '' )).replace(/['"]+/g, '')).split(",").join("\n").replace(/select/g,''),margin:[250,-15,0,0]});
+        dd.push({lineHeight:2,text: ((JSON.stringify(this.observationsObject[i].value).replace( /[{}]/g, '' )).replace(/['"]+/g, '')).split(",").join("\n").replace(/select/g,'').replace(/(_)/g, ' '),margin:[250,-15,0,0]});
         dd.push({ 
           text: 'Master Value', 
           style: 'header',

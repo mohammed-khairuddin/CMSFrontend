@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginserviceService} from '../loginservice.service';
+import {Router, ActivatedRoute } from '@angular/router';
+import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-generate-editmaster',
@@ -7,9 +11,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenerateEditmasterComponent implements OnInit {
 
-  constructor() { }
+  isLogin = localStorage.getItem('token')  ? true : false;
+  id  = localStorage.getItem('id')
+  role  = localStorage.getItem('role')
+  gtype  = localStorage.getItem('gtype')
 
-  ngOnInit(): void {
+ 
+  //type: string;
+  key:number;
+  value:number;
+  AllMasterList
+
+  updateform = {
+    itemName:'',
   }
+
+  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
+    
+}
+
+addMasterForm: FormGroup;
+  ngOnInit(): void {    
+
+  this.loginService.getGeneralMasterDetail(this.gtype).subscribe(master =>{
+    this.updateform = master['master']
+   //console.log(this.updateform)
+  })
+
+  }
+
+
+  updateMaster = ():any => {
+    this.loginService.updateGeneralMaster(this.updateform,this.gtype).subscribe(updateDoctor =>{
+     
+      if(updateDoctor['status'] ==  '200' ) {
+        alert('Updated Successfully');
+        this.router.navigateByUrl(`/general-previewmasterall/`+this.gtype);
+      } 
+      
+    })
+   
+ }
+
 
 }

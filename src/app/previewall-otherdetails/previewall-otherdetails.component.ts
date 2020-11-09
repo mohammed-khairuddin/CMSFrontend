@@ -24,6 +24,8 @@ export class PreviewallOtherdetailsComponent implements OnInit {
   p: number = 1; 
   filter;
 
+  clinicListName;
+
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient) { }
 
 
@@ -31,13 +33,14 @@ export class PreviewallOtherdetailsComponent implements OnInit {
 
     
     this.loginService.getAllOtherFormDetails().subscribe(user =>{
-    console.log(user);
-    console.log('............');
-      this.AllOtherDetails = user['user']
-     
+    // console.log(user);
+    // console.log('............');
+      this.AllOtherDetails = user['user'];
+  
     })
 
   }
+
 
  getResultData = () => {
   if(this.searchString != '' && this.searchString != null && this.searchString != undefined)  {

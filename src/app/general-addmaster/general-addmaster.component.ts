@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginserviceService} from '../loginservice.service';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute } from '@angular/router';
+import { HttpClient, HttpHeaders,HttpEventType }  from '@angular/common/http';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-general-addmaster',
@@ -8,50 +10,61 @@ import {Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./general-addmaster.component.scss']
 })
 export class GeneralAddmasterComponent implements OnInit {
-  AllMastersList;
-  p: number = 1; 
-  filter;
-
-  constructor(private loginService: LoginserviceService,private router:Router,private actRoute: ActivatedRoute) { }
 
   isLogin = localStorage.getItem('token')  ? true : false;
   id  = localStorage.getItem('id')
   role  = localStorage.getItem('role')
-  type  = localStorage.getItem('type')
+  gtype  = localStorage.getItem('gtype')
+
+
+  //gtype: string;
+  key:number;
+  value:number;
+
+  addform = {
+    itemName:'',
+  }
+
+  constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient, private formBuilder: FormBuilder,private actRoute: ActivatedRoute) { 
+
+  }
+
+  addMasterForm: FormGroup;
 
   ngOnInit(): void {
+   
+  //   this.actRoute.paramMap.subscribe(params => {
+  //     this.gtype = params.get('gtype');
 
-    this.actRoute.paramMap.subscribe(params => {
-      this.type = params.get('type');
+  //  });
 
-   });
-
-    this.loginService.getMaster(this.type).subscribe(master =>{
-      //console.log(master);
-      this.AllMastersList = master['master']
-     //console.log(this.AllClinicList)
-    })
+   this.addMasterForm = this.formBuilder.group({
+    itemName: ['', Validators.required]
+  });
 
   }
+  
+  addMaster = (data):any => {
 
-  goToAdd  = (type) => {
-    
-    this.router.navigateByUrl(`/addmastertable/`+type);
-  }
 
-  goToEditMaster  = (list,type) => {
-    //console.log(type);
-    window.localStorage.setItem("mid", list.id.toString());
-    
-    this.actRoute.paramMap.subscribe(params => {
-      this.type = params.get('type');
+     if(data.itemName === '' || data.item === null) {
+      alert('Please Enter Valid Value');
+     }
 
-   });
+     const masterManagementReq = {
+      "itemName": data.itemName,
+     }
 
-    this.router.navigateByUrl(`/editmastertable/${list.id}`);
-    
-    //this.router.navigateByUrl(`/editmastertable/`+type+`/${list.id}`);
-    //this.router.navigateByUrl(`/editmastertable/`+mid);
+
+     this.loginService.masterGeneralInsertion(masterManagementReq,this.gtype).subscribe(res =>{
+      console.log(res);
+        if(res['status'] ==  '200' ) {
+        alert('Data Inserted Successfully');
+        this.router.navigateByUrl(`/general-previewmasterall/`+this.gtype);
+      } 
+       
+   })
+
   }
 
 }

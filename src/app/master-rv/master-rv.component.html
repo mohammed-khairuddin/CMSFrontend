@@ -8,8 +8,8 @@
        <div class="form-row">
              <div class="form-group col-md-4"   >
               <label>Cavity Size </label>               
-                <select [(ngModel)]="updform.selectCavitySize" name="selectCavitySize" placeholder="select" 
-                (ngModelChange)="onOptionsSelected('CavitySize',updform.selectCavitySize)" class="form-control" >
+                <select [(ngModel)]="updform.selectCavity_Size" name="selectCavity_Size" placeholder="select" 
+                (ngModelChange)="onOptionsSelected('Cavity_Size',updform.selectCavity_Size)" class="form-control" >
                    <option  [ngValue]="undefined"> Not Applicable(N/A)</option>
                    <option *ngFor="let sta of cavitySize" [ngValue]="sta.itemName">{{sta.itemName}}</option>
                </select>
@@ -17,8 +17,8 @@
              </div>
              <div class="form-group col-md-4"    >
               <label>Wall Thickness </label>
-              <select [(ngModel)]="updform.selectWallThickness" name="selectWallThickness" placeholder="select"                  
-              (ngModelChange)="onOptionsSelected('WallThickness',updform.selectWallThickness)" class="form-control">
+              <select [(ngModel)]="updform.selectWall_Thickness" name="selectWall_Thickness" placeholder="select"                  
+              (ngModelChange)="onOptionsSelected('Wall_Thickness',updform.selectWall_Thickness)" class="form-control">
               <option  [ngValue]="undefined">Not Applicable(N/A)</option>
                <option *ngFor="let sta of wallThickness" [ngValue]="sta.itemName">{{sta.itemName}}</option>
                </select>
@@ -26,8 +26,8 @@
 
              <div class="form-group col-md-4">
               <label>Global Systolic Function</label>
-              <select [(ngModel)]="updform.selectGlobalSystolicFunction" name="selectGlobalSystolicFunction" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('GlobalSystolicFunction',updform.selectGlobalSystolicFunction)" class="form-control">
+              <select [(ngModel)]="updform.selectGlobal_Systolic_Function" name="selectGlobal_Systolic_Function" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('Global_Systolic_Function',updform.selectGlobal_Systolic_Function)" class="form-control">
               <option  [ngValue]="undefined"> Not Applicable(N/A)</option>
               <option *ngFor="let sta of globalSystolicFunction" [ngValue]="sta.itemName">{{sta.itemName}}</option>
               </select>
@@ -46,8 +46,8 @@
        <div class="form-row"  >
         <div class="form-group col-md-4">
           <label>Segment Wall Analysis</label>            
-          <select [(ngModel)]="updform.selectSegmentWallAnalysis" name="selectSegmentWallAnalysis" placeholder="select" 
-          (ngModelChange)="onOptionsSelected('SegmentWallAnalysis',updform.selectSegmentWallAnalysis)" class="form-control">
+          <select [(ngModel)]="updform.selectSegment_Wall_Analysis" name="selectSegment_Wall_Analysis" placeholder="select" 
+          (ngModelChange)="onOptionsSelected('Segment_Wall_Analysis',updform.selectSegment_Wall_Analysis)" class="form-control">
           <option  [ngValue]="undefined">Not Applicable(N/A)</option>
           <option *ngFor="let sta of segmentWallAnalysis" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
@@ -56,8 +56,8 @@
 
         <div class="form-group col-md-4">
           <label>Segment Wall Analysis : Free Wall</label>            
-          <select [(ngModel)]="updform.selectSegmentWallAnalysisFreeWall" name="selectSegmentWallAnalysisFreeWall" placeholder="select" 
-          (ngModelChange)="onOptionsSelected('SegmentWallAnalysisFreeWall',updform.selectSegmentWallAnalysisFreeWall)" class="form-control">
+          <select [(ngModel)]="updform.selectSegment_Wall_Analysis_Free_Wall" name="selectSegment_Wall_Analysis_Free_Wall" placeholder="select" 
+          (ngModelChange)="onOptionsSelected('Segment_Wall_Analysis_Free_Wall',updform.selectSegment_Wall_Analysis_Free_Wall)" class="form-control">
           <option  [ngValue]="undefined">Not Applicable(N/A)</option>
           <option *ngFor="let sta of segmentWallAnalysisFreeWall" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
@@ -66,8 +66,8 @@
 
         <div class="form-group col-md-4">
           <label>Segment Wall Analysis : Septum </label>            
-          <select [(ngModel)]="updform.selectSegmentWallAnalysisSeptum" name="selectSegmentWallAnalysisSeptum" placeholder="select" 
-          (ngModelChange)="onOptionsSelected('SegmentWallAnalysisSeptum',updform.selectSegmentWallAnalysisSeptum)" class="form-control">
+          <select [(ngModel)]="updform.selectSegment_Wall_Analysis_Septum" name="selectSegment_Wall_Analysis_Septum" placeholder="select" 
+          (ngModelChange)="onOptionsSelected('Segment_Wall_Analysis_Septum',updform.selectSegment_Wall_Analysis_Septum)" class="form-control">
           <option  [ngValue]="undefined">Not Applicable(N/A)</option>
           <option *ngFor="let sta of segmentWallAnalysisSeptum" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
@@ -78,17 +78,17 @@
 
      <div class="form-row" >
 
-      <div class="form-group col-md-4" *ngIf="updform.selectSegmentWallAnalysisSeptum === 'Septum-Other (Specify)'">
+      <div class="form-group col-md-4" *ngIf="updform.selectSegment_Wall_Analysis_Septum === 'Septum-Other (Specify)'">
         <label>Segment Wall Analysis : Septum : Other </label>            
-        <input type="text" id="segmentWallAnalysisSeptumOtherValue" name="segmentWallAnalysisSeptumOtherValue" class="form-control"                 
-        placeholder="Other (Specify) Value" [(ngModel)]="updform.segmentWallAnalysisSeptumOtherValue" 
-        #segmentWallAnalysisSeptumOtherValue="ngModel"  >
+        <input type="text" id="segment_Wall_Analysis_Septum_Other_Value" name="segment_Wall_Analysis_Septum_Other_Value" class="form-control"                 
+        placeholder="Other (Specify) Value" [(ngModel)]="updform.segment_Wall_Analysis_Septum_Other_Value" 
+        #segment_Wall_Analysis_Septum_Other_Value="ngModel"  >
       </div>   
 
       <div class="form-group col-md-4"  >
         <label>Segment Wall Analysis : Apex</label>            
-        <select [(ngModel)]="updform.selectSegmentWallAnalysisApex" name="selectSegmentWallAnalysisApex" placeholder="select" 
-        (ngModelChange)="onOptionsSelected('SegmentWallAnalysisApex',updform.selectSegmentWallAnalysisApex)" class="form-control">
+        <select [(ngModel)]="updform.selectSegment_Wall_Analysis_Apex" name="selectSegment_Wall_Analysis_Apex" placeholder="select" 
+        (ngModelChange)="onOptionsSelected('Segment_Wall_Analysis_Apex',updform.selectSegment_Wall_Analysis_Apex)" class="form-control">
         <option  [ngValue]="undefined">Not Applicable(N/A)</option>
         <option *ngFor="let sta of segmentWallAnalysisApex" [ngValue]="sta.itemName">{{sta.itemName}}</option>
         </select>
@@ -121,7 +121,7 @@
   <div class="form-group col-md-2" ></div>
   <div class="form-group col-md-2" >
     <button type="button" class="btn btn-warning  btn-block" onclick="$('#tabtwo').trigger('click')" 
-    (click)="getAddPage('leftVentricalObservation')"  >Previous</button>
+    (click)="getAddPage('left VentricalObservation')"  >Previous</button>
   </div>
   <div class="form-group col-md-2" >
     <button type="submit" class="btn btn-primary  btn-block" id="btnSubmit" >Submit</button>
@@ -142,3 +142,4 @@
   
    </form>
   
+ 

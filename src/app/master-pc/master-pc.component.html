@@ -81,8 +81,8 @@
 
           <div class="form-group col-md-4">
           <label>Pleural Effusion </label>               
-          <select [(ngModel)]="updform.selectPleuralEffusion" name="selectPleuralEffusion" id="selectPleuralEffusion" placeholder="select" 
-          (ngModelChange)="onOptionsSelected('PleuralEffusion',updform.selectPleuralEffusion)" class="form-control">
+          <select [(ngModel)]="updform.selectPleural_Effusion" name="selectPleural_Effusion" id="selectPleural_Effusion" placeholder="select" 
+          (ngModelChange)="onOptionsSelected('Pleural_Effusion',updform.selectPleural_Effusion)" class="form-control">
           <option [ngValue]="undefined"> Not Applicable(N/A)</option>
           <option *ngFor="let sta of pleuralEffusion" [ngValue]="sta.itemName">{{sta.itemName}}</option>
           </select>
@@ -123,8 +123,8 @@
 
           <div class="form-group col-md-4" >
             <label>Heamodynamic Compromise : Effuso Constructive</label>
-            <select [(ngModel)]="updform.selectEffusoConstructive" name="selectEffusoConstructive" id="selectEffusoConstructive" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('EffusoConstructive',updform.selectEffusoConstructive)" class="form-control">
+            <select [(ngModel)]="updform.selectEffuso_Constructive" name="selectEffuso_Constructive" id="selectEffuso_Constructive" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('Effuso_Constructive',updform.selectEffuso_Constructive)" class="form-control">
             <option [ngValue]="undefined"> Not Applicable(N/A)</option>
             <option *ngFor="let sta of effusoConstructive" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -132,8 +132,8 @@
 
           <div class="form-group col-md-4" >
             <label>Heamodynamic Compromise : Septal Bounce</label>
-            <select [(ngModel)]="updform.selectSeptalBounce" name="selectSeptalBounce" id="selectSeptalBounce" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('SeptalBounce',updform.selectSeptalBounce)" class="form-control">
+            <select [(ngModel)]="updform.selectSeptal_Bounce" name="selectSeptal_Bounce" id="selectSeptal_Bounce" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('Septal_Bounce',updform.selectSeptal_Bounce)" class="form-control">
             <option [ngValue]="undefined"> Not Applicable(N/A)</option>
             <option *ngFor="let sta of septalBounce" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -151,8 +151,8 @@
 
           <div class="form-group col-md-4" >
             <label>Heamodynamic Compromise : Excessive Respiratory Variation</label>
-            <select [(ngModel)]="updform.selectExcessiveRespiratoryVariation" name="selectExcessiveRespiratoryVariation" id="selectExcessiveRespiratoryVariation" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('ExcessiveRespiratoryVariation',updform.selectExcessiveRespiratoryVariation)" class="form-control">
+            <select [(ngModel)]="updform.selectExcessive_Respiratory_Variation" name="selectExcessive_Respiratory_Variation" id="selectExcessive_Respiratory_Variation" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('Excessive_Respiratory_Variation',updform.selectExcessive_Respiratory_Variation)" class="form-control">
             <option [ngValue]="undefined"> Not Applicable(N/A)</option>
             <option *ngFor="let sta of excessiveRespiratoryVariation" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -161,8 +161,8 @@
 
           <div class="form-group col-md-4" >
             <label>Heamodynamic Compromise : Left Ventricular Diastole</label>
-            <select [(ngModel)]="updform.selectLeftVentricularDiastole" name="selectLeftVentricularDiastole" id="selectLeftVentricularDiastole" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('LeftVentricularDiastole',updform.selectLeftVentricularDiastole)" class="form-control">
+            <select [(ngModel)]="updform.selectLeft_Ventricular_Diastole" name="selectLeft_Ventricular_Diastole" id="selectLeft_Ventricular_Diastole" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('Left_Ventricular_Diastole',updform.selectLeft_Ventricular_Diastole)" class="form-control">
             <option [ngValue]="undefined"> Not Applicable(N/A)</option>
             <option *ngFor="let sta of leftVentricularDiastole" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>
@@ -170,8 +170,8 @@
 
           <div class="form-group col-md-4" >
             <label>Heamodynamic Compromise : Fat Pad</label>
-            <select [(ngModel)]="updform.selectFatPad" name="selectFatPad" id="selectFatPad" placeholder="select" 
-              (ngModelChange)="onOptionsSelected('FatPad',updform.selectFatPad)" class="form-control">
+            <select [(ngModel)]="updform.selectFat_Pad" name="selectFat_Pad" id="selectFat_Pad" placeholder="select" 
+              (ngModelChange)="onOptionsSelected('Fat_Pad',updform.selectFat_Pad)" class="form-control">
             <option [ngValue]="undefined"> Not Applicable(N/A)</option>
             <option *ngFor="let sta of fatPad" [ngValue]="sta.itemName">{{sta.itemName}}</option>
             </select>

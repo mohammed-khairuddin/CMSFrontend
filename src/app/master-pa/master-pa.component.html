@@ -32,8 +32,8 @@
         </div>
         <div class="form-group col-md-4" >
           <label>Pulmonary Artery Suspectthromboembolism </label>
-      <select [(ngModel)]="updform.selectSuspectThromboembolism"  class="form-control" name="selectSuspectThromboembolism" placeholder="select" 
-      (ngModelChange)="onOptionsSelected('SuspectThromboembolism',updform.selectSuspectThromboembolism)">
+      <select [(ngModel)]="updform.selectSuspect_Thromboembolism"  class="form-control" name="selectSuspect_Thromboembolism" placeholder="select" 
+      (ngModelChange)="onOptionsSelected('Suspect_Thromboembolism',updform.selectSuspect_Thromboembolism)">
      <option [ngValue]="undefined"> Not Applicable(N/A)</option>
           <option *ngFor="let sta of Suspectthromboembolism" [ngValue]="sta.itemName">{{sta.itemName}}</option>
       </select>

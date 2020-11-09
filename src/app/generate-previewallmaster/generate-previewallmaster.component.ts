@@ -19,16 +19,18 @@ export class GeneratePreviewallmasterComponent implements OnInit {
   role  = localStorage.getItem('role')
   gtype  = localStorage.getItem('gtype')
 
+  
   ngOnInit(): void {
 
-    this.actRoute.paramMap.subscribe(params => {
-      this.gtype = params.get('gtype');
-      console.log('---------');
-      console.log(this.gtype);
-   });
 
-    this.loginService.getMaster(this.gtype).subscribe(master =>{
-      //console.log(master);
+  //   this.actRoute.paramMap.subscribe(params => {
+  //     this.gtype = params.get('gtype');
+  //     console.log('---------');
+  //     console.log(this.gtype);
+  //  });
+
+    this.loginService.getGeneralMaster(this.gtype).subscribe(master =>{
+      console.log(master);
       this.AllMastersList = master['master']
      //console.log(this.AllClinicList)
     })
@@ -42,7 +44,7 @@ export class GeneratePreviewallmasterComponent implements OnInit {
 
   goToEditMaster  = (list,gtype) => {
     //console.log(gtype);
-    window.localStorage.setItem("gmid", list.id.toString());
+    window.localStorage.setItem("ggmid", list.id.toString());
     
     this.actRoute.paramMap.subscribe(params => {
       this.gtype = params.get('gtype');

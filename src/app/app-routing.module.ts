@@ -65,6 +65,9 @@ import { EditOtherdetailsComponent } from './edit-otherdetails/edit-otherdetails
 import { PreviewallFamilyhistoryComponent } from './previewall-familyhistory/previewall-familyhistory.component';
 import { AddFamilyhistoryComponent } from './add-familyhistory/add-familyhistory.component';
 import { EditFamilyhistoryComponent } from './edit-familyhistory/edit-familyhistory.component';
+import { AddLifestyleComponent } from './add-lifestyle/add-lifestyle.component';
+import { EditLifestyleComponent } from './edit-lifestyle/edit-lifestyle.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   { 
@@ -257,6 +260,18 @@ const routes: Routes = [
   },
   { 
     path: 'editfamilyhistory/:id',component: EditFamilyhistoryComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'previewallfamilyhistory',component: PreviewallFamilyhistoryComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'addlifestyle',component: AddLifestyleComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'editlifestyle/:id',component: EditLifestyleComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'contactus',component: ContactUsComponent  , canActivate:[AuthGuard]
   },
   { 
     path: 'clinicdashboard',
