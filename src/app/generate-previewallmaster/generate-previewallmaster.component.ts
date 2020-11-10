@@ -30,7 +30,7 @@ export class GeneratePreviewallmasterComponent implements OnInit {
   //  });
 
     this.loginService.getGeneralMaster(this.gtype).subscribe(master =>{
-      console.log(master);
+      //console.log(master);
       this.AllMastersList = master['master']
      //console.log(this.AllClinicList)
     })
@@ -43,7 +43,9 @@ export class GeneratePreviewallmasterComponent implements OnInit {
   }
 
   goToEditMaster  = (list,gtype) => {
-    //console.log(gtype);
+    console.log(list);
+    alert(gtype);
+    alert(list.id);
     window.localStorage.setItem("ggmid", list.id.toString());
     
     this.actRoute.paramMap.subscribe(params => {

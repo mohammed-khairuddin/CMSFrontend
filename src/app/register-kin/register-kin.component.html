@@ -86,7 +86,7 @@
                 <div class="form-group col-md-6">
                     <label for="datefirstvisit">Date of First Visit</label> 
                    <input type="date" class="form-control" name="datefirstvisit" id="datefirstvisit" placeholder="Date of First Visit" 
-                   required [(ngModel)]="addform.datefirstvisit" #datefirstvisit="ngModel"   >
+                   required [(ngModel)]="addform.datefirstvisit" #datefirstvisit="ngModel" [max]="getToday()"  >
                  
                </div>
            

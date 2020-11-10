@@ -243,6 +243,9 @@ getCountries(){
   )
 }
 
+getToday(): string {
+  return new Date().toISOString().split('T')[0]
+}
 
 onCountrySelect(data){
    

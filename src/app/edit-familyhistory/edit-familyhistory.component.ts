@@ -147,6 +147,10 @@ export class EditFamilyhistoryComponent implements OnInit {
 
 /*****************************/
 
+getToday(): string {
+  return new Date().toISOString().split('T')[0]
+}
+
 updateFamilydetails = ():any => {
   console.log(this.updform);
      this.loginService.updateFamilyDetailData(this.updform).subscribe(updateDoctor =>{

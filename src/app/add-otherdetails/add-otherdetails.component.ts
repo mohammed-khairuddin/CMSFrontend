@@ -87,6 +87,10 @@ export class AddOtherdetailsComponent implements OnInit {
     })
 
   }
+  
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+ }
 
   calculateBsa(bsa){
 

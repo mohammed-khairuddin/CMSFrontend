@@ -81,7 +81,9 @@ ews=['Good','Bad'];
   }
 
 
-
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+ }
   updatePatient = ():any => {
     
     this.loginService.updatePatientDoc(this.patientDataObject).subscribe(updateAssignment =>{

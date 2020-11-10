@@ -101,6 +101,10 @@ ews=['Good','Bad'];
         }, error => console.log(error));
         
   }
+
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+ }
   
 calculateAge(birthday) {
  

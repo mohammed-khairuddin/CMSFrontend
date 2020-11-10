@@ -31,8 +31,8 @@
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;"><a routerLink="/general-previewclinicall"  >Preview General All Clinics </a> </li>
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" ><a routerLink="/general-previewdoctorall"  >Preview General All Doctors</a> </li>
                     
-                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('speciality');"  >Speciality</a></li>
-                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('services');"  > Services</a></li>
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('hospitalSpeciality');"  >Speciality</a></li>
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a [routerLink]="" queryParamsHandling="preserve" (click)="getgeneralAddPage('hospitalService');"  > Services</a></li>
 
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/previewallotherdetails"  > Preview Other Details Form</a></li> 
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/addotherdetails"  > Add Other Details Form</a></li> 

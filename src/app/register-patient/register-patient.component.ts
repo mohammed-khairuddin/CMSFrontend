@@ -222,7 +222,9 @@ export class RegisterPatientComponent implements OnInit {
 
 
   }
-
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+ }
 
   onCountrySelect(data){
    

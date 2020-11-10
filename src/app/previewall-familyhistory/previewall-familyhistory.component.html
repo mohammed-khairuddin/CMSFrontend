@@ -49,9 +49,11 @@
             <ng-template #elseBlock>
                     <label>No</label>
             </ng-template>
+            
+
         </td>
         <td>
-            <label *ngIf="alllist.diabetic != 0; else elseBlock">{{ alllist.diabetictype}}</label>
+            <label *ngIf="alllist.diabetictype != 0; else elseBlock">{{ alllist.diabetictype}}</label>
             <ng-template #elseBlock>
                     <label>No</label>
             </ng-template>

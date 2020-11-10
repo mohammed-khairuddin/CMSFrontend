@@ -100,7 +100,7 @@
                 <div class="form-group col-md-6">
                     <label for="datefirstvisit">Date of First Visit</label> 
                    <input type="date" class="form-control" name="datefirstvisit" id="datefirstvisit" placeholder="Date of First Visit" 
-                   required [(ngModel)]="updform.datefirstvisit" #datefirstvisit="ngModel"   >
+                   required [(ngModel)]="updform.datefirstvisit" #datefirstvisit="ngModel"  [max]="getToday()" >
                    <!-- <div *ngIf="datefirstvisit.invalid && (datefirstvisit.dirty || datefirstvisit.touched)" class="alert alert-danger">
                        <div *ngIf="datefirstvisit.errors.required">
                          Date Of First Visit is required.

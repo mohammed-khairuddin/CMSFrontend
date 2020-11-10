@@ -58,7 +58,7 @@
             <div class="form-group col-md-4">
                 <label for="followup">Date of First Visit</label> 
                <input type="date" class="form-control" name="followup" id="followup" placeholder="Date of First Visit" 
-               required [(ngModel)]="addform.followup" #followup="ngModel"   >
+               required [(ngModel)]="addform.followup" #followup="ngModel" [max]="getToday()"  >
              
            </div>           
 

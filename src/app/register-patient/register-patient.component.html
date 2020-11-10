@@ -143,7 +143,7 @@
               <div class="form-group col-md-4">
                   <label for="dob">Date of Birth</label> 
                  <input type="date" class="form-control" name="dob" id="dob" placeholder="Date of Birth" 
-                 required [(ngModel)]="addform.dob" #dob="ngModel"  (blur)="calculateAge(this.dob)"  >
+                 required [(ngModel)]="addform.dob" #dob="ngModel"  (blur)="calculateAge(this.dob)" [max]="getToday()" >
                
              </div>
 
@@ -330,7 +330,7 @@
                 <div class="form-group col-md-6">
                     <label for="datefirstvisit">Date of First Visit</label> 
                    <input type="date" class="form-control" name="datefirstvisit" id="datefirstvisit" placeholder="Date of First Visit" 
-                   required [(ngModel)]="addform.datefirstvisit" #datefirstvisit="ngModel"   >
+                   required [(ngModel)]="addform.datefirstvisit" #datefirstvisit="ngModel" [max]="getToday()"  >
                
                </div>
             </div>

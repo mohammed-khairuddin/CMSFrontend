@@ -68,7 +68,9 @@ export class RegisterKinComponent implements OnInit {
 
   }
 
-
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+ }
 
 /*****************************/
 registerPatientkin = (data):any => {

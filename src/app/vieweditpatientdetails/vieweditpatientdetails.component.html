@@ -27,7 +27,7 @@
  
                     <div class="form-group col-md-4">
                       <label for="dob">Date Of Birth </label>
-                      <input type="date"  id="dob" name="dob" class="form-control"  placeholder="DOB " 
+                      <input type="date"  id="dob" name="dob" class="form-control"  placeholder="DOB " [max]="getToday()"
                       required [(ngModel)]="patientDataObject.dob" #dob="ngModel"  (blur)="calculateAge(this.dob)" >                 
                   </div>
 
@@ -58,7 +58,7 @@
                   <div class="form-group col-md-4">
                     <label for="submitdate">Date of Registration</label>
                     <input type="date" id="submitdate" name="submitdate" class="form-control"   placeholder="Registration Date "
-                    required [(ngModel)]="patientDataObject.submitdate" #submitdate="ngModel" >
+                    required [(ngModel)]="patientDataObject.submitdate" #submitdate="ngModel" [max]="getToday()" >
                   </div>
 
                   <div class="form-group col-md-4">

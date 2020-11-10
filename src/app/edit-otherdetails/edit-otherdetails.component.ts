@@ -105,7 +105,9 @@ calculateBsa(bsa){
   this.updform['bmi'] = (wt / Math.pow(ht,2)).toFixed(3); 
   
 }
-
+getToday(): string {
+  return new Date().toISOString().split('T')[0]
+}
 
 updateOtherdetails = ():any => {
     //console.log(this.updform);

@@ -140,10 +140,15 @@ export class AddFamilyhistoryComponent implements OnInit {
 
   }
 
-
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+ }
 
 /*****************************/
 familyDetails = (data):any => {
+
+  console.log(data.diabetic);
+  console.log('................');
 
       const familyManagementReq = {
         "patientno": data.patientno,

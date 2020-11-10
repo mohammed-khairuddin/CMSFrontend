@@ -69,6 +69,9 @@ export class EditKinComponent implements OnInit {
   }
 
 /*****************************/
+getToday(): string {
+  return new Date().toISOString().split('T')[0]
+}
 
 updateKin = ():any => {
     //console.log(this.updform);

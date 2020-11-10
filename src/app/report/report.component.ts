@@ -8,7 +8,6 @@ import { ObservationsComponent } from '../observations/observations.component';
 import { SharedService } from '../event-emitter.service';
 import { Subscription } from 'rxjs';
 //import { type } from 'os';
-//import { HumanizePipe } from 'angular2-humanize';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -302,7 +301,7 @@ removeComment(commentsIndex,mainObjectIndex) {
 }
 
 addImpressionComment() {
-  
+
   this.impressioncomments.push({
     id: this.impressioncomments.length + 1,
     comment: ''
@@ -452,7 +451,7 @@ getDocumentDefinition() {
   //console.log(this.observationsObject[0].value);
   //console.log(this.regionalWalls)
     //console.log("checking for observation object")
-     //console.log(this.observationsObject)
+     console.log(this.observationsObject)
      //console.log("get obs to pdf")
      
     
@@ -504,13 +503,13 @@ for(i in this.observationsObject){
         bold:true,
        margin:[0,0,0,0]}]}
     ,);
-        for(var k in this.observationsObject[i].observtaionComments){
-          if(this.observationsObject[i].type==this.observationsObject[i].observtaionComments[k].type){
+        for(var k in this.observationsObject[i].comments){
+          if(this.observationsObject[i].type==this.observationsObject[i].comments[k].type){
             //console.log(this.selectedObseravtionsInEditList)
-          //console.log(this.observationsObject[i].type)  
+          console.log(this.observationsObject[i].comments)  
   //console.log(this.observationsObject[i].observtaionComments[k])
   dd.push(
-    {lineHeight:2,columns:[{ text: '', bold:true},{text: `${this.observationsObject[i].observtaionComments[k].comment}`,margin:[0,-16,0,0] }]})
+    {lineHeight:2,columns:[{ text: '', bold:true},{text: `${this.observationsObject[i].comments[k].comment}`,margin:[0,-16,0,0] }]})
   
         }
       //  console.log(this.observationsObject[i].regionalWall[i].anteriorwall) 

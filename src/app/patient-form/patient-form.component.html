@@ -119,7 +119,7 @@
                     <div class="form-group col-md-4">
                       <label for="dob">Date Of Birth </label>
                       <input type="date"  id="dob" name="dob" class="form-control"  placeholder="DOB " 
-                      required [(ngModel)]="patform.dob" #dob="ngModel" >                 
+                      required [(ngModel)]="patform.dob" #dob="ngModel" [max]="getToday()" >                 
                   </div>
                   <div class="form-group col-md-4">
                       <label for="caseId">Case Id</label>
@@ -154,7 +154,7 @@
                     <div class="form-group col-md-4">
                         <label for="testdate">Test Date </label>
                         <input type="date" id="testdate" name="testdate" class="form-control" placeholder="Test Date " 
-                        required [(ngModel)]="patform.testdate" #testdate="ngModel">
+                        required [(ngModel)]="patform.testdate" #testdate="ngModel" [max]="getToday()">
                     </div>
         
                    
@@ -165,12 +165,12 @@
                     <div class="form-group col-md-4">
                       <label for="updatedate">Update Date</label>
                       <input type="date" id="updatedate" name="updatedate" class="form-control"  placeholder="Update Date " 
-                      required [(ngModel)]="patform.updatedate" #updatedate="ngModel" >
+                      required [(ngModel)]="patform.updatedate" #updatedate="ngModel" [max]="getToday()" >
                   </div>
                     <div class="form-group col-md-4">
                         <label for="examinedate">Examine Date</label>
                         <input type="date" id="examinedate" name="examinedate" class="form-control" placeholder="Examine Date " 
-                        required [(ngModel)]="patform.examinedate" #examinedate="ngModel" >
+                        required [(ngModel)]="patform.examinedate" #examinedate="ngModel" [max]="getToday()" >
                     </div>
                     <div class="form-group col-md-4">
                       <label for="reportnew" >Report New</label>
@@ -192,7 +192,7 @@
                   <div class="form-group col-md-4">
                       <label for="reportdate">Date of Report</label>
                       <input type="date" id="reportdate" name="reportdate" class="form-control" placeholder="Report Date " 
-                      required [(ngModel)]="patform.reportdate" #reportdate="ngModel" >
+                      required [(ngModel)]="patform.reportdate" #reportdate="ngModel" [max]="getToday()">
                   </div>
         
                   <div class="form-group col-md-4">
@@ -214,7 +214,7 @@
         
                 <div class="form-group col-md-4">
                   <label for="supplimentarytdate">Date of Supplimentary Report</label>
-                  <input type="date" id="supplimentarytdate" name="supplimentarytdate" class="form-control"
+                  <input type="date" id="supplimentarytdate" name="supplimentarytdate" class="form-control" [max]="getToday()"
                    placeholder="Supplimentary Date "  required [(ngModel)]="patform.supplimentarytdate" #supplimentarytdate="ngModel" >
                 </div>
                   </div>
@@ -236,14 +236,14 @@
                   <div class="form-group col-md-4">
                     <label for="propreport">Date of Prop Report</label>
                     <input type="date" id="propreport" name="propreport" class="form-control" placeholder="Prop Date " 
-                    required [(ngModel)]="patform.propreport" #propreport="ngModel">
+                    required [(ngModel)]="patform.propreport" #propreport="ngModel" [max]="getToday()">
                   </div>
         
                   
                   <div class="form-group col-md-4">
                     <label for="submitdate">Date of Submit</label>
                     <input type="date" id="submitdate" name="submitdate" class="form-control"   placeholder="SubmitDate "
-                    required [(ngModel)]="patform.submitdate" #submitdate="ngModel" >
+                    required [(ngModel)]="patform.submitdate" #submitdate="ngModel" [max]="getToday()" >
                   </div>
         
                   </div>  

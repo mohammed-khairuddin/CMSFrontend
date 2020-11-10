@@ -1,4 +1,3 @@
-<p>edit-otherdetails works!</p>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <app-nav></app-nav>
 
@@ -59,7 +58,7 @@
             <div class="form-group col-md-4">
                 <label for="followup">Date of First Visit</label> 
                <input type="date" class="form-control" name="followup" id="followup" placeholder="Date of First Visit" 
-               required [(ngModel)]="updform.followup" #followup="ngModel"   >
+               required [(ngModel)]="updform.followup" #followup="ngModel" [max]="getToday()"  >
              
            </div>           
 
