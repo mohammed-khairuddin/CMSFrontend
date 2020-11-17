@@ -135,10 +135,11 @@ export class MasterPcComponent implements OnInit {
    });
  
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {    
-    const x = observation.observation.value;    
-    //if(x != ''){
-      this.updform =x;
-     //}
+
+     if(observation.observation != null){
+      this.updform =observation.observation.value;
+     }
+
   }, error => console.log(error));
 
     this.settings = {

@@ -64,7 +64,7 @@ export class AddclinicdoctorComponent implements OnInit {
   //dropdownSettings = {};
   settings = {};
   servicessettings= {};
-
+  branchsettings={};
   ///////////////////////////////////
 
   typess = ['HOSPITAL', 'CLINIC'];
@@ -215,6 +215,13 @@ export class AddclinicdoctorComponent implements OnInit {
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     classes: "myclass custom-class"
+};
+
+this.branchsettings = {
+  text: "Select Branchs",
+  selectAllText: 'Select All',
+  unSelectAllText: 'UnSelect All',
+  classes: "myclass custom-class"
 };
 
   }

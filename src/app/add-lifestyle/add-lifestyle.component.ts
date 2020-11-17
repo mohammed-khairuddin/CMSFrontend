@@ -21,6 +21,47 @@ export class AddLifestyleComponent implements OnInit {
   brandypegs;
   whiskypegs;
   localalcoholpegs;
+  wineglasses;
+  excercise;
+  aerobicexercise;
+  walking;
+  yoga;
+  cycling;
+  cardiacexercises;
+  otherexercises;
+  smoker;
+  physicalactivity;
+  sleep;
+  panchewing;
+  regyoga;
+  typecancer;
+  chemotherapy;
+  radiationtherapy;
+  therapy;
+  heartattack;
+  bypasssurgery;
+  angiography;
+  angioplasty;
+  valvesurgery;
+  irregularpulse;
+  heartmurmur;
+  admissionheartproblem;
+  eardischarge;
+  earpain;
+  vision;
+  spectacles;
+  chronickidneydisease;
+  abnormalurinefindings;
+  dialysis;
+  difficultyinpassingurine;
+  painwhilepassingurine;
+  prostrate;
+  hernia;
+  scarsofoperation;
+  enlargedliver;
+  cirrhosisofliver;
+  chronicliverdisease;
+  cancerofliver;
 
   AllPatientList: Object;  
   AllDoctorsList:Object;
@@ -38,6 +79,47 @@ export class AddLifestyleComponent implements OnInit {
     brandypegs:'',
     whiskypegs:'',
     localalcoholpegs:'',
+    wineglasses:'',
+    excercise:'',
+    aerobicexercise:'',
+    walking:'',
+    yoga:'',
+    cycling:'',
+    cardiacexercises:'',
+    otherexercises:'',
+    smoker:'',
+    physicalactivity:'',
+    sleep:'',
+    panchewing:'',
+    regyoga:'',
+    typecancer:'',
+    chemotherapy:'',
+    radiationtherapy:'',
+    therapy:'',
+    heartattack:'',
+    bypasssurgery:'',
+    angiography:'',
+    angioplasty:'',
+    valvesurgery:'',
+    irregularpulse:'',
+    heartmurmur:'',
+    admissionheartproblem:'',
+    eardischarge:'',
+    earpain:'',
+    vision:'',
+    spectacles:'',
+    chronickidneydisease:'',
+    abnormalurinefindings:'',
+    dialysis:'',
+    difficultyinpassingurine:'',
+    painwhilepassingurine:'',
+    prostrate:'',
+    hernia:'',
+    scarsofoperation:'',
+    enlargedliver:'',
+    cirrhosisofliver:'',
+    chronicliverdisease:'',
+    cancerofliver:'',
   };
 
   ///////////////////////////////////

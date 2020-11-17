@@ -409,10 +409,9 @@ export class MasterLvComponent {
   
    this.loginService.observationsGetAllByPatientIdType().subscribe((observation : any) => {
    
-      //if(observation.observation.value){
-    const x = observation.observation.value;
-      this.updform =x;
-     //}
+    if(observation.observation != null){
+      this.updform =observation.observation.value;
+     }
   }, error => console.log(error));
 
   this.settings = {

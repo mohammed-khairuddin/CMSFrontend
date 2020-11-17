@@ -59,7 +59,7 @@ export class RegisterPatientComponent implements OnInit {
   //length : any[] = [];
   ///////////////////////////////////
 
- 
+  //complains: any[] = [];
 
 
   ////////////////////////////////////////
@@ -357,11 +357,12 @@ registerPatient = (data):any => {
         "village":data.village,
         "district":data.district,
       }
-      console.log(patientManagementReq);
-      console.log('==============');
+      // console.log(patientManagementReq);
+      // console.log('==============');
      
         this.loginService.registeredPatient(patientManagementReq).subscribe(res =>{
-         
+         console.log(res);
+         console.log('............');
           if(res['descsription'] ==  'Patient Created' ) {
             //if(res['status'] ==  '200' ) {
             alert('Patient Created Successfully');

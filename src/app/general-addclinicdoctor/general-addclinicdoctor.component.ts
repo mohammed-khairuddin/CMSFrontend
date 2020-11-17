@@ -16,7 +16,7 @@ export class GeneralAddclinicdoctorComponent implements OnInit {
   role: string;
   name: string;
   type:string;
-  speciality:string;
+  speciality:JSON;
   clinictype:string;
   clinicId: string;
   qualification:string;
@@ -46,7 +46,7 @@ export class GeneralAddclinicdoctorComponent implements OnInit {
   timingshours :string;
   logoImage;
   profileImage;
-  services;
+  services:JSON;
 
   middlename;
   lastname;
@@ -58,19 +58,17 @@ export class GeneralAddclinicdoctorComponent implements OnInit {
 
   dropdownList = [];
   selectedItems = [];
+  selectedItems1 = [];
+  selectedItems2 = [];
   //dropdownSettings = {};
   settings = {};
-
+  servicessettings= {};
+  branchsettings={};
   ///////////////////////////////////
 
   typess = ['HOSPITAL', 'CLINIC'];
   roles = ['CLINIC', 'DOCTOR'];
-  countrys = ['India', 'USA', 'Australia'];
-  states = ['Telangana','AndhraPradesh'];
-  citys = ['Hyderabad', 'Visakhapatnam', 'Vijayawada'];
-
-  specialitys = ['Speciaity1','Speciaity2'];
-  clinictypes = ['clinictype1','clinictype2'];
+  
   addform = {
   role: '',
   name:'',
@@ -121,6 +119,7 @@ export class GeneralAddclinicdoctorComponent implements OnInit {
   filteredCities;
   salutationList;
   branchList;
+  str;
   ///////////////////////////////////
 
   constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder,private http:HttpClient) { }
@@ -147,7 +146,7 @@ export class GeneralAddclinicdoctorComponent implements OnInit {
     this.loginService.getAllHospitalClinicFetch().subscribe( (data : any) => { 
       const {hospitalSpeciality,hospitalService,country,state,
         hostipalType,salutation,branch} = data; 
-      console.log(data);
+     
     
     this.specialityList = data['hospitalSpeciality'];
     this.serviceList = data['hospitalService'];
@@ -198,17 +197,31 @@ export class GeneralAddclinicdoctorComponent implements OnInit {
       fileSource1:['', Validators.required],
     });
 
-    this.loginService.getGeneralAllClinicList().subscribe(clinic =>{
+    this.loginService.getAllClinicList().subscribe(clinic =>{
       this.AllClinicList = clinic['clinic']
-     //console.log(this.AllClinicList)
+    
     })
 
     this.settings = {
-      text: "Select Services",
+      text: "Select Speciality",
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       classes: "myclass custom-class"
   };
+
+  this.servicessettings = {
+    text: "Select Services",
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    classes: "myclass custom-class"
+};
+
+this.branchsettings = {
+  text: "Select Branchs",
+  selectAllText: 'Select All',
+  unSelectAllText: 'UnSelect All',
+  classes: "myclass custom-class"
+};
 
   }
 
@@ -231,8 +244,8 @@ get f(){
 }
 
 onItemSelect(item: any) {
-  console.log(item);
-  console.log(this.selectedItems);
+  // console.log(item);
+  // console.log(this.selectedItems);
  
 }
 OnItemDeSelect(item: any) {
@@ -255,7 +268,7 @@ onLogoChange(event) {
     // });
     // this.files.push(logoImage)
     this.addClinicDoctorForm.get('fileSource').setValue(logoImage);
-    //console.log(logoImage);
+ 
   }
 }
 
@@ -267,7 +280,7 @@ onFileChange(event) {
       fileSource1: profileImage
     });
     //this.files.push(profileImage)
-    //console.log(profileImage);
+   
   }
 }
 
@@ -282,6 +295,7 @@ onPhotoChange(event) {
   }
 }
 
+ 
 
 /********************************/
   addClinicDoctor = (data):any => {
@@ -327,7 +341,8 @@ onPhotoChange(event) {
     if(data.role != '' && data.name != '' && data.email != '' && data.username != '' && 
     data.password != '' && data.mobNo != '' )
       {
-              
+     
+    
       var formData = new FormData();
 
       //other info request takes
@@ -336,9 +351,10 @@ onPhotoChange(event) {
       formData.append("middlename", data.middlename);
       formData.append("lastname", data.lastname);
       formData.append("salutation", data.salutation);
-      formData.append("branch", data.branch);
+      formData.append("branch", JSON.stringify(data.branch));
+      formData.append("services", JSON.stringify(data.services));
       formData.append("type", data.type);
-      formData.append("speciality", data.speciality);
+      formData.append("speciality", JSON.stringify(data.speciality));
       formData.append("clinictype", data.clinictype);
       formData.append("clinicId", data.clinicId);
       formData.append("qualification", data.qualification);
@@ -374,7 +390,7 @@ onPhotoChange(event) {
      
   
           this.loginService.generalAddClinicDoctor(formData).subscribe(res =>{
-            //console.log(res);
+            console.log(res);
             if(res['message'] ==  'Successfully created' || res['message'] == 'File uploaded successfully!' ) {
               //if(res['status'] ==  '200' ) {
               alert('Added Successfully');
@@ -382,7 +398,7 @@ onPhotoChange(event) {
             } 
             if(res['message'] ==  'cannot enter' ) {
               alert('Maximum Doctors Assigned to this Clinic.');
-              this.router.navigate(['/general-addclinicdoctor']);
+              //this.router.navigate(['/addclinicdoctor']);
             } 
             // else{
             //   alert("Invalid Details. Please Check the Details");

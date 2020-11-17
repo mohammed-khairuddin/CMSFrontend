@@ -18,7 +18,7 @@
           <h2 class="text-center"> Life Style Form</h2> 
 
           <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="patientId">Patient Name/No </label>
                 <select id="patientId" name="patientId" class="form-control" required [(ngModel)]="addform.patientId" #patientId="ngModel" >
                   <option value="">Select Patient Name</option>
@@ -29,7 +29,7 @@
                   </div>   
     
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="typelifestyle">Type of Life Style </label>
                 <br/>
     
@@ -38,7 +38,7 @@
       
               </div>
 
-            <div class="form-group col-md-4"  >
+            <div class="form-group col-md-3"  >
                 <label for="smoking">Smoking</label>             
                 <br/>
     
@@ -47,19 +47,20 @@
       
             </div>
 
+            <div class="form-group col-md-3">
+              <label for="tobaccochewing">Tobacco Chewing</label>             
+              <br/>
+  
+              <input name="tobaccochewing"  [(ngModel)]="addform.tobaccochewing" type="radio" [value]="true" [checked]="tobaccochewing"/> Yes
+              <input name="tobaccochewing"[(ngModel)]="addform.tobaccochewing" type="radio" [value]="false" [checked]="!tobaccochewing"/> No
+    
+          </div>
+
           </div>
          
           <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="tobaccochewing">Tobacco Chewing</label>             
-                <br/>
-    
-                <input name="tobaccochewing"  [(ngModel)]="addform.tobaccochewing" type="radio" [value]="true" [checked]="tobaccochewing"/> Yes
-                <input name="tobaccochewing"[(ngModel)]="addform.tobaccochewing" type="radio" [value]="false" [checked]="!tobaccochewing"/> No
-      
-            </div>
-
-            <div class="form-group col-md-4">
+            
+            <div class="form-group col-md-3">
                 <label for="alcoholconsumption">Alcohol Consumption</label>             
                 <br/>
     
@@ -68,49 +69,490 @@
       
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
 
                 <label for="glassbeer ">No of Glasses of Beer </label>
                 <input type="text" id="glassbeer" name="glassbeer" class="form-control"   placeholder="No of Glasses Beer" 
                 required [(ngModel)]="addform.glassbeer" #glassbeer ="ngModel" >
     
-                <!-- <div *ngIf=" glassbeer.invalid && ( glassbeer.dirty ||  glassbeer.touched)" class="alert alert-danger">
-                  <div *ngIf=" glassbeer.errors.required">
-                    Glass Beer  is required.
-                  </div>
-                  </div> -->
-    
             </div> 
+
+            <div class="form-group col-md-3">
+
+              <label for="brandypegs">No of brandy pegs a day </label>
+              <input type="text" id="brandypegs" name="brandypegs" class="form-control"   placeholder="No of brandy pegs a day " 
+              required [(ngModel)]="addform.brandypegs" #brandypegs ="ngModel" >
+  
+          </div> 
+
+          <div class="form-group col-md-3">
+
+              <label for="whiskypegs">No of whisky pegs a day </label>
+              <input type="text" id="whiskypegs" name="whiskypegs" class="form-control"   placeholder="No of whisky pegs  a day" 
+              required [(ngModel)]="addform.whiskypegs" #whiskypegs ="ngModel" >
+  
+          </div> 
             
           </div>    
 
           <div class="form-row">
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
 
-                <label for="brandypegs ">No of brandy pegs a day </label>
-                <input type="text" id="brandypegs" name="brandypegs" class="form-control"   placeholder="No of brandy pegs a day " 
-                required [(ngModel)]="addform.brandypegs" #brandypegs ="ngModel" >
-    
-            </div> 
-
-            <div class="form-group col-md-4">
-
-                <label for="whiskypegs ">No of whisky pegs a day </label>
-                <input type="text" id="whiskypegs" name="whiskypegs" class="form-control"   placeholder="No of whisky pegs  a day" 
-                required [(ngModel)]="addform.whiskypegs" #whiskypegs ="ngModel" >
-    
-            </div> 
-
-            <div class="form-group col-md-4">
-
-                <label for="localalcoholpegs ">No of local alcoholic pegs a day </label>
+                <label for="localalcoholpegs">No of local alcoholic pegs a day </label>
                 <input type="text" id="localalcoholpegs" name="localalcoholpegs" class="form-control"   placeholder="No of local alcoholic pegs a day" 
                 required [(ngModel)]="addform.localalcoholpegs" #localalcoholpegs ="ngModel" >
     
             </div> 
 
-          </div>        
+            <div class="form-group col-md-3">
+
+              <label for="wineglasses">No of wine glasses per day</label>
+              <input type="text" id="wineglasses" name="wineglasses" class="form-control"   placeholder="No of wine glasses per day" 
+              required [(ngModel)]="addform.wineglasses" #wineglasses ="ngModel" >
+  
+          </div> 
+
+          </div>  
+          
+          
+          
+  <hr/>
+
+
+  <div class="form-row">
+
+    <div class="form-group col-md-3">
+      <label for="excercise">Excercise</label>             
+      <br/>
+
+      <input name="excercise"  [(ngModel)]="addform.excercise" type="radio" value="true" [checked]="excercise"/> Yes
+      <input name="excercise"[(ngModel)]="addform.excercise" type="radio" value="false" [checked]="!excercise"/> No
+
+    </div> 
+
+    <div class="form-group col-md-3">
+
+      <label for="aerobicexercise">Aerobic exercise in minutes per day</label>
+      <input type="text" id="aerobicexercise" name="aerobicexercise" class="form-control"   placeholder="Aerobic exercise in minutes per day" 
+      required [(ngModel)]="addform.aerobicexercise" #aerobicexercise ="ngModel" >
+
+  </div>
+  
+  <div class="form-group col-md-3">
+
+    <label for="walking">Walking  </label>
+    <input type="text" id="walking" name="walking" class="form-control"   placeholder="Walking" 
+    required [(ngModel)]="addform.walking" #walking ="ngModel" >
+
+  </div>
+
+  <div class="form-group col-md-3">
+    <label for="yoga">Yoga</label>             
+    <input type="text" id="yoga" name="yoga" class="form-control"   placeholder="Yoga" 
+    required [(ngModel)]="addform.yoga" #yoga ="ngModel" >
+
+  </div> 
+
+  </div>  
+
+  <div class="form-row">
+
+    <div class="form-group col-md-3">
+
+      <label for="cycling">Cycling</label>
+      <input type="text" id="cycling" name="cycling" class="form-control"   placeholder="Cycling" 
+      required [(ngModel)]="addform.cycling" #cycling ="ngModel" >
+
+  </div>
+  
+  <div class="form-group col-md-3">
+
+    <label for="cardiacexercises">Cardiac exercises</label>
+    <input type="text" id="cardiacexercises" name="cardiacexercises" class="form-control"   placeholder="Cardiac Exercises" 
+    required [(ngModel)]="addform.cardiacexercises" #cardiacexercises ="ngModel" >
+
+</div>
+
+<div class="form-group col-md-3">
+  <label for="otherexercises">Other exercises</label>             
+  <input type="text" id="otherexercises" name="otherexercises" class="form-control"   placeholder="Other Exercises" 
+  required [(ngModel)]="addform.otherexercises" #otherexercises ="ngModel" >
+</div>
+
+<div class="form-group col-md-3">
+  <label for="smoker">Smoker</label>             
+  <br/>
+
+  <input name="smoker"  [(ngModel)]="addform.smoker" type="radio" value="true" [checked]="smoker"/> Yes
+  <input name="smoker"[(ngModel)]="addform.smoker" type="radio" value="false" [checked]="!smoker"/> No
+
+</div>
+
+  </div> 
+
+  <div class="form-row">
+
+    <div class="form-group col-md-3">
+      <label for="physicalactivity">Physical activity</label>             
+      <br/>
+
+      <input name="physicalactivity"  [(ngModel)]="addform.physicalactivity" type="radio" value="sedentary" [checked]="physicalactivity"/> Sedentary
+      <input name="physicalactivity"[(ngModel)]="addform.physicalactivity" type="radio" value="light" [checked]="!physicalactivity"/> Light
+      <input name="physicalactivity"[(ngModel)]="addform.physicalactivity" type="radio" value="moderate" [checked]="!physicalactivity"/> Moderate
+      <input name="physicalactivity"[(ngModel)]="addform.physicalactivity" type="radio" value="good" [checked]="!physicalactivity"/> Good
+
+    </div>
+
+    
+  <div class="form-group col-md-3">
+    <label for="sleep">Sleep</label>             
+    <br/>
+
+    <input name="sleep"  [(ngModel)]="addform.sleep" type="radio" value="deepsleep" [checked]="sleep"/> Deep Sleep
+    <input name="sleep"[(ngModel)]="addform.sleep" type="radio" value="notsoundsleep" [checked]="!sleep"/> Not Sound Sleep
+
+  </div>
+
+  <div class="form-group col-md-3">
+    <label for="panchewing">Pan chewing </label>             
+    <br/>
+
+    <input name="panchewing"  [(ngModel)]="addform.panchewing" type="radio" value="true" [checked]="panchewing"/> Yes
+    <input name="panchewing"[(ngModel)]="addform.panchewing" type="radio" value="false" [checked]="!panchewing"/> No
+
+  </div>
+
+  <div class="form-group col-md-3">
+    <label for="regyoga">Yoga</label>             
+    <br/>
+
+    <input name="regyoga"  [(ngModel)]="addform.regyoga" type="radio" value="regular " [checked]="regyoga"/> Regular 
+    <input name="regyoga"[(ngModel)]="addform.regyoga" type="radio" value="irregular " [checked]="!regyoga"/> Irregular 
+    <input name="regyoga"[(ngModel)]="addform.regyoga" type="radio" value="no" [checked]="!regyoga"/> No
+
+  </div>
+
+  </div> 
+
+<hr/>
+
+    <h4 class="text-center">Cancer</h4>
+
+
+    <div  class="form-row">
+
+      <div class="form-group col-md-3">
+        <label for="typecancer">Type of Cancer </label>        
+
+        <input type="text" id="typecancer" name="typecancer" class="form-control"   placeholder="Type Of Cancer" 
+        required [(ngModel)]="addform.typecancer" #typecancer ="ngModel" >
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="chemotherapy">Chemotherapy</label>             
+        <br/>
+    
+        <input name="chemotherapy"  [(ngModel)]="addform.chemotherapy" type="radio" value="true" [checked]="chemotherapy"/> Yes
+        <input name="chemotherapy"[(ngModel)]="addform.chemotherapy" type="radio" value="false" [checked]="!chemotherapy"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="radiationtherapy">Radiation therapy</label>             
+        <br/>
+    
+        <input name="radiationtherapy"  [(ngModel)]="addform.radiationtherapy" type="radio" value="true " [checked]="radiationtherapy"/> Yes 
+        <input name="radiationtherapy"[(ngModel)]="addform.radiationtherapy" type="radio" value="false " [checked]="!radiationtherapy"/> No 
+       
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="therapy">Therapy</label>             
+        <br/>
+    
+        <input name="therapy"  [(ngModel)]="addform.therapy" type="radio" value="true " [checked]="therapy"/> Yes 
+        <input name="therapy"[(ngModel)]="addform.therapy" type="radio" value="false " [checked]="!therapy"/> No 
+       
+      </div>
+
+
+    </div>
+
+    <hr/>
+
+    <h4 class="text-center">Heart Related</h4>
+
+
+    <div  class="form-row">
+
+      <div class="form-group col-md-3">
+        <label for="heartattack">Heart attack</label>        
+        <br/>
+    
+        <input name="heartattack"  [(ngModel)]="addform.heartattack" type="radio" value="true" [checked]="heartattack"/> Yes
+        <input name="heartattack"[(ngModel)]="addform.heartattack" type="radio" value="false" [checked]="!heartattack"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="bypasssurgery">Bypass surgery</label>             
+        <br/>
+    
+        <input name="bypasssurgery"  [(ngModel)]="addform.bypasssurgery" type="radio" value="true" [checked]="bypasssurgery"/> Yes
+        <input name="bypasssurgery"[(ngModel)]="addform.bypasssurgery" type="radio" value="false" [checked]="!bypasssurgery"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="angiography">Angiography</label>             
+        <br/>
+    
+        <input name="angiography"  [(ngModel)]="addform.angiography" type="radio" value="true " [checked]="angiography"/> Yes 
+        <input name="angiography"[(ngModel)]="addform.angiography" type="radio" value="false " [checked]="!angiography"/> No 
+       
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="angioplasty">Angioplasty</label>        
+        <br/>
+    
+        <input name="angioplasty"  [(ngModel)]="addform.angioplasty" type="radio" value="true" [checked]="angioplasty"/> Yes
+        <input name="angioplasty"[(ngModel)]="addform.angioplasty" type="radio" value="false" [checked]="!angioplasty"/> No
+    
+      </div>
+
+    </div>
+
+    <div  class="form-row">
+    
+      <div class="form-group col-md-3">
+        <label for="valvesurgery">Valve surgery</label>             
+        <br/>
+    
+        <input name="valvesurgery"  [(ngModel)]="addform.valvesurgery" type="radio" value="true" [checked]="valvesurgery"/> Yes
+        <input name="valvesurgery"[(ngModel)]="addform.valvesurgery" type="radio" value="false" [checked]="!valvesurgery"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="irregularpulse">Irregular pulse</label>             
+        <br/>
+    
+        <input name="irregularpulse"  [(ngModel)]="addform.irregularpulse" type="radio" value="true " [checked]="irregularpulse"/> Yes 
+        <input name="irregularpulse"[(ngModel)]="addform.irregularpulse" type="radio" value="false " [checked]="!irregularpulse"/> No 
+       
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="heartmurmur"> Heart murmur</label>        
+        <br/>
+    
+        <input name="heartmurmur"  [(ngModel)]="addform.heartmurmur" type="radio" value="true" [checked]="heartmurmur"/> Yes
+        <input name="heartmurmur"[(ngModel)]="addform.heartmurmur" type="radio" value="false" [checked]="!heartmurmur"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="admissionheartproblem">Admission for heart problem</label>             
+        <br/>
+    
+        <input name="admissionheartproblem"  [(ngModel)]="addform.admissionheartproblem" type="radio" value="true" [checked]="admissionheartproblem"/> Yes
+        <input name="admissionheartproblem"[(ngModel)]="addform.admissionheartproblem" type="radio" value="false" [checked]="!admissionheartproblem"/> No
+    
+      </div>
+    </div>
+
+    <hr/>
+
+    <h4 class="text-center">Ear Related</h4>
+
+    <div  class="form-row">
+
+      <div class="form-group col-md-3">
+        <label for="eardischarge">Ear discharge</label>        
+        <br/>
+    
+        <input name="eardischarge"  [(ngModel)]="addform.eardischarge" type="radio" value="true" [checked]="eardischarge"/> Yes
+        <input name="eardischarge"[(ngModel)]="addform.eardischarge" type="radio" value="false" [checked]="!eardischarge"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="earpain">Ear pain</label>             
+        <br/>
+    
+        <input name="earpain"  [(ngModel)]="addform.earpain" type="radio" value="true" [checked]="earpain"/> Yes
+        <input name="earpain"[(ngModel)]="addform.earpain" type="radio" value="false" [checked]="!earpain"/> No
+    
+      </div>
+    
+    </div>
+
+
+
+    <hr/>
+
+    <h4 class="text-center">Eye Related</h4>
+
+    <div  class="form-row">
+
+      <div class="form-group col-md-3">
+        <label for="vision ">Vision </label>        
+        <br/>
+    
+        <input name="vision"  [(ngModel)]="addform.vision" type="radio" value="good" [checked]="vision"/> Good
+        <input name="vision"[(ngModel)]="addform.vision" type="radio" value="bad" [checked]="!vision"/> Bad
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="spectacles">Use of Spectacles</label>             
+        <br/>
+    
+        <input name="spectacles"  [(ngModel)]="addform.spectacles" type="radio" value="true" [checked]="spectacles"/> Yes
+        <input name="spectacles"[(ngModel)]="addform.spectacles" type="radio" value="false" [checked]="!spectacles"/> No
+    
+      </div>
+    
+    </div>
+
+    <hr/>
+    <h4 class="text-center">Kidney  Related</h4>
+
+    <div  class="form-row">
+
+      <div class="form-group col-md-3">
+        <label for="chronickidneydisease"> Chronic kidney disease </label>        
+        <br/>
+    
+        <input name="chronickidneydisease"  [(ngModel)]="addform.chronickidneydisease" type="radio" value="true" [checked]="chronickidneydisease"/> Yes
+        <input name="chronickidneydisease"[(ngModel)]="addform.chronickidneydisease" type="radio" value="false" [checked]="!chronickidneydisease"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="abnormalurinefindings">Abnormal urine findings</label>             
+        <br/>
+    
+        <input name="abnormalurinefindings"  [(ngModel)]="addform.abnormalurinefindings" type="radio" value="true" [checked]="abnormalurinefindings"/> Yes
+        <input name="abnormalurinefindings"  [(ngModel)]="addform.abnormalurinefindings" type="radio" value="false" [checked]="!abnormalurinefindings"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="dialysis">Dialysis</label>             
+        <br/>
+    
+        <input name="dialysis"  [(ngModel)]="addform.dialysis" type="radio" value="true " [checked]="dialysis"/> Yes 
+        <input name="dialysis"[(ngModel)]="addform.dialysis" type="radio" value="false " [checked]="!dialysis"/> No 
+       
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="difficultyinpassingurine ">Difficulty in passing urine </label>        
+        <br/>
+    
+        <input name="difficultyinpassingurine"  [(ngModel)]="addform.difficultyinpassingurine" type="radio" value="true" [checked]="difficultyinpassingurine"/> Yes
+        <input name="difficultyinpassingurine" [(ngModel)]="addform.difficultyinpassingurine" type="radio" value="false" [checked]="!difficultyinpassingurine"/> No
+    
+      </div>
+
+    </div>
+
+    <div  class="form-row">
+      
+      <div class="form-group col-md-3">
+        <label for="painwhilepassingurine">Pain while passing urine</label>             
+        <br/>
+    
+        <input name="painwhilepassingurine"  [(ngModel)]="addform.painwhilepassingurine" type="radio" value="true" [checked]="painwhilepassingurine"/> Yes
+        <input name="painwhilepassingurine"  [(ngModel)]="addform.painwhilepassingurine" type="radio" value="false" [checked]="!painwhilepassingurine"/> No
+    
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="prostrate">Prostrate</label>             
+        <br/>
+    
+        <input name="prostrate"  [(ngModel)]="addform.prostrate" type="radio" value="true" [checked]="prostrate"/> Yes
+        <input name="prostrate"  [(ngModel)]="addform.prostrate" type="radio" value="false" [checked]="!prostrate"/> No
+    
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="hernia ">Hernia</label>        
+        <br/>
+    
+        <input name="hernia"  [(ngModel)]="addform.hernia" type="radio" value="true" [checked]="hernia"/> Yes
+        <input name="hernia" [(ngModel)]="addform.hernia" type="radio" value="false" [checked]="!hernia"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="scarsofoperation">Scars of operation</label>             
+        <br/>
+    
+        <input name="scarsofoperation"  [(ngModel)]="addform.scarsofoperation" type="radio" value="true" [checked]="scarsofoperation"/> Yes
+        <input name="scarsofoperation"  [(ngModel)]="addform.scarsofoperation" type="radio" value="false" [checked]="!scarsofoperation"/> No
+    
+      </div>
+
+    </div>
+
+
+    <hr/>
+    <h4 class="text-center">Liver  Related</h4>
+
+    <div  class="form-row">
+
+      <div class="form-group col-md-3">
+        <label for="enlargedliver">Enlarged liver</label>        
+        <br/>
+    
+        <input name="enlargedliver"  [(ngModel)]="addform.enlargedliver" type="radio" value="true" [checked]="enlargedliver"/> Yes
+        <input name="enlargedliver"  [(ngModel)]="addform.enlargedliver" type="radio" value="false" [checked]="!enlargedliver"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="cirrhosisofliver">Cirrhosis of liver</label>             
+        <br/>
+    
+        <input name="cirrhosisofliver"  [(ngModel)]="addform.cirrhosisofliver" type="radio" value="true" [checked]="cirrhosisofliver"/> Yes
+        <input name="cirrhosisofliver"  [(ngModel)]="addform.cirrhosisofliver" type="radio" value="false" [checked]="!cirrhosisofliver"/> No
+    
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="chronicliverdisease">Chronic liver disease</label>             
+        <br/>
+    
+        <input name="chronicliverdisease"  [(ngModel)]="addform.chronicliverdisease" type="radio" value="true " [checked]="chronicliverdisease"/> Yes 
+        <input name="chronicliverdisease"  [(ngModel)]="addform.chronicliverdisease" type="radio" value="false " [checked]="!chronicliverdisease"/> No 
+       
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="cancerofliver">Cancer of liver</label>             
+        <br/> 
+    
+        <input name="cancerofliver"  [(ngModel)]="addform.cancerofliver" type="radio" value="true " [checked]="cancerofliver"/> Yes 
+        <input name="cancerofliver"  [(ngModel)]="addform.cancerofliver" type="radio" value="false " [checked]="!cancerofliver"/> No 
+       
+      </div>
+    
+    
+    </div>
+
+
+
+
+
+
+
+
+
          
           <div class="form-row">
               <div class="form-group col-md-6">
