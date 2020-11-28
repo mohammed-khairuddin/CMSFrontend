@@ -68,6 +68,7 @@ import { EditFamilyhistoryComponent } from './edit-familyhistory/edit-familyhist
 import { AddLifestyleComponent } from './add-lifestyle/add-lifestyle.component';
 import { EditLifestyleComponent } from './edit-lifestyle/edit-lifestyle.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { PreviewLifestyleComponent } from './preview-lifestyle/preview-lifestyle.component';
 
 const routes: Routes = [
   { 
@@ -262,7 +263,7 @@ const routes: Routes = [
     path: 'editfamilyhistory/:id',component: EditFamilyhistoryComponent  , canActivate:[AuthGuard]
   },
   { 
-    path: 'previewallfamilyhistory',component: PreviewallFamilyhistoryComponent  , canActivate:[AuthGuard]
+    path: 'previewalllifestyle',component: PreviewLifestyleComponent  , canActivate:[AuthGuard]
   },
   { 
     path: 'addlifestyle',component: AddLifestyleComponent  , canActivate:[AuthGuard]

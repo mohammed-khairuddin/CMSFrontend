@@ -507,5 +507,30 @@ deleteFamilyDetail= ()=>{
 }
 
 
+///////////////////////////////// Life Style Form 
+
+lifeStyleInsertion= (lifestyle) => {
+  return this.http.post(`${this.ngrokUrl}/auth/lifestyle`,lifestyle,this.httpOptions)
+}
+
+getAllLifeStyleFormDetails= () => {
+  return this.http.get(`${this.ngrokUrl}/auth/getalllifestyle`)
+}
+
+
+getEditLifeStyleDetailData= ()=>{
+  const id = localStorage.getItem('lsid')
+  return this.http.get(`${this.ngrokUrl}/auth/getlifestyle/${id}`)
+}
+updateLifeStyleDetailData= (updatedObj)=>{
+  //console.log(updatedObj)
+  const id = localStorage.getItem('lsid')
+  return this.http.put(`${this.ngrokUrl}/auth/updatelifestyle/${id}`,updatedObj)
+}
+deleteLifeStyleDetail= ()=>{
+  const id = localStorage.getItem('lsid')
+  return this.http.delete(`${this.ngrokUrl}/auth/deletelifestyle/${id}`)
+}
+
 
 }

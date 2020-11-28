@@ -360,7 +360,7 @@ getDocumentDefinition() {
   //console.log(this.observationsObject[0].value);
   //console.log(this.regionalWalls)
     //console.log("checking for observation object")
-     //console.log(this.observationsObject)
+     console.log(this.observationsObject)
      //console.log("get obs to pdf")
      
     
@@ -383,46 +383,12 @@ for(i in this.observationsObject){
   //console.log(camelCase)
   var tmp = camelCase[0];
  
- 
- 
-//              for (let j= 1; j < camelCase.length; j++)
-//              {
-//                  var hasNextCap = false;
-//                  var hasPrevCap = false;
- 
-//                  var charValue = camelCase.charCodeAt(j);
-//                  if (charValue > 64 && charValue < 91)
-//                  {
-//                      if (camelCase.length > j + 1)
-//                      {
-//                          var next_charValue = camelCase.charCodeAt(j + 1);
-//                          if (next_charValue > 64 && next_charValue < 91)
-//                              hasNextCap = true;
-//                      }
- 
-//                      if (j - 1 > -1)
-//                      {
-//                          var prev_charValue =  camelCase.charCodeAt(j - 1);
-//                          if (prev_charValue > 64 && prev_charValue < 91)
-//                              hasPrevCap = true;
-//                      }
- 
- 
-//                      if (j < camelCase.length-1 &&
-//                          (!(hasNextCap && hasPrevCap || hasPrevCap)
-//                          || (hasPrevCap && !hasNextCap)))
-//                          tmp += " ";
-//                  }
-//                  tmp += camelCase[j];
-//              }
- 
-//  console.log(tmp);
            
-      dd.push({columns:[{ text: 'Objective Type', bold:true,},{text: (this.observationsObject[i].type).replace(/Observation/g,'').toUpperCase().replace(/\s+/g, ' '),margin:[-5,0,0,0]}]});
+      dd.push({columns:[{ text: 'Objective Type', bold:true,},{text: (this.observationsObject[i].type).replace(/Observation/g,'').replace(/\s+/g, ' ').replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1").toUpperCase(),margin:[-5,0,0,0]}]});
     
         dd.push({ text: 'Value', bold:true,margin:[0,15,0,0]}),
         //console.log(((JSON.stringify(this.observationsObject[i].value).replace( /[{}]/g, '' )).replace(/['"]+/g, '')).replace(/select/g,''));
-        dd.push({lineHeight:2,text: ((JSON.stringify(this.observationsObject[i].value).replace( /[{}]/g, '' )).replace(/['"]+/g, '')).split(",").join("\n").replace(/select/g,''),margin:[250,-15,0,0]});
+        dd.push({lineHeight:2,text: ((JSON.stringify(this.observationsObject[i].value).replace( /[{}]/g, '' )).replace(/['"]+/g, '')).split(",").join("\n").replace(/select/g,'').replace(/(_)/g, ' '),margin:[250,-15,0,0]});
         dd.push({ 
           text: 'Master Value', 
           style: 'header',
@@ -446,13 +412,13 @@ for(i in this.observationsObject){
         bold:true,
        margin:[0,0,0,0]}]}
     ,);
-        for(var k in this.observationsObject[i].observtaionComments){
-          if(this.observationsObject[i].type==this.observationsObject[i].observtaionComments[k].type){
+        for(var k in this.observationsObject[i].comments){
+          if(this.observationsObject[i].type==this.observationsObject[i].comments[k].type){
             //console.log(this.selectedObseravtionsInEditList)
-          //console.log(this.observationsObject[i].type)  
+          console.log(this.observationsObject[i].comments)  
   //console.log(this.observationsObject[i].observtaionComments[k])
   dd.push(
-    {lineHeight:2,columns:[{ text: '', bold:true},{text: `${this.observationsObject[i].observtaionComments[k].comment}`,margin:[0,-16,0,0] }]})
+    {lineHeight:2,columns:[{ text: '', bold:true},{text: `${this.observationsObject[i].comments[k].comment}`,margin:[0,-16,0,0] }]})
   
         }
       //  console.log(this.observationsObject[i].regionalWall[i].anteriorwall) 

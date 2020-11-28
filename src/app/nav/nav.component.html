@@ -23,6 +23,7 @@
                     <a   routerLink="/clinicdashboard"   *ngIf="role==='CLINIC'" class="nav-item nav-link menuli" > 
                       Dashboard &nbsp; |</a></li>
                   <li> <a routerLink="/dashboard"   *ngIf="role==='ADMIN'"  class="nav-item nav-link menuli" >  Dashboard &nbsp; |</a></li>
+                  <li> <a routerLink="/dicomviewer"  *ngIf="role==='ADMIN'"    class="nav-item nav-link menuli" >  Dicom Viewer  &nbsp;|</a></li>
                   <li> <a routerLink="/dashboard"   *ngIf="role==='ADMIN'"  class="nav-item nav-link menuli" >  All General Master &nbsp;  |</a>
                     <span class="caret"></span>
 
@@ -40,7 +41,7 @@
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/previewallfamilyhistory"  > Preview Family Details Form</a></li> 
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/addfamilyhistory"  > Add Family Details Form</a></li>
                       
-                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/"  > Preview Life Style Form</a></li> 
+                      <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/previewalllifestyle"  > Preview Life Style Form</a></li> 
                       <li *ngIf="role === 'ADMIN'" style="border-top:1px dotted #fff;" >  <a routerLink="/addlifestyle"  > Add Life Style Form</a></li>
 
                     </ul>
