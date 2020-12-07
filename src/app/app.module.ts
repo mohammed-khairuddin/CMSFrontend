@@ -85,6 +85,10 @@ import { AddLifestyleComponent } from './add-lifestyle/add-lifestyle.component';
 import { PreviewLifestyleComponent } from './preview-lifestyle/preview-lifestyle.component';
 import { EditLifestyleComponent } from './edit-lifestyle/edit-lifestyle.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { PrescriptionComponent } from './prescription/prescription.component';
+import { AddInvestigationreportComponent } from './add-investigationreport/add-investigationreport.component';
+import { EditInvestigationreportComponent } from './edit-investigationreport/edit-investigationreport.component';
+import { PreviewInvestigationreportComponent } from './preview-investigationreport/preview-investigationreport.component';
 
 const x = [
   { 
@@ -168,7 +172,11 @@ const x = [
     AddLifestyleComponent,
     PreviewLifestyleComponent,
     EditLifestyleComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    PrescriptionComponent,
+    AddInvestigationreportComponent,
+    EditInvestigationreportComponent,
+    PreviewInvestigationreportComponent
   ],
   imports: [
     BrowserModule,

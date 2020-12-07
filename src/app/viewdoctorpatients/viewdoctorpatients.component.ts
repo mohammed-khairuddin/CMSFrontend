@@ -58,6 +58,9 @@ export class ViewdoctorpatientsComponent implements OnInit {
     this.router.navigateByUrl(`/observations/${alllist.id}`)
   }
 
-  
+  goToViewPatientDetailsPrescription = (alllist):any => {
+    window.localStorage.setItem("ppid", alllist.id.toString());
+    this.router.navigateByUrl(`/prescription/${alllist.id}`)
+  }
 
 }

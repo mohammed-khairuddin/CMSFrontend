@@ -516,8 +516,6 @@ lifeStyleInsertion= (lifestyle) => {
 getAllLifeStyleFormDetails= () => {
   return this.http.get(`${this.ngrokUrl}/auth/getalllifestyle`)
 }
-
-
 getEditLifeStyleDetailData= ()=>{
   const id = localStorage.getItem('lsid')
   return this.http.get(`${this.ngrokUrl}/auth/getlifestyle/${id}`)
@@ -530,6 +528,31 @@ updateLifeStyleDetailData= (updatedObj)=>{
 deleteLifeStyleDetail= ()=>{
   const id = localStorage.getItem('lsid')
   return this.http.delete(`${this.ngrokUrl}/auth/deletelifestyle/${id}`)
+}
+
+
+
+///////////////////////////////// Investigation Form 
+
+investigationFormInsertion= (investigationData) => {
+  return this.http.post(`${this.ngrokUrl}/auth/investigationreport`,investigationData,this.httpOptions)
+}
+
+getAllinvestigationFormDetails= () => {
+  return this.http.get(`${this.ngrokUrl}/auth/getallinvestigationreport`)
+}
+getEditinvestigationDetailData= ()=>{
+  const id = localStorage.getItem('inid')
+  return this.http.get(`${this.ngrokUrl}/auth/getinvestigationreport/${id}`)
+}
+updateinvestigationDetailData= (updatedObj)=>{
+  //console.log(updatedObj)
+  const id = localStorage.getItem('inid')
+  return this.http.put(`${this.ngrokUrl}/auth/updateinvestigationreport/${id}`,updatedObj)
+}
+deleteinvestigationDetail= ()=>{
+  const id = localStorage.getItem('inid')
+  return this.http.delete(`${this.ngrokUrl}/auth/deleteinvestigationreport/${id}`)
 }
 
 

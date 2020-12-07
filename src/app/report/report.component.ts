@@ -113,6 +113,7 @@ export class ReportComponent implements OnInit {
   regionalWalls: any=[];
   regionalWalls1: any=[];
   referralComment : any=[];
+  gens: any;
 
 
   constructor(private loginService: LoginserviceService,private router:Router,private http:HttpClient,private actRoute: ActivatedRoute,private sharedService:SharedService) { 
@@ -145,7 +146,7 @@ export class ReportComponent implements OnInit {
     this.loginService.observationsGetAllByPatient().subscribe((data:any) => {
         const {observations,masterData,conclusioncomment,conclusionreport,doctorAdviceComments,
           doctorAdvicereport,impressioncomment,impressionreport,observationItem,
-          observtaionComments,speckleTrackingreport,regionalWall} = data;          
+          observtaionComments,speckleTrackingreport,regionalWall,gen,referralcomment} = data;          
 
         //console.log(data);
         this.doctorAdvice = masterData['doctorAdvice']
@@ -161,6 +162,8 @@ export class ReportComponent implements OnInit {
         this.docadvicecomments = doctorAdviceComments;
         this.selectedItems4 = doctorAdvicereport;
         this.impressioncomments = impressioncomment;
+        this.gens = gen;
+        this.referralComment = referralcomment
          //console.log(this.comments);
         this.regionalWalls=regionalWall,
          this.selectedItems1 = speckleTrackingreport;
@@ -279,8 +282,8 @@ onDeSelectAll(item: any,type) {
 }
 
 addComment(k,type) { 
-  console.log(this.observationsObject);  
-  console.log(type);
+ // console.log(this.observationsObject);  
+ // console.log(type);
 
   let count =0;
   for(let i=0;i<this.observationsObject.length;i++){
@@ -293,7 +296,7 @@ addComment(k,type) {
      comment: ''
    });
 
-   console.log(this.id);
+  // console.log(this.id);
 }
 
 removeComment(commentsIndex,mainObjectIndex) {
@@ -307,7 +310,7 @@ addImpressionComment() {
     comment: ''
   });
   
-  console.log(this.id);
+ // console.log(this.id);
   
 }
 
@@ -451,7 +454,7 @@ getDocumentDefinition() {
   //console.log(this.observationsObject[0].value);
   //console.log(this.regionalWalls)
     //console.log("checking for observation object")
-     console.log(this.observationsObject)
+     //console.log(this.observationsObject)
      //console.log("get obs to pdf")
      
     
@@ -465,10 +468,37 @@ getDocumentDefinition() {
      var doctoradvicepdf=[];
      var conclusionpdf=[];
      var referral=[];
+     var generate=[];
      //console.log(this.observationsObject[0].type)
-    
+     console.log(this.observationsObject)
       // console.log((this.observationsObject[i].type).replace(/Observation/g,''))
-      
+      for(let i=0;i<this.gens.length;i++){
+       // console.log(i,this.gens.length)
+        if(i%2==0){
+        generate.push( { lineWidth:10,columns:[
+        
+          {
+          
+            image: `data:image/jpeg;base64,${this.gens[i]}`, 
+            //alignment: 'left'
+           width: 200,
+           margin:[30,0,0,10],
+           
+          },
+        ]},     
+        )  
+        }
+        if(i%2==1){
+          generate.push(
+              {
+                image: `data:image/jpeg;base64,${this.gens[i]}`, 
+                //alignment: 'left'
+               width: 200,
+               margin:[280,-146,0,10]
+              },
+            )
+          }
+      }
 for(i in this.observationsObject){
   var camelCase = this.observationsObject[i].type;
   //console.log(camelCase)
@@ -513,12 +543,10 @@ for(i in this.observationsObject){
   
         }
       //  console.log(this.observationsObject[i].regionalWall[i].anteriorwall) 
-          console.log()
+          console.log(this.observationsObject)
         }
        
-    
-            }
-   
+            }   
 
   rows.push('\n')
   rows1.push('')
@@ -548,7 +576,7 @@ for(i in this.observationsObject){
      
   }
   
-  impressionpdf.push({columns:[{
+  impressionpdf.push({lineHeight:1.5,columns:[{
     text: 'Impression Master',  
     bold:true,
    }]}
@@ -587,7 +615,7 @@ for(i in this.observationsObject){
     //console.log(this.docadvicecomments[i])
     doctoradvicepdf.push({lineHeight:2, columns:[{text:'',bold:true},{text:`${this.docadvicecomments[i].docadvicecomment}`,margin:[0,-16,0,0]}]})
   }
-  conclusionpdf.push({lineHeight:2,columns:[{
+  conclusionpdf.push({lineHeight:1.5,columns:[{
     text: 'Conclusion Master',  
     bold:true,
    }]}
@@ -610,13 +638,10 @@ for(i in this.observationsObject){
   for(var i in this.referralComment)
 {
 //console.log(this.referralComment[0].comment)
+//console.log(this.referralComment[i])
 referral.push({lineHeight:3, columns:[{ margin: [150,50,0,0],text:'Referral Comment: ',bold:true},{margin: [0,50,0,0],text:`${this.referralComment[i].comment}`}]})
 
 }
-  //console.log(this.ngOnInit);
-
-
-
 
   return {
     
@@ -627,19 +652,27 @@ referral.push({lineHeight:3, columns:[{ margin: [150,50,0,0],text:'Referral Comm
       columns: [
        
         {
-          image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARQSURBVFiFpdd5iNVVFAfwj+PkpKYT4zK2kBplRZpmtFCgCW1EtmlqEmWkVpJQOYlKRLtNaWakFP3RZHuoFQlFCamBlZSaDWWUqbm0TWWFQbbQH+c+5vfevN/ziV94vHe3c8+953u+577OqkMNLsBU/I5dqb8L7sUN6ItPqrR3QBiJrXgHTdiWGbsdr2M03sekAzVeU8WcJszC5fgFOzNj+/AXVuIb1GfGDsdafIlRB+pYFhOwB9uToc3onsYOwa+YjE/RLbPuMryF0/E1bj4YJ4iT98R8ceKX8CHWYHDa5CLUpfmn4V8MQG/8XOJgLhpxsThdFuswPG1wHc7F8TgUnXA93sS3aE7fY9Lv7YIj+w15X2xJp2pOfb2wAqsUxzgPA3AfhqABu5OjnatY62XchhHiyqegFbMreH8ens4Zm4FF1WxcwCosFuy9As/h2jTWU+T8B2n8VnH1DYJocDTmCMJ1FSGbkLE/CI/gkjwHjsEd4grXaj91H3yOuTgRJ4uw3JNZ20WE7368iBdSf60IZ6dkY7bQlSGVbqK/ULtC3FrEdWbRgB2Zdm8RtkZB0A2ZsbfxndAKIszNKmC+uMoCfhJsz6JesSgRYfleaMXITH8XHIUFaeMWPERcSzlsw1nJWMGB/vgzM2eCIOu0SifJYDl+RJu42bmirjgDTyZjBFE2lyx+InndHwPT5rU6akUltGBsaWcNXsEmvIqNWC0yIYsmkc/L8YYg4T/4OzPnMZG2efhC6EEH7EnfZ+OEMuOjFMczDz20y/BQkVFZTNVOvDpB1B7wm+DCV+nTgnP248CRWCqYPr1kbJZIt53awwpnisxqEZK9VmiKFSIEqwVTpwvdroTXRCodh/UlDq9KDt8lhCuLriJMy0RhaiOINEQ7oWoxvmRhH5HfBbQKQsLjih8i40Tl24GTMv2TMQ9P4RqhkmvyTjgYw9Lv0UJEduPK1NeEj0RebxVFLIs6xcXnFKGSU9JniyD/A3kOjBS1HpYkj8emRQWMSsYai5fqJVQyi2cV68VozBQhKYuZ4tEBl4rT71Imj0V4zs8YmyfqQRabVChABTTiY3E9rTgCV4uc75facCwWCg2pF6q5UpC4nM1bcKFQwT2CA2UxGc+IeC0QJ14qyJR9VHYXJyaItEFw4A/FcR8oFPX5ZGuGqAm70oE6YEDabLB4yRbK5XBRxR7UMWY14s3QJsJWwPhka1xqTxQP1BkiHLmvozFCMhcpLlT1goALU7tOu+oVHBmEw1J7G04tGb9bvJxKFbJq3ISH08afiZj+IE66Q/DmvbTZu6Ka7hd55bgUPUSx2Sji3Rc3pvXdsDfNWyaI3E886Zbgzir3yEVPwYGV4s/GXh2Fp4CrBH8aBZnbdNSEIlTzVB4qKtcIUayGiUxYV2buJMGhRlEHWkXxyUVtFQ6sF7HeJBRtH/7LmbsIj4r/hdNynCxCtRwg0nKi4MMc6Tl1sPgfsX7wvAYu7GMAAAAASUVORK5CYII=,', 
+          image: `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARQSURBVFiFpdd5iNVVFAfwj+PkpKYT4zK2kBplRZpmtFCgCW1EtmlqEmWkVpJQOYlKRLtNaWakFP3RZHuoFQlFCamBlZSaDWWUqbm0TWWFQbbQH+c+5vfevN/ziV94vHe3c8+953u+577OqkMNLsBU/I5dqb8L7sUN6ItPqrR3QBiJrXgHTdiWGbsdr2M03sekAzVeU8WcJszC5fgFOzNj+/AXVuIb1GfGDsdafIlRB+pYFhOwB9uToc3onsYOwa+YjE/RLbPuMryF0/E1bj4YJ4iT98R8ceKX8CHWYHDa5CLUpfmn4V8MQG/8XOJgLhpxsThdFuswPG1wHc7F8TgUnXA93sS3aE7fY9Lv7YIj+w15X2xJp2pOfb2wAqsUxzgPA3AfhqABu5OjnatY62XchhHiyqegFbMreH8ens4Zm4FF1WxcwCosFuy9As/h2jTWU+T8B2n8VnH1DYJocDTmCMJ1FSGbkLE/CI/gkjwHjsEd4grXaj91H3yOuTgRJ4uw3JNZ20WE7368iBdSf60IZ6dkY7bQlSGVbqK/ULtC3FrEdWbRgB2Zdm8RtkZB0A2ZsbfxndAKIszNKmC+uMoCfhJsz6JesSgRYfleaMXITH8XHIUFaeMWPERcSzlsw1nJWMGB/vgzM2eCIOu0SifJYDl+RJu42bmirjgDTyZjBFE2lyx+InndHwPT5rU6akUltGBsaWcNXsEmvIqNWC0yIYsmkc/L8YYg4T/4OzPnMZG2efhC6EEH7EnfZ+OEMuOjFMczDz20y/BQkVFZTNVOvDpB1B7wm+DCV+nTgnP248CRWCqYPr1kbJZIt53awwpnisxqEZK9VmiKFSIEqwVTpwvdroTXRCodh/UlDq9KDt8lhCuLriJMy0RhaiOINEQ7oWoxvmRhH5HfBbQKQsLjih8i40Tl24GTMv2TMQ9P4RqhkmvyTjgYw9Lv0UJEduPK1NeEj0RebxVFLIs6xcXnFKGSU9JniyD/A3kOjBS1HpYkj8emRQWMSsYai5fqJVQyi2cV68VozBQhKYuZ4tEBl4rT71Imj0V4zs8YmyfqQRabVChABTTiY3E9rTgCV4uc75facCwWCg2pF6q5UpC4nM1bcKFQwT2CA2UxGc+IeC0QJ14qyJR9VHYXJyaItEFw4A/FcR8oFPX5ZGuGqAm70oE6YEDabLB4yRbK5XBRxR7UMWY14s3QJsJWwPhka1xqTxQP1BkiHLmvozFCMhcpLlT1goALU7tOu+oVHBmEw1J7G04tGb9bvJxKFbJq3ISH08afiZj+IE66Q/DmvbTZu6Ka7hd55bgUPUSx2Sji3Rc3pvXdsDfNWyaI3E886Zbgzir3yEVPwYGV4s/GXh2Fp4CrBH8aBZnbdNSEIlTzVB4qKtcIUayGiUxYV2buJMGhRlEHWkXxyUVtFQ6sF7HeJBRtH/7LmbsIj4r/hdNynCxCtRwg0nKi4MMc6Tl1sPgfsX7wvAYu7GMAAAAASUVORK5CYII=,`, 
           //alignment: 'left'
          width: 30,
         },
         {
           width: 440,
           //height:90,
-          text: 'ClinicManagement System',
+          text:`${this.clinicDataObject.name}`,
           bold:'true',
           alignment: "center",
           fontSize: 20
         },
       ]},
+    {
+      width: 440,
+      //height:90,
+      text:`(${this.clinicDataObject.address})`,
+      //bold:'true',
+      alignment: "center",
+      fontSize: 12
+    },
   rows, 
     {canvas: [ { type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1 ,lineHeight:2} ],},
     rows,
@@ -970,7 +1003,38 @@ image:'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAyADIAAD/4UFmRXhpZgAATU0AKgAAAA
      margin:[115,0,0,0]
     },
        referral,   
+       {canvas: [ { type: 'line', x1: 0, y1: 20, x2: 515, y2: 20, lineWidth: 1 ,lineHeight:2} ],},
 
+       {
+        canvas: [
+          {
+            type: 'rect',
+            x: 0,
+            y: 0,
+            w: 250,
+            h: 30,
+            r: 7,
+            lineColor: 'black',
+            lineWidth: 2
+           
+          },
+         
+        ],
+        margin:[135,10,0,0,]
+        },
+      {
+        text: 'CRITICAL IMAGES',
+        bold: true,
+        fontSize: 15,
+        alignment: 'center',
+        margin: [0,-27, 0, 20]
+      },
+  
+    generate,
+    {canvas: [ { type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1 ,lineHeight:2} ],},      
+         
+ 
+ 
     {
       text:`${this.DoctorData?.name}`,
       
@@ -1006,6 +1070,7 @@ getObservationsToPdf(data:any[]){
 
   Object.entries(obsData).forEach(([key, value])=>{
     if (value && Array.isArray(value)){
+   
       console.log(value)
       // observation_data[key] = this.getformatteddata(value)
     }
@@ -1041,11 +1106,5 @@ getformatteddata(data:any[]){
   return this.getformatteddata;
   
 }
-
-
-
-
-
-
 
 }

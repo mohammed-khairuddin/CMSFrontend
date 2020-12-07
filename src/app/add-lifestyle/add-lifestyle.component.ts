@@ -226,6 +226,7 @@ export class AddLifestyleComponent implements OnInit {
   });
 
   
+
   addform = {
     patientId:'',
     typelifestyle:'',
@@ -331,6 +332,7 @@ export class AddLifestyleComponent implements OnInit {
     bodydeformity:'',
   };
 
+
   ///////////////////////////////////
 
   constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder,private http:HttpClient) { }
@@ -341,18 +343,6 @@ export class AddLifestyleComponent implements OnInit {
   ngOnInit(): void {
 
     
-    // this.lifestyle = this.formBuilder.group({
-    //   patientId:['',Validators.required],
-    //   refferedby:['',Validators.required],
-    //   nameofclinic:['',Validators.required],
-    //   followup: ['', Validators.required],
-    //   heightincms:['',Validators.required],
-    //   weightinkgs: ['', Validators.required],      
-    //   bsa: ['', Validators.required],
-    //   bmi: ['', Validators.required],
-    //   bp: ['', Validators.required],
-    // });
-
     
 
     this.loginService.getAllRegisteredPatient().subscribe(data =>{
@@ -403,113 +393,88 @@ registerLifeStyle = (data):any => {
         "angioplasty": data.angioplasty,
         "valvesurgery": data.valvesurgery,
         "irregularpulse": data.irregularpulse,
-        
         "heartmurmur": data.heartmurmur,
-        // "admissionheartproblem": data.admissionheartproblem,
-        // "eardischarge":data.eardischarge,
-        // "earpain": data.earpain,
-        // "vision": data.vision,
-        // "spectacles": data.spectacles,
-        // "chronickidneydisease": data.chronickidneydisease,
-        // "abnormalurinefindings": data.abnormalurinefindings,
-        // "bmi": data.bmi,
-        // "waistdiameter": data.waistdiameter,
-        // "hipdiameter":data.hipdiameter,
-        // "bpsystolic": data.bpsystolic,
-        // "bpdiastolic": data.bpdiastolic,
-        // "pulserate": data.pulserate,
-        // "SPO2": data.SPO2,
-        // "temperature": data.temperature,
+        "admissionheartproblem": data.admissionheartproblem,
+        "eardischarge":data.eardischarge,
+        "earpain": data.earpain,
+        "vision": data.vision,
+        "spectacles": data.spectacles,
+        "chronickidneydisease": data.chronickidneydisease,
+        "abnormalurinefindings": data.abnormalurinefindings,
+        "dialysis": data.dialysis,
+        "difficultyinpassingurine": data.difficultyinpassingurine,
+        "painwhilepassingurine":data.painwhilepassingurine,
+        "prostrate": data.prostrate,
+        "hernia": data.hernia,
+        "scarsofoperation": data.scarsofoperation,
+        "enlargedliver": data.enlargedliver,
+        "cirrhosisofliver": data.cirrhosisofliver,
      
-   
-   
-    // heartmurmur:'',
-    // admissionheartproblem:'',
-    // eardischarge:'',
-    // earpain:'',
-    // vision:'',
-    // spectacles:'',
-    // chronickidneydisease:'',
-    // abnormalurinefindings:'',
-    // dialysis:'',
-    // difficultyinpassingurine:'',
-    // painwhilepassingurine:'',
-    // prostrate:'',
-    // hernia:'',
-    // scarsofoperation:'',
-    // enlargedliver:'',
-    // cirrhosisofliver:'',
-    // chronicliverdisease:'',
-    // cancerofliver:'',
-    // chronicalcoholicliverdisease:'',
-    // hepatitis:'',
-    // hepatitisc:'',
-    // sexuallytransmitteddisease:'',
-    // asthma:'',
-    // bronchitis:'',
-    // tuberculosis:'',
-    // pneumonia:'',
-    // emphysema:'',
-    // chronicobstructivepulmonarydisease:'',
-    // cough:'',
-    // shortnessofbreath:'',
-    // bloodinsputam:'',
-    // epilepsy:'',
-    // blackouts:'',
-    // paralysis:'',
-    // anxiety:'',
-    // depression:'',
-    // bloodinstool:'',
-    // goitre:'',
-    // hypothrodism:'',
-    // hyperthyrodism:'',
-    // thyroditis:'',
-    // allergies:'',
-    // malaria:'',
-    // filaria:'',
-    // kalaazar:'',
-    // swineflu:'',
-    // covid19:'',
-    // myopathy:'',
-    // rheumatism:'',
-    // arthrities:'',
-    // gout:'',
-    // osteoporosis:'',
-    // bonefractures:'',
-    // slippeddisc:'',
-    // physicaldeformity:'',
-    // congentialdeformity:'',
-    // handicap:'',
-    // spousehavingHIV:'',
-    // spousehavinghepatitisB:'',
-    // spousehavinghepatatisC:'',
-    // pregancy:'',
-    // postmenopause:'',
-    // hysterectomy:'',
-    // mamography:'',
-    // papsmear:'',
-    // uterusremoved:'',
-    // anyothergynaeproblem:'',
-    // nervous:'',
-    // jointandmusclepain:'',
-    // bodydeformity:'',
+        "chronicliverdisease": data.chronicliverdisease,
+        "cancerofliver": data.cancerofliver,
+        "chronicalcoholicliverdisease": data.chronicalcoholicliverdisease,
+        "hepatitis": data.hepatitis,
+        "hepatitisc": data.hepatitisc,
+        "sexuallytransmitteddisease": data.sexuallytransmitteddisease,
+        "asthma": data.asthma,
+        "bronchitis": data.bronchitis,
+        "tuberculosis": data.tuberculosis,
+        "pneumonia": data.pneumonia,
+        "dialemphysemaysis": data.emphysema,
+        "chronicobstructivepulmonarydisease": data.chronicobstructivepulmonarydisease,
+        "cough": data.cough,
+        "shortnessofbreath": data.shortnessofbreath,
+        "bloodinsputam": data.bloodinsputam,
+        "epilepsy": data.epilepsy,
+        "blackouts": data.blackouts,
+        "paralysis": data.paralysis,
+        "anxiety": data.anxiety,
+        "depression": data.depression,
+        "bloodinstool": data.bloodinstool,
+        "goitre": data.goitre,
+        "hypothrodism": data.hypothrodism,
+        "hyperthyrodism": data.hyperthyrodism,
+        "thyroditis": data.thyroditis,
+        "allergies": data.allergies,
+        "malaria": data.malaria,
+        "filaria": data.filaria,
+        "kalaazar": data.kalaazar,
+        "swineflu": data.swineflu,
+        "covid19": data.covid19,
+        "myopathy": data.myopathy,
+        "rheumatism": data.rheumatism,
+        "arthrities": data.arthrities,
+        "gout": data.gout,
+        "osteoporosis": data.osteoporosis,
+        "bonefractures": data.bonefractures,
+        "slippeddisc": data.slippeddisc,
+        "physicaldeformity": data.physicaldeformity,
+        "congentialdeformity": data.congentialdeformity,
+        "handicap": data.handicap,
+        "spousehavingHIV": data.spousehavingHIV,
+        "spousehavinghepatitisB": data.spousehavinghepatitisB,
+        "spousehavinghepatatisC": data.spousehavinghepatatisC,
+        "pregancy": data.pregancy,
+        "postmenopause": data.postmenopause,
+        "hysterectomy": data.hysterectomy,
+        "mamography": data.mamography,
+        "papsmear": data.papsmear,
+        "uterusremoved": data.uterusremoved,
+        "anyothergynaeproblem": data.anyothergynaeproblem,
+        "nervous": data.nervous,
+        "jointandmusclepain": data.jointandmusclepain,
+        "bodydeformity": data.bodydeformity,   
       }
       
-      console.log(this.lifeStyleForm.value);
+      // console.log(this.lifeStyleForm.value);
+      // console.log('*******************');
+      // console.log(lifestyle1);
 
-      console.log('*******************');
-      console.log(lifestyle1);
-
-      //const lifestyle = JSON.parse(this.lifeStyleForm.value);
-
-      // const lifestyle1  = {
-      //   lifestyle: this.lifeStyleForm.value,
-      //   }
         this.loginService.lifeStyleInsertion(lifestyle1).subscribe(res =>{
          
           if(res['status'] ==  '200') {            
             alert('Life Style Added Successfully');
-            this.router.navigate(['/previewallotherdetails']);
+            this.router.navigate(['/previewalllifestyle']);
           } 
        })
      

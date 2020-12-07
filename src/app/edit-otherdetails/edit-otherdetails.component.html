@@ -22,8 +22,9 @@
                 <label for="patientId">Patient Name/No </label>
                 <select id="patientId" name="patientId" class="form-control" required [(ngModel)]="updform.patientId" #patientId="ngModel" >
                   <option value="">Select Patient Name</option>
-                    <option *ngFor="let list of AllPatientList" [value]="list.id">{{list.firstname}} {{list.lastname}}</option>
+                    <option *ngFor="let list of AllPatientList" [value]="list.id" >{{list.firstname}} {{list.lastname}}</option>
                   </select>
+                  <!-- *ngIf="this.updform.lifestyle.patientId == list.id" -->
                   <div *ngIf="patientId.errors && patientId.touched" class="alert alert-danger">
                     <div *ngIf="patientId.errors.required">Patient Name is required.</div>
                   </div>   

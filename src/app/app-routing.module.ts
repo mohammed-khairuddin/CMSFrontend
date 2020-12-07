@@ -69,6 +69,10 @@ import { AddLifestyleComponent } from './add-lifestyle/add-lifestyle.component';
 import { EditLifestyleComponent } from './edit-lifestyle/edit-lifestyle.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PreviewLifestyleComponent } from './preview-lifestyle/preview-lifestyle.component';
+import { PrescriptionComponent } from './prescription/prescription.component';
+import { PreviewInvestigationreportComponent } from './preview-investigationreport/preview-investigationreport.component';
+import { AddInvestigationreportComponent } from './add-investigationreport/add-investigationreport.component';
+import { EditInvestigationreportComponent } from './edit-investigationreport/edit-investigationreport.component';
 
 const routes: Routes = [
   { 
@@ -270,6 +274,18 @@ const routes: Routes = [
   },
   { 
     path: 'editlifestyle/:id',component: EditLifestyleComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'previewinvestigationreport',component: PreviewInvestigationreportComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'addinvestigationreport',component: AddInvestigationreportComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'editinvestigationreport/:id',component: EditInvestigationreportComponent  , canActivate:[AuthGuard]
+  },
+  { 
+    path: 'prescription/:id',component: PrescriptionComponent  , canActivate:[AuthGuard]
   },
   { 
     path: 'contactus',component: ContactUsComponent  , canActivate:[AuthGuard]

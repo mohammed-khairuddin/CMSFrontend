@@ -20,11 +20,13 @@
           <div class="form-row">
             <div class="form-group col-md-3">
                 <label for="patientId">Patient Name/No </label>
-                <select id="patientId" name="patientId" class="form-control" required formControlName="patientId" >
+                <select id="patientId" name="patientId" class="form-control" required formControlName="patientId"  >
                   <option value="">Select Patient Name</option>
-                    <option *ngFor="let list of AllPatientList" [value]="list.id">{{list.firstname}} {{list.lastname}}</option>
+                    <option  *ngFor="let list of AllPatientList" [value]="list.id"  >{{list.firstname}} {{list.lastname}}</option>
                   </select>
-                  <!-- <div *ngIf="patientId.errors && patientId.touched" class="alert alert-danger">
+                  <!-- [selected]="this.updform.lifestyle.glassbeer === list.id"
+                    this.updform.lifestyle.glassbeer
+                    <div *ngIf="patientId.errors && patientId.touched" class="alert alert-danger">
                     <div *ngIf="patientId.errors.required">Patient Name is required.</div>
                   </div>    -->
     
@@ -34,8 +36,8 @@
                 <br/>
     
                 <input name="typelifestyle"  formControlName="typelifestyle" type="radio" [value]="true" [checked]="typelifestyle"/> Active
-                <input name="typelifestyle"formControlName="typelifestyle" type="radio" [value]="false" [checked]="!typelifestyle"/> Sedentary
-      
+                <input name="typelifestyle"   formControlName="typelifestyle" type="radio" [value]="false" [checked]="!typelifestyle"/> Sedentary
+       
               </div>
 
             <div class="form-group col-md-3"  >
@@ -58,15 +60,6 @@
 
           </div>
 
-          <!-- <div class="form-group col-md-3">
-
-            <label for="glassbeer ">No of Glasses of Beer </label>
-            <input type="text" id="glassbeer" name="glassbeer" class="form-control"   placeholder="No of Glasses Beer" 
-            required   formControlName="glassbeer" >
-
-        </div>  -->
-
-         
           <div class="form-row">
             
             <div class="form-group col-md-3">
@@ -79,11 +72,11 @@
             </div>
 
             <div class="form-group col-md-3">
-
+              
                 <label for="glassbeer ">No of Glasses of Beer </label>
                 <input type="text" id="glassbeer" name="glassbeer" class="form-control"   placeholder="No of Glasses Beer" 
-                required   formControlName="glassbeer" >
-    
+                required   formControlName="glassbeer"    >
+              <!--  value="{{this.updform.lifestyle.glassbeer}}" -->
             </div> 
 
             <div class="form-group col-md-3">
@@ -91,7 +84,9 @@
               <label for="brandypegs">No of brandy pegs a day </label>
               <input type="text" id="brandypegs" name="brandypegs" class="form-control"   placeholder="No of brandy pegs a day " 
               required  formControlName="brandypegs"  >
-  
+              <!-- value="{{this.updform.lifestyle.brandypegs}}"  
+              value="this.updform.brandypegs"
+              -->
           </div> 
 
           <div class="form-group col-md-3">
@@ -99,7 +94,9 @@
               <label for="whiskypegs">No of whisky pegs a day </label>
               <input type="text" id="whiskypegs" name="whiskypegs" class="form-control"   placeholder="No of whisky pegs  a day" 
               required  formControlName="whiskypegs"  >
-  
+              <!-- value="{{this.updform.lifestyle.whiskypegs}}"
+               value="this.updform.whiskypegs"
+              -->
           </div> 
             
           </div>    
@@ -110,8 +107,9 @@
 
                 <label for="localalcoholpegs">No of local alcoholic pegs a day </label>
                 <input type="text" id="localalcoholpegs" name="localalcoholpegs" class="form-control"   placeholder="No of local alcoholic pegs a day" 
-                required  formControlName="localalcoholpegs" >
-    
+                required  formControlName="localalcoholpegs"   >
+                <!-- value="{{this.updform.lifestyle.localalcoholpegs}}"
+                   value="this.updform.localalcoholpegs"-->
             </div> 
 
             <div class="form-group col-md-3">
@@ -119,7 +117,7 @@
               <label for="wineglasses">No of wine glasses per day</label>
               <input type="text" id="wineglasses" name="wineglasses" class="form-control"   placeholder="No of wine glasses per day" 
               required  formControlName="wineglasses"  >
-  
+              <!-- value="this.updform.wineglasses" -->
           </div> 
 
           </div>  
@@ -144,7 +142,7 @@
 
       <label for="aerobicexercise">Aerobic exercise in minutes per day</label>
       <input type="text" id="aerobicexercise" name="aerobicexercise" class="form-control"   placeholder="Aerobic exercise in minutes per day" 
-      required  formControlName="aerobicexercise" >
+      required  formControlName="aerobicexercise" value="this.updform.aerobicexercise" >
 
   </div>
   
@@ -152,14 +150,14 @@
 
     <label for="walking">Walking  </label>
     <input type="text" id="walking" name="walking" class="form-control"   placeholder="Walking" 
-    required  formControlName="walking"  >
+    required  formControlName="walking" value="this.updform.walking" >
 
   </div>
 
   <div class="form-group col-md-3">
     <label for="yoga">Yoga</label>             
     <input type="text" id="yoga" name="yoga" class="form-control"   placeholder="Yoga" 
-    required  formControlName="yoga" >
+    required  formControlName="yoga" value="this.updform.yoga">
 
   </div> 
 
@@ -1111,14 +1109,15 @@
     
     </div>
          
-          <div class="form-row">
-              <div class="form-group col-md-6">
+          <div class="form-row" style="text-align: center;">
+            <div class="form-group col-md-4"></div>
+              <div class="form-group col-md-4">
                 <button type="submit" class="btn btn-primary  btn-block"  >Submit Form</button>
                 </div>
                 <!-- <div class="form-group col-md-6">
                    <button type="button" class="btn btn-danger  btn-block" (click)="lifeStyleForm.resetForm({})">Reset Form</button>
                 </div>         -->
-            
+                <div class="form-group col-md-4"></div>
       
               </div>
       </form> 

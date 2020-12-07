@@ -44,6 +44,7 @@
     <th scope="col">Remark</th>
     <th scope="col">MobileNumber</th>
     <th scope="col">View</th>
+    <th scope="col">Prescription</th>
     <th scope="col">Observations</th>
   </tr>
 </thead>
@@ -103,6 +104,7 @@
     <td scope="row"> {{ alllist.reason}} </td>
     <td scope="row">{{ alllist.mobileno }}</td>
     <td><button type="submit" class="btn btn-primary  btn-block" (click)="goToViewPatientDetails(alllist)"  >View</button></td>
+    <td><button type="submit" class="btn btn-primary  btn-block" (click)="goToViewPatientDetailsPrescription(alllist)"  >Prescription</button></td>
     <td><button type="submit" class="btn btn-primary  btn-block" (click)="goToViewObservations(alllist)"  >Observations</button></td>
   </tr>
 </tbody>
