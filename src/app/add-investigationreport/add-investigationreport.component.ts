@@ -131,16 +131,27 @@ export class AddInvestigationreportComponent implements OnInit {
     dopplerPeripheralVenous: new FormControl(''),
     echocardigraphy: new FormControl(''),
     stressTest: new FormControl(''),
-
+    ultrasound:new FormControl(''),
+    xray: new FormControl(''),
+    ctscan: new FormControl(''),
+    mri: new FormControl(''),
+    tmt: new FormControl(''),
+    vision: new FormControl(''),
+    renal: new FormControl(''),
+    physiotherapy: new FormControl(''),
+    feteldoppler: new FormControl(''),
+    bonedensity: new FormControl(''),
+    bodycomposition: new FormControl(''),
+    surgery: new FormControl(''),
   });
 
   
-  addform = {
-    hbcounts:'',
-    // typelifestyle:'',
-    // smoking:'',
+  // addform = {
+  //   hbcounts:'',
+  //   // typelifestyle:'',
+  //   // smoking:'',
     
-  };
+  // };
 
   ///////////////////////////////////
 
@@ -279,6 +290,18 @@ registerInvestigationReport = (data):any => {
         "dopplerPeripheralVenous":data.dopplerPeripheralVenous,
         "echocardigraphy":data.echocardigraphy,
         "stressTest":data.stressTest,
+        "ultrasound": data.ultrasound,
+        "xray":data.xray,
+        "ctscan": data.ctscan,
+        "mri": data.mri,
+        "tmt": data.tmt,
+        "vision": data.vision,
+        "renal": data.renal,
+        "physiotherapy": data.physiotherapy,
+        "feteldoppler": data.feteldoppler,
+        "bonedensity":data.bonedensity,
+        "bodycomposition":data.bodycomposition,
+        "surgery":data.surgery,
       }
       
       console.log(this.investigationReport.value);

@@ -680,7 +680,7 @@
                             <div class="form-group col-md-3">
                                 <label for="carotidDoppler">Carotid Doppler</label>
                                 <input type="text" id="carotidDoppler" name="carotidDoppler" class="form-control"   placeholder="Carotid Doppler" 
-                                required   formControlName="ancarotidDopplerca" >
+                                required   formControlName="carotidDoppler" >
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="dopplerPeripheralArterial">Doppler Peripheral Arterial</label>
@@ -702,79 +702,129 @@
                                 <input type="text" id="stressTest" name="stressTest" class="form-control"   placeholder="Stress Test" 
                                 required   formControlName="stressTest" >
                             </div>
-                        </div>
-                         
-                        <hr>
-                        <h5 class="text-center">ULTRASOUND  </h5>
-                        <div class="form-row">
+
+                            <div class="form-group col-md-3">
+                                <label for="ultrasound">Ultra Sound</label>
+                                <input type="text" id="ultrasound" name="ultrasound" class="form-control"   placeholder="Ultra Sound" 
+                                required   formControlName="ultrasound" >
+
+                            </div>
 
                         </div>
                          
-                        <hr>
-                        <h5 class="text-center">CT-SCAN  </h5>
+                       
                         <div class="form-row">
+                           
 
+                            <div class="form-group col-md-3">
+                                <label for="xray">X Ray</label>
+                                <input type="text" id="xray" name="xray" class="form-control"   placeholder="X-Ray" 
+                                required   formControlName="xray" >
+
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="ctscan">CT Scan</label>
+                                <input type="text" id="ctscan" name="ctscan" class="form-control"   placeholder="CTScan" 
+                                required   formControlName="ctscan" >
+
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="mri">MRI</label>
+                                <input type="text" id="mri" name="mri" class="form-control"   placeholder="MRI" 
+                                required   formControlName="mri" >
+
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="tmt">TMT</label>
+                                <input type="text" id="tmt" name="tmt" class="form-control"   placeholder="TMT" 
+                                required   formControlName="tmt" >
+
+                            </div>
+
+                            
                         </div>
-                         
-                        <hr>
-                        <h5 class="text-center">MRI  </h5>
-                        <div class="form-row">
-
-                        </div>
-                         
-                        <hr>
-                        <h5 class="text-center">TMT  </h5>
-                        <div class="form-row">
-
-                        </div>
-                         
-                        <hr>
-                        <h5 class="text-center">VISION  </h5>
-                        <div class="form-row">
-
-                        </div>
-                         
-                        <hr>
-                        <h5 class="text-center">RENAL  </h5>
-                        <div class="form-row">
-
-                        </div>
-                         
-                        <hr>
-                        <h5 class="text-center">PHYSIOTHERAPY  </h5>
-                        <div class="form-row">
-
-                        </div>
-                         
-                        <hr>
-                        <h5 class="text-center">FETEL DOPPLER  </h5>
-                        <div class="form-row">
-
-                        </div>
-                         
-                        <hr>
-                        <h5 class="text-center">BONE DENSITY  </h5>
-                        <div class="form-row">
-
-                        </div>
-                         
-                        <hr>
-                        <h5 class="text-center">BODY COMPOSITION  </h5>
-                        <div class="form-row">
-
-                        </div>
-                         
-                        <hr>
-                        <h5 class="text-center">SURGERY  </h5>
-                        <div class="form-row">
-
-                        </div>
-
-
                         
+                        
+                        <div class="form-row">
+                           
+                            <div class="form-group col-md-3">
+                                <label for="vision">Vision</label>
+                                <input type="text" id="vision" name="vision" class="form-control"   placeholder="Vision" 
+                                required   formControlName="vision" >
+
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="renal">Renal</label>
+                                <input type="text" id="renal" name="renal" class="form-control"   placeholder="Renal" 
+                                required   formControlName="renal" >
+
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="physiotherapy">Physiotherapy</label>
+                                <input type="text" id="physiotherapy" name="physiotherapy" class="form-control"   placeholder="Physiotherapy" 
+                                required   formControlName="physiotherapy" >
+
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="feteldoppler">Fetel Doppler</label>
+                                <input type="text" id="feteldoppler" name="feteldoppler" class="form-control"   placeholder="Fetel Doppler" 
+                                required   formControlName="feteldoppler" >
+
+                            </div>
+
+                            
+                        </div>
+                        
+                        
+                        <div class="form-row">
+                           
+                            <div class="form-group col-md-3">
+                                <label for="bonedensity">Bone Density</label>
+                                <input type="text" id="bonedensity" name="bonedensity" class="form-control"   placeholder="Bone Density" 
+                                required   formControlName="bonedensity" >
+
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="bodycomposition">Body Composition </label>
+                                <br/>
+                    
+                                <input name="bodycomposition" id="bodycomposition"  formControlName="bodycomposition" type="radio" [value]="true" [checked]="bodycomposition"/> Fat
+                                <input name="bodycomposition" id="bodycomposition" formControlName="bodycomposition" type="radio" [value]="false" [checked]="!bodycomposition"/> Non-Fat
+                      
+                              </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="surgery">Surgery</label>
+                                <input type="text" id="surgery" name="surgery" class="form-control"   placeholder="Surgery" 
+                                required   formControlName="surgery" >
+
+                            </div>
+
+                          
+
+                            
+                        </div>
                          
                             
-
+                        <div class="form-row">
+                            <div class="form-group col-md-4"></div>
+                            <div class="form-group col-md-4">
+                              <button type="submit" class="btn btn-primary  btn-block"  >Submit Form</button>
+                              </div>
+                              <div class="form-group col-md-4"></div>
+                              <!-- <div class="form-group col-md-6">
+                                 <button type="button" class="btn btn-danger  btn-block" (click)="lifeStyleForm.resetForm({})">Reset Form</button>
+                              </div>         -->
+                          
+                    
+                          </div>
 
                         
                         

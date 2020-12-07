@@ -62,7 +62,8 @@ export class ProfileComponent implements OnInit {
   timingshours:'',
   };
 
-
+  profileimg;
+  logoimg;
   ///////////////////////////////////
 
   constructor(private loginService: LoginserviceService,private router:Router, private formBuilder: FormBuilder) { }
@@ -109,8 +110,9 @@ export class ProfileComponent implements OnInit {
  
 
     this.loginService.getClinicData(localStorage.getItem("id")).subscribe(data => {
-      
-      this.profileform = data['doctor']
+      console.log(data);
+      this.profileform = data['doctor'];
+      this.profileimg = data['profileimage'];
     }, error => console.log(error));
 
   }
